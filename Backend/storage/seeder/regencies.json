@@ -1,0 +1,2572 @@
+[
+    {
+      "provincy_id": 11,
+      "code": 1101,
+      "name": "KABUPATEN SIMEULUE"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1102,
+      "name": "KABUPATEN ACEH SINGKIL"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1103,
+      "name": "KABUPATEN ACEH SELATAN"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1104,
+      "name": "KABUPATEN ACEH TENGGARA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1105,
+      "name": "KABUPATEN ACEH TIMUR"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1106,
+      "name": "KABUPATEN ACEH TENGAH"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1107,
+      "name": "KABUPATEN ACEH BARAT"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1108,
+      "name": "KABUPATEN ACEH BESAR"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1109,
+      "name": "KABUPATEN PIDIE"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1110,
+      "name": "KABUPATEN BIREUEN"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1111,
+      "name": "KABUPATEN ACEH UTARA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1112,
+      "name": "KABUPATEN ACEH BARAT DAYA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1113,
+      "name": "KABUPATEN GAYO LUES"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1114,
+      "name": "KABUPATEN ACEH TAMIANG"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1115,
+      "name": "KABUPATEN NAGAN RAYA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1116,
+      "name": "KABUPATEN ACEH JAYA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1117,
+      "name": "KABUPATEN BENER MERIAH"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1118,
+      "name": "KABUPATEN PIDIE JAYA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1171,
+      "name": "KOTA BANDA ACEH"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1172,
+      "name": "KOTA SABANG"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1173,
+      "name": "KOTA LANGSA"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1174,
+      "name": "KOTA LHOKSEUMAWE"
+    },
+    {
+      "provincy_id": 11,
+      "code": 1175,
+      "name": "KOTA SUBULUSSALAM"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1201,
+      "name": "KABUPATEN NIAS"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1202,
+      "name": "KABUPATEN MANDAILING NATAL"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1203,
+      "name": "KABUPATEN TAPANULI SELATAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1204,
+      "name": "KABUPATEN TAPANULI TENGAH"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1205,
+      "name": "KABUPATEN TAPANULI UTARA"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1206,
+      "name": "KABUPATEN TOBA SAMOSIR"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1207,
+      "name": "KABUPATEN LABUHAN BATU"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1208,
+      "name": "KABUPATEN ASAHAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1209,
+      "name": "KABUPATEN SIMALUNGUN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1210,
+      "name": "KABUPATEN DAIRI"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1211,
+      "name": "KABUPATEN KARO"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1212,
+      "name": "KABUPATEN DELI SERDANG"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1213,
+      "name": "KABUPATEN LANGKAT"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1214,
+      "name": "KABUPATEN NIAS SELATAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1215,
+      "name": "KABUPATEN HUMBANG HASUNDUTAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1216,
+      "name": "KABUPATEN PAKPAK BHARAT"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1217,
+      "name": "KABUPATEN SAMOSIR"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1218,
+      "name": "KABUPATEN SERDANG BEDAGAI"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1219,
+      "name": "KABUPATEN BATU BARA"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1220,
+      "name": "KABUPATEN PADANG LAWAS UTARA"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1221,
+      "name": "KABUPATEN PADANG LAWAS"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1222,
+      "name": "KABUPATEN LABUHAN BATU SELATAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1223,
+      "name": "KABUPATEN LABUHAN BATU UTARA"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1224,
+      "name": "KABUPATEN NIAS UTARA"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1225,
+      "name": "KABUPATEN NIAS BARAT"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1271,
+      "name": "KOTA SIBOLGA"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1272,
+      "name": "KOTA TANJUNG BALAI"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1273,
+      "name": "KOTA PEMATANG SIANTAR"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1274,
+      "name": "KOTA TEBING TINGGI"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1275,
+      "name": "KOTA MEDAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1276,
+      "name": "KOTA BINJAI"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1277,
+      "name": "KOTA PADANGSIDIMPUAN"
+    },
+    {
+      "provincy_id": 12,
+      "code": 1278,
+      "name": "KOTA GUNUNGSITOLI"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1301,
+      "name": "KABUPATEN KEPULAUAN MENTAWAI"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1302,
+      "name": "KABUPATEN PESISIR SELATAN"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1303,
+      "name": "KABUPATEN SOLOK"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1304,
+      "name": "KABUPATEN SIJUNJUNG"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1305,
+      "name": "KABUPATEN TANAH DATAR"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1306,
+      "name": "KABUPATEN PADANG PARIAMAN"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1307,
+      "name": "KABUPATEN AGAM"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1308,
+      "name": "KABUPATEN LIMA PULUH KOTA"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1309,
+      "name": "KABUPATEN PASAMAN"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1310,
+      "name": "KABUPATEN SOLOK SELATAN"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1311,
+      "name": "KABUPATEN DHARMASRAYA"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1312,
+      "name": "KABUPATEN PASAMAN BARAT"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1371,
+      "name": "KOTA PADANG"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1372,
+      "name": "KOTA SOLOK"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1373,
+      "name": "KOTA SAWAH LUNTO"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1374,
+      "name": "KOTA PADANG PANJANG"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1375,
+      "name": "KOTA BUKITTINGGI"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1376,
+      "name": "KOTA PAYAKUMBUH"
+    },
+    {
+      "provincy_id": 13,
+      "code": 1377,
+      "name": "KOTA PARIAMAN"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1401,
+      "name": "KABUPATEN KUANTAN SINGINGI"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1402,
+      "name": "KABUPATEN INDRAGIRI HULU"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1403,
+      "name": "KABUPATEN INDRAGIRI HILIR"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1404,
+      "name": "KABUPATEN PELALAWAN"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1405,
+      "name": "KABUPATEN S I A K"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1406,
+      "name": "KABUPATEN KAMPAR"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1407,
+      "name": "KABUPATEN ROKAN HULU"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1408,
+      "name": "KABUPATEN BENGKALIS"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1409,
+      "name": "KABUPATEN ROKAN HILIR"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1410,
+      "name": "KABUPATEN KEPULAUAN MERANTI"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1471,
+      "name": "KOTA PEKANBARU"
+    },
+    {
+      "provincy_id": 14,
+      "code": 1473,
+      "name": "KOTA D U M A I"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1501,
+      "name": "KABUPATEN KERINCI"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1502,
+      "name": "KABUPATEN MERANGIN"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1503,
+      "name": "KABUPATEN SAROLANGUN"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1504,
+      "name": "KABUPATEN BATANG HARI"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1505,
+      "name": "KABUPATEN MUARO JAMBI"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1506,
+      "name": "KABUPATEN TANJUNG JABUNG TIMUR"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1507,
+      "name": "KABUPATEN TANJUNG JABUNG BARAT"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1508,
+      "name": "KABUPATEN TEBO"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1509,
+      "name": "KABUPATEN BUNGO"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1571,
+      "name": "KOTA JAMBI"
+    },
+    {
+      "provincy_id": 15,
+      "code": 1572,
+      "name": "KOTA SUNGAI PENUH"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1601,
+      "name": "KABUPATEN OGAN KOMERING ULU"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1602,
+      "name": "KABUPATEN OGAN KOMERING ILIR"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1603,
+      "name": "KABUPATEN MUARA ENIM"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1604,
+      "name": "KABUPATEN LAHAT"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1605,
+      "name": "KABUPATEN MUSI RAWAS"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1606,
+      "name": "KABUPATEN MUSI BANYUASIN"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1607,
+      "name": "KABUPATEN BANYU ASIN"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1608,
+      "name": "KABUPATEN OGAN KOMERING ULU SELATAN"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1609,
+      "name": "KABUPATEN OGAN KOMERING ULU TIMUR"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1610,
+      "name": "KABUPATEN OGAN ILIR"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1611,
+      "name": "KABUPATEN EMPAT LAWANG"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1612,
+      "name": "KABUPATEN PENUKAL ABAB LEMATANG ILIR"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1613,
+      "name": "KABUPATEN MUSI RAWAS UTARA"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1671,
+      "name": "KOTA PALEMBANG"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1672,
+      "name": "KOTA PRABUMULIH"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1673,
+      "name": "KOTA PAGAR ALAM"
+    },
+    {
+      "provincy_id": 16,
+      "code": 1674,
+      "name": "KOTA LUBUKLINGGAU"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1701,
+      "name": "KABUPATEN BENGKULU SELATAN"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1702,
+      "name": "KABUPATEN REJANG LEBONG"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1703,
+      "name": "KABUPATEN BENGKULU UTARA"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1704,
+      "name": "KABUPATEN KAUR"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1705,
+      "name": "KABUPATEN SELUMA"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1706,
+      "name": "KABUPATEN MUKOMUKO"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1707,
+      "name": "KABUPATEN LEBONG"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1708,
+      "name": "KABUPATEN KEPAHIANG"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1709,
+      "name": "KABUPATEN BENGKULU TENGAH"
+    },
+    {
+      "provincy_id": 17,
+      "code": 1771,
+      "name": "KOTA BENGKULU"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1801,
+      "name": "KABUPATEN LAMPUNG BARAT"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1802,
+      "name": "KABUPATEN TANGGAMUS"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1803,
+      "name": "KABUPATEN LAMPUNG SELATAN"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1804,
+      "name": "KABUPATEN LAMPUNG TIMUR"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1805,
+      "name": "KABUPATEN LAMPUNG TENGAH"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1806,
+      "name": "KABUPATEN LAMPUNG UTARA"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1807,
+      "name": "KABUPATEN WAY KANAN"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1808,
+      "name": "KABUPATEN TULANGBAWANG"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1809,
+      "name": "KABUPATEN PESAWARAN"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1810,
+      "name": "KABUPATEN PRINGSEWU"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1811,
+      "name": "KABUPATEN MESUJI"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1812,
+      "name": "KABUPATEN TULANG BAWANG BARAT"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1813,
+      "name": "KABUPATEN PESISIR BARAT"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1871,
+      "name": "KOTA BANDAR LAMPUNG"
+    },
+    {
+      "provincy_id": 18,
+      "code": 1872,
+      "name": "KOTA METRO"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1901,
+      "name": "KABUPATEN BANGKA"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1902,
+      "name": "KABUPATEN BELITUNG"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1903,
+      "name": "KABUPATEN BANGKA BARAT"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1904,
+      "name": "KABUPATEN BANGKA TENGAH"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1905,
+      "name": "KABUPATEN BANGKA SELATAN"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1906,
+      "name": "KABUPATEN BELITUNG TIMUR"
+    },
+    {
+      "provincy_id": 19,
+      "code": 1971,
+      "name": "KOTA PANGKAL PINANG"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2101,
+      "name": "KABUPATEN KARIMUN"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2102,
+      "name": "KABUPATEN BINTAN"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2103,
+      "name": "KABUPATEN NATUNA"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2104,
+      "name": "KABUPATEN LINGGA"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2105,
+      "name": "KABUPATEN KEPULAUAN ANAMBAS"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2171,
+      "name": "KOTA B A T A M"
+    },
+    {
+      "provincy_id": 21,
+      "code": 2172,
+      "name": "KOTA TANJUNG PINANG"
+    },
+    {
+      "provincy_id": 31,
+      "code": 3101,
+      "name": "KABUPATEN KEPULAUAN SERIBU"
+    },
+    {
+      "provincy_id": 31,
+      "code": 3171,
+      "name": "KOTA JAKARTA SELATAN"
+    },
+    {
+      "provincy_id": 31,
+      "code": 3172,
+      "name": "KOTA JAKARTA TIMUR"
+    },
+    {
+      "provincy_id": 31,
+      "code": 3173,
+      "name": "KOTA JAKARTA PUSAT"
+    },
+    {
+      "provincy_id": 31,
+      "code": 3174,
+      "name": "KOTA JAKARTA BARAT"
+    },
+    {
+      "provincy_id": 31,
+      "code": 3175,
+      "name": "KOTA JAKARTA UTARA"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3201,
+      "name": "KABUPATEN BOGOR"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3202,
+      "name": "KABUPATEN SUKABUMI"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3203,
+      "name": "KABUPATEN CIANJUR"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3204,
+      "name": "KABUPATEN BANDUNG"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3205,
+      "name": "KABUPATEN GARUT"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3206,
+      "name": "KABUPATEN TASIKMALAYA"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3207,
+      "name": "KABUPATEN CIAMIS"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3208,
+      "name": "KABUPATEN KUNINGAN"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3209,
+      "name": "KABUPATEN CIREBON"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3210,
+      "name": "KABUPATEN MAJALENGKA"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3211,
+      "name": "KABUPATEN SUMEDANG"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3212,
+      "name": "KABUPATEN INDRAMAYU"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3213,
+      "name": "KABUPATEN SUBANG"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3214,
+      "name": "KABUPATEN PURWAKARTA"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3215,
+      "name": "KABUPATEN KARAWANG"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3216,
+      "name": "KABUPATEN BEKASI"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3217,
+      "name": "KABUPATEN BANDUNG BARAT"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3218,
+      "name": "KABUPATEN PANGANDARAN"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3271,
+      "name": "KOTA BOGOR"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3272,
+      "name": "KOTA SUKABUMI"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3273,
+      "name": "KOTA BANDUNG"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3274,
+      "name": "KOTA CIREBON"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3275,
+      "name": "KOTA BEKASI"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3276,
+      "name": "KOTA DEPOK"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3277,
+      "name": "KOTA CIMAHI"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3278,
+      "name": "KOTA TASIKMALAYA"
+    },
+    {
+      "provincy_id": 32,
+      "code": 3279,
+      "name": "KOTA BANJAR"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3301,
+      "name": "KABUPATEN CILACAP"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3302,
+      "name": "KABUPATEN BANYUMAS"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3303,
+      "name": "KABUPATEN PURBALINGGA"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3304,
+      "name": "KABUPATEN BANJARNEGARA"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3305,
+      "name": "KABUPATEN KEBUMEN"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3306,
+      "name": "KABUPATEN PURWOREJO"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3307,
+      "name": "KABUPATEN WONOSOBO"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3308,
+      "name": "KABUPATEN MAGELANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3309,
+      "name": "KABUPATEN BOYOLALI"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3310,
+      "name": "KABUPATEN KLATEN"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3311,
+      "name": "KABUPATEN SUKOHARJO"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3312,
+      "name": "KABUPATEN WONOGIRI"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3313,
+      "name": "KABUPATEN KARANGANYAR"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3314,
+      "name": "KABUPATEN SRAGEN"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3315,
+      "name": "KABUPATEN GROBOGAN"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3316,
+      "name": "KABUPATEN BLORA"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3317,
+      "name": "KABUPATEN REMBANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3318,
+      "name": "KABUPATEN PATI"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3319,
+      "name": "KABUPATEN KUDUS"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3320,
+      "name": "KABUPATEN JEPARA"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3321,
+      "name": "KABUPATEN DEMAK"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3322,
+      "name": "KABUPATEN SEMARANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3323,
+      "name": "KABUPATEN TEMANGGUNG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3324,
+      "name": "KABUPATEN KENDAL"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3325,
+      "name": "KABUPATEN BATANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3326,
+      "name": "KABUPATEN PEKALONGAN"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3327,
+      "name": "KABUPATEN PEMALANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3328,
+      "name": "KABUPATEN TEGAL"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3329,
+      "name": "KABUPATEN BREBES"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3371,
+      "name": "KOTA MAGELANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3372,
+      "name": "KOTA SURAKARTA"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3373,
+      "name": "KOTA SALATIGA"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3374,
+      "name": "KOTA SEMARANG"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3375,
+      "name": "KOTA PEKALONGAN"
+    },
+    {
+      "provincy_id": 33,
+      "code": 3376,
+      "name": "KOTA TEGAL"
+    },
+    {
+      "provincy_id": 34,
+      "code": 3401,
+      "name": "KABUPATEN KULON PROGO"
+    },
+    {
+      "provincy_id": 34,
+      "code": 3402,
+      "name": "KABUPATEN BANTUL"
+    },
+    {
+      "provincy_id": 34,
+      "code": 3403,
+      "name": "KABUPATEN GUNUNG KIDUL"
+    },
+    {
+      "provincy_id": 34,
+      "code": 3404,
+      "name": "KABUPATEN SLEMAN"
+    },
+    {
+      "provincy_id": 34,
+      "code": 3471,
+      "name": "KOTA YOGYAKARTA"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3501,
+      "name": "KABUPATEN PACITAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3502,
+      "name": "KABUPATEN PONOROGO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3503,
+      "name": "KABUPATEN TRENGGALEK"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3504,
+      "name": "KABUPATEN TULUNGAGUNG"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3505,
+      "name": "KABUPATEN BLITAR"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3506,
+      "name": "KABUPATEN KEDIRI"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3507,
+      "name": "KABUPATEN MALANG"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3508,
+      "name": "KABUPATEN LUMAJANG"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3509,
+      "name": "KABUPATEN JEMBER"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3510,
+      "name": "KABUPATEN BANYUWANGI"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3511,
+      "name": "KABUPATEN BONDOWOSO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3512,
+      "name": "KABUPATEN SITUBONDO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3513,
+      "name": "KABUPATEN PROBOLINGGO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3514,
+      "name": "KABUPATEN PASURUAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3515,
+      "name": "KABUPATEN SIDOARJO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3516,
+      "name": "KABUPATEN MOJOKERTO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3517,
+      "name": "KABUPATEN JOMBANG"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3518,
+      "name": "KABUPATEN NGANJUK"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3519,
+      "name": "KABUPATEN MADIUN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3520,
+      "name": "KABUPATEN MAGETAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3521,
+      "name": "KABUPATEN NGAWI"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3522,
+      "name": "KABUPATEN BOJONEGORO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3523,
+      "name": "KABUPATEN TUBAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3524,
+      "name": "KABUPATEN LAMONGAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3525,
+      "name": "KABUPATEN GRESIK"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3526,
+      "name": "KABUPATEN BANGKALAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3527,
+      "name": "KABUPATEN SAMPANG"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3528,
+      "name": "KABUPATEN PAMEKASAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3529,
+      "name": "KABUPATEN SUMENEP"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3571,
+      "name": "KOTA KEDIRI"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3572,
+      "name": "KOTA BLITAR"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3573,
+      "name": "KOTA MALANG"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3574,
+      "name": "KOTA PROBOLINGGO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3575,
+      "name": "KOTA PASURUAN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3576,
+      "name": "KOTA MOJOKERTO"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3577,
+      "name": "KOTA MADIUN"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3578,
+      "name": "KOTA SURABAYA"
+    },
+    {
+      "provincy_id": 35,
+      "code": 3579,
+      "name": "KOTA BATU"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3601,
+      "name": "KABUPATEN PANDEGLANG"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3602,
+      "name": "KABUPATEN LEBAK"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3603,
+      "name": "KABUPATEN TANGERANG"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3604,
+      "name": "KABUPATEN SERANG"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3671,
+      "name": "KOTA TANGERANG"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3672,
+      "name": "KOTA CILEGON"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3673,
+      "name": "KOTA SERANG"
+    },
+    {
+      "provincy_id": 36,
+      "code": 3674,
+      "name": "KOTA TANGERANG SELATAN"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5101,
+      "name": "KABUPATEN JEMBRANA"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5102,
+      "name": "KABUPATEN TABANAN"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5103,
+      "name": "KABUPATEN BADUNG"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5104,
+      "name": "KABUPATEN GIANYAR"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5105,
+      "name": "KABUPATEN KLUNGKUNG"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5106,
+      "name": "KABUPATEN BANGLI"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5107,
+      "name": "KABUPATEN KARANG ASEM"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5108,
+      "name": "KABUPATEN BULELENG"
+    },
+    {
+      "provincy_id": 51,
+      "code": 5171,
+      "name": "KOTA DENPASAR"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5201,
+      "name": "KABUPATEN LOMBOK BARAT"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5202,
+      "name": "KABUPATEN LOMBOK TENGAH"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5203,
+      "name": "KABUPATEN LOMBOK TIMUR"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5204,
+      "name": "KABUPATEN SUMBAWA"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5205,
+      "name": "KABUPATEN DOMPU"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5206,
+      "name": "KABUPATEN BIMA"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5207,
+      "name": "KABUPATEN SUMBAWA BARAT"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5208,
+      "name": "KABUPATEN LOMBOK UTARA"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5271,
+      "name": "KOTA MATARAM"
+    },
+    {
+      "provincy_id": 52,
+      "code": 5272,
+      "name": "KOTA BIMA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5301,
+      "name": "KABUPATEN SUMBA BARAT"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5302,
+      "name": "KABUPATEN SUMBA TIMUR"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5303,
+      "name": "KABUPATEN KUPANG"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5304,
+      "name": "KABUPATEN TIMOR TENGAH SELATAN"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5305,
+      "name": "KABUPATEN TIMOR TENGAH UTARA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5306,
+      "name": "KABUPATEN BELU"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5307,
+      "name": "KABUPATEN ALOR"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5308,
+      "name": "KABUPATEN LEMBATA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5309,
+      "name": "KABUPATEN FLORES TIMUR"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5310,
+      "name": "KABUPATEN SIKKA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5311,
+      "name": "KABUPATEN ENDE"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5312,
+      "name": "KABUPATEN NGADA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5313,
+      "name": "KABUPATEN MANGGARAI"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5314,
+      "name": "KABUPATEN ROTE NDAO"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5315,
+      "name": "KABUPATEN MANGGARAI BARAT"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5316,
+      "name": "KABUPATEN SUMBA TENGAH"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5317,
+      "name": "KABUPATEN SUMBA BARAT DAYA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5318,
+      "name": "KABUPATEN NAGEKEO"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5319,
+      "name": "KABUPATEN MANGGARAI TIMUR"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5320,
+      "name": "KABUPATEN SABU RAIJUA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5321,
+      "name": "KABUPATEN MALAKA"
+    },
+    {
+      "provincy_id": 53,
+      "code": 5371,
+      "name": "KOTA KUPANG"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6101,
+      "name": "KABUPATEN SAMBAS"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6102,
+      "name": "KABUPATEN BENGKAYANG"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6103,
+      "name": "KABUPATEN LANDAK"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6104,
+      "name": "KABUPATEN MEMPAWAH"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6105,
+      "name": "KABUPATEN SANGGAU"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6106,
+      "name": "KABUPATEN KETAPANG"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6107,
+      "name": "KABUPATEN SINTANG"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6108,
+      "name": "KABUPATEN KAPUAS HULU"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6109,
+      "name": "KABUPATEN SEKADAU"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6110,
+      "name": "KABUPATEN MELAWI"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6111,
+      "name": "KABUPATEN KAYONG UTARA"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6112,
+      "name": "KABUPATEN KUBU RAYA"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6171,
+      "name": "KOTA PONTIANAK"
+    },
+    {
+      "provincy_id": 61,
+      "code": 6172,
+      "name": "KOTA SINGKAWANG"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6201,
+      "name": "KABUPATEN KOTAWARINGIN BARAT"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6202,
+      "name": "KABUPATEN KOTAWARINGIN TIMUR"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6203,
+      "name": "KABUPATEN KAPUAS"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6204,
+      "name": "KABUPATEN BARITO SELATAN"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6205,
+      "name": "KABUPATEN BARITO UTARA"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6206,
+      "name": "KABUPATEN SUKAMARA"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6207,
+      "name": "KABUPATEN LAMANDAU"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6208,
+      "name": "KABUPATEN SERUYAN"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6209,
+      "name": "KABUPATEN KATINGAN"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6210,
+      "name": "KABUPATEN PULANG PISAU"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6211,
+      "name": "KABUPATEN GUNUNG MAS"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6212,
+      "name": "KABUPATEN BARITO TIMUR"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6213,
+      "name": "KABUPATEN MURUNG RAYA"
+    },
+    {
+      "provincy_id": 62,
+      "code": 6271,
+      "name": "KOTA PALANGKA RAYA"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6301,
+      "name": "KABUPATEN TANAH LAUT"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6302,
+      "name": "KABUPATEN KOTA BARU"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6303,
+      "name": "KABUPATEN BANJAR"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6304,
+      "name": "KABUPATEN BARITO KUALA"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6305,
+      "name": "KABUPATEN TAPIN"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6306,
+      "name": "KABUPATEN HULU SUNGAI SELATAN"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6307,
+      "name": "KABUPATEN HULU SUNGAI TENGAH"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6308,
+      "name": "KABUPATEN HULU SUNGAI UTARA"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6309,
+      "name": "KABUPATEN TABALONG"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6310,
+      "name": "KABUPATEN TANAH BUMBU"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6311,
+      "name": "KABUPATEN BALANGAN"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6371,
+      "name": "KOTA BANJARMASIN"
+    },
+    {
+      "provincy_id": 63,
+      "code": 6372,
+      "name": "KOTA BANJAR BARU"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6401,
+      "name": "KABUPATEN PASER"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6402,
+      "name": "KABUPATEN KUTAI BARAT"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6403,
+      "name": "KABUPATEN KUTAI KARTANEGARA"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6404,
+      "name": "KABUPATEN KUTAI TIMUR"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6405,
+      "name": "KABUPATEN BERAU"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6409,
+      "name": "KABUPATEN PENAJAM PASER UTARA"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6411,
+      "name": "KABUPATEN MAHAKAM HULU"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6471,
+      "name": "KOTA BALIKPAPAN"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6472,
+      "name": "KOTA SAMARINDA"
+    },
+    {
+      "provincy_id": 64,
+      "code": 6474,
+      "name": "KOTA BONTANG"
+    },
+    {
+      "provincy_id": 65,
+      "code": 6501,
+      "name": "KABUPATEN MALINAU"
+    },
+    {
+      "provincy_id": 65,
+      "code": 6502,
+      "name": "KABUPATEN BULUNGAN"
+    },
+    {
+      "provincy_id": 65,
+      "code": 6503,
+      "name": "KABUPATEN TANA TIDUNG"
+    },
+    {
+      "provincy_id": 65,
+      "code": 6504,
+      "name": "KABUPATEN NUNUKAN"
+    },
+    {
+      "provincy_id": 65,
+      "code": 6571,
+      "name": "KOTA TARAKAN"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7101,
+      "name": "KABUPATEN BOLAANG MONGONDOW"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7102,
+      "name": "KABUPATEN MINAHASA"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7103,
+      "name": "KABUPATEN KEPULAUAN SANGIHE"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7104,
+      "name": "KABUPATEN KEPULAUAN TALAUD"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7105,
+      "name": "KABUPATEN MINAHASA SELATAN"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7106,
+      "name": "KABUPATEN MINAHASA UTARA"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7107,
+      "name": "KABUPATEN BOLAANG MONGONDOW UTARA"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7108,
+      "name": "KABUPATEN SIAU TAGULANDANG BIARO"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7109,
+      "name": "KABUPATEN MINAHASA TENGGARA"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7110,
+      "name": "KABUPATEN BOLAANG MONGONDOW SELATAN"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7111,
+      "name": "KABUPATEN BOLAANG MONGONDOW TIMUR"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7171,
+      "name": "KOTA MANADO"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7172,
+      "name": "KOTA BITUNG"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7173,
+      "name": "KOTA TOMOHON"
+    },
+    {
+      "provincy_id": 71,
+      "code": 7174,
+      "name": "KOTA KOTAMOBAGU"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7201,
+      "name": "KABUPATEN BANGGAI KEPULAUAN"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7202,
+      "name": "KABUPATEN BANGGAI"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7203,
+      "name": "KABUPATEN MOROWALI"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7204,
+      "name": "KABUPATEN POSO"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7205,
+      "name": "KABUPATEN DONGGALA"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7206,
+      "name": "KABUPATEN TOLI-TOLI"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7207,
+      "name": "KABUPATEN BUOL"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7208,
+      "name": "KABUPATEN PARIGI MOUTONG"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7209,
+      "name": "KABUPATEN TOJO UNA-UNA"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7210,
+      "name": "KABUPATEN SIGI"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7211,
+      "name": "KABUPATEN BANGGAI LAUT"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7212,
+      "name": "KABUPATEN MOROWALI UTARA"
+    },
+    {
+      "provincy_id": 72,
+      "code": 7271,
+      "name": "KOTA PALU"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7301,
+      "name": "KABUPATEN KEPULAUAN SELAYAR"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7302,
+      "name": "KABUPATEN BULUKUMBA"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7303,
+      "name": "KABUPATEN BANTAENG"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7304,
+      "name": "KABUPATEN JENEPONTO"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7305,
+      "name": "KABUPATEN TAKALAR"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7306,
+      "name": "KABUPATEN GOWA"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7307,
+      "name": "KABUPATEN SINJAI"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7308,
+      "name": "KABUPATEN MAROS"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7309,
+      "name": "KABUPATEN PANGKAJENE DAN KEPULAUAN"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7310,
+      "name": "KABUPATEN BARRU"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7311,
+      "name": "KABUPATEN BONE"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7312,
+      "name": "KABUPATEN SOPPENG"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7313,
+      "name": "KABUPATEN WAJO"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7314,
+      "name": "KABUPATEN SIDENRENG RAPPANG"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7315,
+      "name": "KABUPATEN PINRANG"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7316,
+      "name": "KABUPATEN ENREKANG"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7317,
+      "name": "KABUPATEN LUWU"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7318,
+      "name": "KABUPATEN TANA TORAJA"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7322,
+      "name": "KABUPATEN LUWU UTARA"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7325,
+      "name": "KABUPATEN LUWU TIMUR"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7326,
+      "name": "KABUPATEN TORAJA UTARA"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7371,
+      "name": "KOTA MAKASSAR"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7372,
+      "name": "KOTA PAREPARE"
+    },
+    {
+      "provincy_id": 73,
+      "code": 7373,
+      "name": "KOTA PALOPO"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7401,
+      "name": "KABUPATEN BUTON"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7402,
+      "name": "KABUPATEN MUNA"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7403,
+      "name": "KABUPATEN KONAWE"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7404,
+      "name": "KABUPATEN KOLAKA"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7405,
+      "name": "KABUPATEN KONAWE SELATAN"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7406,
+      "name": "KABUPATEN BOMBANA"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7407,
+      "name": "KABUPATEN WAKATOBI"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7408,
+      "name": "KABUPATEN KOLAKA UTARA"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7409,
+      "name": "KABUPATEN BUTON UTARA"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7410,
+      "name": "KABUPATEN KONAWE UTARA"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7411,
+      "name": "KABUPATEN KOLAKA TIMUR"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7412,
+      "name": "KABUPATEN KONAWE KEPULAUAN"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7413,
+      "name": "KABUPATEN MUNA BARAT"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7414,
+      "name": "KABUPATEN BUTON TENGAH"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7415,
+      "name": "KABUPATEN BUTON SELATAN"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7471,
+      "name": "KOTA KENDARI"
+    },
+    {
+      "provincy_id": 74,
+      "code": 7472,
+      "name": "KOTA BAUBAU"
+    },
+    {
+      "provincy_id": 75,
+      "code": 7501,
+      "name": "KABUPATEN BOALEMO"
+    },
+    {
+      "provincy_id": 75,
+      "code": 7502,
+      "name": "KABUPATEN GORONTALO"
+    },
+    {
+      "provincy_id": 75,
+      "code": 7503,
+      "name": "KABUPATEN POHUWATO"
+    },
+    {
+      "provincy_id": 75,
+      "code": 7504,
+      "name": "KABUPATEN BONE BOLANGO"
+    },
+    {
+      "provincy_id": 75,
+      "code": 7505,
+      "name": "KABUPATEN GORONTALO UTARA"
+    },
+    {
+      "provincy_id": 75,
+      "code": 7571,
+      "name": "KOTA GORONTALO"
+    },
+    {
+      "provincy_id": 76,
+      "code": 7601,
+      "name": "KABUPATEN MAJENE"
+    },
+    {
+      "provincy_id": 76,
+      "code": 7602,
+      "name": "KABUPATEN POLEWALI MANDAR"
+    },
+    {
+      "provincy_id": 76,
+      "code": 7603,
+      "name": "KABUPATEN MAMASA"
+    },
+    {
+      "provincy_id": 76,
+      "code": 7604,
+      "name": "KABUPATEN MAMUJU"
+    },
+    {
+      "provincy_id": 76,
+      "code": 7605,
+      "name": "KABUPATEN MAMUJU UTARA"
+    },
+    {
+      "provincy_id": 76,
+      "code": 7606,
+      "name": "KABUPATEN MAMUJU TENGAH"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8101,
+      "name": "KABUPATEN MALUKU TENGGARA BARAT"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8102,
+      "name": "KABUPATEN MALUKU TENGGARA"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8103,
+      "name": "KABUPATEN MALUKU TENGAH"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8104,
+      "name": "KABUPATEN BURU"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8105,
+      "name": "KABUPATEN KEPULAUAN ARU"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8106,
+      "name": "KABUPATEN SERAM BAGIAN BARAT"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8107,
+      "name": "KABUPATEN SERAM BAGIAN TIMUR"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8108,
+      "name": "KABUPATEN MALUKU BARAT DAYA"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8109,
+      "name": "KABUPATEN BURU SELATAN"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8171,
+      "name": "KOTA AMBON"
+    },
+    {
+      "provincy_id": 81,
+      "code": 8172,
+      "name": "KOTA TUAL"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8201,
+      "name": "KABUPATEN HALMAHERA BARAT"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8202,
+      "name": "KABUPATEN HALMAHERA TENGAH"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8203,
+      "name": "KABUPATEN KEPULAUAN SULA"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8204,
+      "name": "KABUPATEN HALMAHERA SELATAN"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8205,
+      "name": "KABUPATEN HALMAHERA UTARA"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8206,
+      "name": "KABUPATEN HALMAHERA TIMUR"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8207,
+      "name": "KABUPATEN PULAU MOROTAI"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8208,
+      "name": "KABUPATEN PULAU TALIABU"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8271,
+      "name": "KOTA TERNATE"
+    },
+    {
+      "provincy_id": 82,
+      "code": 8272,
+      "name": "KOTA TIDORE KEPULAUAN"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9101,
+      "name": "KABUPATEN FAKFAK"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9102,
+      "name": "KABUPATEN KAIMANA"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9103,
+      "name": "KABUPATEN TELUK WONDAMA"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9104,
+      "name": "KABUPATEN TELUK BINTUNI"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9105,
+      "name": "KABUPATEN MANOKWARI"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9106,
+      "name": "KABUPATEN SORONG SELATAN"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9107,
+      "name": "KABUPATEN SORONG"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9108,
+      "name": "KABUPATEN RAJA AMPAT"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9109,
+      "name": "KABUPATEN TAMBRAUW"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9110,
+      "name": "KABUPATEN MAYBRAT"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9111,
+      "name": "KABUPATEN MANOKWARI SELATAN"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9112,
+      "name": "KABUPATEN PEGUNUNGAN ARFAK"
+    },
+    {
+      "provincy_id": 91,
+      "code": 9171,
+      "name": "KOTA SORONG"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9401,
+      "name": "KABUPATEN MERAUKE"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9402,
+      "name": "KABUPATEN JAYAWIJAYA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9403,
+      "name": "KABUPATEN JAYAPURA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9404,
+      "name": "KABUPATEN NABIRE"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9408,
+      "name": "KABUPATEN KEPULAUAN YAPEN"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9409,
+      "name": "KABUPATEN BIAK NUMFOR"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9410,
+      "name": "KABUPATEN PANIAI"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9411,
+      "name": "KABUPATEN PUNCAK JAYA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9412,
+      "name": "KABUPATEN MIMIKA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9413,
+      "name": "KABUPATEN BOVEN DIGOEL"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9414,
+      "name": "KABUPATEN MAPPI"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9415,
+      "name": "KABUPATEN ASMAT"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9416,
+      "name": "KABUPATEN YAHUKIMO"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9417,
+      "name": "KABUPATEN PEGUNUNGAN BINTANG"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9418,
+      "name": "KABUPATEN TOLIKARA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9419,
+      "name": "KABUPATEN SARMI"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9420,
+      "name": "KABUPATEN KEEROM"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9426,
+      "name": "KABUPATEN WAROPEN"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9427,
+      "name": "KABUPATEN SUPIORI"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9428,
+      "name": "KABUPATEN MAMBERAMO RAYA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9429,
+      "name": "KABUPATEN NDUGA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9430,
+      "name": "KABUPATEN LANNY JAYA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9431,
+      "name": "KABUPATEN MAMBERAMO TENGAH"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9432,
+      "name": "KABUPATEN YALIMO"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9433,
+      "name": "KABUPATEN PUNCAK"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9434,
+      "name": "KABUPATEN DOGIYAI"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9435,
+      "name": "KABUPATEN INTAN JAYA"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9436,
+      "name": "KABUPATEN DEIYAI"
+    },
+    {
+      "provincy_id": 94,
+      "code": 9471,
+      "name": "KOTA JAYAPURA"
+    }
+  ]
