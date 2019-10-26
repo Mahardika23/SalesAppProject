@@ -1,0 +1,36 @@
+@media all and (min-width: 200px) {
+    .daftar {
+      text-align: center;
+      padding: 50px 0;
+      background-color: white;
+      width: 700px;
+      margin-bottom: 100px;
+      margin-top: 100px;
+    }
+    
+    .daftar form {
+      text-align:left;
+      margin: 0 auto;
+      max-width: 510px;
+    }
+    .daftar form button {
+      text-align: center;
+      margin: 0 auto;
+      width: 160px;
+      margin-left: 160px;
+    }
+  }
+  .link {
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  .coba{
+    background-color: purple;
+}
+
+.halaman{
+  display: flex;
+  justify-content: center;
+  background-color: #E4DFEC;
+}
