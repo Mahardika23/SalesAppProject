@@ -14,9 +14,9 @@ class CreateDistrictsTable extends Migration
     public function up()
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->bigInteger('id');
             $table->string('regency_id');
-            $table->string('code',7);
+            // $table->string('code',7);
             $table->string('name');
         });
     }

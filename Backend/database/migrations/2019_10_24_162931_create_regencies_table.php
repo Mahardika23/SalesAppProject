@@ -15,10 +15,9 @@ class CreateRegenciesTable extends Migration
     {
          Schema::create('regencies', function (Blueprint $table) {
             $table->smallIncrements('id');
-            // $table->unsignedSmallInteger('provincy_id');
-            // $table->foreign('provincy_id')->references('id')->on('provinces');
-            $table->string('provincy_id');
-            $table->string('code',4);
+
+            $table->string('provinces_id');
+          
             $table->string('name');
         });
     }

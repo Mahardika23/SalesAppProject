@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Villages extends Model
+{
+    //
+    protected $table = 'villages';
+    protected $primaryKey = 'id';
+
+    public function districts(){
+        return $this->belongsTo('App\District');
+            
+    }
+
+}

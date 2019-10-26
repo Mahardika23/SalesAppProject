@@ -20,5 +20,4 @@ Auth::routes();
 //     return $request->user();
 // });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/register','Api\RegisterController@Register');
-Route::post('/login','Api\LoginController@login');
+

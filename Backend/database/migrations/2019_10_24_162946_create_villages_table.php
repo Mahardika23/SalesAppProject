@@ -16,7 +16,7 @@ class CreateVillagesTable extends Migration
         Schema::create('villages', function (Blueprint $table) {
             $table->bigIncrements('id');  
             $table->string('district_id');
-            $table->string('code',10);
+            // $table->string('code',10);
             $table->string('name');
         });
     }
