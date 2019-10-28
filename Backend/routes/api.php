@@ -13,11 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     // return $request->user();  
+//     return auth('api')->user();
+
+// });
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('user', 'UserController@getAuthenticatedUser');
+    
+    // Route::get('closed', 'DataController@closed');
 });
-Route::post('/register','Api\RegisterController@Register');
-Route::post('/login','Api\LoginController@login');
+Route::post('/register','UserController@register');
+Route::post('/login','UserController@authenticate');
 Route::get('/regency','provincesController@regency');
 Route::get('/district','provincesController@district');
 Route::get('/village','provincesController@village');
+Route::post('/registertoko','Api\RegisterTokoController@index');

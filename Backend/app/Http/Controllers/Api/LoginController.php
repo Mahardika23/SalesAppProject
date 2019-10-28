@@ -12,14 +12,15 @@ class LoginController extends Controller
         $loginData = $request->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required'],
-
         ]);
-        if (!auth()->attempt($loginData)) {
-            return response(['message' => 'Invalid Credentials']);
-            # code...
-        }
-        $accessToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user' => auth()->user() , 'access_token' => $accessToken]);
 
+            // $credentials = request(['email', 'password']);
+            if (!$token = auth('api')->attempt($loginData)) {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+            return response()->json([
+                'token' => $token,
+                'expires' => auth('api')->factory()->getTTL() * 60,
+            ]);
     }
 }

@@ -15,12 +15,16 @@ class CreateTokosTable extends Migration
     {
         Schema::create('tokos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // $table->integer('userable_id');
             $table->string('nama_toko');
             $table->string('nama_pemilik');
-            $table->smallInteger('provincy_id');
-            $table->smallInteger('regency_id');
-            $table->smallInteger('district_id');
-            $table->smallInteger('village_id');
+            $table->biginteger('no_telp');
+            $table->string('email_pemilik')->unique();
+            $table->string('alamat_toko');
+            $table->bigInteger('province_id');
+            $table->bigInteger('regency_id');
+            $table->bigInteger('district_id');
+            $table->bigInteger('village_id');
             $table->timestamps();
         });
     }
