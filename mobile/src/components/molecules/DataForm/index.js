@@ -15,7 +15,7 @@ const DataForm = (props) => {
                     backgroundColor: '#E7DFEC'
                 }}
                 secureTextEntry={props.Password}
-
+                keyboardType={props.keyboardType}
             />
         </View>
     )

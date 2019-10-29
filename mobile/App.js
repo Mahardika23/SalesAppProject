@@ -15,6 +15,8 @@ import Register from './src/containers/pages/Register';
 import Home from './src/containers/pages/Home';
 import Cart from './src/containers/pages/Cart';
 import AppContainer from './src/config/router';
+import Search from './src/containers/pages/Search';
+
 import {
   View,
   Text,
