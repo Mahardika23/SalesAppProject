@@ -24,7 +24,7 @@ const Home = (props) => {
 
         {/* Search Bar */}
         <View style={{alignSelf: 'center'}}>
-            <SearchFeature/>
+            <SearchFeature navigate={() => props.navigation.navigate('Search')}/>
         </View>
 
         {/* Katalog Produk */}

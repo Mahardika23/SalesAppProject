@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/nafiu/react/projek/SalesApp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
+            "outputFile": "/home/nafiu/react/projek/git/SalesAppProject/mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
                     "source": "/home/nafiu/.gradle/caches/transforms-2/files-2.1/7bf925fdb82605f1165549c4fe97b30a/res/values-fr-rCA/values-fr-rCA.xml",
