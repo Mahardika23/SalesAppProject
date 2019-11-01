@@ -25,9 +25,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 // Route::post('/register','UserController@register');
 Route::post('/login','UserController@authenticate');
-Route::get('/regency','provincesController@regency');
-Route::get('/district','provincesController@district');
-Route::get('/village','provincesController@village');
+Route::get('/province','Api\WilayahController@province');
+
+Route::get('/regency','Api\WilayahController@regency');
+Route::get('/district','Api\WilayahController@district');
+Route::get('/village','Api\WilayahController@village');
 Route::post('/registertoko','Api\RegisterTokoController@index');
 Route::get('/showallcatalog','Api\CatalogController@showall');
 //Route::get('example', array('middleware' => 'cors', 'uses' => 'ExampleController@dummy'));
