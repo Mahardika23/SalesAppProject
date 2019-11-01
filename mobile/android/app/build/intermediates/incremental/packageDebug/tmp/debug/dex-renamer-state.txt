@@ -1,4 +1,4 @@
-#Mon Oct 21 01:21:17 WIB 2019
-base.0=/home/nafiu/react/projek/SalesApp/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Wed Oct 30 20:04:17 WIB 2019
+base.0=/home/nafiu/react/projek/git/SalesAppProject/mobile/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

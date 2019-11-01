@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/nafiu/react/projek/SalesApp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "/home/nafiu/react/projek/git/SalesAppProject/mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "/home/nafiu/.gradle/caches/transforms-2/files-2.1/66677edfbe57dc93d5cc2eaec7e12f28/res/values-zh-rTW/values-zh-rTW.xml",
