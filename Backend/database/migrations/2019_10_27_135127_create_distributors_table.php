@@ -19,6 +19,8 @@ class CreateDistributorsTable extends Migration
             $table->string('nama_distributor');
             $table->string('alamat_distributor');
             $table->string('email_distributor');
+            $table->bigInteger('province_id')->nullable();
+            $table->bigInteger('regency_id')->nullable();
 
             $table->timestamps();
             

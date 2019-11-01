@@ -12,6 +12,8 @@ $factory->define(Barang::class, function (Faker $faker) {
         'jenis_barang' => $faker->word,
         'harga_barang' => $faker->numberBetween(10000,50000),
         'stok_barang' => $faker->numberBetween(0,30),
+        // 'province_id' => $faker->numerify(1'###),
+
     
     ];
 });

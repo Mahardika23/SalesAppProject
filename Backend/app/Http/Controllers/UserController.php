@@ -12,6 +12,9 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class UserController extends Controller
 {
     //
+    // public function __construct(){
+    //     $this->middleware('auth:api',['except' => ['login']]);
+    // }
     public function authenticate(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -86,9 +89,19 @@ class UserController extends Controller
         // $user->email = $request->get('email');
         // $user->password = bcrypt($request->get('password'));
         // $user->userable()->save($validatedTokoData);
-        // $token = JWTAuth::fromUser($user);
+        $token = JWTAuth::fromUser($user);
             
         return response()->json(compact('user','token'),201);
+    }
+    public function refresh(){
+        $token=JWTAuth::refresh();
+        return response()->json(compact('token'));
+    }
+    public function logout()
+    {
+        JWTAuth::invalidate();
+
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     public function getAuthenticatedUser()

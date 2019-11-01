@@ -20,23 +20,22 @@ use Illuminate\Http\Request;
 // });
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
-    
-    // Route::get('closed', 'DataController@closed');
+    // Route::get('/test','TestController@index');
+    Route::post('refresh','UserController@refresh');
+    Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
+    Route::post('logout','UserController@logout');  
 });
-// Route::post('/register','UserController@register');
 Route::post('/login','UserController@authenticate');
-Route::get('/province','Api\WilayahController@province');
+Route::post('/register','UserController@register');
 
+//Showing Catalog Before login
+Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');
+Route::get('/showallcatalog','Api\CatalogController@showall');
+
+//Get Data Wilayah
+Route::get('/province','Api\WilayahController@province');
 Route::get('/regency','Api\WilayahController@regency');
 Route::get('/district','Api\WilayahController@district');
 Route::get('/village','Api\WilayahController@village');
-Route::post('/registertoko','Api\RegisterTokoController@index');
-Route::get('/showallcatalog','Api\CatalogController@showall');
-//Route::get('example', array('middleware' => 'cors', 'uses' => 'ExampleController@dummy'));
-Route::post('/register','UserController@register');
 
-// Route::group(['middleware' => ['cors']], function() {
-//     Route::post('/register','UserController@register');
-    
-//     // Route::get('closed', 'DataController@closed');
-// });
+
