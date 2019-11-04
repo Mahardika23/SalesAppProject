@@ -8,7 +8,7 @@ class District extends Model
 {
     protected $table = 'districts';
 	protected $primaryKey = 'id';
-	public function village(){
+	public function villages(){
         return $this->hasMany('App\Villages');
             
     }

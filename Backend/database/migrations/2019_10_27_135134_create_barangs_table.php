@@ -20,6 +20,9 @@ class CreateBarangsTable extends Migration
             $table->string('jenis_barang');
             $table->bigInteger('harga_barang');
             $table->bigInteger('stok_barang');
+           
+            // $table->bigInteger('district_id');
+            // $table->bigInteger('village_id');
                         
             $table->timestamps();
         });

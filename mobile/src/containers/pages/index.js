@@ -6,7 +6,8 @@ import Register from './Register';
 import Register2 from './Register2';
 import Cart from './Cart';
 import Search from './Search';
+import RegisterArea from './RegisterArea';
 
 export {
-    Home,Login,Register,Register2,Cart,Search,
+    Home,Login,Register,Register2,Cart,Search,RegisterArea,
 };

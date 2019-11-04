@@ -12,10 +12,10 @@ class DistributorTableSeeder extends Seeder
     public function run()
     {
         factory(App\Distributor::class,20)->create()->each(function($distributor){
-            $distributor->save();
-            
-            $barang = factory(App\Barang::class)->make();
-            $distributor->barang()->save($barang);
+            $distributor->barang()->createMany(factory(App\Barang::class,3)->make()->toArray());
+
+            // $barang = factory(App\Barang::class)->make();
+            // $distributor->barang()->save($barang);
             
                 
             

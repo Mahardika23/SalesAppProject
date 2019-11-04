@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\toko;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
@@ -11,6 +12,9 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class UserController extends Controller
 {
     //
+    // public function __construct(){
+    //     $this->middleware('auth:api',['except' => ['login']]);
+    // }
     public function authenticate(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -42,22 +46,62 @@ class UserController extends Controller
             // 'userable_id' =>'required',
             // 'userable_type' =>'required|string',
         ]);
+        $validatedTokoData =$request->validate([
+            'nama_toko' => 'required|string|max:100',
+            'nama_pemilik' => 'required|string|max:100',
+            'no_telp' => 'required',
+            'alamat_toko' => 'required|string|max:255',
+            'email_pemilik' => 'required|email',
+            'province_id' =>'required',
+            'regency_id' =>'required',
+            'district_id' =>'required',
+            'village_id' =>'required',
+            
+        ]);
+        // $dataToko = ['nama_toko' => '']
+        // $dataToko->nama_toko  = $request->get('nama_toko');
+        // $dataToko->nama_pemilik  = $request->get('nama_pemilik');
+        // $dataToko->no_telp  = $request->get('no_telp');
+        // $dataToko->alamat_toko  = $request->get('alamat_toko');
+        // $dataToko->email_pemilik  = $request->get('email_pemilik');
+        // $dataToko->province_id  = $request->get('province_id');
+        // $dataToko->regency_id  = $request->get('regency_id');
+        // $dataToko->district_id  = $request->get('district_id');
+        // $dataToko->village_id  = $request->get('village_id');
+        // $dataTokoJson = json_encode($dataToko);
+        // $validatedUserData['password'] = bcrypt($request->password);
+        $toko = toko::create($validatedTokoData);
 
-        if($validator->fails()){
+
+        if($validator->fails() && $validatedTokoData->fails()){
                 return response()->json($validator->errors()->toJson());
         }
 
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            // 'userable_type' => $request->get('userable_type'),
-            // 'userable_id' => $request->get('userable_id'),
+            'userable_type' =>get_class($toko),
+            'userable_id' => $toko->id,
             'password' => Hash::make($request->get('password')),
         ]);
-
+        // $user = new User;
+        // $user->name = $request->get('name');
+        // $user->email = $request->get('email');
+        // $user->password = bcrypt($request->get('password'));
+        // $user->userable()->save($validatedTokoData);
         $token = JWTAuth::fromUser($user);
             
         return response()->json(compact('user','token'),201);
+    }
+    public function refresh(){
+        $token=JWTAuth::refresh();
+        return response()->json(compact('token'));
+    }
+    public function logout()
+    {
+        JWTAuth::invalidate();
+
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     public function getAuthenticatedUser()

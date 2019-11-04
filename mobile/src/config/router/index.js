@@ -1,7 +1,7 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Home,Login,Register,Register2,Cart,Search } from '../../containers/pages';
+import { Home,Login,Register,Register2,Cart,Search,RegisterArea } from '../../containers/pages';
 
 
 
@@ -24,6 +24,9 @@ const AppNavigator = createStackNavigator(
     },
     Search:{
       screen: Search,
+    },
+    RegisterArea:{
+      screen: RegisterArea,
     }
   },
   {
