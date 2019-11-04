@@ -14,40 +14,53 @@ class DropForm extends Component{
   constructor(props) {
     super(props)
     this.state = {
-        name: []
+        provinces: [],
     };
   }
-  componentDidMount() {
-    axios.get(`http://192.168.1.65:8000/api/province`)
-      .then(function(response) {
-        console.log(response.data);
-        console.log(response.status);
-        console.log(response.statusText);
-        console.log(response.headers);
-        console.log(response.config);
-      }
-    )
-  }
+
+   async componentDidMount(){
+        this.getUsers();
+    }
+  
+    getUsers = async () => {
+        let initialProvinces = [];
+
+        const res = await axios.get("http://192.168.1.24:8000/api/province");
+        initialProvinces = res.data.map((province)=> {
+            return province;
+        });
+        console.log(initialProvinces);
+        
+        this.setState({ provinces: initialProvinces });
+        // console.log(this.state.provinces);
+    };
+    
 
 
     render(props){
-    let data = [{
-        value: 'Sini',
-      }, {
-        value: 'situ',
-      }, {
-        value: 'sana',
-      }];
-
+      let provinces = this.state.provinces;
+    //   let dropdownItems = this.state.provinces.map((province) =>
+    //     <Dropdown 
+    //     data={province.name}
+    //     placeholder="pilih"
+        
+    //     deviceLocale="id"
+    //     onChangeText = {this.props.changeText}
+    //     />
+    //     )
       return(
+        
         <View style={{flexDirection:"row", marginVertical:3}}>
             <Text style={{marginTop: 7, width:115, fontSize:15}}>{this.props.areaName}</Text>
             <View style={{flex:1, marginTop:-30}}>
-                <Dropdown 
+                {/* {dropdownItems} */}
+                <Dropdown   
                 placeholder="pilih"
-                data={data} 
+
+                data = {this.state.provinces}
+                // keyExtractor={({item,index}) => item.key}
+                // {this.state.provinces.map((e)=> {return data= {e.nama}})} 
                 style={{marginTop:0}}
-                ref={this.props.ref}
                 deviceLocale="id" 
                 onChangeText={this.props.changeText}/>
             </View>

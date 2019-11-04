@@ -101,7 +101,7 @@ export default class Register extends ValidationComponent {
             <View style={{flex:1, margin:30}}>
                 <View style={{flex:1, alignItems: 'center', justifyContent:'center'}}>
                     <LogoTitle/>
-                    <Text style={{fontSize:20}}>Daftar</Text>
+                    <Text style={{fontSize:20}}>Buat Akun Toko</Text>
 
                     {/* Used */}
                     <DataForm FormName="Username" ref="username" deviceLocale="id" changeText={(username) => this.setState({username})}/>

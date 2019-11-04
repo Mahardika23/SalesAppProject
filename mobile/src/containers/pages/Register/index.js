@@ -37,6 +37,42 @@ export default class Register extends ValidationComponent {
         this._onPressButton=this._onPressButton.bind(this)
     }
 
+    kosongAlert= () =>{
+        Alert.alert(
+            'Error',
+            
+            'Form belum terisi semua',
+            [
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            {cancelable: false},
+          );
+    }
+
+    nomorAlert= () =>{
+        Alert.alert(
+            'Error',
+            
+            'Nomor tidak valid',
+            [
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            {cancelable: false},
+          );
+    }
+
+    emailAlert= () =>{
+        Alert.alert(
+            'Error',
+            
+            'Email tidak valid',
+            [
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            {cancelable: false},
+          );
+    }
+
     showAlert= () =>{
         Alert.alert(
             'Error',
@@ -56,7 +92,18 @@ export default class Register extends ValidationComponent {
         nama_pemilik: {maxlength:100, required: true},
         no_telp: {minlength:10,numbers:true, required: true,},
         email: {email:true, required:true}
-        });if(this.isFormValid()==false){
+        });
+        
+        if(this.isFieldInError("nama_toko") || this.isFieldInError("nama_pemilik")){
+            this.kosongAlert()
+        }
+        else if(this.isFieldInError("no_telp")){
+            this.nomorAlert()
+        }
+        else if(this.isFieldInError("email")){
+            this.emailAlert()
+        }
+        else if(this.isFormValid()==false){
             this.showAlert()
         }else{
             this.props.navigation.navigate('RegisterArea',{
@@ -79,7 +126,7 @@ export default class Register extends ValidationComponent {
             <View style={{flex:1, margin: 30}}>
                 <View style={{flex:1, alignItems: 'center', justifyContent:'center'}}>
                     <LogoTitle/>
-                    <Text style={{fontSize:20}}>Data diri {this.props.navigation.state.params.username}</Text>
+                    <Text style={{fontSize:20}}>Data Toko {this.props.navigation.state.params.username}</Text>
                     {/* <FormRegister/> */}
                     <DataForm FormName="Nama Toko" ref="nama_toko" deviceLocale="id" changeText={(nama_toko) => this.setState({nama_toko})}/>
                     <DataForm FormName="Nama Pemilik" ref="nama_pemilik" deviceLocale="id" changeText={(nama_pemilik) => this.setState({nama_pemilik})} />

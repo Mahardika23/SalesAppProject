@@ -12,6 +12,7 @@ import LogoTitle from './src/components/molecules/LogoTitle';
 import LoginInput from './src/components/molecules/LoginInput';
 import Login from './src/containers/pages/Login';
 import Register from './src/containers/pages/Register';
+import RegisterArea from './src/containers/pages/RegisterArea';
 import Home from './src/containers/pages/Home';
 import Cart from './src/containers/pages/Cart';
 import AppContainer from './src/config/router';
