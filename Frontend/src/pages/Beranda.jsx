@@ -7,9 +7,32 @@ import { Card, CardColumns, CardDeck } from 'react-bootstrap';
 // import {Carousel} from 'react-bootstrap';
 // import {useState} from 'react';
 import Axios from 'axios';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick"
 // import { Item } from 'react-native-paper/typings/components/List';
 
-
+class SimpleSlider extends React.Component {
+  render() {
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+    return (
+      <Slider {...settings}>
+        <div>
+                <Katalog/>
+        </div>
+        <div>
+                <Katalog/>
+        </div>
+      </Slider>
+    );
+  }
+}
 class Katalog extends Component {
     constructor(props){
         super(props)
@@ -19,7 +42,7 @@ class Katalog extends Component {
         }
     }
     componentDidMount = () => {
-        Axios.get("http://192.168.1.24:8000/api/showallcatalogbyfilter")
+        Axios.get("http://127.0.0.1:8000/api/showallcatalog")
         .then(res => {
             this.setState({
                 items: res.data
@@ -31,9 +54,11 @@ class Katalog extends Component {
     render(){
         var {isLoaded, items} = this.state;
         return(
-        <div>
-             { this.state.items.map(item => <Kartu key={item.id}  item={item}/>)}
-        </div>
+            
+            <CardColumns style={{ width: 800 }}> 
+                { this.state.items.map(item => <Kartu key={item.id}  item={item}/>)}
+            </CardColumns> 
+            
         )
     }
     
@@ -42,7 +67,8 @@ class Katalog extends Component {
 const Kartu = (props) => { 
     const {item} = props;
     return (
-        <Card>
+        
+        <Card style={{ width: 250} }>
             <Card.Body>
                 <Card.Text >
                     nama barang : {item.nama_barang} <br />
@@ -51,23 +77,9 @@ const Kartu = (props) => {
                 </Card.Text>
             </Card.Body>
         </Card> 
+        
     )
 }
-
-// function ControlledCarousel() {
-//     const [index, setIndex] = useState(0);
-//     const [direction, setDirection] = useState(null);
-  
-//     const handleSelect = (selectedIndex, e) => {
-//       setIndex(selectedIndex);
-//       setDirection(e.direction);
-//     };
-//     return(
-//         <Carousel activeIndex={index} direction={direction} onSelect={handleSelect}>
-//             <Kartu/>
-//         </Carousel>
-//     )
-// }
 
 class Beranda extends Component {
     render(){
@@ -81,13 +93,8 @@ class Beranda extends Component {
                     <div  style={{padding:'50px'}} className='content'>
                         <div style={{backgroundColor:''}}>
                             <h2>Katalog Produk</h2>
-                            <div>
-                                <Row>
-                                    <CardColumns>
-                                        <Katalog/>
-                                    </CardColumns>
-                                </Row>
-                                {/* <ControlledCarousel/> */}
+                            <div className="container">
+                                <SimpleSlider/>
                             </div>
                         </div>
                         <div>
