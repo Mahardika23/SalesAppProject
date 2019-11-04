@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
-import {Beranda} from './pages/Beranda.jsx';
+import Beranda from './pages/Beranda.jsx';
 import Aktivitas from './pages/Aktivitas/index';
 import {Layout} from './components/Layout';
 import {Login} from './pages/Login.jsx';
