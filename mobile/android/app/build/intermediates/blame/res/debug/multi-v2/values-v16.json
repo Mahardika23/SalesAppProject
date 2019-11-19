@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/nafiu/react/projek/git/SalesAppProject/mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/home/agaflex5/Development/SAP Project/mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/nafiu/.gradle/caches/transforms-2/files-2.1/7bf925fdb82605f1165549c4fe97b30a/res/values-v16/values-v16.xml",
+                    "source": "/home/agaflex5/.gradle/caches/transforms-2/files-2.1/3ead07f1d282f6d47484ce3433f92d4e/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/nafiu/.gradle/caches/transforms-2/files-2.1/66677edfbe57dc93d5cc2eaec7e12f28/res/values-v16/values-v16.xml",
+                    "source": "/home/agaflex5/.gradle/caches/transforms-2/files-2.1/8595b3b90686155386412f9e53b960e1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

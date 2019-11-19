@@ -17,6 +17,7 @@ class UserController extends Controller
     // }
     public function authenticate(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
                 'email' => 'required|string|email|max:255',
                 'password'=> 'required'

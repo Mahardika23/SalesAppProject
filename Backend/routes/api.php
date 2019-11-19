@@ -31,6 +31,7 @@ Route::post('/register','UserController@register');
 //Showing Catalog Before login
 Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');
 Route::get('/showallcatalog','Api\CatalogController@showall');
+Route::get('/showallcatalogweb','Api\CatalogController@showalltoWeb');
 
 //Get Data Wilayah
 Route::get('/province','Api\WilayahController@province');

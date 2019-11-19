@@ -15,6 +15,11 @@ class CatalogController extends Controller
         return $barang = Barang::all();
 
     }
+    public function showalltoWeb(){
+        // $distributor = 
+        return $barang = Barang::paginate(6);
+
+    }
     public function showByFilter(Request $request){
         
         // $id = Distributor::find(1)->where('province_id','11')->pluck('id');
@@ -23,6 +28,8 @@ class CatalogController extends Controller
         ->select('barangs.*','distributors.nama_distributor')->where('distributors.regency_id',$request['regency_id'])
         /*->orWhere('distributors.regency_id',$request['regency_id'])*/->get();
         // return $barang = Barang::all()->where('distributor_id',['11','12']);
+
+        Barang::allowFilter()->get();
     }
     public function showByUser(Request $request){
         $user = JWTAuth::parseToken()->authenticate();
