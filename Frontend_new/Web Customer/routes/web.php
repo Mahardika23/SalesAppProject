@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('');
+// });
 
-Route::get('/home', 'jalanController@home');
+Route::get('/', 'jalanController@getBarang');
 Route::get('/aktivitas', 'jalanController@aktivitas');
+Route::get('/pesan', 'jalanController@pesan');
 Route::get('/login', 'jalanController@login');
 
 
