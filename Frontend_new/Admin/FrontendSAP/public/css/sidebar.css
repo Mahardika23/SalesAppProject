@@ -66,9 +66,10 @@ ul ul a {
 #toggler button{
     color:#403151;
     background-color: #fff;
+    width: 60px;
     border-width: 3px;
     border-color: #403151;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 #toggler button:hover{
     background-color: #403151;

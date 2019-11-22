@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/app.css') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ url('/css/sidebar.css') }}" />
@@ -31,15 +34,21 @@
 
                         </li>
                         <li>
-                            <a href="#">Dashboard</a>
+                            <a href="{{ url('/') }}">Dashboard</a>
 
                         </li>
                         <li>
-                            <a href="#">Manajemen Data Barang</a>
+                            <a href="{{ url('/Manajemen-Data-Toko') }}">Manajemen Data Toko</a>
 
                         </li>
                         <li>
-                            <a href="#">Manajemen Data Sales</a>
+                            <a href="{{ url('/Manajemen-Data-Pemesanan') }}">Manajemen Data Pemesanan</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/Manajemen-Data-Sales') }}">Manajemen Data Sales</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/Manajemen-Data-Barang') }}">Manajemen Data Barang</a>
                         </li>
                     </ul>
                 </li>
@@ -67,19 +76,26 @@
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div id="toggler" class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left">
-
-                        </i>
-                        <span>Toggle Sidebar</span>
-                    </button>
+                    <div style="display:flex">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                                <!-- <i class="fas fa-align-left"> -->
+                                <i class="fas fa-bars"></i>
+                                <!-- </i> -->
+                                <span></span>
+                            </button>
+                    </div>
                 </div>
 
             </nav>
 
-            <div class="container container-fluid">
-                @yield('content')
+            <div style="width:100%;">
             </div>
+        </div>
+
+        <div class="col-md-10 p5 pt-2">
+            <!-- <div> -->
+                @yield('content')
+            <!-- </div> -->
         </div>
 
     </div>
@@ -96,6 +112,7 @@
 
         });
     </script>
+
 </body>
 
 </html>
