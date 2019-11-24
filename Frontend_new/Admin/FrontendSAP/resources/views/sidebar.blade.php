@@ -26,29 +26,27 @@
             </div>
             <ul class="list-unstyled components">
                 <p>lorem ipsum</p>
+                <li>
+                    <a href="{{ url('/') }}">Dashboard</a>
+                </li>
                 <li class="active">
 
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manajemen Data</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li class="">
 
                         </li>
                         <li>
-                            <a href="{{ url('/') }}">Dashboard</a>
-
+                            <a href="{{ url('/Manajemen-Data-Toko') }}"><i class="fas fa-store-alt mr-2"></i>Toko</a>
                         </li>
                         <li>
-                            <a href="{{ url('/Manajemen-Data-Toko') }}">Manajemen Data Toko</a>
-
+                            <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><i class="far fa-list-alt mr-2"></i>Pemesanan</a>
                         </li>
                         <li>
-                            <a href="{{ url('/Manajemen-Data-Pemesanan') }}">Manajemen Data Pemesanan</a>
+                            <a href="{{ url('/Manajemen-Data-Sales') }}"><i class="fas fa-users mr-2"></i>Sales</a>
                         </li>
                         <li>
-                            <a href="{{ url('/Manajemen-Data-Sales') }}">Manajemen Data Sales</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/Manajemen-Data-Barang') }}">Manajemen Data Barang</a>
+                            <a href="{{ url('/Manajemen-Data-Barang') }}"><i class="fas fa-box mr-2"></i>Barang</a>
                         </li>
                     </ul>
                 </li>
@@ -78,9 +76,7 @@
                 <div id="toggler" class="container-fluid">
                     <div style="display:flex">
                             <button type="button" id="sidebarCollapse" class="btn btn-info">
-                                <!-- <i class="fas fa-align-left"> -->
                                 <i class="fas fa-bars"></i>
-                                <!-- </i> -->
                                 <span></span>
                             </button>
                     </div>
