@@ -15,9 +15,10 @@
 //     return view('');
 // });
 
-Route::get('/', 'jalanController@getBarang');
-Route::get('/aktivitas', 'jalanController@aktivitas');
-Route::get('/pesan', 'jalanController@pesan');
-Route::get('/login', 'jalanController@login');
+Route::get('/', 'WebCustomerController@getBarang');
+Route::get('/aktivitas', 'WebCustomerController@aktivitas');
+Route::get('/pesan', 'WebCustomerController@pesan');
+Route::get('/login', 'WebCustomerController@login');
+Route::get('/search', 'WebCustomerController@getBarangSearch');
 
 
