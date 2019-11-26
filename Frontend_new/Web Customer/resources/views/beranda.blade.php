@@ -5,9 +5,10 @@
 <div class="container">
     <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:30; ">
         <div class="col-lg-9">
-            <form class="form-inline">
+            <form class="form-inline" method="GET" action="/search">
                 <input class="form-control mr-2" style="width:90%" type="search" placeholder="Produk, toko" aria-label="Search">
-                <button class="btn" type="submit" >
+                <button class="searchlink" type="submit">
+                    <img class="btn" src="../img/search.png">
                 </button>
             </form>
         </div>
@@ -24,28 +25,40 @@
                     <h5>Katalog Produk</h5>
                 </div>
                 <div class="carousel-inner">
-
                     <div class="carousel-item active">
-                        <div class="row ">
+                        <div class="row ml-1">
                             @foreach($data['data'] as $barang)
 
-                            <div class="col ">
-                                <div class="card mb-3" style=" background-color:white;">
-                                    <div class="row no-gutters" style="padding-right:15;">
-                                        <div class="col">
-                                            <img src="../img/aga.jpg" class="card-img p-2" alt="...">
-                                        </div>
-                                        <div class="col" style="padding-left:0; ">
-                                            <div class="card-body p-0">
-                                                <p class="card-text" style="font-size:60%; white-space:pre-line;">
-                                                    {{$barang['nama_barang']}}
-                                                </p>
+                            <div class="row">
+
+                                <div class="col ml-3 mr-2 ">
+
+                                    <div class="card  mb-4" style="max-width:10rem; max-height:7rem; border-radius:20px;">
+                                        <a href="/search" class=" kartu" style="border-radius:20px;">
+
+                                            <div class="row no-gutters " style="padding-right:15;">
+                                                <div class="col">
+                                                    <img src="../img/aga.jpg" class="card-img p-2">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body p-1">
+                                                        <p class="card-text" style="font-size:65%; white-space:pre-line;">
+                                                            {{$barang['nama_barang']}}
+                                                            harga : {{$barang['harga_barang']}}
+                                                            stok : {{$barang['stok_barang']}}
+
+                                                        </p>
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
 
+
+
+                            </div>
                             @endforeach
                         </div>
                     </div>
