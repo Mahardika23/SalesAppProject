@@ -28,17 +28,19 @@
     </tr>
   </thead>
   <tbody>
+    @foreach($data as $barang)
     <tr>
       <td scope="row">1</td>
-      <td>Beras IR9</td>
-      <td>Beras</td>
-      <td>8400</td>
-      <td>1500</td>
+      <td>{{$barang['nama_barang']}}</td>
+      <td>{{$barang['jenis_barang']}}</td>
+      <td >Rp{{$barang['harga_barang']}}</td>
+      <td>{{$barang['stok_barang']}}</td>
       <td style="width:70px"><a href="#" class="btn btn-primary">Detail</a></td>
       <td style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit status"></i></td>
       <td style="width:40px"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
     </tr>
-    <tr>
+    @endforeach
+    <!-- <tr>
       <td scope="row">2</td>
       <td>Beras IR9</td>
       <td>Beras</td>
@@ -57,7 +59,7 @@
       <td><a href="#" class="btn btn-primary">Detail</a></td>
       <td><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
       <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-    </tr>
+    </tr> -->
   </tbody>
 </table>
 

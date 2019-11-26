@@ -25,9 +25,7 @@ Route::get('/sidebar', function () {
     return view('sidebar');
 });
 
-Route::get('/Manajemen-Data-Barang', function () {
-    return view('barang');
-});
+Route::get('/Manajemen-Data-Barang','BarangController@index');
 
 Route::get('/Manajemen-Data-Toko', function () {
     return view('toko');
@@ -37,8 +35,8 @@ Route::get('/Manajemen-Data-Sales', function () {
     return view('sales');
 });
 
-Route::get('/Manajemen-Data-Pemesanan', function () {
-    return view('pemesanan');
-});
+Route::get('/Manajemen-Data-Pemesanan','PemesananController@index');
 
 Route::get('/guzzle', 'TestController@getProvince');
+
+// Route::get('/login', 'jalanController@login');
