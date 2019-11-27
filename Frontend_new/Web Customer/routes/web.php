@@ -17,7 +17,7 @@
 
 Route::get('/', 'WebCustomerController@getBarang');
 Route::get('/aktivitas', 'WebCustomerController@aktivitas');
-Route::get('/pesan', 'WebCustomerController@pesan');
+Route::get('/pesan', 'WebCustomerController@getBarangPesan');
 Route::get('/login', 'WebCustomerController@login');
 Route::get('/search', 'WebCustomerController@getBarangSearch');
 

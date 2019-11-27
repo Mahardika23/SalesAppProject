@@ -28,14 +28,11 @@
                     <div class="carousel-item active">
                         <div class="row ml-1">
                             @foreach($data['data'] as $barang)
-
                             <div class="row">
-
                                 <div class="col ml-3 mr-2 ">
-
                                     <div class="card  mb-4" style="max-width:10rem; max-height:7rem; border-radius:20px;">
+                                        <!-- <button data-target="#exampleModal" type="submit" class=" kartu" style="border-radius:20px;"> -->
                                         <a href="/search" class=" kartu" style="border-radius:20px;">
-
                                             <div class="row no-gutters " style="padding-right:15;">
                                                 <div class="col">
                                                     <img src="../img/aga.jpg" class="card-img p-2">
@@ -46,18 +43,14 @@
                                                             {{$barang['nama_barang']}}
                                                             harga : {{$barang['harga_barang']}}
                                                             stok : {{$barang['stok_barang']}}
-
                                                         </p>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </a>
+                                        <!-- </button> -->
                                     </div>
                                 </div>
-
-
-
                             </div>
                             @endforeach
                         </div>
@@ -95,4 +88,35 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
+                        <div class="row no-gutters" style="padding-right:15;">
+                            <div class="col-3">
+                                <img src="../img/ana.jpg" class="card-img p-2">
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body p-2">
+                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor {{$barang['distributor_id']}}</h2>
+                                    <p class="card-text" style="font-size:100%; white-space:pre-line;">
+                                        nama produk : {{$barang['nama_barang']}}
+                                        harga : {{$barang['harga_barang']}}
+                                        stok : {{$barang['stok_barang']}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-inline">
+                        <p class=" m-4">Tambah produk ke pesanan ?</p>
+                        <button class=" m-3">Tambah</button>
+                        <button class=" m-3">Batal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
