@@ -20,5 +20,10 @@ Route::get('/aktivitas', 'WebCustomerController@aktivitas');
 Route::get('/pesan', 'WebCustomerController@getBarangPesan');
 Route::get('/login', 'WebCustomerController@login');
 Route::get('/search', 'WebCustomerController@getBarangSearch');
+Route::get('/daftar', 'WebCustomerController@daftar');
+Route::get('/daftar/toko', 'WebCustomerController@daftar2');
+Route::get('/daftar/alamat', 'WebCustomerController@daftar3');
+
+
 
 

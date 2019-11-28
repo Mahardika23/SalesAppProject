@@ -29,7 +29,7 @@
                         <div class="row ml-1">
                             @foreach($data['data'] as $barang)
                             <div class="row">
-                                <div class="col ml-3 mr-2 ">
+                               <div class="col ml-3 mr-2 ">
                                     <div class="card  mb-4" style="max-width:10rem; max-height:7rem; border-radius:20px;">
                                         <!-- <button data-target="#exampleModal" type="submit" class=" kartu" style="border-radius:20px;"> -->
                                         <a href="/search" class=" kartu" style="border-radius:20px;">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-9">
                                 <div class="card-body p-2">
-                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor {{$barang['distributor_id']}}</h2>
+                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor </h2>
                                     <p class="card-text" style="font-size:100%; white-space:pre-line;">
                                         nama produk : {{$barang['nama_barang']}}
                                         harga : {{$barang['harga_barang']}}

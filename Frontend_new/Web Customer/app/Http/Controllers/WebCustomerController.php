@@ -58,6 +58,17 @@ class WebCustomerController extends Controller
         return view('login');
     }
 
+    public function daftar(){
+        return view('daftar');
+    }
+
+    public function daftar2(){
+        return view('daftar2');
+    }
+
+    public function daftar3(){
+        return view('daftar3');
+    }
     public function getBarang(){
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
