@@ -109,7 +109,7 @@
                             <div class="form-group row">
                                 <label for="alamat_toko" class="col-sm-3 col-form-label">Alamat lengkap</label>
                                 <div class="col-sm-9">
-                                <textarea class="form-control" id="alamat_toko"  autocomplete='off' rows="4"></textarea>
+                                <textarea style="resize: none;" class="form-control" id="alamat_toko"  autocomplete='off' rows="4" disable></textarea>
                                 </div>
                             </div>
                         </div>
