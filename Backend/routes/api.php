@@ -22,6 +22,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
     // Route::get('/test','TestController@index');
     Route::post('refresh','UserController@refresh');
+    Route::get('/admin/showdatapesanan','Api\PemesananController@index'); 
+  
+    Route::get('/admin/showdatabarang','Api\BarangController@index'); 
     Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
     Route::post('logout','UserController@logout');  
 });
