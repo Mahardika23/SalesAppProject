@@ -37,7 +37,7 @@ class PemesananController extends Controller
         
             // $data = $data['data'];
         
-        // dd($data);
+        dd($data);
         return view('pemesanan',compact('data'));
     }
 

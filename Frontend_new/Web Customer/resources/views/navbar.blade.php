@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ url('/css/navbar.css')}}">
     <link rel="stylesheet" href="{{ url('/css/carousel.css')}}">
     <link rel="stylesheet" href="{{ url('/css/icon.css')}}">
+    <link rel="stylesheet" href="{{ url('/css/number.css')}}">
 </head>
 
 <body style="background-color:#E4DFEC; ">
@@ -20,7 +21,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="/">Beranda <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
