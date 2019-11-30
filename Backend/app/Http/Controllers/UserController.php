@@ -44,7 +44,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $userable = 0;
-        $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -70,9 +70,7 @@ class UserController extends Controller
             $toko = toko::create($validatedTokoData);
 
             $userable = $toko;
-            if ($validator->fails() && $validatedTokoData->fails()) {
-                return response()->json($validatedTokoData->errors()->toJson());
-            }
+            
         } elseif ($request->has('nama_distributor')) {
             $validatedDistributorData = $request->validate([
                 'nama_distributor' => 'required|string|max:255',
@@ -86,10 +84,7 @@ class UserController extends Controller
             ]);
             $distributor = Distributor::create($validatedDistributorData);
             $userable=$distributor;
-            if ($validator->fails() && $validatedDistributorData->fails()) {
-                $error = $validator->errors()->toJson() + $validatedDistributorData->errors()->toJson();
-                return response()->json($validatedDistributorData->errors()->toJson());
-            }
+           
         }
         $user = User::create([
             'name' => $request->get('name'),

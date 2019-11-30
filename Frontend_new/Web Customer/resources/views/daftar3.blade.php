@@ -53,43 +53,54 @@
                         </div>
                         <!-- /.Horizontal Steppers -->
 
-                        <form action="/login" method="get" style='text-align:left'>
+                        <form action="/daftar/akun" method="POST" style='text-align:left'>
+                        @CSRF
+                            <input type="hidden" name="username" id="username" value="{{$input['username']}}">
+                            <input type="hidden" name="password" id="password" value="{{$input['password']}}">
+                            <input type="hidden" name="nama_toko" id="nama_toko" value="{{$input['nama_toko']}}">
+                            <input type="hidden" name="nama_pemilik" id="nama_pemilik" value="{{$input['nama_pemilik']}}">
+                            <input type="hidden" name="email_pemilik" id="email_pemilik" value="{{$input['email_pemilik']}}">
+                            <input type="hidden" name="no_telp" id="no_telp" value="{{$input['no_telp']}}">
                             <div style='margin-left:10%;margin-right:10% '>
                                 <div class="form-group row">
                                     <label for="province" class="col-sm-3 col-form-label">Provinsi</label>
                                     <div class="col-sm-9">
-                                        <select id="provinsi" class="form-control">
+                                        <select id="provinsi" class="form-control" name="provinsi">
                                             @foreach($data as $provinsi)
                                             <option value="{{$provinsi['id']}}">{{$provinsi['name']}}</option>
                                             @endforeach
                                         </select>
+                                        <span class='text-danger'>{{ $errors->first('provinsi') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="kabupaten" class="col-sm-3 col-form-label">Kabupaten</label>
                                     <div class="col-sm-9">
-                                        <select id="kabupaten" class="form-control" data-source="http://127.0.0.1:9090/api/regency?province_id=">
+                                        <select id="kabupaten" class="form-control" name="kabupaten" data-source="http://127.0.0.1:9090/api/regency?province_id=">
                                         </select>
+                                        <span class='text-danger'>{{ $errors->first('kabupaten') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
+                                    <label for="kecamatan" name="kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
                                     <div class="col-sm-9">
                                         <select  id="kecamatan" class="form-control" data-source="http://127.0.0.1:9090/api/district?regency_id=">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="desa" class="col-sm-3 col-form-label">Desa</label>
+                                    <label for="desa" class="col-sm-3 col-form-label">Kelurahan</label>
                                     <div class="col-sm-9">
                                         <select name="kelurahan" id="kelurahan" class="form-control" data-source="http://127.0.0.1:9090/api/village?district_id=">
                                         </select>
+                                        <span class='text-danger'>{{ $errors->first('kelurahan') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="alamat_toko" class="col-sm-3 col-form-label">Alamat lengkap</label>
                                     <div class="col-sm-9">
-                                        <textarea style="resize: none;" class="form-control" id="alamat_toko" autocomplete='off' rows="4" disable></textarea>
+                                        <textarea style="resize: none;" class="form-control" id="alamat_toko" autocomplete='off' rows="4" disable name='alamat'></textarea>
+                                        <span class='text-danger'>{{ $errors->first('alamat') }}</span>
                                     </div>
                                 </div>
                             </div>
