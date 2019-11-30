@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('beranda');
 });
 
-Route::get('/login', function(){
-    return view('login');
-});
+Route::get('/dashboard', [ 'as' => 'dashboard', 'uses' => 'DashboardController@index']);
+
+
+Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@index']);
 
 Route::get('/sidebar', function () {
     return view('sidebar');
@@ -34,6 +35,10 @@ Route::get('/Manajemen-Data-Toko', function () {
 Route::get('/Manajemen-Data-Sales', function () {
     return view('sales');
 });
+
+Route::post('/logincheck','LoginController@login');
+
+
 
 Route::get('/Manajemen-Data-Pemesanan','PemesananController@index');
 

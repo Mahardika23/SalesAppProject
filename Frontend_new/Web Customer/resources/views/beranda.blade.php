@@ -67,7 +67,6 @@
     </div>
 
 
-
     <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50; ">
         <div class="col">
             <div class="row">
@@ -103,6 +102,23 @@
                                     harga : {{$barang['harga_barang']}}
                                     stok : {{$barang['stok_barang']}}
                                 </p>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
+                        <div class="row no-gutters" style="padding-right:15;">
+                            <div class="col-3">
+                                <img src="../img/ana.jpg" class="card-img p-2">
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body p-2">
+                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor {{$barang['distributor_id']}}</h2>
+                                    <p class="card-text" style="font-size:100%; white-space:pre-line;">
+                                        nama produk : {{$barang['nama_barang']}}
+                                        harga : {{$barang['harga_barang']}}
+                                        stok : {{$barang['stok_barang']}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

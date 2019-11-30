@@ -17,29 +17,20 @@
                          <div>
                             <img src="../img/aga.jpg" class="" alt="..." width='300px' height='300px'>
                         </div>
-                       {{-- menampilkan error validasi --}}
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                        <br/>
                         <h4>Masuk</h4>
                          <!-- form validasi -->
                         <div class=" justify-content-center" style='margin-left:20%;margin-right:20%'>
-                            <form action="/login" method="get">
+                            <form action="/loginUser" method="POST">
                                 {{ csrf_field() }}
                                 <div class="form-group col-md-12">
-                                    <label for="username"></label>
-                                    <input class="form-control" type="text" name="username" placeholder="Username" autocomplete='off'>
+                                    <label for="email"></label>
+                                    <input class="form-control" type="email" name="email" placeholder="E-mail" autocomplete='off'>
+                                    <span class='text-danger'>{{ $errors->first('email') }}</span>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="password"></label>
                                     <input class="form-control" type="password" name="password" placeholder="Password">
+                                    <span class='text-danger'>{{ $errors->first('password') }}</span>
                                 </div>
                                     <div class="form-group">
                                         <input class="btn btn-primary" type="submit" value="Masuk" style="background-color:#403151">

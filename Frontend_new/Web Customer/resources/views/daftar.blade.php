@@ -55,31 +55,43 @@
                             </div>
                         </div>
                         <!-- /.Horizontal Steppers -->
-                       
-                        <form action="/daftar/toko" method="get" style='text-align:left'>
-                        <div style='margin-left:10%;margin-right:10% '>
-                            <div class="form-group row">
-                                <label for="username" class="col-sm-3 col-form-label">Username</label>
-                                <div class="col-sm-9">
-                                <input type="text" class="form-control" id="username" placeholder="" autocomplete='off'>
+    
+                        <form action="/daftar/toko" method="POST" style='text-align:left'>
+                        @CSRF
+                            <div style='margin-left:10%;margin-right:10% '>
+                                <div class="form-group row">
+                                    <label for="username" class="col-sm-3 col-form-label">Username</label>
+                                    <div class="col-sm-9">
+                                    <input type="text" name="username" class="form-control" id="username" placeholder="" autocomplete='off'>
+                                    <span class='text-danger'>{{ $errors->first('username') }}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-sm-3 col-form-label">E-mail</label>
+                                    <div class="col-sm-9">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="" autocomplete='off'>
+                                    <span class='text-danger'>{{ $errors->first('email') }}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password"  class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-9">
+                                    <input type="password"
+                                    name="password" class="form-control" id="password" placeholder="">
+                                    <span class='text-danger'>{{ $errors->first('password') }}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="konfirmasi" class="col-sm-3 col-form-label">Konfirmasi</label>
+                                    <div class="col-sm-9">
+                                    <input type="password" name="password_confirmation" class="form-control" id="konfirmasi" placeholder="" autocompletxe='off'>
+                                    <span class='text-danger'>{{ $errors->first('konfirmasi') }}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="password" class="col-sm-3 col-form-label">Password</label>
-                                <div class="col-sm-9">
-                                <input type="password" class="form-control" id="password" placeholder="" autocomplete='off'>
-                                </div>
+                            <div class="form-group" style="text-align:RIGHT; margin-right:9%">
+                                <button type="submit" class="btn" style="background-color:#403151;color:white">Selanjutnya</button>
                             </div>
-                            <div class="form-group row">
-                                <label for="konfirmasi" class="col-sm-3 col-form-label">Konfirmasi</label>
-                                <div class="col-sm-9">
-                                <input type="password" class="form-control" id="konfirmasi" placeholder="" autocomplete='off'>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" style="text-align:RIGHT; margin-right:9%">
-                            <button type="submit" class="btn" style="background-color:#403151;color:white">Selanjutnya</button>
-                        </div>
                         </form>
                     </div>
                 </div>
