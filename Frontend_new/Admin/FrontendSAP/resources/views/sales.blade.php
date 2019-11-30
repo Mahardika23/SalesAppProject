@@ -23,7 +23,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap">
+              <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap" require>
             </div>
             <div class="form-group">
               <label for="inputAddress2">No KTP</label>
