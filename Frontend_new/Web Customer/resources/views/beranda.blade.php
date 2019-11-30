@@ -3,16 +3,7 @@
 @section('konten')
 
 <div class="container">
-    <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:30; ">
-        <div class="col-lg-9">
-            <form class="form-inline" method="GET" action="/search">
-                <input class="form-control mr-2" style="width:90%" type="search" placeholder="Produk, toko" aria-label="Search">
-                <button class="searchlink" type="submit">
-                    <img class="btn" src="../img/search.png">
-                </button>
-            </form>
-        </div>
-    </div>
+@include('searchform')
 
     <div class="row justify-content-md-center" style=" margin-bottom:50;">
         <div class="col">
@@ -31,11 +22,10 @@
                             <div class="row">
                                <div class="col ml-3 mr-2 ">
                                     <div class="card  mb-4" style="max-width:10rem; max-height:7rem; border-radius:20px;">
-                                        <!-- <button data-target="#exampleModal" type="submit" class=" kartu" style="border-radius:20px;"> -->
                                         <a href="/search" class=" kartu" style="border-radius:20px;">
                                             <div class="row no-gutters " style="padding-right:15;">
                                                 <div class="col">
-                                                    <img src="../img/aga.jpg" class="card-img p-2">
+                                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:7rem;">
                                                 </div>
                                                 <div class="col">
                                                     <div class="card-body p-1">
@@ -48,7 +38,6 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <!-- </button> -->
                                     </div>
                                 </div>
                             </div>

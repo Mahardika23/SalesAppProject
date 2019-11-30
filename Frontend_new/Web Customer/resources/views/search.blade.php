@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="col-1" style="padding-top:17%;">
-                                    <button class="searchlink" type="submit" data-toggle="modal" data-target="#exampleModal">
+                                    <button class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan">
                                         <img src="../img/shopping-cart.png" style="width:20;">
                                     </button>
                                 </div>
