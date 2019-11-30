@@ -35,25 +35,6 @@ class WebCustomerController extends Controller
         return view('pesan',compact('data'));
     }
 
-    public function getProvince(){
-        $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
-            function ($response) {
-                return $response->getBody();
-        }, function ($exception){
-            return $exception->getMessage();
-        }
-    );
-
-        $data = $promise->wait();
-        $data = json_decode($data,true);
-        
-            // $data = $data['data'];
-        
-        
-        return view('daftar3',compact('data'));
-    }
-
     public function getBarangSearch(){
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
@@ -79,10 +60,32 @@ class WebCustomerController extends Controller
 
     public function daftar(){
         return view('daftar');
+    }   
+    
+    public function daftar2(Request $request){
+        $input = $request->all();
+        //  dd($input);
+        return view('daftar2',compact('input'));
     }
 
-    public function daftar2(){
-        return view('daftar2');
+    public function getProvince(Request $request){
+        $input = $request->all();
+        $client =  new Client();
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
+            function ($response) {
+                return $response->getBody();
+        }, function ($exception){
+            return $exception->getMessage();
+        }
+    );
+        $alamat = $request->all();
+        //dd ($alamat);
+        $data = $promise->wait();
+        $data = json_decode($data,true);
+        
+            //  $data = $data['data'];
+        // dd($data);
+        return view('daftar3',compact('data'),compact('input'));
     }
 
     public function getBarang(){

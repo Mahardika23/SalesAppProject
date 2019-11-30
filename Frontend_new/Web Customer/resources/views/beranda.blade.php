@@ -69,7 +69,6 @@
     </div>
 
 
-
     <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50; ">
         <div class="col">
             <div class="row">
@@ -99,7 +98,7 @@
                             </div>
                             <div class="col-9">
                                 <div class="card-body p-2">
-                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor </h2>
+                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor {{$barang['distributor_id']}}</h2>
                                     <p class="card-text" style="font-size:100%; white-space:pre-line;">
                                         nama produk : {{$barang['nama_barang']}}
                                         harga : {{$barang['harga_barang']}}
