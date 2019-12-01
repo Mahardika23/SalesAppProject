@@ -17,6 +17,7 @@
 
 Route::get('/', [ 'as' => 'beranda', 'uses' => 'WebCustomerController@getBarang']);
 Route::get('/aktivitas', 'WebCustomerController@aktivitas');
+Route::get('/distributor', 'WebCustomerController@distributor');
 Route::get('/pesan', 'WebCustomerController@getBarangPesan');
 Route::get('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']);
 Route::post('/loginUser', 'UserController@login');
