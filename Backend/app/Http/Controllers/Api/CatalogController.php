@@ -46,14 +46,14 @@ class CatalogController extends Controller
 
     public function searchBy(Request $request)
     {
-        
-        $barang = Barang::with('distributor')->where('nama_barang','LIKE', '%'.$request['search'].'%')
-        ->orWhereHas('distributor',function($query){
-            global $request;
-            $query->where('nama_distributor','LIKE',$request['search']);
-        })->paginate(10);
+
+        $barang = Barang::with('distributor')->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
+            ->orWhereHas('distributor', function ($query) {
+                global $request;
+                $query->where('nama_distributor', 'LIKE', $request['search']);
+            })->paginate(10);
         return $barang;
-         
+
 
         /*
         $posts = App\Post::whereHas('comments', function ($query) {
