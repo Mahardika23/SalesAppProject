@@ -53,10 +53,12 @@
                         </div>
                         <!-- /.Horizontal Steppers -->
 
-                        <form action="/daftar/akun" method="POST" style='text-align:left'>
+                        <form action="/daftarakun" method="POST" style='text-align:left'>
                         @CSRF
-                            <input type="hidden" name="username" id="username" value="{{$input['username']}}">
+                            <input type="hidden" name="name" id="name" value="{{$input['name']}}">
+                            <input type="hidden" name="email" id="email" value="{{$input['email']}}">
                             <input type="hidden" name="password" id="password" value="{{$input['password']}}">
+                            <input type="hidden" name="password_confirmation" id="password_confirmation" value="{{$input['password_confirmation']}}">
                             <input type="hidden" name="nama_toko" id="nama_toko" value="{{$input['nama_toko']}}">
                             <input type="hidden" name="nama_pemilik" id="nama_pemilik" value="{{$input['nama_pemilik']}}">
                             <input type="hidden" name="email_pemilik" id="email_pemilik" value="{{$input['email_pemilik']}}">
@@ -65,42 +67,43 @@
                                 <div class="form-group row">
                                     <label for="province" class="col-sm-3 col-form-label">Provinsi</label>
                                     <div class="col-sm-9">
-                                        <select id="provinsi" class="form-control" name="provinsi">
+                                        <select id="provinsi" class="form-control" name="province_id">
                                             @foreach($data as $provinsi)
                                             <option value="{{$provinsi['id']}}">{{$provinsi['name']}}</option>
                                             @endforeach
                                         </select>
-                                        <span class='text-danger'>{{ $errors->first('provinsi') }}</span>
+                                        <span class='text-danger'>{{ $errors->first('province_id') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="kabupaten" class="col-sm-3 col-form-label">Kabupaten</label>
                                     <div class="col-sm-9">
-                                        <select id="kabupaten" class="form-control" name="kabupaten" data-source="http://127.0.0.1:9090/api/regency?province_id=">
+                                        <select id="kabupaten" class="form-control" name="regency_id" data-source="http://127.0.0.1:9090/api/regency?province_id=">
                                         </select>
-                                        <span class='text-danger'>{{ $errors->first('kabupaten') }}</span>
+                                        <span class='text-danger'>{{ $errors->first('regency_id') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="kecamatan" name="kecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
+                                    <label for="kecamatan"  class="col-sm-3 col-form-label">Kecamatan</label>
                                     <div class="col-sm-9">
-                                        <select  id="kecamatan" class="form-control" data-source="http://127.0.0.1:9090/api/district?regency_id=">
+                                        <select name="district_id"  id="kecamatan" class="form-control" data-source="http://127.0.0.1:9090/api/district?regency_id=">
                                         </select>
+                                        <span class='text-danger'>{{ $errors->first('district_id') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="desa" class="col-sm-3 col-form-label">Kelurahan</label>
                                     <div class="col-sm-9">
-                                        <select name="kelurahan" id="kelurahan" class="form-control" data-source="http://127.0.0.1:9090/api/village?district_id=">
+                                        <select name="village_id" id="kelurahan" class="form-control" data-source="http://127.0.0.1:9090/api/village?district_id=">
                                         </select>
-                                        <span class='text-danger'>{{ $errors->first('kelurahan') }}</span>
+                                        <span class='text-danger'>{{ $errors->first('village_id') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="alamat_toko" class="col-sm-3 col-form-label">Alamat lengkap</label>
                                     <div class="col-sm-9">
-                                        <textarea style="resize: none;" class="form-control" id="alamat_toko" autocomplete='off' rows="4" disable name='alamat'></textarea>
-                                        <span class='text-danger'>{{ $errors->first('alamat') }}</span>
+                                        <textarea style="resize: none;" class="form-control" id="alamat_toko" autocomplete='off' rows="4" disable name='alamat_toko'></textarea>
+                                        <span class='text-danger'>{{ $errors->first('alamat_toko') }}</span>
                                     </div>
                                 </div>
                             </div>

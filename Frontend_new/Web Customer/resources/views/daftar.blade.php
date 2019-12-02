@@ -62,8 +62,8 @@
                                 <div class="form-group row">
                                     <label for="username" class="col-sm-3 col-form-label">Username</label>
                                     <div class="col-sm-9">
-                                    <input type="text" name="username" class="form-control" id="username" placeholder="" autocomplete='off'>
-                                    <span class='text-danger'>{{ $errors->first('username') }}</span>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="" autocomplete='off'>
+                                    <span class='text-danger'>{{ $errors->first('name') }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -85,7 +85,7 @@
                                     <label for="konfirmasi" class="col-sm-3 col-form-label">Konfirmasi</label>
                                     <div class="col-sm-9">
                                     <input type="password" name="password_confirmation" class="form-control" id="konfirmasi" placeholder="" autocompletxe='off'>
-                                    <span class='text-danger'>{{ $errors->first('konfirmasi') }}</span>
+                                    <span class='text-danger'>{{ $errors->first('password_confirmation') }}</span>
                                     </div>
                                 </div>
                             </div>

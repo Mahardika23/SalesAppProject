@@ -16,6 +16,10 @@ class WebCustomerController extends Controller
         return view('aktivitas');
     }
 
+    public function distributor(){
+        return view('distributor');
+    }
+
     public function getBarangPesan(){
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
