@@ -35,7 +35,7 @@ Route::post('/register','UserController@register');
 Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');
 Route::get('/showallcatalog','Api\CatalogController@showall');
 Route::get('/showallcatalogweb','Api\CatalogController@showalltoWeb');
-Route::get('/searchbarang','Api\CatalogController@searchby');
+
 //Get Data Wilayah
 Route::get('/province','Api\WilayahController@province');
 Route::get('/regency','Api\WilayahController@regency');
