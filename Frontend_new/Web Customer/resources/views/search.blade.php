@@ -29,7 +29,7 @@
                                 <!-- <form method="get"> -->
                                 <div class="col-8">
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">
-                                        <h2 style="padding-left:20%; margin-bottom:3;">Distributor {{$barang['distributor_id']}}</h2>
+                                        <h2 style="padding-left:20%; margin-bottom:3;">{{$barang['distributor']['nama_distributor']}}</h2>
                                         <form class="card-text">
                                            <p class="m-0"> nama produk : {{$barang['nama_barang']}}</p>
                                            <p class="m-0"> harga : {{$barang['harga_barang']}}</p>
