@@ -33,3 +33,7 @@ Route::post('get_province', [
 Route::post('get_barang', [
     'uses' => 'WebCustomerController@getBarang'
 ]);
+
+// Route::get('/test',function(){
+//     return view('test');
+// });

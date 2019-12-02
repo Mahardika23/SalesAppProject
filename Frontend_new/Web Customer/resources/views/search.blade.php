@@ -5,8 +5,8 @@
 <div class="container">
     <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:30; ">
         <div class="col-lg-9">
-            <form class="form-inline" action="/search" method="GET" >
-            @CSRF
+            <form class="form-inline" action="/search" method="GET">
+                @CSRF
                 <input class="form-control mr-2" style="width:90%" type="search" name="search" placeholder="Produk, toko" aria-label="Search">
                 <button class="searchlink" type="submit">
                     <img class="btn" src="../img/search.png">
@@ -31,9 +31,9 @@
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">
                                         <h2 style="padding-left:20%; margin-bottom:3;">{{$barang['distributor']['nama_distributor']}}</h2>
                                         <form class="card-text">
-                                           <p class="m-0"> nama produk : {{$barang['nama_barang']}}</p>
-                                           <p class="m-0"> harga : {{$barang['harga_barang']}}</p>
-                                           <p class="m-0"> stok : {{$barang['stok_barang']}}</p>
+                                            <p class="m-0"> nama produk : {{$barang['nama_barang']}}</p>
+                                            <p class="m-0"> harga : {{$barang['harga_barang']}}</p>
+                                            <p class="m-0"> stok : {{$barang['stok_barang']}}</p>
                                         </form>
                                     </div>
                                 </div>

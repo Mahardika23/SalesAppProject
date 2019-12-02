@@ -6,7 +6,7 @@
     <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:30; ">
         <div class="col-lg-9">
             <form class="form-inline" method="GET" action="/search">
-            @CSRF
+                @CSRF
                 <input class="form-control mr-2" style="width:90%" type="search" name="search" placeholder="Produk, toko" aria-label="Search">
                 <button class="searchlink" type="submit">
                     <img class="btn" src="../img/search.png">
@@ -22,9 +22,9 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 </ol>
-                <div class="carousel-caption d-none d-md-block">
+                <!-- <div class="carousel-caption d-none d-md-block">
                     <h5>Katalog Produk</h5>
-                </div>
+                </div> -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row ml-1">
@@ -53,6 +53,35 @@
                             </div>
                             @endforeach
                         </div>
+                    </div>
+                    <div class="carousel-item">
+                         <div class="row ml-1">
+                            @foreach($data['data'] as $barang)
+                            <div class="row">
+                                <div class="col ml-3 mr-2 ">
+                                    <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
+                                        <a href="/search" class=" kartu" style="border-radius:20px;">
+                                            <div class="row no-gutters " style="padding-right:15;">
+                                                <div class="col">
+                                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:6rem; width:4.5rem;">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body p-1">
+                                                        <p class="card-text" style="font-size:65%; white-space:pre-line;">
+                                                            {{$barang['nama_barang']}}
+                                                            harga : {{$barang['harga_barang']}}
+                                                            stok : {{$barang['stok_barang']}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -103,35 +132,35 @@
                                     harga : {{$barang['harga_barang']}}
                                     stok : {{$barang['stok_barang']}}
                                 </p>
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
-                        <div class="row no-gutters" style="padding-right:15;">
-                            <div class="col-3">
-                                <img src="../img/ana.jpg" class="card-img p-2">
-                            </div>
-                            <div class="col-9">
-                                <div class="card-body p-2">
-                                    <h2 style="padding-left:20%; margin-bottom:0;">Distributor {{$barang['distributor_id']}}</h2>
-                                    <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                        nama produk : {{$barang['nama_barang']}}
-                                        harga : {{$barang['harga_barang']}}
-                                        stok : {{$barang['stok_barang']}}
-                                    </p>
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
+                                                <div class="row no-gutters" style="padding-right:15;">
+                                                    <div class="col-3">
+                                                        <img src="../img/ana.jpg" class="card-img p-2">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="card-body p-2">
+                                                            <h2 style="padding-left:20%; margin-bottom:0;">Distributor {{$barang['distributor_id']}}</h2>
+                                                            <p class="card-text" style="font-size:100%; white-space:pre-line;">
+                                                                nama produk : {{$barang['nama_barang']}}
+                                                                harga : {{$barang['harga_barang']}}
+                                                                stok : {{$barang['stok_barang']}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-inline">
+                                            <p class=" m-4">Tambah produk ke pesanan ?</p>
+                                            <button class=" m-3">Tambah</button>
+                                            <button class=" m-3">Batal</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="form-inline">
-                    <p class=" m-4">Tambah produk ke pesanan ?</p>
-                    <button class=" m-3">Tambah</button>
-                    <button class=" m-3">Batal</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+                        @endsection
