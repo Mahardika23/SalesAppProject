@@ -19,7 +19,7 @@ class CatalogController extends Controller
     public function showalltoWeb()
     {
         // $distributor = 
-        return $barang = Barang::paginate(6);
+        return $barang = Barang::paginate(12);
     }
     public function showByFilter(Request $request)
     {
