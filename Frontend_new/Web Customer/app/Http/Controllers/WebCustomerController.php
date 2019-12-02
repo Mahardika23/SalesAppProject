@@ -39,9 +39,10 @@ class WebCustomerController extends Controller
         return view('pesan',compact('data'));
     }
 
-    public function getBarangSearch(){
+    public function getBarangSearch(Request $request){
+        $input = $request->all();
         $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/search',['query' => $input])->then(
             function ($response) {
                 return $response->getBody();
         }, function ($exception){
@@ -54,8 +55,8 @@ class WebCustomerController extends Controller
         
             // $data = $data['data'];
         
-        // dd($data);
-        return view('search',compact('data'));
+        // dd($input);
+        return view('search',compact('data'),);
     }
 
     public function login(){
