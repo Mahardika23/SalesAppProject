@@ -22,7 +22,6 @@
                         <div class=" justify-content-center" style='margin-left:20%;margin-right:20%'>
                             <form action="/loginUser" method="POST">
                             @CSRF
-                                {{ csrf_field() }}
                                 <div class="form-group col-md-12">
                                     <label for="email"></label>
                                     <input class="form-control" type="email" name="email" placeholder="E-mail" autocomplete='off'>

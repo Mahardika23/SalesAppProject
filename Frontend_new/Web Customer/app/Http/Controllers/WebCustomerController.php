@@ -12,7 +12,8 @@ class WebCustomerController extends Controller
         return view('beranda');
     }
 
-    public function aktivitas(){
+    public function aktivitas(Request $request){
+        echo $request->session()->get('token');
         return view('aktivitas');
     }
 
@@ -58,7 +59,7 @@ class WebCustomerController extends Controller
         return view('search',compact('data'));
     }
 
-    public function login(){
+    public function login(Request $req){
         return view('login');
     }
 
