@@ -19,7 +19,7 @@ class CatalogController extends Controller
     public function showalltoWeb()
     {
         // $distributor = 
-        return $barang = Barang::paginate(12);
+        return $barang = Barang::with('distributor')->paginate(12);
     }
 
     public function showByFilter(Request $request)
@@ -50,7 +50,7 @@ class CatalogController extends Controller
         $barang = Barang::with('distributor')->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
             ->orWhereHas('distributor', function ($query) {
                 global $request;
-                $query->where('nama_distributor', 'LIKE', $request['search']);
+                $query->where('nama_distributor', 'LIKE','%' . $request['search']  . '%');
             })->paginate(10);
         return $barang;
 
