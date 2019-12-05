@@ -13,9 +13,9 @@
         </div>
         <div class="col-7 pt-4" style="background-color:pink;">
             <form class="form-inline" method="GET" action="/search">
-                <input class="form-control mr-2" style="width:80%" type="search" placeholder="Produk" aria-label="Search">
+                <input class="form-control mr-2" style="width:88%" type="search" placeholder="Produk" aria-label="Search">
                 <button class="searchlink" type="submit">
-                    <img class="btn" src="../img/search.png">
+                    <img class="btn" src="../img/search.png" >
                 </button>
             </form>
         </div>
@@ -26,19 +26,16 @@
             <div class="row ">
                 <div class="row">
                     <div class="col ml-5 mr-4">
-                        <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                        <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 22rem; max-height:11rem;">
                             <div class="row no-gutters" style="padding-right:15;">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <img src="../img/minyak.jpg" class="card-img p-2" style="height:11rem;">
                                 </div>
-                                <div class="col-8">
+                                <div class="col-7">
                                     <div class="card-body p-2">
-                                        <h2 style="padding-left:20%; margin-bottom:0;">Distributor</h2>
-                                        <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                            nama produk :
-                                            harga :
-                                            stok :
-                                        </p>
+                                        <p class="m-0"> nama produk :</p>
+                                        <p class="m-0"> harga : </p>
+                                        <p class="m-0"> stok : </p>
                                     </div>
                                 </div>
                                 <div class="col-1" style="padding-top:17%;">
