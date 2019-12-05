@@ -111,10 +111,40 @@ class UserController extends Controller
         if ($data == null) {
             return redirect()->route('login');
         }else{
+            $request->session()->put('email', $request->get('email'));
+            $request->session()->put('login', 'true');
+            $request->session()->put('token', $data['token']);
+
             return redirect()->route('beranda');
         }
         // return view('/',compact('data'));
     }
         // return redirect()->action('WebCustomerController@getBarang');
-    
+
+    public function logout(Request $request)
+    {
+        $client =  new Client();
+        // var_dump($form);
+        $token = $request->session()->get('token');
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+            function ($response) {
+                return $response->getBody();
+        }, function ($exception){
+            return $exception->getMessage();
+        }
+    );
+        $data = $promise->wait();
+        $data = json_decode($data,true);
+
+        // dd ($data['message']);
+        if ($data['message'] == "Successfully logged out") {
+            
+            $request->session()->flush();
+            return redirect()->route('beranda');
+
+        }
+        return redirect('beranda');
+
+    }
+
 }

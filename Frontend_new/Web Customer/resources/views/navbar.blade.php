@@ -30,9 +30,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/pesan">Pesan</a>
                     </li>
-                    <li class="nav-item" style="margin-left:320%;">
+
+                    @if (Session::has('login'))
+                    
+                    <li class="nav-item" style="margin-left:300%;">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    
+                    @else
+
+                    <li class="nav-item" style="margin-left:310%;">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
+
+                    @endif
+                    
                 </ul>
             </div>
         </nav>

@@ -33,7 +33,5 @@ Route::post('get_province', [
 Route::post('get_barang', [
     'uses' => 'WebCustomerController@getBarang'
 ]);
-
-// Route::get('/test',function(){
-//     return view('test');
-// });
+Route::any('/navbar', ['as' => 'navbar', 'uses' => 'UserController@cobaSession']);
+Route::get('/logout', 'UserController@logout');

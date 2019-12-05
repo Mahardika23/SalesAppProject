@@ -5,7 +5,7 @@
                 <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
                     <div class="row no-gutters" style="padding-right:15;">
                         <div class="col-3" id="fotoProduk">
-                        <img src="../img/minyak.jpg" class="card-img p-2" >
+                            <img src="../img/minyak.jpg" class="card-img p-2">
                         </div>
                         <div class="col-8">
                             <div class="card-body p-0">
@@ -31,9 +31,19 @@
                 <hr>
                 <div class="form-inline">
                     <p class="m-4">Tambah produk ke pesanan ?</p>
-                    <button type="submit" class="m-3" id="tambah">Tambah</button>
+                    <button type="submit" class="m-3" id="tambah" onclick="">Tambah</button>
                     <button type="button" class="m-3" data-dismiss="modal">Batal</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm " id="modalNotif" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm ">
+        <div class="modal-content">
+            <div class="modal-body">
+                produk berhasil ditambahkan
             </div>
         </div>
     </div>
@@ -44,11 +54,15 @@
         var button = $(event.relatedTarget);
         var id = button[0].id;
         console.log(button[0].id);
-        var namaDistributor = $('#' + id + 'isi').find('h2').html();
+        var namaDistributor = $('#' + id + 'isi').find('b').html();
         var dataProduk = $('#' + id + 'isi').find('form').html();
         // var fotoProduk = $('#' + id + 'isi').find('img').html();
         document.getElementById('namaDistributor').innerHTML = namaDistributor;
         document.getElementById('dataProduk').innerHTML = dataProduk;
         // document.getElementById('fotoProduk').innerHTML = fotoProduk;
+    })
+    $('#tambah').click(function() {
+        $('#modalPesan').modal('hide');
+        $('#modalNotif').modal('show');
     })
 </script>
