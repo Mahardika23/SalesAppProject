@@ -50,7 +50,7 @@ class CatalogController extends Controller
         $barang = Barang::with('distributor')->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
             ->orWhereHas('distributor', function ($query) {
                 global $request;
-                $query->where('nama_distributor', 'LIKE', $request['search']);
+                $query->where('nama_distributor', 'LIKE', '%' . $request['search'] . '%');
             })->paginate(10);
         return $barang;
 

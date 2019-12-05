@@ -19,6 +19,7 @@ class CreateSalesTable extends Migration
             $table->bigInteger('distributor_id');
             $table->string('nama_sales');
             $table->integer('no_hp'); 
+            $table->
         });
     }
 
