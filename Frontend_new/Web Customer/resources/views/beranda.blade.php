@@ -106,8 +106,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col" style="background-color:#B1A0C7; height:300;">
+            <div class="row" id="mapid" style="height:400">
+                <div class="col" id=""style=" height:300;">
                     <p>Peta</p>
                 </div>
             </div>
@@ -116,5 +116,16 @@
 </div>
 
 <!-- Modal -->
+<script>
+   var map = L.map('mapid').setView([-7.414236, 109.338078], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([-7.414236, 109.338078]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+</script>
 @include('modal')
 @endsection
