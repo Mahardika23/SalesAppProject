@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class WebCustomerController extends Controller
@@ -14,17 +15,27 @@ class WebCustomerController extends Controller
         return view('beranda');
     }
 
-    public function aktivitas()
+    public function aktivitas(Request $request)
     {
-        return view('aktivitas');
+        $request->session()->get('login', 'true');
+        if ($request->session()->has('login')) {
+            return view('aktivitas');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
-    public function distributor()
+    public function distributor(Request $request)
     {
-        return view('distributor');
+        if ($request->session()->has('login'))
+        {
+            return view('distributor');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
-    public function getBarangPesan()
+    public function getBarangPesan(Request $request)
     {
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
@@ -42,7 +53,12 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         // dd($data);
-        return view('pesan', compact('data'));
+        $request->session()->get('login', 'true');
+        if ($request->session()->has('login')) {
+            return view('pesan', compact('data'));
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     public function getBarangSearch(Request $request)
@@ -64,24 +80,33 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         // dd($input);
-        return view('search', compact('data'),);
+        if ($request->session()->has('login'))
+        {
+            return view('search', compact('data'),);
+        } else {
+            return redirect()->route('login');
+        }
+        
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        return view('login');
+        if ($request->session()->has('login'))
+        {
+            return redirect()->route('beranda');
+        } else {
+            return view('login');
+        }
     }
 
-    public function daftar()
+    public function daftar(Request $request)
     {
-        return view('daftar');
-    }
-
-    public function daftar2(Request $request)
-    {
-        $input = $request->all();
-        //  dd($input);
-        return view('daftar2', compact('input'));
+        if ($request->session()->has('login'))
+        {
+            return redirect()->route('beranda');
+        } else {
+            return view('daftar');
+        }
     }
 
     public function getProvince(Request $request)
