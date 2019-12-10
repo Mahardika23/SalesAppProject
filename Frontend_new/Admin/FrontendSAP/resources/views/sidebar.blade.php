@@ -25,8 +25,10 @@
                 <strong></strong>
             </div>
             <ul class="list-unstyled components">
-                <p>lorem ipsum</p>
-                <li>
+                
+                <p> {{ $nama }}</p>
+                
+                <li class="active">
                     <a href="{{ url('/') }}">Dashboard</a>
                 </li>
                 <li class="active">
@@ -102,7 +104,11 @@
     <script>
         $(document).ready(function() {
 
+            // $('#sidebar').hide();
+            $('#sidebar').toggleClass('active');
+
             $('#sidebarCollapse').on('click', function() {
+                
                 $('#sidebar').toggleClass('active');
             });
 
