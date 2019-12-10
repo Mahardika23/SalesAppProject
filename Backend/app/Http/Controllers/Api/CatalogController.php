@@ -19,8 +19,9 @@ class CatalogController extends Controller
     public function showalltoWeb()
     {
         // $distributor = 
-        return $barang = Barang::paginate(6);
+        return $barang = Barang::with('distributor')->paginate(12);
     }
+
     public function showByFilter(Request $request)
     {
 
@@ -42,22 +43,22 @@ class CatalogController extends Controller
             ->select('barangs.*', 'distributors.nama_distributor')->where('distributors.regency_id', $userToko)
             ->get();
     }
+
     public function searchBy(Request $request)
     {
-        if (!empty($request['search'])) {
-            $hasil = Barang::where('nama_barang', $request['search'])->get();
-            if (!empty($hasil[0])) {
-                return $hasil;
-            }
-            $hasil[0] = Distributor::where('nama_distributor', $request['search'])->get();
-            return $hasil;
-            // else {
-            //     $message = ['message' => 'data tidak ditemukan'];
-            //     return $message;
-            // }
-        }
-    }
-    public function getBarangDistributor(Request $request){
-        return $barang = Distributor::where('');
+
+        $barang = Barang::with('distributor')->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
+            ->orWhereHas('distributor', function ($query) {
+                global $request;
+                $query->where('nama_distributor', 'LIKE', '%' . $request['search'] . '%');
+            })->paginate(10);
+        return $barang;
+
+
+        /*
+        $posts = App\Post::whereHas('comments', function ($query) {
+        $query->where('content', 'like', 'foo%');
+        })->get();
+        */
     }
 }

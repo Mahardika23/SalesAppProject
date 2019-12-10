@@ -15,15 +15,24 @@
 //     return view('');
 // });
 
-Route::get('/', 'WebCustomerController@getBarang');
+Route::get('/', [ 'as' => 'beranda', 'uses' => 'WebCustomerController@getBarang']);
 Route::get('/aktivitas', 'WebCustomerController@aktivitas');
+Route::get('/distributor', 'WebCustomerController@distributor');
 Route::get('/pesan', 'WebCustomerController@getBarangPesan');
-Route::get('/login', 'WebCustomerController@login');
+Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']);
+Route::post('/loginUser', 'UserController@login');
 Route::get('/search', 'WebCustomerController@getBarangSearch');
-Route::get('/daftar', 'WebCustomerController@daftar');
-Route::get('/daftar/toko', 'WebCustomerController@daftar2');
-Route::get('/daftar/alamat', 'WebCustomerController@getProvince');
-
-
-
-
+Route::get('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
+Route::any('/cart', 'WebCustomerController@cart');
+Route::any('/daftar/toko', 'UserController@register');
+Route::any('/daftar/alamat', 'UserController@register2');
+Route::any('/daftarakun', 'UserController@register3');
+Route::post('get_province', [
+    'uses' => 'WebCustomerController@getProvince'
+]);
+// Route::get('/searchApi','WebCustomerController@getBarangSearch')
+Route::post('get_barang', [
+    'uses' => 'WebCustomerController@getBarang'
+]);
+Route::any('/navbar', ['as' => 'navbar', 'uses' => 'UserController@cobaSession']);
+Route::get('/logout', 'UserController@logout');
