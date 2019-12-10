@@ -32,14 +32,14 @@
                                             <b style="padding-left:20%; margin-bottom:3; font-size:150%;">{{$barang['distributor']['nama_distributor']}}</b>
                                         </a>
                                         <form class="card-text">
-                                            <p class="m-0"> nama produk : {{$barang['nama_barang']}}</p>
-                                            <p class="m-0"> harga : {{$barang['harga_barang']}}</p>
-                                            <p class="m-0"> stok : {{$barang['stok_barang']}}</p>
+                                            <p class="m-0"> nama produk : <text id='produk'>{{$barang['nama_barang']}}</text></p>
+                                            <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text></p>
+                                            <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-1" style="padding-top:17%;">
-                                    <button class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}">
+                                    <button name="shoplink" class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}">
                                         <img src="../img/shopping-cart.png" style="width:20;">
                                     </button>
                                 </div>

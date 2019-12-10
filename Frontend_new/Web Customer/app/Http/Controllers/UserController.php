@@ -71,12 +71,11 @@ class UserController extends Controller
                 return $exception->getMessage();
             }
         );
-        //dd ($alamat);
         $data = $promise->wait();
         $data = json_decode($data, true);
 
         //  $data = $data['data'];
-        // dd($data);
+        //dd($input);
 
               //dd($data);
         if ($data == null) {

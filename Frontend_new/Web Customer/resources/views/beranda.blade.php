@@ -38,9 +38,9 @@
                                                     <div class="card-body p-1" id="{{$barang['id']}}isi">
                                                         <div class="card-text" style="font-size:65%;">
                                                             <form>
-                                                                <p class="m-0"> {{$barang['nama_barang']}}</p>
-                                                                <p class="m-0"> harga : {{$barang['harga_barang']}}</p>
-                                                                <p class="m-0"> stok : {{$barang['stok_barang']}}</p>
+                                                                <p class="m-0"> <text id='produk'>{{$barang['nama_barang']}}</text></p>
+                                                                <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text></p>
+                                                                <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                                             </form>
                                                             <b>{{$barang['distributor']['nama_distributor']}}</b>
                                                         </div>
