@@ -8,7 +8,7 @@
         <div class="col">
             <div class="card p-0">
                 <div class="card-header form-inline" style="background-color:#B1A0C7">
-                    <h3 class="col-7">Nama Distributor</h3>
+                    <h3 class="col-7">{{Session::get('nama_distributor')}}</h3>
                     <h3 class="col-3" style="text-align:right;"> Total : 30000</h3>
                     <button class="col-2">Checkout</button>
                 </div>
@@ -26,15 +26,15 @@
                                         <div class="col-4">
                                             <div class="card-body p-1">
                                                 <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                                    nama produk : {{$barang['nama_barang']}}
-                                                    harga : {{$barang['harga_barang']}}
-                                                    stok : {{$barang['stok_barang']}}
+                                                    nama produk : {{Session::get('nama_barang')}}
+                                                    harga : {{Session::get('harga_barang')}}
+                                                    stok : {{Session::get('stok_barang')}}
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="def-number-input number-input safari_only col-4" style="padding-top:17%;">
                                                 <button onclick=" this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                            <input class="quantity" min="0" name="quantity" value="{{Session::get('quantity')}}" type="number">
                                             <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                         </div>
                                         <div class="col-1" style="padding-top:17%;">

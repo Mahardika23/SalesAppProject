@@ -23,6 +23,7 @@ Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']
 Route::post('/loginUser', 'UserController@login');
 Route::get('/search', 'WebCustomerController@getBarangSearch');
 Route::get('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
+Route::any('/cart', 'WebCustomerController@cart');
 Route::any('/daftar/toko', 'UserController@register');
 Route::any('/daftar/alamat', 'UserController@register2');
 Route::any('/daftarakun', 'UserController@register3');
