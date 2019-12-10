@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 class WebCustomerController extends Controller
 {
     //
+    public function cart(Request $request)
+    {
+        session()->put('stok_barang',$request->get('stok_barang'));
+        session()->put('quantity',$request->get('quantity'));
+        session()->put('harga_barang',$request->get('harga_barang'));
+        session()->put('nama_barang',$request->get('nama_barang'));
+        session()->put('nama_distributor',$request->get('nama_distributor'));
+        return redirect()->back();
+    }
+
     public function beranda()
     {
         return view('beranda');
