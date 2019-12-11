@@ -29,8 +29,19 @@ class PemesananController extends Controller
         return response()->json($pemesanan, 201);
  
     }
-
-
+    public function update(Request $request,$id) {
+        $pemesanan = Pemesanan::findOrFail($id);
+        // return $request->all();
+        $pemesanan->update($request->all());
+        return response()->json($pemesanan, 200);
+    }
+    
+    public function delete(Request $request, $id){
+        $pemesanan = Pemesanan::findOrFail($id);
+        $pemesanan->delete();
+        return 204;
+    }
+   
 
 
 }

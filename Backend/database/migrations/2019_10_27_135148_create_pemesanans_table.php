@@ -24,7 +24,7 @@ class CreatePemesanansTable extends Migration
             $table->bigInteger('total_harga');
             $table->enum('status_pemesanan',['diterima kurir','menunggu persetujuan','diantar','selesai']);
             $table->timestamps();
-            
+            $table->softDeletes();
             
         });
     }

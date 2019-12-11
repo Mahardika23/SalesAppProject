@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Sales;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class SalesController extends Controller
+use App\Distributor;
+class DistributorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,8 @@ class SalesController extends Controller
     public function index()
     {
         //
+        return Distributor::all();
+
     }
 
     /**
@@ -25,6 +27,7 @@ class SalesController extends Controller
     public function create()
     {
         //
+       
     }
 
     /**
@@ -36,26 +39,31 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         //
+        $distributor = new Distributor($request->all());
+        $distributor->save();
+        return response()->json($distributor,201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sales $sales)
+    public function show($id)
     {
         //
+        return $distributor=Distributor::find($id);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales $sales)
+    public function edit($id)
     {
         //
     }
@@ -64,22 +72,29 @@ class SalesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales $sales)
+    public function update(Request $request, $id)
     {
         //
+        $distributor = Distributor::findOrFail($id);
+        // return $request->all();
+        $distributor->update($request->all());
+        return response()->json($distributor, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sales $sales)
+    public function destroy($id)
     {
         //
+        $distributor = Distributor::findOrFail($id);
+        $distributor->delete();
+        return 204;
     }
 }

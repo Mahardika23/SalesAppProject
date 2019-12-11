@@ -22,8 +22,40 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
     // Route::get('/test','TestController@index');
     Route::post('refresh','UserController@refresh');
+    //CRUD Pemesanan
+    //Show    
     Route::get('/admin/showdatapesanan','Api\PemesananController@index'); 
+    // Insert
     Route::post('/admin/pemesanan','Api\PemesananController@store');
+    // Update
+    Route::put('/admin/pemesanan/{id}','Api\PemesananController@update');
+    // Delete
+    Route::delete('/admin/pemesanan/{id}','Api\PemesananController@delete');
+
+
+    //CRUD Sales
+    //get All
+    Route::get('/admin/sales','Api\SalesController@index'); 
+    //get by id
+    Route::get('/admin/sales/{id}','Api\SalesController@show'); 
+    // Insert
+    Route::post('/admin/sales','Api\SalesController@store');
+    // Update
+    Route::put('/admin/sales/{id}','Api\SalesController@update');
+    // Delete
+    Route::delete('/admin/sales/{id}','Api\SalesController@delete');
+
+    
+    Route::get('/admin/barang','Api\PemesananController@index'); 
+    // Insert
+    Route::post('/admin/barang','Api\BarangController@store');
+    // Update
+    Route::put('/admin/barang/{id}','Api\BarangController@update');
+    // Delete
+    Route::delete('/admin/barang/{id}','Api\BarangController@delete');
+
+    
+
     Route::get('/admin/showdatabarang','Api\BarangController@index'); 
     Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
     Route::post('logout','UserController@logout');  

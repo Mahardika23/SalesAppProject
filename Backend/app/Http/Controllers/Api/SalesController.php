@@ -15,6 +15,7 @@ class SalesController extends Controller
     public function index(Request $request)
     {
         //
+        return Sales::all();
         
     }
 
@@ -23,11 +24,7 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -52,6 +49,7 @@ class SalesController extends Controller
     public function show($id)
     {
         //
+        return $sales=Sales::find($id);
     }
 
     /**
@@ -74,7 +72,10 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sales = Sales::findOrFail($id);
+        // return $request->all();
+        $sales->update($request->all());
+        return response()->json($sales, 200);
     }
 
     /**
@@ -83,8 +84,12 @@ class SalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function delete($id)
+    {   
+        $sales = Sales::findOrFail($id);
+        $sales->delete();
+        return 204;
+
         //
     }
 }

@@ -19,7 +19,12 @@ class CreateSalesTable extends Migration
             $table->bigInteger('distributor_id');
             $table->string('nama_sales');
             $table->integer('no_hp'); 
-            
+            $table->bigInteger('province_id');
+            $table->bigInteger('regency_id');
+            $table->bigInteger('district_id');
+            $table->bigInteger('village_id');
+            $table->softDeletes();
+
         });
     }
 
