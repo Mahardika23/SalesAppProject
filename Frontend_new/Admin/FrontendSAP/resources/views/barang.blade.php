@@ -65,7 +65,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($data as $barang)
+    <!-- @foreach($data as $barang)
     <tr>
       <td scope="row">1</td>
       <td>{{$barang['nama_barang']}}</td>
@@ -83,8 +83,8 @@
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
     </tr>
-    @endforeach
-    <!-- <tr>
+    @endforeach -->
+    <tr>
       <td scope="row">2</td>
       <td>Kapur Bagus Ajaib</td>
       <td>Kapur</td>
@@ -103,12 +103,12 @@
       <td><a href="#" class="btn btn-primary">Detail</a></td>
       <td><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
       <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-    </tr> -->
-      <td>15000</td>
+    </tr>
+      <!-- <td>15000</td>
       <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal">Detail</button></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
-    </tr>
+    </tr> -->
   </tbody>
 </table>
 

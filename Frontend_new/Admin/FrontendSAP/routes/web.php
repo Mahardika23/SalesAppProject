@@ -13,9 +13,11 @@
 
 use App\Http\Controllers\TestController;
 
-Route::get('/', function () {
-    return view('beranda');
-});
+// Route::get('/', function () {
+//     return view('beranda');
+// });
+
+Route::get('/', [ 'as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
 Route::get('/dashboard', [ 'as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
@@ -26,7 +28,11 @@ Route::get('/sidebar', function () {
     return view('sidebar');
 });
 
-Route::get('/Manajemen-Data-Barang','BarangController@index');
+//test
+Route::get('/Manajemen-Data-Barang', [ 'as' => 'Manajemen-Data-Barang', 'uses' => 'BarangController@index']);
+
+// lama
+// Route::get('/Manajemen-Data-Barang','BarangController@index');
 
 Route::get('/Manajemen-Data-Toko', function () {
     return view('toko');
