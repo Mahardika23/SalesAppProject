@@ -23,7 +23,7 @@ class CreatePemesanansTable extends Migration
             $table->integer('kuantitas_pesanan');
             $table->bigInteger('total_harga');
             $table->enum('status_pemesanan',['diterima kurir','menunggu persetujuan','diantar','selesai']);
-            $table->date('tanggal_pemesanan');
+            $table->timestamps();
             
             
         });

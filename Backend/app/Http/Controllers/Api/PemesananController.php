@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use App\User;
 use App\toko;
+use App\Pemesanan;
 class PemesananController extends Controller
 {
     public function index(Request $request){
@@ -17,11 +18,19 @@ class PemesananController extends Controller
         foreach ($variable as $key => $value) {
             # code...
         }
-        foreach($userDistributor as $i => ){
-            // $temp=json_decode($i);
-            $namaToko=1;
-        }
+       
         // $namaToko = toko::find($userDistributor)->nama_toko;
         return $namaToko;
     }
+    
+    public function store(Request $request) {
+        $pemesanan = new Pemesanan($request->all());
+        $pemesanan->save();
+        return response()->json($pemesanan, 201);
+ 
+    }
+
+
+
+
 }

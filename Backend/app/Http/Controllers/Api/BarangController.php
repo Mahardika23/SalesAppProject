@@ -15,4 +15,10 @@ class BarangController extends Controller
         return $userDistributor = User::find($user['id'])->userable->barang;
         
     }
+    public function store(Request $request){
+        $barang = new Barang($request->all());
+        $barang->save();
+        return response()->json($barang, 201);
+ 
+    }
 }
