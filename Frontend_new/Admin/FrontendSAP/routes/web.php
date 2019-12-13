@@ -34,19 +34,29 @@ Route::get('/Manajemen-Data-Barang', [ 'as' => 'Manajemen-Data-Barang', 'uses' =
 // lama
 // Route::get('/Manajemen-Data-Barang','BarangController@index');
 
-Route::get('/Manajemen-Data-Toko', function () {
-    return view('toko');
-});
+//test
+Route::get('/Manajemen-Data-Toko', [ 'as' => 'Manajemen-Data-Toko', 'uses' => 'TokoController@index']);
 
-Route::get('/Manajemen-Data-Sales', function () {
-    return view('sales');
-});
+//lama
+// Route::get('/Manajemen-Data-Toko', function () {
+//     return view('toko');
+// });
+
+//test
+Route::get('/Manajemen-Data-Sales', [ 'as' => 'Manajemen-Data-Sales', 'uses' => 'SalesController@index']);
+
+// lama 
+// Route::get('/Manajemen-Data-Sales', function () {
+//     return view('sales');
+// });
 
 Route::post('/logincheck','LoginController@login');
 
+//test
+Route::get('/Manajemen-Data-Pemesanan', [ 'as' => 'Manajemen-Data-Pemesanan', 'uses' => 'PemesananController@index']);
 
-
-Route::get('/Manajemen-Data-Pemesanan','PemesananController@index');
+//lama
+// Route::get('/Manajemen-Data-Pemesanan','PemesananController@index');
 
 Route::get('/guzzle', 'TestController@getProvince');
 

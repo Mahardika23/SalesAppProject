@@ -26,7 +26,7 @@
             </div>
             <ul class="list-unstyled components">
                 
-                <p> {{ $nama }}</p>
+                <p> </p>
                 
                 <li class="active">
                     <a href="{{ url('/') }}">Dashboard</a>
@@ -54,12 +54,6 @@
                 </li>
                 <li>
                     <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
                 </li>
                 <li class="logout">
                     <span>

@@ -41,10 +41,10 @@ class BarangController extends Controller
             $itemData = $promise->wait();
             $itemData = json_decode($itemData,true);
             
-                $data['barang'] = $itemData;
+                $data = $itemData;
             
-            dd($data);
-            // return view('barang',['data'=> $data,'nama' => $nama]);
+            // dd($data);
+            return view('barang',['data'=> $data,'nama' => $nama]);
             // return view('barang',['nama' => $nama]);
 
         }else{
