@@ -21,7 +21,7 @@ class CatalogController extends Controller
         // $distributor = 
         return $barang = Barang::with('distributor')->paginate(12);
     }
-
+    
     public function showByFilter(Request $request)
     {
 

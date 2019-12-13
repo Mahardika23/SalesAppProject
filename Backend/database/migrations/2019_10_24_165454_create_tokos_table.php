@@ -26,6 +26,8 @@ class CreateTokosTable extends Migration
             $table->bigInteger('district_id');
             $table->bigInteger('village_id');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
