@@ -51,7 +51,10 @@
       </div>
     </div>
   </div>
-
+  @if (empty($data))
+  <p>Anda tidak memiliki Barang</p>
+  <p>Silahkan untuk menambahkan barang</p>
+  @else
   <!-- <a href="#" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Barang</a> -->
   <table class="table table-striped table-bordered">
   <thead>
@@ -65,26 +68,134 @@
     </tr>
   </thead>
   <tbody>
-    <!-- @foreach($data as $barang)
+    @foreach($data as $barang)
     <tr>
       <td scope="row">1</td>
       <td>{{$barang['nama_barang']}}</td>
       <td>{{$barang['jenis_barang']}}</td>
-      <td >Rp{{$barang['harga_barang']}}</td>
+      <td >Rp {{$barang['harga_barang']}}</td>
       <td>{{$barang['stok_barang']}}</td>
-      <td style="width:70px"><a href="#" class="btn btn-primary">Detail</a></td>
-      <td style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit status"></i></td>
-      <td style="width:40px"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-      <td>Kapur Bagus Ajaib</td>
-      <td>Kapur</td>
-      <td>8400</td>
-      <td>15000</td>
-      <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal">Detail</button></td>
-      <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
-      <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
+      <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal{{$barang['id']}}">Detail</button></td>
+      <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal{{$barang['id']}}"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
+      <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal{{$barang['id']}}"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
     </tr>
-    @endforeach -->
-    <tr>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="detailBarangModal{{$barang['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Lihat Detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="inputAddress2">Nama</label>
+              <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Jenis</label>
+              <input type="text" class="form-control" id="jenis" value="{{$barang['jenis_barang']}}" disabled>
+            </div>
+            <div class="form-group">
+              <label class="inputAddress2">Harga</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Rp</div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Stok</label>
+              <input type="number" class="form-control" id="Stok" value="{{$barang['stok_barang']}}" disabled>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editBarangModal{{$barang['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Edit Informasi Barang</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="inputAddress2">Nama</label>
+              <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Jenis</label>
+              <input type="text" class="form-control" id="jenis" value="{{$barang['jenis_barang']}}" >
+            </div>
+            <div class="form-group">
+              <label class="inputAddress2">Harga</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Rp</div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Stok</label>
+              <input type="number" class="form-control" id="Stok" value="{{$barang['stok_barang']}}" >
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-primary">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteBarangModal{{$barang['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Peringatan Hapus</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="">
+          <div class="modal-body">
+            Yakin menghapus barang {{$barang['nama_barang']}}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-danger">Hapus</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+    
+    @endforeach
+
+
+
+
+    <!-- <tr>
       <td scope="row">2</td>
       <td>Kapur Bagus Ajaib</td>
       <td>Kapur</td>
@@ -103,7 +214,7 @@
       <td><a href="#" class="btn btn-primary">Detail</a></td>
       <td><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
       <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-    </tr>
+    </tr> -->
       <!-- <td>15000</td>
       <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal">Detail</button></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
@@ -111,7 +222,7 @@
     </tr> -->
   </tbody>
 </table>
-
+@endif
 <!-- Modal Detail -->
 <div class="modal fade" id="detailBarangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">

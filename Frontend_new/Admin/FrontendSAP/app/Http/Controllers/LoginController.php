@@ -21,7 +21,7 @@ class LoginController extends Controller
         $form=$request->all();
         $client =  new Client();
         // var_dump($form);
-        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/login', ['form_params' =>$form])->then(
+        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/login', ['form_params' =>$form])->then(
             function ($response) {
                 return $response->getBody();
         }, function ($exception){
@@ -32,6 +32,9 @@ class LoginController extends Controller
         $data = $promise->wait();
         $data = json_decode($data,true);
         
+        if ($data == null) {
+            return redirect()->route('login');
+        }else{
         // dd($data);
         $token = $data['token'];
         $promise2 = $client->requestAsync('GET','http://127.0.0.1:8001/api/user', ['headers' =>
@@ -44,6 +47,7 @@ class LoginController extends Controller
         );
         $userData = $promise2->wait();
         $userData = json_decode($userData,true);
+        // dd($userData);
         $data['user_type'] = $userData['user']['userable_type'];
         // dd($data);
         $data['nama'] = $userData['user']['name'];
@@ -56,9 +60,6 @@ class LoginController extends Controller
         // $data['userable_type'] = $userData['user']['userable_type'];
         // dd($data);
 
-        if ($data == null) {
-            return redirect()->route('login');
-        }else{
             $request->session()->put('email','true');
             $request->session()->put('login','true');
             $request->session()->put('token',$token);
