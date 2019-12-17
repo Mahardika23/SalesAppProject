@@ -27,22 +27,15 @@ class WebCustomerController extends Controller
 
     public function aktivitas(Request $request)
     {
-        $request->session()->get('login', 'true');
-        if ($request->session()->has('login')) {
             return view('aktivitas');
-        } else {
-            return redirect()->route('login');
-        }
+        
     }
 
     public function distributor(Request $request)
     {
-        if ($request->session()->has('login'))
-        {
+        
             return view('distributor');
-        } else {
-            return redirect()->route('login');
-        }
+        
     }
 
     public function getBarangPesan(Request $request)
@@ -63,12 +56,7 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         // dd($data);
-        $request->session()->get('login', 'true');
-        if ($request->session()->has('login')) {
             return view('pesan', compact('data'));
-        } else {
-            return redirect()->route('login');
-        }
     }
 
     public function getBarangSearch(Request $request)
@@ -90,13 +78,9 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         // dd($input);
-        if ($request->session()->has('login'))
-        {
-            return view('search', compact('data'),);
-        } else {
-            return redirect()->route('login');
-        }
-        
+      
+        return view('search', compact('data'),);
+
     }
 
     public function login(Request $request)

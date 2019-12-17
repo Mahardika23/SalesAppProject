@@ -19,15 +19,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="">
+        <form action="/Manajemen-Data-Barang" method="POST">
+          @CSRF
           <div class="modal-body">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" id="nama" placeholder="Nama Barang">
+              <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Nama Barang">
             </div>
             <div class="form-group">
               <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" placeholder="Jenis Barang">
+              <input type="text" class="form-control" id="jenis" name="jenis_barang" placeholder="Jenis Barang">
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>
@@ -35,18 +36,19 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="8999">
+                <input type="text" class="form-control" id="inlineFormInputGroup" name="harga_barang" placeholder="8999">
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" id="Stok" placeholder="9813">
+              <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813">
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary">Tambah</button>
+            <button type="submti" class="btn btn-primary">Tambah</button>
           </div>
+          <input type="hidden" name="distributor_id" id="" value=23>
         </form>
       </div>
     </div>
@@ -68,9 +70,10 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($data as $barang)
+    @foreach($data as $indexKey => $barang)
+    
     <tr>
-      <td scope="row">1</td>
+    <td scope="row">{{$indexKey+1}}</td>
       <td>{{$barang['nama_barang']}}</td>
       <td>{{$barang['jenis_barang']}}</td>
       <td >Rp {{$barang['harga_barang']}}</td>
@@ -94,6 +97,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
+              <input type="hidden" name="id" value="{{$barang['id']}}">
               <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}" disabled>
             </div>
             <div class="form-group">
@@ -132,15 +136,17 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="">
+        <form action="/Manajemen-Data-Barang/update" method="POST">
+         @csrf
           <div class="modal-body">
+          <input type="hidden" name="id" value="{{$barang['id']}}">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}">
+              <input type="text" class="form-control" name="nama_barang" id="nama" value="{{$barang['nama_barang']}}">
             </div>
             <div class="form-group">
               <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" value="{{$barang['jenis_barang']}}" >
+              <input type="text" class="form-control" id="jenis_barang" value="{{$barang['jenis_barang']}}" >
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>
@@ -148,17 +154,17 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" >
+                <input type="text" class="form-control" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" >
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" id="Stok" value="{{$barang['stok_barang']}}" >
+              <input type="number" class="form-control" name="stok_barang" id="Stok" value="{{$barang['stok_barang']}}" >
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary">Edit</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
           </div>
         </form>
       </div>
@@ -175,13 +181,15 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="">
+        <form action="/Manajemen-Data-Barang/delete" method="POST">
+          @csrf
           <div class="modal-body">
             Yakin menghapus barang {{$barang['nama_barang']}}?
+            <input type="hidden" name="id" value={{$barang['id']}}>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-danger">Hapus</button>
+            <button type="submit" class="btn btn-danger">Hapus</button>
           </div>
         </form>
       </div>

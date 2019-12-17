@@ -12,15 +12,12 @@ class PemesananController extends Controller
 {
     public function index(Request $request){
         $user = JWTAuth::parseToken()->authenticate();
-        $userDistributor = User::find($user['id'])->userable->pemesanan;
+        $userPemesanan = User::find($user['id'])->userable->pemesanan;
         // $id = $userDistributor["data"]['toko_id'];
-        $count = 0;
-        foreach ($variable as $key => $value) {
-            # code...
-        }
+        $test = User::find(5)->userable->pemesanan;
        
         // $namaToko = toko::find($userDistributor)->nama_toko;
-        return $namaToko;
+        return $test;
     }
     
     public function store(Request $request) {

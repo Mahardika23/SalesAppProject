@@ -23,7 +23,7 @@ class SalesController extends Controller
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/showdatabarang',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/sales',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -38,8 +38,8 @@ class SalesController extends Controller
             
                 $data['sales'] = $itemData;
             
-            dd($data);
-            // return view('sales',['data'=> $data,'nama' => $nama]);
+            // dd($data);
+            return view('sales',['data'=> $data,'nama' => $nama]);
             // return view('barang',['nama' => $nama]);
 
         }else{

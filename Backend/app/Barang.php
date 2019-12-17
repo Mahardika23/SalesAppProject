@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
+    public $guarded=[];
     public function distributor(){
         return $this->belongsTo('App\Distributor');
     }
