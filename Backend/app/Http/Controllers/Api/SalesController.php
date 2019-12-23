@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Sales;
+use JWTAuth;
+use App\User;
 class SalesController extends Controller
 {
     /**
@@ -15,7 +17,9 @@ class SalesController extends Controller
     public function index(Request $request)
     {
         //
-        return Sales::all();
+        $user = JWTAuth::parseToken()->authenticate();
+        $userSales = User::find($user['id'])->userable->sales;
+        return $userSales;
         
     }
 
@@ -91,5 +95,14 @@ class SalesController extends Controller
         return 204;
 
         //
+
+    }
+
+    public function toko($id){
+        return Sales::findOrFail($id)->toko;
+    }
+    public function pesanan($id){
+        $sales =  Sales::findOrFail($id);
+        return $sales->pemesanan;
     }
 }

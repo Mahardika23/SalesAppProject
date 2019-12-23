@@ -22,4 +22,8 @@ class Pemesanan extends Model
         return $this->belongsTo('App\Sales');
 
     }
+    public function barang(){
+        return $this->belongsToMany('App\Barang','barang_pemesanans');
+    }
+
 }

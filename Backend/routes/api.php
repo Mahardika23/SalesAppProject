@@ -24,7 +24,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('refresh','UserController@refresh');
     //CRUD Pemesanan
     //Show    
-    Route::get('/admin/showdatapesanan','Api\PemesananController@index'); 
+    Route::get('/admin/pemesanan','Api\PemesananController@index'); 
     // Insert
     Route::post('/admin/pemesanan','Api\PemesananController@store');
     // Update
@@ -38,6 +38,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/admin/sales','Api\SalesController@index'); 
     //get by id
     Route::get('/admin/sales/{id}','Api\SalesController@show'); 
+    Route::get('/admin/sales/toko/{id}','Api\SalesController@toko'); 
+
+    Route::get('/admin/sales/pesanan/{id}','Api\SalesController@pesanan');
     // Insert
     Route::post('/admin/sales','Api\SalesController@store');
     // Update
@@ -46,7 +49,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::delete('/admin/sales/{id}','Api\SalesController@delete');
 
     
-    Route::get('/admin/barang','Api\PemesananController@index'); 
+    Route::get('/admin/barang','Api\BarangController@index'); 
     // Insert
     Route::post('/admin/barang','Api\BarangController@store');
     // Update
@@ -54,18 +57,39 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Delete
     Route::delete('/admin/barang/{id}','Api\BarangController@delete');
 
-    
+    // Route::get('/toko','Api\TokoController@pesananToko'); 
 
-    Route::get('/admin/showdatabarang','Api\BarangController@index'); 
+    Route::put('/profiltoko','Api\TokoController@updateProfil');
+
+    Route::put('/profildistributor','Api\DistributorController@updateProfil');
+
+    // Route::get('/admin/showdatabarang','Api\BarangController@index'); 
     Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
     Route::post('logout','UserController@logout');  
 });
 Route::post('/login','UserController@authenticate');
 Route::post('/register','UserController@register');
 
+Route::get('/distributor','Api\PemesananController@index'); 
+Route::get('/distributor/barang/{id}','Api\DistributorController@show'); 
+Route::get('/distributor/searchbarang','Api\DistributorController@searchBarang'); 
+
+// Insert
+Route::post('/distributor','Api\DistributorController@store');
+// Update
+Route::put('/distributor/{id}','Api\DistributorController@update');
+// Delete
+Route::delete('/distributor/{id}','Api\DistributorController@delete');
+
+
+Route::get('/kategori','Api\CatalogController@showCategory');
+Route::get('/barangbykategori','Api\CatalogController@showByCategory');
+
+
+
 //Showing Catalog Before login
 Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');
-Route::get('/showallcatalog','Api\CatalogController@showall');
+// Route::get('/showallcatalog','Api\CatalogController@showall');
 Route::get('/showallcatalogweb','Api\CatalogController@showalltoWeb');
 Route::get('/search','Api\CatalogController@searchBy');
 //Get Data Wilayah

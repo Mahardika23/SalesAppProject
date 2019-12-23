@@ -8,7 +8,7 @@ use App\Distributor;
 use App\Barang;
 use JWTAuth;
 use App\User;
-
+use App\KategoriBarang;
 class CatalogController extends Controller
 {
     public function showall()
@@ -21,7 +21,12 @@ class CatalogController extends Controller
         // $distributor = 
         return $barang = Barang::with('distributor')->paginate(12);
     }
-    
+    public function showCategory(){
+        return $kategori=KategoriBarang::all();
+    }
+    public function showByCategory(Request $request){
+        return $kategori = KategoriBarang::find($request['id'])->barang;
+    }
     public function showByFilter(Request $request)
     {
 
