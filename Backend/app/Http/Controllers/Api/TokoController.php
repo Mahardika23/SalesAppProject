@@ -36,5 +36,10 @@ class TokoController extends Controller
         return response()->json($toko, 200);
 
     }
+    public function getProfil(){
+        $user = JWTAuth::parseToken()->authenticate();
+        return $user->userable;
+
+    }
     
 }

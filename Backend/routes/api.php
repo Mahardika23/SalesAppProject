@@ -58,8 +58,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::delete('/admin/barang/{id}','Api\BarangController@delete');
 
     // Route::get('/toko','Api\TokoController@pesananToko'); 
+    Route::get('/profiltoko','Api\TokoController@getProfil');
 
     Route::put('/profiltoko','Api\TokoController@updateProfil');
+    Route::get('/profildistributor','Api\DistributorController@getProfil');
 
     Route::put('/profildistributor','Api\DistributorController@updateProfil');
 

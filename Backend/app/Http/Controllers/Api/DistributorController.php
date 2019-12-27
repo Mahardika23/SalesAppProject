@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Distributor;
+use JWTAuth;
 class DistributorController extends Controller
 {
     /**
@@ -33,7 +34,11 @@ class DistributorController extends Controller
         return $distributor=Distributor::find($request['id'])->barang->where('nama_barang','LIKE',$search);
 
     }
+    public function getProfil(){
+        $user = JWTAuth::parseToken()->authenticate();
+        return $user->userable;
 
+    }
 
     public function updateProfil(Request $request) {
         $user = JWTAuth::parseToken()->authenticate();
