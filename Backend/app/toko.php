@@ -23,4 +23,7 @@ class toko extends Model
         return $this->hasMany('App\Pemesanan','toko_id');
     }
         
+    public function distributor(){    
+        return $this->belongsToMany('App\Distributor','mitras','toko_id','distributor_id')->withPivot('status');
+    }
 }

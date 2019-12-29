@@ -7,19 +7,47 @@ use Illuminate\Http\Request;
 use App\toko;
 use JWTAuth;
 use App\User;
+use App\Distributor;
+use Carbon\Carbon;
+
 class TokoController extends Controller
 {
     //
     public function index(){
         return toko::all();
     }
-    // public function pesananToko(Request $request)
-    // {
-    //     $user = JWTAuth::parseToken()->authenticate();
-    //     $userPemesanan = User::find($user['id'])->userable->pemesanan;
-    //     $id = $request['id'];
-    //     return toko::find($id)->pemesanan;
-    // }
+
+    public function ajukanDistributor(Request $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        $toko = User::find($user['id'])->userable;
+        $distributorId = $request['distributor_id'];
+
+        
+       
+        return toko::find($toko['id'])->distributor()
+        ->attach(
+            $distributorId,[
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' =>Carbon::now()->format('Y-m-d H:i:s')
+
+            ]);
+    }
+
+    public function tokoByDistributor(){
+        $user = JWTAuth::parseToken()->authenticate();
+        $distributor = User::find($user['id'])->userable;
+        
+        return $toko=Distributor::find($distributor['id'])->toko;
+    }
+    public function distributorByToko(Request $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        $toko = User::find($user['id'])->userable;
+        return $distributor=toko::findOrFail($toko['id'])
+        ->distributor()->wherePivot('distributor_id','=',$request['distributor_id'])->get();
+    }
+
+
+
     public function updateProfil(Request $request) {
         $user = JWTAuth::parseToken()->authenticate();
         $toko = User::find($user['id'])->userable;
