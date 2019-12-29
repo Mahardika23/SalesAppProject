@@ -1,4 +1,4 @@
-#Sun Nov 10 18:45:40 WIB 2019
-base.0=/home/agaflex5/Development/SAP Project/mobile/android/app/build/intermediates/transforms/dexMerger/debug/0
-renamed.0=classes.dex
+#Sat Dec 28 14:31:53 WIB 2019
+base.0=/home/nafiu/react/projek/git/SalesAppProject/mobile/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
+renamed.0=classes.dex

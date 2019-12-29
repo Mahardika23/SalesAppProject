@@ -13,7 +13,17 @@ class DashboardController extends Controller
         
         // var_dump($form);
         $token = $request->session()->get('token');
+<<<<<<< HEAD
+        //user
+        $user = $request->session()->get('user');
+        //nama
+        $nama = $request->session()->get('nama');
+        //user type
+        $user_type = $request->session()->get('user_type');
+        return view('beranda',['user' => $user]);
+=======
         $nama=$request->session()->get('nama');
         return view('beranda',['nama' => $nama]);
+>>>>>>> master
     }
 }

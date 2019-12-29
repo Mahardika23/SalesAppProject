@@ -15,6 +15,8 @@ class TokoController extends Controller
         if ($request->session()->has('login')) {
             //nama
             $nama=$request->session()->get('nama');
+            //user type
+            $user_type = $request->session()->get('user_type');
             //isi tokennya
             $token = $request->session()->get('token');
 
@@ -39,7 +41,7 @@ class TokoController extends Controller
                 $data = $itemData;
             
             // dd($data);
-            return view('toko',['data'=> $data,'nama' => $nama]);
+            return view('toko',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
             // return view('barang',['nama' => $nama]);
 
         }else{

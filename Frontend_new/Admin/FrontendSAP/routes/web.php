@@ -41,6 +41,12 @@ Route::group(['middleware' => ['logincheck']], function() {
 
     //test
     Route::get('/Manajemen-Data-Sales', [ 'as' => 'Manajemen-Data-Sales', 'uses' => 'SalesController@index']);
+    Route::post('/Manajemen-Data-Sales', [ 'uses' => 'SalesController@store']);
+    Route::post('/Manajemen-Data-Sales/delete', [ 'uses' => 'SalesController@destroy']);
+    Route::post('/Manajemen-Data-Sales/update', [ 'uses' => 'SalesController@update']);
+
+    //test
+    Route::get('/Manajemen-Data-Sales', [ 'as' => 'Manajemen-Data-Sales', 'uses' => 'SalesController@index']);
 
     // lama 
     // Route::get('/Manajemen-Data-Sales', function () {
