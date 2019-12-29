@@ -9,11 +9,11 @@ $factory->define(Barang::class, function (Faker $faker) {
     return [
         //
         'nama_barang' => $faker->word,
-        'jenis_barang' => $faker->word,
+        'kategori_id' => $faker->numberBetween(1,9),
         'harga_barang' => $faker->numberBetween(10000,50000),
         'stok_barang' => $faker->numberBetween(0,30),
-        // 'province_id' => $faker->numerify(1'###),
-
+        'district_id' => '1101010' 
+        
     
     ];
 });

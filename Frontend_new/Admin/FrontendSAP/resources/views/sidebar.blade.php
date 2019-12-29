@@ -62,7 +62,7 @@
                 </li>
                 <li class="logout">
                     <span>
-                        <a href=""> Logout</a>
+                        <a href="/logout"> Logout</a>
                     </span>
                     <span>
                         <img src="{{ asset('/img/logout.svg') }}" alt="">

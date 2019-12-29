@@ -54,7 +54,7 @@
         </div>
     </div>
 </div>
-3
+
 <script>
     $("button[name='shoplink']").on('click',function (params) {
         $('#modalPesan').modal('toggle',$(this));

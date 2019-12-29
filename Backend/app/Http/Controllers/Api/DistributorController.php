@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Distributor;
+use JWTAuth;
 class DistributorController extends Controller
 {
     /**
@@ -24,12 +25,31 @@ class DistributorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+  
+    public function searchBarang(Request $request)
     {
         //
-       
+        $id = $request['id'];
+        $search =$request['search'];        
+        return $distributor=Distributor::find($request['id'])->barang->where('nama_barang','LIKE',$search);
+
+    }
+    public function getProfil(){
+        $user = JWTAuth::parseToken()->authenticate();
+        return $user->userable;
+
     }
 
+    public function updateProfil(Request $request) {
+        $user = JWTAuth::parseToken()->authenticate();
+        $distributor = User::find($user['id'])->userable;
+      
+        
+        // return $request->all();
+        
+        $distributor->update($request->all());
+        return response()->json($distributor, 200);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -52,8 +72,14 @@ class DistributorController extends Controller
      */
     public function show($id)
     {
+        //Distributor::with('barang')->where('id',1)->get();
+        return $distributor=Distributor::with('barang')->where('id',$id)->get();;
+
+    }
+    public function showBarang($id)
+    {
         //
-        return $distributor=Distributor::find($id);
+        return $distributor=Distributor::find($id)->barang;
 
     }
 
@@ -63,10 +89,7 @@ class DistributorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.

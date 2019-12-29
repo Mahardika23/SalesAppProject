@@ -27,22 +27,15 @@ class WebCustomerController extends Controller
 
     public function aktivitas(Request $request)
     {
-        $request->session()->get('login', 'true');
-        if ($request->session()->has('login')) {
             return view('aktivitas');
-        } else {
-            return redirect()->route('login');
-        }
+        
     }
 
     public function distributor(Request $request)
     {
-        if ($request->session()->has('login'))
-        {
+        
             return view('distributor');
-        } else {
-            return redirect()->route('login');
-        }
+        
     }
 
     public function getBarangPesan(Request $request)
@@ -63,12 +56,7 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         // dd($data);
-        $request->session()->get('login', 'true');
-        if ($request->session()->has('login')) {
             return view('pesan', compact('data'));
-        } else {
-            return redirect()->route('login');
-        }
     }
 
     public function getBarangSearch(Request $request)
@@ -90,13 +78,9 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         // dd($input);
-        if ($request->session()->has('login'))
-        {
-            return view('search', compact('data'),);
-        } else {
-            return redirect()->route('login');
-        }
-        
+      
+        return view('search', compact('data'),);
+
     }
 
     public function login(Request $request)
@@ -115,7 +99,20 @@ class WebCustomerController extends Controller
         {
             return redirect()->route('beranda');
         } else {
-            return view('daftar');
+            $client =  new Client();
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+        $alamat = $request->all();
+        //dd ($alamat);
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+            return view('daftar',compact('data'));
         }
     }
 
@@ -141,10 +138,14 @@ class WebCustomerController extends Controller
         return view('daftar3', compact('data'), compact('input'));
     }
 
-    public function getBarang()
+    public function getBarang(Request $request)
     {
-        $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
+        if ($request->session()->has('token')) {
+            # code...
+             $token = $request->session()->get('token');
+       // $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+            $client =  new Client();
+             $promise = $client->getAsync('http://127.0.0.1:9090/api/showcatalogbyuser',['headers' => ['Authorization' => "Bearer {$token}"]])->then(
             function ($response) {
                 return $response->getBody();
             },
@@ -155,7 +156,24 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-
+        }
+        else {
+            # code...
+            $client =  new Client();
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
+                function ($response) {
+                    return $response->getBody();
+                },
+                function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
+    
+            $data = $promise->wait();
+            $data = json_decode($data, true);
+    
+        }
+       
         // $data = $data['data'];
 
         // dd($data);

@@ -25,7 +25,7 @@ class SalesController extends Controller
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/showdatabarang',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/sales',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -41,8 +41,13 @@ class SalesController extends Controller
                 $data['sales'] = $itemData;
             
             // dd($data);
+<<<<<<< HEAD
             return view('sales',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
             // return view('sales',['nama' => $nama]);
+=======
+            return view('sales',['data'=> $data,'nama' => $nama]);
+            // return view('barang',['nama' => $nama]);
+>>>>>>> master
 
         }else{
             return Redirect::route('login');

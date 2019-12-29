@@ -15,7 +15,7 @@
                     <div class="card-body" style="text-align:center">
                         <h1>SALES APP</h1>
                          <div>
-                            <img src="../img/aga.jpg" class="" alt="..." width='300px' height='300px'>
+                            <img src="../img/gambarLogo.jpg" class="" alt="..." width='300px' height='300px'>
                         </div>
                         <h4>Masuk</h4>
                          <!-- form validasi -->

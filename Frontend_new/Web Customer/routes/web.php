@@ -14,15 +14,18 @@
 // Route::get('/', function () {
 //     return view('');
 // });
+Route::group(['middleware' => ['logincheck']], function() {
+    Route::get('/aktivitas', 'WebCustomerController@aktivitas');
+    Route::get('/pesan', 'WebCustomerController@getBarangPesan');
+    
 
+});
 Route::get('/', [ 'as' => 'beranda', 'uses' => 'WebCustomerController@getBarang']);
-Route::get('/aktivitas', 'WebCustomerController@aktivitas');
 Route::get('/distributor', 'WebCustomerController@distributor');
-Route::get('/pesan', 'WebCustomerController@getBarangPesan');
 Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']);
 Route::post('/loginUser', 'UserController@login');
 Route::get('/search', 'WebCustomerController@getBarangSearch');
-Route::get('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
+Route::any('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
 Route::any('/cart', 'WebCustomerController@cart');
 Route::any('/daftar/toko', 'UserController@register');
 Route::any('/daftar/alamat', 'UserController@register2');

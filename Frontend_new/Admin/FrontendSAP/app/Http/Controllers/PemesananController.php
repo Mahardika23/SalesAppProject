@@ -17,10 +17,15 @@ class PemesananController extends Controller
     public function index(Request $request)
     {
         $request->session()->get('login');
+<<<<<<< HEAD
         //nama
         $nama=$request->session()->get('nama');
         //user type
         $user_type=$request->session()->get('user_type');
+=======
+            //nama
+            $nama=$request->session()->get('nama');
+>>>>>>> master
             //isi tokennya
             $token = $request->session()->get('token');
             $headers = [
@@ -44,7 +49,11 @@ class PemesananController extends Controller
                 // $data = $data['data'];
             $data['pemesanan']=$pemesananData;
             // dd($data);
+<<<<<<< HEAD
             return view('pemesanan',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
+=======
+            return view('pemesanan',['data'=> $data,'nama' => $nama]);
+>>>>>>> master
             
     }
 
@@ -101,6 +110,25 @@ class PemesananController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $input = $request->all();
+        $id = $request->input('id');
+        // dd($id);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+            ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+        // dd($success);
+        return redirect()->route('Manajemen-Data-Barang');
     }
 
     /**

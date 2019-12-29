@@ -16,8 +16,7 @@ class BarangController extends Controller
     public function index(Request $request)
     {
 
-        $request->session()->get('login');
-        if ($request->session()->has('login')) {
+        
             //nama
             $nama = $request->session()->get('nama');
             //user type
@@ -64,10 +63,7 @@ class BarangController extends Controller
             return view('barang',['data'=> $data,'kategori' => $kategori]);
             // return view('barang',['nama' => $nama]);
 
-        }else{
-            return Redirect::route('login');
-        }
-
+      
     }
 
     /**
@@ -89,6 +85,26 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $input = $request->all();
+        // dd($input);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/admin/barang',['headers' =>
+            ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+    //    dd($success);
+        return redirect('/Manajemen-Data-Barang');
     }
 
     /**
@@ -120,10 +136,29 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
         //
+        $input = $request->all();
+        $id = $request->input('id');
+        // dd($id);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+            ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+        // dd($success);
+        return redirect()->route('Manajemen-Data-Barang');
     }
 
     /**
@@ -132,7 +167,7 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request)
     {
         //
         $id = $request->input('id');
@@ -151,7 +186,10 @@ class BarangController extends Controller
         );
         $success=$promise->wait();
         $success = json_decode($success,true);
+<<<<<<< HEAD
         $nama=$request->session()->get('nama');
+=======
+>>>>>>> master
         return redirect()->route('Manajemen-Data-Barang');
     }
 }

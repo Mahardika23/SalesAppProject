@@ -16,11 +16,11 @@ class toko extends Model
         return $this->morphMany('App\User','userable');
     }
     public function sales(){
-        return $this->belongsTo('App\Sales');
-    }
+        return $this->belongsTo('App\Sales','sales_id');
+    }   
 
-    public function pemesanan(){
-        return $this->hasMany('App\Pemesanan');
+    public function pemesanan(){    
+        return $this->hasMany('App\Pemesanan','toko_id');
     }
         
 }

@@ -65,7 +65,7 @@ class LoginController extends Controller
         dd($userData);
 
             $request->session()->put('email','true');
-            $request->session()->put('login','true');
+            $request->session()->put('login',true);
             $request->session()->put('token',$token);
             $request->session()->put('user',$user);
             $request->session()->put('nama',$nama);
@@ -78,6 +78,32 @@ class LoginController extends Controller
 
         // dd($userData);
         // return view('/',compact('data','userData'));
+    }
+
+    public function logout(Request $request){
+        $client =  new Client();
+        // var_dump($form);
+        $token = $request->session()->get('token');
+        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+            function ($response) {
+                return $response->getBody();
+        }, function ($exception){
+            return $exception->getMessage();
+        }
+    );
+        $data = $promise->wait();
+        $data = json_decode($data,true);
+        // dd($data);
+        // dd ($data['message']);
+        $request->session()->flush();
+
+        if ($data['message'] == "Successfully logged out") {
+            
+            $request->session()->flush();
+            return redirect()->route('login');
+
+        }
+        return redirect('/');
     }
 
 }
