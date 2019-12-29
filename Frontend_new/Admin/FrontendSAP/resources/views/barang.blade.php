@@ -9,6 +9,8 @@
     <i class="fas fa-plus-square mr-1"></i>
     Tambah Barang
   </button>
+
+
   <!-- Add Barang Modal -->
   <div class="modal fade" id="addBarangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -26,8 +28,15 @@
               <input type="text" class="form-control" id="nama" placeholder="Nama Barang">
             </div>
             <div class="form-group">
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" placeholder="Jenis Barang">
+              <label for="inputAddress2">Kategori</label>
+              <div class="input-group mb-3">
+                <select class="custom-select" id="inputGroupSelect02" name="kategori_id">
+                  <option selected>Choose...</option>
+                  @foreach($kategori as $list)
+                  <option value="{{ $list['id'] }}">{{ $list['kategori'] }}</option>
+                  @endforeach
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>
@@ -40,12 +49,16 @@
             </div>
             <div class="form-group">
               <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" id="Stok" placeholder="9813">
+              <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813">
+              <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
+              <input type="hidden" name="district_id" id="" value=330101>
+
+              <input type="hidden" name="item_image" id="" value="">
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary">Tambah</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
           </div>
         </form>
       </div>
@@ -61,7 +74,7 @@
     <tr>
       <th scope="col" style="width:25px">No.</th>
       <th scope="col">Nama</th>
-      <th scope="col">Jenis</th>
+      <th scope="col">Kategori</th>
       <th scope="col">Harga</th>
       <th scope="col">Stok</th>
       <th scope="col" colspan="3">Aksi</th>
@@ -72,7 +85,12 @@
     <tr>
       <td scope="row">1</td>
       <td>{{$barang['nama_barang']}}</td>
-      <td>{{$barang['jenis_barang']}}</td>
+      <td>
+        @foreach($kategori as $list)
+          @if($barang['kategori_id'] == $list['id'])
+            {{ $list['kategori'] }}
+          @endif
+        @endforeach</td>
       <td >Rp {{$barang['harga_barang']}}</td>
       <td>{{$barang['stok_barang']}}</td>
       <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal{{$barang['id']}}">Detail</button></td>
@@ -97,8 +115,18 @@
               <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}" disabled>
             </div>
             <div class="form-group">
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" value="{{$barang['jenis_barang']}}" disabled>
+              <label for="inputAddress2">Kategori</label>
+              <div class="input-group mb-3">
+                <select class="custom-select" id="inputGroupSelect02" name="kategori_id" disabled>
+                  @foreach($kategori as $list)
+                    @if($barang['kategori_id'] == $list['id'])
+                      <option value="{{ $list['id'] }}" selected>{{ $list['kategori'] }}</option>
+                    @else
+                      <option value="{{ $list['id'] }}">{{ $list['kategori'] }}</option>
+                    @endif
+                  @endforeach
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>
@@ -139,8 +167,18 @@
               <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}">
             </div>
             <div class="form-group">
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" value="{{$barang['jenis_barang']}}" >
+              <label for="inputAddress2">Kategori</label>
+              <div class="input-group mb-3">
+                <select class="custom-select" id="inputGroupSelect02" name="kategori_id">
+                  @foreach($kategori as $list)
+                    @if($barang['kategori_id'] == $list['id'])
+                      <option value="{{ $list['id'] }}" selected>{{ $list['kategori'] }}</option>
+                    @else
+                      <option value="{{ $list['id'] }}">{{ $list['kategori'] }}</option>
+                    @endif
+                  @endforeach
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>
@@ -178,6 +216,7 @@
         <form action="">
           <div class="modal-body">
             Yakin menghapus barang {{$barang['nama_barang']}}?
+            <input type="hidden" name="id" value="{{$barang['id']}}">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -194,143 +233,9 @@
 
 
 
-
-    <!-- <tr>
-      <td scope="row">2</td>
-      <td>Kapur Bagus Ajaib</td>
-      <td>Kapur</td>
-      <td>8400</td>
-      <td>15000</td>
-      <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal">Detail</button></td>
-      <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
-      <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
-    </tr>
-    <tr>
-      <td scope="row">3</td>
-      <td>Kapur Bagus Ajaib</td>
-      <td>Kapur</td>
-      <td>8400</td>
-      <td>1500</td>
-      <td><a href="#" class="btn btn-primary">Detail</a></td>
-      <td><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
-      <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-    </tr> -->
-      <!-- <td>15000</td>
-      <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal">Detail</button></td>
-      <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
-      <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
-    </tr> -->
   </tbody>
 </table>
 @endif
-<!-- Modal Detail -->
-<div class="modal fade" id="detailBarangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Lihat Detail</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" id="nama" value="Kapur Bagus Ajaib" disabled>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" value="Kapur" disabled>
-            </div>
-            <div class="form-group">
-              <label class="inputAddress2">Harga</label>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">Rp</div>
-                </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" value="8400" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" id="Stok" value="15000" disabled>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-<!-- Modal Edit -->
-<div class="modal fade" id="editBarangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Edit Informasi Barang</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" id="nama" value="Kapur Bagus Ajaib">
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" value="Kapur" >
-            </div>
-            <div class="form-group">
-              <label class="inputAddress2">Harga</label>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">Rp</div>
-                </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" value="8400" >
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" id="Stok" value="15000" >
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary">Edit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-<!-- Modal Delete -->
-<div class="modal fade" id="deleteBarangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Peringatan Hapus</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="">
-          <div class="modal-body">
-            Yakin menghapus data?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-danger">Hapus</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
 
 
 

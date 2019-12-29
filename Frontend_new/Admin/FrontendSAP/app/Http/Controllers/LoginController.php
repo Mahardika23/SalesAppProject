@@ -31,11 +31,11 @@ class LoginController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data,true);
+        // dd($data);
         
         if ($data == null) {
             return redirect()->route('login');
         }else{
-        // dd($data);
         $token = $data['token'];
         $promise2 = $client->requestAsync('GET','http://127.0.0.1:8001/api/user', ['headers' =>
         ['Authorization' => "Bearer {$token}"]])->then(
@@ -49,22 +49,29 @@ class LoginController extends Controller
         $userData = json_decode($userData,true);
         // dd($userData);
         $data['user_type'] = $userData['user']['userable_type'];
+        $user_type = $data['user_type'];
         // dd($data);
         $data['nama'] = $userData['user']['name'];
+        $nama = $data['nama'];
         // dd($userData);
+        $user = $userData['user'];
+        $userable_id = $userData['user']['userable_id'];
         // dd($userData);
         // if ($userData['user']['userable_type'] == 'App\Distributor') {
         //    # code...
         //    return halaman(aaaaa)
         // }
         // $data['userable_type'] = $userData['user']['userable_type'];
-        // dd($data);
+        dd($userData);
 
             $request->session()->put('email','true');
             $request->session()->put('login','true');
             $request->session()->put('token',$token);
-            $request->session()->put('nama',$data['nama']);
-            return Redirect::route('dashboard')->with(['data' => $data] );
+            $request->session()->put('user',$user);
+            $request->session()->put('nama',$nama);
+            $request->session()->put('user_type',$user_type);
+            $request->session()->put('userable_id',$userable_id);
+            return Redirect::route('dashboard')->with(['data' => $data, 'user' => $user] );
             // echo $request->session()->get('email');
         }
 

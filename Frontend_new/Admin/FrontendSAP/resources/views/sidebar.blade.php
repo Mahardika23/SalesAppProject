@@ -21,13 +21,16 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Sales App Project</h3>
+                <h3>Sales App Project </h3>
                 <strong></strong>
             </div>
             <ul class="list-unstyled components">
                 
                 <p> </p>
                 
+                <li>
+                    <h5>. {{ Session::get('nama') }}</h5>
+                </li>
                 <li class="active">
                     <a href="{{ url('/') }}">Dashboard</a>
                 </li>
@@ -36,7 +39,7 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manajemen Data</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li class="">
-
+                            
                         </li>
                         <li>
                             <a href="{{ url('/Manajemen-Data-Toko') }}"><i class="fas fa-store-alt mr-2"></i>Toko</a>
@@ -44,9 +47,11 @@
                         <li>
                             <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><i class="far fa-list-alt mr-2"></i>Pemesanan</a>
                         </li>
+                        @if((Session::get('user_type'))=="App\Distributor")
                         <li>
                             <a href="{{ url('/Manajemen-Data-Sales') }}"><i class="fas fa-users mr-2"></i>Sales</a>
                         </li>
+                        @endif
                         <li>
                             <a href="{{ url('/Manajemen-Data-Barang') }}"><i class="fas fa-box mr-2"></i>Barang</a>
                         </li>

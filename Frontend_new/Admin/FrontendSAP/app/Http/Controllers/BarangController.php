@@ -19,7 +19,12 @@ class BarangController extends Controller
         $request->session()->get('login');
         if ($request->session()->has('login')) {
             //nama
-            $nama=$request->session()->get('nama');
+            $nama = $request->session()->get('nama');
+            //user type
+            $user_type = $request->session()->get('user_type');
+            //user
+            $user = $request->session()->get('user');
+            
             //isi tokennya
             $token = $request->session()->get('token');
 
@@ -28,7 +33,7 @@ class BarangController extends Controller
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/showdatabarang',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/barang',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -43,8 +48,20 @@ class BarangController extends Controller
             
                 $data = $itemData;
             
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/kategori')->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            });
+
+            $daftarKategori = $promise->wait();
+            $daftarKategori = json_decode($daftarKategori,true);
+
+            $kategori = $daftarKategori;
+
             // dd($data);
-            return view('barang',['data'=> $data,'nama' => $nama]);
+            return view('barang',['data'=> $data,'kategori' => $kategori]);
             // return view('barang',['nama' => $nama]);
 
         }else{
@@ -105,6 +122,7 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         //
     }
 
@@ -117,5 +135,23 @@ class BarangController extends Controller
     public function destroy($id)
     {
         //
+        $id = $request->input('id');
+        // dd($input);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('DELETE','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+            ['Authorization' => "Bearer {$token}"]])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+        $nama=$request->session()->get('nama');
+        return redirect()->route('Manajemen-Data-Barang');
     }
 }
