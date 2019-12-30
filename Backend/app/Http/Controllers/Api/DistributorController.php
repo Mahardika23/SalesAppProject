@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Distributor;
 use JWTAuth;
+use App\User;
+use App\toko;
 class DistributorController extends Controller
 {
     /**
@@ -64,6 +66,22 @@ class DistributorController extends Controller
         return response()->json($distributor,201);
     }
 
+
+    public function updateStatusMitra(Request $request,$id){
+        $tokoId = $id;
+        $user = JWTAuth::parseToken()->authenticate();
+        $distributor = User::find($user['id'])->userable ;
+        // return $request['status'];
+        return $distributor->toko()->updateExistingPivot($tokoId,
+        [
+            'status' => $request['status'],
+            'sales_id' => $request['sales_id']
+        
+        ]);
+        // $user->roles()->updateExistingPivot($roleId, $attributes);
+
+
+    }
     /**
      * Display the specified resource.
      *

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Raleway|Roboto+Slab&display=swap');
 
-.navbar {
+  .navbar {
     background-color: #403151;
   }
   .navbar .navbar-brand {
@@ -58,7 +58,10 @@
   .navbar .navbar-link:hover {
     color: #c8a0f4;
   }
-  
+  .dropdown-item:hover {
+    background-color: #c8a0f4;
+  }
+
   @media (max-width: 575px) {
     .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
       color: #faf7fd;

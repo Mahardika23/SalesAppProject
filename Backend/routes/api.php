@@ -48,7 +48,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Delete
     Route::delete('/admin/sales/{id}','Api\SalesController@delete');
 
-    
+    Route::get('/admin/toko','Api\TokoController@tokoByDistributor');
+    Route::put('/admin/toko/{id}','Api\DistributorController@updateStatusMitra');
+
     Route::get('/admin/barang','Api\BarangController@index'); 
     // Insert
     Route::post('/admin/barang','Api\BarangController@store');
@@ -68,6 +70,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Route::get('/admin/showdatabarang','Api\BarangController@index'); 
     Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
     Route::post('logout','UserController@logout');  
+
+    Route::post('/ajukandistributor','Api\TokoController@ajukanDistributor');
+    Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
 });
 Route::post('/login','UserController@authenticate');
 Route::post('/register','UserController@register');
