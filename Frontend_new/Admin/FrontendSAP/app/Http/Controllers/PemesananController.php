@@ -17,15 +17,10 @@ class PemesananController extends Controller
     public function index(Request $request)
     {
         $request->session()->get('login');
-<<<<<<< HEAD
         //nama
         $nama=$request->session()->get('nama');
         //user type
         $user_type=$request->session()->get('user_type');
-=======
-            //nama
-            $nama=$request->session()->get('nama');
->>>>>>> master
             //isi tokennya
             $token = $request->session()->get('token');
             $headers = [
@@ -49,11 +44,7 @@ class PemesananController extends Controller
                 // $data = $data['data'];
             $data['pemesanan']=$pemesananData;
             // dd($data);
-<<<<<<< HEAD
             return view('pemesanan',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
-=======
-            return view('pemesanan',['data'=> $data,'nama' => $nama]);
->>>>>>> master
             
     }
 

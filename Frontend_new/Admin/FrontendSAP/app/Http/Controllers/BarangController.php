@@ -186,10 +186,6 @@ class BarangController extends Controller
         );
         $success=$promise->wait();
         $success = json_decode($success,true);
-<<<<<<< HEAD
-        $nama=$request->session()->get('nama');
-=======
->>>>>>> master
         return redirect()->route('Manajemen-Data-Barang');
     }
 }

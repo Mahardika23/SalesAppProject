@@ -25,7 +25,7 @@ class TokoController extends Controller
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/showdatabarang',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/toko',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -40,7 +40,7 @@ class TokoController extends Controller
             
                 $data = $itemData;
             
-            // dd($data);
+            dd($data);
             return view('toko',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
             // return view('barang',['nama' => $nama]);
 

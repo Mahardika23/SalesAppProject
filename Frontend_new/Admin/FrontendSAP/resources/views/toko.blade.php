@@ -23,6 +23,7 @@
       <th scope="col" style="width:25px">No.</th>
       <th scope="col">Nama Toko</th>
       <th scope="col">Nama Pemilik</th>
+      <th scope="col">No telp</th>
       <th scope="col">Alamat</th>
       <th scope="col">Email</th>
       <th scope="col" colspan="3">Aksi</th>
@@ -31,33 +32,14 @@
   <tbody>
     <tr>
       <td scope="row">1</td>
-      <td>Lara Ngati</td>
-      <td>Ati Ampela</td>
-      <td>Jl Sega Kucing Jejer Susukan</td>
+      <td>Toko Ngati</td>
+      <td>Napoy</td>
+      <td>082227181613</td>
+      <td>Jl Mayjen Sungkono</td>
       <td>larati@mail.mail</td>
       <td style="width:70px"><a href="#" class="btn btn-primary">Detail</a></td>
       <td style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
       <td style="width:40px"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-    </tr>
-    <tr>
-      <td scope="row">2</td>
-      <td>Lara Ngati</td>
-      <td>Ati Ampela</td>
-      <td>Jl Sega Kucing Jejer Susukan</td>
-      <td>larati@mail.mail</td>
-      <td><a href="#" class="btn btn-primary">Detail</a></td>
-      <td><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
-      <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
-    </tr>
-    <tr>
-      <td scope="row">3</td>
-      <td>Lara Ngati</td>
-      <td>Ati Ampela</td>
-      <td>Jl Sega Kucing Jejer Susukan</td>
-      <td>larati@mail.mail</td>
-      <td><a href="#" class="btn btn-primary">Detail</a></td>
-      <td><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></td>
-      <td><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></td>
     </tr>
   </tbody>
 </table>

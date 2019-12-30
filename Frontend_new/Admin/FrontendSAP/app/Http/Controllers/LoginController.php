@@ -62,7 +62,7 @@ class LoginController extends Controller
         //    return halaman(aaaaa)
         // }
         // $data['userable_type'] = $userData['user']['userable_type'];
-        dd($userData);
+        // dd($userData);
 
             $request->session()->put('email','true');
             $request->session()->put('login',true);

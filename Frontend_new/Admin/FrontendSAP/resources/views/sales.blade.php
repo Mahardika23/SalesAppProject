@@ -57,8 +57,6 @@
       <th scope="col" style="width:25px">No.</th>
       <th scope="col">Nama</th>
       <th scope="col">No Hp</th>
-      <th scope="col">Harga</th>
-      <th scope="col">Stok</th>
       <th scope="col" colspan="3">Aksi</th>
     </tr>
   </thead>
