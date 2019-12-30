@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url('/css/mdb.min.css')}}">
+    <title>SALES APPLICATION</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="{{ url('/css/mdb.min.css')}}"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="{{ asset('dist\css\smart_wizard.css')}}">
+    <link rel="stylesheet" href="{{ asset('css\error.css')}}">
+    <link rel="stylesheet" href="{{ asset('dist\css\smart_wizard_theme_dots.css')}}">
 </head>
 
 <body style="background: linear-gradient(0deg, #E4DFEC 70%, #403151 60%); ">
@@ -93,9 +99,95 @@
                                 <button type="submit" class="btn" style="background-color:#403151;color:white">Selanjutnya</button>
                             </div>
                         </form>
+                        <div class="form-group">
+                            <div style="text-align:RIGHT; margin-right:9%">
+                                <a href="/login" type="button" class="btn next-step" id="back-button"
+                                    style="background-color:#403151;color:white; margin-right:58%;">Kembali</a>
+                                <button type="button" class="btn next-step" id="previous-step"
+                                    style="background-color:#403151;color:white">Kembali</button>
+                                <button type="button" class="btn next-step" id="next-step"
+                                    style="background-color:#403151;color:white">Selanjutnya</button>
+                                <button type="submit" class="btn next-step" id="submit"
+                                    style="background-color:#403151;color:white">Submit</button>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript" src="{{asset("dist/js/jquery.smartWizard.js")}}">
+    </script>
+
+    <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/kabupaten.js')}}"></script>
+    <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/provinsi.js')}}"></script>
+    <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/Kecamatan&Kelurahan.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+    <script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#submit').hide();
+            $('#previous-step').hide();
+            
+        $('#smartwizard').smartWizard({
+            // autoAdjustHeight:    ,
+            theme:'dots',
+            keyNavigation:false,
+            autoAdjustHeight:false,
+          
+            transitionEffect:'slide',
+            toolbarSettings: {
+                toolbarPosition : 'none'
+            },
+            anchorSettings:{
+                anchorClickable	:true,
+                removeDoneStepOnNavigateBack:true,
+             },
+        });
+        $('#next-step').click(function () {
+            $('#smartwizard').smartWizard("next");
+
+        })
+        $('#previous-step').click(function () {
+            $('#smartwizard').smartWizard("prev");
+
+        })
+        $('#smartwizard').on('showStep', function (e, anchorObject,stepNumber,stepDirection,stepPosition) {
+           console.log(stepPosition);
+            if (stepPosition === 'final') {
+                $('#back-button').hide();
+                $('#next-step').hide();
+                $('#submit').show();
+                $('#previous-step').show();
+                
+        
+            }
+            else if(stepPosition == 'middle' ){
+                $('#back-button').hide();
+                $('#next-step').show();
+                $('#submit').hide();
+                $('#previous-step').show();
+                
+            }
+            else{
+                $('#back-button').show();
+                $('#next-step').show();
+                $('#previous-step').hide(); 
+                $('#submit').hide();
+
+            }
+            
+        })
+        $('#submit').on('click',function () {
+            // console.log("done");
+            $('#form-regist').submit();
+        })
+        // console.log("Hello");
+    });
+    </script>
 </body>
