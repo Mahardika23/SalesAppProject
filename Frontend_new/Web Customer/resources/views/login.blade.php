@@ -37,7 +37,7 @@
                                     </div>
                             </form>
                         </div>
-                        <div style="marginTop:10;flexDirection:row">
+                        <div style="margin-Top:10;flex-Direction:row">
                             <a href='\lupa' style="margin-right:120;">Lupa Password</a>
                             <a href='\daftar' style=>Daftar</a>
                         </div>

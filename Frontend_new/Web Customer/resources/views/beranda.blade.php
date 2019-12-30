@@ -15,6 +15,33 @@
             </form>
         </div>
     </div>
+    <h5 style="text-align:center;">Kategori</h5>
+
+    <div class="row justify-content-md-center" style=" margin-bottom:20;margin-top:20">
+        <div class="row ml-3">
+
+            @foreach($kategori as $kategori)
+            <div class="row">
+                <div class="col ml-3 mr-2 ">
+                    <div class="card  mb-4" style="max-width:100rem; max-height:6rem; border-radius:20px;">
+                        <a href="/search/{{$kategori['id']}}" class=" kartu" style="border-radius:20px;">
+                            <div class="row no-gutters " style="padding-right:15;padding-left:15">
+                                {{$kategori['kategori']}}
+                                <form class="form-inline" method="GET" action="/search/{{$kategori['id']}}">
+                                    @CSRF
+                                    <input type="hidden" name="id" value="{{$kategori['id']}}">
+                                    <!-- <button type="submit"></button> -->
+                                </form>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+        </div>
+    </div>
+
     <h5 style="text-align:center;">Katalog Produk</h5>
     <div class="row justify-content-md-center" style=" margin-bottom:50;">
         <div class="col">
@@ -32,10 +59,12 @@
                             @foreach($data['data'] as $barang)
                             <div class="row">
                                 <div class="col ml-3 mr-2 ">
-                                    <div class="card  mb-4"
-                                        style="max-width:10rem; max-height:6rem; border-radius:20px;">
-                                        <a href="#modalPesan" data-toggle="modal" data-target="#modalPesan"
-                                            id="{{$barang['id']}}" class=" kartu" style="border-radius:20px;">
+                                    <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
+                                        @if (Session::has('login'))
+                                        <a href="#modalPesan" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}" class=" kartu" style="border-radius:20px;">
+                                        @else
+                                        <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$barang['id']}}" class=" kartu" style="border-radius:20px;">
+                                        @endif
                                             <div class="row no-gutters " style="padding-right:15;">
                                                 <div class="col">
                                                     <img src="../img/minyak.jpg" class="card-img p-2"
@@ -70,25 +99,35 @@
                     </div>
                     <div class="carousel-item">
                         <div class="row ml-1">
-                            @foreach($data['data'] as $barang)
+                            @isset($page2['data'])
+
+                            @foreach($page2['data'] as $benda )
                             <div class="row">
+                                
                                 <div class="col ml-3 mr-2 ">
-                                    <div class="card  mb-4"
-                                        style="max-width:10rem; max-height:6rem; border-radius:20px;">
-                                        <a href="/search" class=" kartu" style="border-radius:20px;">
+                                    <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
+                                        @if (Session::has('login'))
+                                        <a href="#modalPesan" data-toggle="modal" data-target="#modalPesan" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
+                                        @else
+                                        <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
+                                        @endif
                                             <div class="row no-gutters " style="padding-right:15;">
                                                 <div class="col">
                                                     <img src="../img/minyak.jpg" class="card-img p-2"
                                                         style="height:6rem; width:4.5rem;">
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card-body p-1">
-                                                        <p class="card-text"
-                                                            style="font-size:65%; white-space:pre-line;">
-                                                            {{$barang['nama_barang']}}
-                                                            harga : {{$barang['harga_barang']}}
-                                                            stok : {{$barang['stok_barang']}}
-                                                        </p>
+                                                    <div class="card-body p-1" id="{{$benda['id']}}isi">
+                                                        <div class="card-text" style="font-size:65%;">
+                                                            <form>
+                                                                <p class="m-0"> <text id='produk'>{{$benda['nama_barang']}}</text>
+                                                                </p>
+                                                                <p class="m-0"> harga : <text id='harga'>{{$benda['harga_barang']}}</text>
+                                                                </p>
+                                                                <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
+                                                            </form>
+                                                            <b>{{$benda['distributor']['nama_distributor']}}</b>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,6 +136,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            @endisset
 
                         </div>
 
@@ -137,15 +177,15 @@
 
 <!-- Modal -->
 <script>
-    var map = L.map('mapid').setView([-7.4568928,109.3003901], 13);
+    var map = L.map('mapid').setView([-7.4568928, 109.3003901], 13);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-L.marker([-7.4568928,109.3003901]).addTo(map)
-    .bindPopup('Reksa Karya')
-    .openPopup();
+    L.marker([-7.4568928, 109.3003901]).addTo(map)
+        .bindPopup('Reksa Karya')
+        .openPopup();
 </script>
 @include('modal')
 @endsection

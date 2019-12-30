@@ -11,7 +11,12 @@
         <div class="col-3" style="background-color:blue;">
             data distributor
         </div>
-        <div class="col-7 pt-4" style="background-color:pink;">
+        <div class="col-7">
+            <div>
+                <form action="/mitra">
+                    <button type="submit"class="btn-purple" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Ajukan Permintaan Mitra</button>
+                </form>
+            </div>
             <form class="form-inline" method="GET" action="/search">
                 <input class="form-control mr-2" style="width:88%" type="search" placeholder="Produk" aria-label="Search">
                 <button class="searchlink" type="submit">
@@ -50,52 +55,7 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modalPesan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
-                        <div class="row no-gutters" style="padding-right:15;">
-                            <div class="col-3">
-                                <img src="../img/minyak.jpg" class="card-img p-2">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body p-0">
-                                    <a href="/distributor" style="color:inherit;">
-                                        <h2 style="padding-left:20%; margin-bottom:0;">Distributor </h2>
-                                    </a>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                                nama produk :
-                                                harga :
-                                                stok :
-                                            </p>
-                                        </div>
-                                        <div class="def-number-input number-input safari_only col-6 pt-5">
-                                            <button onclick=" this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="form-inline">
-                        <p class="m-4">Tambah produk ke pesanan ?</p>
-                        <button type="submit" class="m-3">
-                            <input type="hidden">
-                            Tambah
-                        </button>
-                        <button type="button" class="m-3" data-dismiss="modal">Batal</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Modal -->
+    @include('modal')
 </div>
 @endsection

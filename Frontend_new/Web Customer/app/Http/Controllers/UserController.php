@@ -141,10 +141,16 @@ class UserController extends Controller
             
             $request->session()->flush();
             return redirect()->route('beranda');
-
+        
         }
-        return redirect('beranda');
+        return redirect()->route('beranda');
 
     }
 
+    public function profil(Request $request)
+    {
+        return redirect()->route('beranda');
+
+    }
+    
 }

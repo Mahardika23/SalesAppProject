@@ -53,4 +53,37 @@
     border-color: #B1A0C7; 
   }
   
- 
+  .btn-purple {
+    color: #fff;
+    background-color: #5d4675;
+    border-color: #5d4675;
+  }
+  
+  .btn-purple:hover {
+    color: #fff;
+    background-color: #403151;
+    border-color: #3f3050;
+  }
+  
+  .btn-purple:focus, .btn-purple.focus {
+    box-shadow: 0 0 0 0.2rem #B1A0C7;
+  }
+  
+  .btn-purple.disabled, .btn-purple:disabled {
+    color: rgb(0, 0, 0);
+    background-color: #bdbbc2;
+    border-color: #7a36c2;
+  }
+  
+  .btn-purple:not(:disabled):not(.disabled):active, .btn-purple:not(:disabled):not(.disabled).active,
+  .show > .btn-purple.dropdown-toggle {
+    color: #fff;
+    background-color: #403151;
+    border-color: #3f3050;
+  }
+  
+  .btn-purple:not(:disabled):not(.disabled):active:focus, .btn-purple:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-purple.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #B1A0C7;
+  }
+  
