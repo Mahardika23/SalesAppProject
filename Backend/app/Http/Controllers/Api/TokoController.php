@@ -33,6 +33,13 @@ class TokoController extends Controller
             ]);
     }
 
+    public function tokoSales(){
+        $user = JWTAuth::parseToken()->authenticate();
+        $sales = User::find($user['id'])->userable;
+        $toko = $sales->distributor->toko()->wherePivot('sales_id',$sales['id'])->get();
+        // return $toko=Distributor::find($distributor['id'])->toko;
+        return $toko;
+    }
     public function tokoByDistributor(){
         $user = JWTAuth::parseToken()->authenticate();
         $distributor = User::find($user['id'])->userable;
