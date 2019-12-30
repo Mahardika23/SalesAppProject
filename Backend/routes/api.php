@@ -50,6 +50,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::get('/admin/toko','Api\TokoController@tokoByDistributor');
     Route::put('/admin/toko/{id}','Api\DistributorController@updateStatusMitra');
+    Route::get('/sales/toko','Api\TokoController@tokoSales');
 
     Route::get('/admin/barang','Api\BarangController@index'); 
     // Insert
