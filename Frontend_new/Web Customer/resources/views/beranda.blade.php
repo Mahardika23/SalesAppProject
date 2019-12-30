@@ -99,6 +99,8 @@
                     </div>
                     <div class="carousel-item">
                         <div class="row ml-1">
+                            @isset($page2['data'])
+
                             @foreach($page2['data'] as $benda )
                             <div class="row">
                                 
@@ -134,6 +136,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            @endisset
 
                         </div>
 

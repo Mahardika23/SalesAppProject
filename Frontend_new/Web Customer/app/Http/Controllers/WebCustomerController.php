@@ -20,6 +20,16 @@ class WebCustomerController extends Controller
         return redirect()->back();
     }
 
+    public function login(Request $request)
+    {
+        if ($request->session()->has('login'))
+        {
+            return redirect()->route('beranda');
+        } else {
+            return view('login');
+        }
+    }
+
     public function beranda()
     {
         return view('beranda');
@@ -114,10 +124,24 @@ class WebCustomerController extends Controller
 
     public function daftar(Request $request)
     {
-        if ($request->session()->has('login')) {
+        if ($request->session()->has('login'))
+        {
             return redirect()->route('beranda');
         } else {
-            return view('login');
+            $client =  new Client();
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+        $alamat = $request->all();
+        //dd ($alamat);
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+            return view('daftar',compact('data'));
         }
     }
 
@@ -202,7 +226,7 @@ class WebCustomerController extends Controller
         }
 
         // $data = $data['data'];
-        //dd($kategori);
+        //dd($data);
         //  dd($page2);
         return view('beranda', compact('data','page2','kategori'));
     }
