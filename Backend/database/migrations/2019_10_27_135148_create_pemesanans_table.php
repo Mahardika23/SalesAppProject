@@ -19,7 +19,7 @@ class CreatePemesanansTable extends Migration
             $table->bigInteger('distributor_id');
             $table->bigInteger('sales_id');
 
-            // $table->string('barang_pesanan');
+            $table->string('nama_toko');
             $table->integer('kuantitas_pesanan')->nullable();
             $table->bigInteger('total_harga');
             $table->enum('status_pemesanan',['diterima kurir','menunggu persetujuan','diantar','selesai']);
