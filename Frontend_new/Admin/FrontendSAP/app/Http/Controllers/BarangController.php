@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
 {
@@ -12,33 +13,57 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //isi tokennya
-        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU3NDU5OTM5OSwiZXhwIjoxNTc0NjAyOTk5LCJuYmYiOjE1NzQ1OTkzOTksImp0aSI6Ik9kWG5rSnQ3SkphdWlKNDgiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.bCykwnf96wzDfRWjLDu0k_uvMiH1qitL5PBdLE3Ljlk';
-        $headers = [
-            'Authorization' => 'Bearer'.$token,
-            'Accept'        => 'application/json'
-        ];
-        $client =  new Client();
-        $promise = $client->requestAsync('GET','http://127.0.0.1:8000/api/admin/showdatabarang',[
-            'headers' => $headers
-        ])
-        ->then(
-            function ($response) {
-                return $response->getBody();
-        }, function ($exception){
-            return $exception->getMessage();
-        }
-        );
 
-        $data = $promise->wait();
-        $data = json_decode($data,true);
         
-            // $data = $data['data'];
-        
-        // dd($data);
-        return view('barang',compact('data'));
+            //nama
+            $nama = $request->session()->get('nama');
+            //user type
+            $user_type = $request->session()->get('user_type');
+            //user
+            $user = $request->session()->get('user');
+            
+            //isi tokennya
+            $token = $request->session()->get('token');
+
+            $headers = [
+                'Authorization' => 'Bearer'.$token,
+                'Accept'        => 'application/json'
+            ];
+            $client =  new Client();
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/barang',['headers' =>
+            ['Authorization' => "Bearer {$token}"]])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+            );
+    
+            $itemData = $promise->wait();
+            $itemData = json_decode($itemData,true);
+            
+                $data = $itemData;
+            
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/kategori')->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            });
+
+            $daftarKategori = $promise->wait();
+            $daftarKategori = json_decode($daftarKategori,true);
+
+            $kategori = $daftarKategori;
+
+            // dd($data);
+            return view('barang',['data'=> $data,'kategori' => $kategori]);
+            // return view('barang',['nama' => $nama]);
+
+      
     }
 
     /**
@@ -60,6 +85,26 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $input = $request->all();
+        // dd($input);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/admin/barang',['headers' =>
+            ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+    //    dd($success);
+        return redirect('/Manajemen-Data-Barang');
     }
 
     /**
@@ -91,9 +136,29 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+
         //
+        $input = $request->all();
+        $id = $request->input('id');
+        // dd($id);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+            ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+        // dd($success);
+        return redirect()->route('Manajemen-Data-Barang');
     }
 
     /**
@@ -102,8 +167,29 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request)
     {
         //
+        $id = $request->input('id');
+        // dd($input);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('DELETE','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+            ['Authorization' => "Bearer {$token}"]])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+<<<<<<< HEAD
+        $nama=$request->session()->get('nama');
+=======
+>>>>>>> master
+        return redirect()->route('Manajemen-Data-Barang');
     }
 }

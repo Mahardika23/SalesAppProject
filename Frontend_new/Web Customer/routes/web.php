@@ -31,9 +31,7 @@ Route::group(['middleware' => ['logincheck']], function() {
 });
 
 Route::get('/', [ 'as' => 'beranda', 'uses' => 'WebCustomerController@getBarang']);
-Route::get('/aktivitas', 'WebCustomerController@aktivitas');
 Route::get('/distributor', 'WebCustomerController@distributor');
-Route::get('/pesan', 'WebCustomerController@getBarangPesan');
 Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']);
 Route::post('/loginUser', 'UserController@login');
 Route::get('/search/{id}', 'WebCustomerController@getKategoriSearch');

@@ -18,7 +18,7 @@
         <div class="wrap-login100">
             
             <form class="  needs-validation login100-form needs-validation" method="POST" action="/logincheck" novalidate>
-            {{csrf_field()}}
+            @CSRF
                 <span class="login100-form-logo">
                     <i class="fas fa-user"></i>
                 </span>
@@ -51,7 +51,7 @@
             </form>
         </div>
     </div>
-
+    
     <!-- USERNAME atau PASSWORD SALAH -->
     <div class="modal fade" id="loginfailed" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">

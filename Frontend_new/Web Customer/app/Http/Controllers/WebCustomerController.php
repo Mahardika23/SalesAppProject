@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class WebCustomerController extends Controller
@@ -29,7 +30,7 @@ class WebCustomerController extends Controller
         return view('aktivitas');
     }
 
-    public function distributor()
+    public function distributor(Request $request)
     {
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/dsitributor')->then(
@@ -47,7 +48,8 @@ class WebCustomerController extends Controller
         // $data = $data['data'];
 
         //dd($data);
-        return view('distributor',compact('data'));
+        // dd($data);
+        return view('distributor', compact('data'));
     }
 
     public function getBarangPesan(Request $request)
@@ -119,28 +121,6 @@ class WebCustomerController extends Controller
         }
     }
 
-    public function daftar2(Request $request)
-    {
-        if ($request->session()->has('login')) {
-            return redirect()->route('beranda');
-        } else {
-            $client =  new Client();
-            $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
-                function ($response) {
-                    return $response->getBody();
-                },
-                function ($exception) {
-                    return $exception->getMessage();
-                }
-            );
-            $alamat = $request->all();
-            //dd ($alamat);
-            $data = $promise->wait();
-            $data = json_decode($data, true);
-            return view('daftar', compact('data'));
-        }
-    }
-
     public function getProvince(Request $request)
     {
         $input = $request->all();
@@ -174,7 +154,6 @@ class WebCustomerController extends Controller
                 return $exception->getMessage();
             }
         );
-
         $kategori = $promise->wait();
         $kategori = json_decode($kategori, true);
 

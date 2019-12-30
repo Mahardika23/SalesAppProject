@@ -17,11 +17,11 @@ class CreateBarangsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('distributor_id');
             $table->string('nama_barang');
-            $table->string('jenis_barang');
+            $table->string('kategori_id');
             $table->bigInteger('harga_barang');
             $table->bigInteger('stok_barang');
-           
-            // $table->bigInteger('district_id');
+            $table->string('item_image',50)->nullable();
+            $table->bigInteger('district_id')->nullable();
             // $table->bigInteger('village_id');
                         
             $table->timestamps();

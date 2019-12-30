@@ -23,6 +23,7 @@ class CreateDistributorsTable extends Migration
             $table->bigInteger('regency_id')->nullable();
             $table->bigInteger('district_id')->nullable();
             $table->bigInteger('village_id')->nullable();
+            $table->string('profile_image',50)->nullable();
 
             $table->timestamps();
             

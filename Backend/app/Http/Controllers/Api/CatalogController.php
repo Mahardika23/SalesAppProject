@@ -8,20 +8,27 @@ use App\Distributor;
 use App\Barang;
 use JWTAuth;
 use App\User;
-
+use App\KategoriBarang;
 class CatalogController extends Controller
 {
     public function showall()
     {
         // $distributor = 
-        return $barang = Barang::all();
+        return $barang = Barang::with('distributor')->paginate(12);
     }
     public function showalltoWeb()
     {
         // $distributor = 
         return $barang = Barang::with('distributor')->paginate(12);
     }
-
+    public function showCategory(){
+        return $kategori=KategoriBarang::all();
+    }
+    public function showByCategory(Request $request){
+        // return $request['id'];
+        return $kategori = Barang::with('distributor')->where('kategori_id',$request['id'])->paginate(10);
+        
+    }
     public function showByFilter(Request $request)
     {
 
@@ -37,11 +44,13 @@ class CatalogController extends Controller
     public function showByUser(Request $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
-        $userToko = User::find($user['id'])->userable->regency_id;
-        return $barang = Barang::find(1)
-            ->join('distributors', 'barangs.distributor_id', '=', 'distributors.id')
-            ->select('barangs.*', 'distributors.nama_distributor')->where('distributors.regency_id', $userToko)
-            ->get();
+        $userToko = User::find($user['id'])->userable->district_id;
+        return $barang = Barang::with('distributor')->where('district_id',$userToko)->paginate(12);
+
+        // return $barang = Barang::find(1)
+        //     ->join('distributors', 'barangs.distributor_id', '=', 'distributors.id')
+        //     ->select('barangs.*', 'distributors.nama_distributor')->where('distributors.regency_id', $userToko)
+        //     ->get();
     }
 
     public function searchBy(Request $request)
@@ -50,7 +59,7 @@ class CatalogController extends Controller
         $barang = Barang::with('distributor')->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
             ->orWhereHas('distributor', function ($query) {
                 global $request;
-                $query->where('nama_distributor', 'LIKE','%' . $request['search']  . '%');
+                $query->where('nama_distributor', 'LIKE', '%' . $request['search'] . '%');
             })->paginate(10);
         return $barang;
 

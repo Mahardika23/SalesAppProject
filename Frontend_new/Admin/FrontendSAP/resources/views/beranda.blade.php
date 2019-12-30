@@ -1,58 +1,9 @@
 @extends('sidebar')
 
 @section('content')
-
-  <!-- <div class="align-self-center" style="
-      background-color:tomato;
-      width:92%;
-      padding: 10px;
-      margin: 4%;">
-    <h1 style="text-align: center;">Dashboard Admin</h1>
-    <div style="
-      width: 94%;  
-      padding-top:15%;
-      display:flex;"
-      class="align-self-center">
-      <div style="
-        margin:50 px;
-        width:50%;
-        background-color:violet">
-        <a 
-          href=""
-          style="
-            border:2px solid #5a486e; 
-            border-radius:10px;
-            padding:28%;
-            margin-right:500 px;
-            /* background-color:#5a486e; */
-            color:white">
-            tombol 1
-        </a>
-      </div>
-      <div style="
-        margin:50 px;
-        width:50%;
-        background-color:violet;
-        text-align:right;">
-        <a 
-          href=""
-          style="
-            border:2px solid #5a486e; 
-            border-radius:10px;
-            padding:28%;
-            margin-right:500 px;
-            /* background-color:#5a486e; */
-            color:white">
-            tombol 2
-        </a>
-      </div>
-    </div>
-
-  </div> -->
+ 
   <link rel="stylesheet" type="text/css" href="{{ url('/css/beranda.css') }}" />
-
   <h1><i class="fas fa-tachometer-alt mr-2 pt-2"></i>Dashboard</h1><hr>
-  
   <div class="row text-white">
 
     <div class="card bg-info ml-3" style="width: 18rem;">
@@ -62,7 +13,7 @@
         </div>
         <h5 class="card-title">Data Toko</h5>
         <div class="display-4">200</div>
-        <a href="{{ url('/Manajemen-Data-Toko') }}"><p class="card-text text-white">Lihat Detail <i class="fa fa-angle-double-right ml-2"></i></p></a>
+        <a href="{{ url('/Manajemen-Data-Toko') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
 
@@ -73,7 +24,7 @@
         </div>
         <h5 class="card-title">Data Pemesanan</h5>
         <div class="display-4">130</div>
-        <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><p class="card-text text-white">Lihat Detail <i class="fa fa-angle-double-right ml-2"></i></p></a>
+        <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
 
@@ -81,6 +32,7 @@
 
   <div class="row text-white mt-5">
 
+    @if((Session::get('user_type'))=="App\Distributor")
     <div class="card bg-secondary ml-3" style="width: 18rem;">
       <div class="card-body">
         <div class="card-body-icon">
@@ -88,10 +40,10 @@
         </div>
         <h5 class="card-title">Data Sales</h5>
         <div class="display-4">20</div>
-        <a href="{{ url('/Manajemen-Data-Sales') }}"><p class="card-text text-white">Lihat Detail <i class="fa fa-angle-double-right ml-2"></i></p></a>
+        <a href="{{ url('/Manajemen-Data-Sales') }}"><p class="card-text text-white">Lihat Selengkapnya<i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
-
+    @endif
     <div class="card bg-danger ml-3" style="width: 18rem;">
       <div class="card-body">
         <div class="card-body-icon">
@@ -99,7 +51,7 @@
         </div>
         <h5 class="card-title">Data Barang</h5>
         <div class="display-4">12</div>
-        <a href="{{ url('/Manajemen-Data-Barang') }}"><p class="card-text text-white">Lihat Detail <i class="fa fa-angle-double-right ml-2"></i></p></a>
+        <a href="{{ url('/Manajemen-Data-Barang') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
 

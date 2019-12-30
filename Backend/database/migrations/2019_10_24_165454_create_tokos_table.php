@@ -21,11 +21,15 @@ class CreateTokosTable extends Migration
             $table->biginteger('no_telp');
             $table->string('email_pemilik')->unique();
             $table->string('alamat_toko');
+            $table->bigInteger('sales_id')->nullable();
             $table->bigInteger('province_id');
             $table->bigInteger('regency_id');
             $table->bigInteger('district_id');
             $table->bigInteger('village_id');
+            $table->string('profile_image',50)->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
