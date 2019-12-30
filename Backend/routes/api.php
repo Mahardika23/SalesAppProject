@@ -47,7 +47,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::put('/admin/sales/{id}','Api\SalesController@update');
     // Delete
     Route::delete('/admin/sales/{id}','Api\SalesController@delete');
+
     Route::get('/admin/toko','Api\TokoController@tokoByDistributor');
+    Route::put('/admin/toko/{id}','Api\DistributorController@updateStatusMitra');
+
     Route::get('/admin/barang','Api\BarangController@index'); 
     // Insert
     Route::post('/admin/barang','Api\BarangController@store');
