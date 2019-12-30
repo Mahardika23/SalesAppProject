@@ -33,6 +33,8 @@ Route::group(['middleware' => ['logincheck']], function() {
 
     //test
     Route::get('/Manajemen-Data-Toko', [ 'as' => 'Manajemen-Data-Toko', 'uses' => 'TokoController@index']);
+    Route::post('/Manajemen-Data-Toko/accept', [ 'uses' => 'TokoController@accept']);
+
 
     //lama
     // Route::get('/Manajemen-Data-Toko', function () {
