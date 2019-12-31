@@ -41,13 +41,8 @@ class SalesController extends Controller
                 $data['sales'] = $itemData;
             
             // dd($data);
-<<<<<<< HEAD
             return view('sales',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
             // return view('sales',['nama' => $nama]);
-=======
-            return view('sales',['data'=> $data,'nama' => $nama]);
-            // return view('barang',['nama' => $nama]);
->>>>>>> master
 
         }else{
             return Redirect::route('login');

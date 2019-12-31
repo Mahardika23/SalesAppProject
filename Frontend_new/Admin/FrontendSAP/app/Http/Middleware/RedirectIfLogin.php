@@ -17,10 +17,7 @@ class RedirectIfLogin
     {   
         if(!$request->session()->exists('token')){
                 return redirect()->route('login');
-<<<<<<< HEAD
                 
-=======
->>>>>>> master
 
         } 
                   return $next($request);

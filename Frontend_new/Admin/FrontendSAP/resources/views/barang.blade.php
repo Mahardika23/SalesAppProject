@@ -29,20 +29,15 @@
               <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Nama Barang">
             </div>
             <div class="form-group">
-<<<<<<< HEAD
               <label for="inputAddress2">Kategori</label>
               <div class="input-group mb-3">
                 <select class="custom-select" id="inputGroupSelect02" name="kategori_id">
-                  <option selected>Choose...</option>
+                  <option selected>Pilih...</option>
                   @foreach($kategori as $list)
                   <option value="{{ $list['id'] }}">{{ $list['kategori'] }}</option>
                   @endforeach
                 </select>
               </div>
-=======
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis" name="jenis_barang" placeholder="Jenis Barang">
->>>>>>> master
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>
@@ -56,24 +51,16 @@
             <div class="form-group">
               <label for="inputAddress2">Stok</label>
               <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813">
-<<<<<<< HEAD
               <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
               <input type="hidden" name="district_id" id="" value=330101>
 
               <input type="hidden" name="item_image" id="" value="">
-=======
->>>>>>> master
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-<<<<<<< HEAD
             <button type="submit" class="btn btn-primary">Tambah</button>
-=======
-            <button type="submti" class="btn btn-primary">Tambah</button>
->>>>>>> master
           </div>
-          <input type="hidden" name="distributor_id" id="" value=23>
         </form>
       </div>
     </div>
@@ -185,7 +172,6 @@
               <input type="text" class="form-control" name="nama_barang" id="nama" value="{{$barang['nama_barang']}}">
             </div>
             <div class="form-group">
-<<<<<<< HEAD
               <label for="inputAddress2">Kategori</label>
               <div class="input-group mb-3">
                 <select class="custom-select" id="inputGroupSelect02" name="kategori_id">
@@ -198,10 +184,6 @@
                   @endforeach
                 </select>
               </div>
-=======
-              <label for="inputAddress2">Jenis</label>
-              <input type="text" class="form-control" id="jenis_barang" value="{{$barang['jenis_barang']}}" >
->>>>>>> master
             </div>
             <div class="form-group">
               <label class="inputAddress2">Harga</label>

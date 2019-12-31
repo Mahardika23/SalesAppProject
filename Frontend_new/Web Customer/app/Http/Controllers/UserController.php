@@ -105,15 +105,29 @@ class UserController extends Controller
     );
         $data = $promise->wait();
         $data = json_decode($data,true);
+
         
-        
-        
+        //dd($request);
         if ($data == null) {
             return redirect()->route('login');
         }else{
             $request->session()->put('email', $request->get('email'));
             $request->session()->put('login', 'true');
             $request->session()->put('token', $data['token']);
+            
+        $token = $request->session()->get('token');
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+            function ($response) {
+                return $response->getBody();
+            },function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $profil = $promise->wait();
+        $profil = json_decode($profil, true);
+        //dd($profil);
+        $request->session()->put('nama_toko', $profil['nama_toko']);
 
             return redirect()->route('beranda');
         }

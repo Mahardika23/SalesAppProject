@@ -37,13 +37,21 @@ class WebCustomerController extends Controller
 
     public function aktivitas(Request $request)
     {
+        $request->session()->flush();
+
         return view('aktivitas');
     }
 
-    public function distributor(Request $request)
+    public function distributor(Request $request,$id)
     {
+        $token = $request->session()->get('token');
+        $input = $request->all();
+        //dd($input);
+        $input['id']=$id;
+        dd($token);
+        //dd($request->session()->get('token'));
         $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/dsitributor')->then(
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"]],['query' => $input])->then(
             function ($response) {
                 return $response->getBody();
             },
@@ -57,8 +65,7 @@ class WebCustomerController extends Controller
 
         // $data = $data['data'];
 
-        //dd($data);
-        // dd($data);
+        dd($data);
         return view('distributor', compact('data'));
     }
 
@@ -96,13 +103,14 @@ class WebCustomerController extends Controller
             );
             $data = $promise->wait();
             $data = json_decode($data, true);
-                //dd($data);
+                // dd($data);
             return view('search', compact('data'));
     }
 
     public function getKategoriSearch(Request $request, $id)
     {
         $input = $request->all();
+        //dd($input);
         $input['id']=$id;
         // dd($id);
             $client =  new Client();
@@ -117,7 +125,7 @@ class WebCustomerController extends Controller
     
             $data = $promise->wait();
             $data = json_decode($data, true);
-        //dd($data);
+        dd($data);
         // $data = $data['data'];
         return view('search', compact('data'));
     }
@@ -184,6 +192,7 @@ class WebCustomerController extends Controller
         if ($request->session()->has('token')) {
             # code...
             $token = $request->session()->get('token');
+            //dd($token);
             // $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
             $client =  new Client();
             $promise = $client->getAsync('http://127.0.0.1:9090/api/showcatalogbyuser', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
@@ -197,6 +206,18 @@ class WebCustomerController extends Controller
 
             $data = $promise->wait();
             $data = json_decode($data, true);
+            //dd($data);
+            $promise = $client->getAsync($data['next_page_url'], ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+                function ($response) {
+                    return $response->getBody();
+                },
+                function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
+
+            $page2 = $promise->wait();
+            $page2= json_decode($page2, true);
         } else {
             # code...
             $client =  new Client();
@@ -208,9 +229,9 @@ class WebCustomerController extends Controller
                     return $exception->getMessage();
                 }
             );
-
             $data = $promise->wait();
             $data = json_decode($data, true);
+            //dd($data);
             // $data = $data['data'];
             $promise = $client->getAsync($data['next_page_url'])->then(
                 function ($response) {
@@ -226,8 +247,8 @@ class WebCustomerController extends Controller
         }
 
         // $data = $data['data'];
-        //dd($data);
-        //  dd($page2);
+        // dd($data);
+        // dd($page2);
         return view('beranda', compact('data','page2','kategori'));
     }
 }

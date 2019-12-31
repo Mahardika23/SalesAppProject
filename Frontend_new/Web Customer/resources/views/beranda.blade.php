@@ -7,8 +7,7 @@
         <div class="col-lg-9">
             <form class="form-inline" method="GET" action="/search">
                 @CSRF
-                <input class="form-control mr-2" style="width:90%" type="search" name="search"
-                    placeholder="Produk, distributor" aria-label="Search">
+                <input class="form-control mr-2" style="width:90%" type="search" name="search" placeholder="Produk, distributor" aria-label="Search">
                 <button class="searchlink" type="submit">
                     <img class="btn" src="../img/search.png">
                 </button>
@@ -22,7 +21,7 @@
 
             @foreach($kategori as $kategori)
             <div class="row">
-                <div class="col ml-3 mr-2 ">
+                <div class="col ml-3 mr-2 " >
                     <div class="card  mb-4" style="max-width:100rem; max-height:6rem; border-radius:20px;">
                         <a href="/search/{{$kategori['id']}}" class=" kartu" style="border-radius:20px;">
                             <div class="row no-gutters " style="padding-right:15;padding-left:15">
@@ -43,6 +42,13 @@
     </div>
 
     <h5 style="text-align:center;">Katalog Produk</h5>
+    @if(($data['data'])==NULL)
+    <h5 class="row justify-content-md-center" style=" color: rgba(0, 0, 0, 0.5);margin-top:65;">
+    Tidak Ada Barang Di Sekitar Anda
+    </h5>
+    @endif
+
+    @isset($data['data'])
     <div class="row justify-content-md-center" style=" margin-bottom:50;">
         <div class="col">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -53,42 +59,36 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row ml-1">
-                            @isset($data['data'])
-
-
                             @foreach($data['data'] as $barang)
                             <div class="row">
                                 <div class="col ml-3 mr-2 ">
                                     <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
                                         @if (Session::has('login'))
                                         <a href="#modalPesan" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}" class=" kartu" style="border-radius:20px;">
-                                        @else
-                                        <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$barang['id']}}" class=" kartu" style="border-radius:20px;">
-                                        @endif
-                                            <div class="row no-gutters " style="padding-right:15;">
-                                                <div class="col">
-                                                    <img src="../img/minyak.jpg" class="card-img p-2"
-                                                        style="height:6rem; width:4.5rem;">
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card-body p-1" id="{{$barang['id']}}isi">
-                                                        <div class="card-text" style="font-size:65%;">
-                                                            <form>
-                                                                <p class="m-0"> <text
-                                                                        id='produk'>{{$barang['nama_barang']}}</text>
-                                                                </p>
-                                                                <p class="m-0"> harga : <text
-                                                                        id='harga'>{{$barang['harga_barang']}}</text>
-                                                                </p>
-                                                                <p class="m-0"> stok : <text
-                                                                        id='stok'>{{$barang['stok_barang']}}</text></p>
-                                                            </form>
-                                                            <b>{{$barang['distributor']['nama_distributor']}}</b>
+                                            @else
+                                            <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$barang['id']}}" class=" kartu" style="border-radius:20px;">
+                                                @endif
+                                                <div class="row no-gutters " style="padding-right:15;">
+                                                    <div class="col">
+                                                        <img src="../img/minyak.jpg" class="card-img p-2" style="height:6rem; width:4.5rem;">
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card-body p-1" id="{{$barang['id']}}isi">
+                                                            <div class="card-text" style="font-size:65%;">
+                                                                <form>
+                                                                    <p class="m-0"> <text id='produk'>{{$barang['nama_barang']}}</text>
+                                                                    </p>
+                                                                    <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text>
+                                                                    </p>
+                                                                    <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
+                                                                </form>
+                                                                <p id='distri' hidden>{{$barang['distributor_id']}}</p>
+                                                                <b>{{$barang['distributor']['nama_distributor']}}</b>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
@@ -97,13 +97,13 @@
 
                         </div>
                     </div>
+
                     <div class="carousel-item">
                         <div class="row ml-1">
                             @isset($page2['data'])
 
                             @foreach($page2['data'] as $benda )
                             <div class="row">
-                                
                                 <div class="col ml-3 mr-2 ">
                                     <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
                                         @if (Session::has('login'))
@@ -113,8 +113,7 @@
                                         @endif
                                             <div class="row no-gutters " style="padding-right:15;">
                                                 <div class="col">
-                                                    <img src="../img/minyak.jpg" class="card-img p-2"
-                                                        style="height:6rem; width:4.5rem;">
+                                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:6rem; width:4.5rem;">
                                                 </div>
                                                 <div class="col">
                                                     <div class="card-body p-1" id="{{$benda['id']}}isi">
@@ -137,14 +136,11 @@
                             </div>
                             @endforeach
                             @endisset
-
                         </div>
-
-
                     </div>
-                    @endisset
                 </div>
             </div>
+            @if($data['data']!=NULL)
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -153,8 +149,10 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+            @endif
         </div>
     </div>
+    @endisset
 
 
     <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50; ">

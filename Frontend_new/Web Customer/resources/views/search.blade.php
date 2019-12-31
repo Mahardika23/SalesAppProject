@@ -14,7 +14,13 @@
             </form>
         </div>
     </div>
-
+    <div>
+        @if(($data['data'])==NULL)
+        <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;margin-top:100;">
+            Barang Tidak Ditemukan
+        </h2>
+        @endif
+    </div>
     <div class="row justify-content-md-center" style=" margin-bottom:50;">
         <div class="col">
             <div class="row ">
@@ -28,7 +34,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">
-                                        <a href="/distributor" style="color:inherit;">
+                                        <a href="/distributor/{{$barang['distributor_id']}}" style="color:inherit;">
                                             <b style="padding-left:20%; margin-bottom:3; font-size:150%;">{{$barang['distributor']['nama_distributor']}}</b>
                                         </a>
                                         <form class="card-text">
