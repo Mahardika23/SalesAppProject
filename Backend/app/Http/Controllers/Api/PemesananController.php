@@ -12,19 +12,35 @@ class PemesananController extends Controller
 {
     public function index(Request $request){
         $user = JWTAuth::parseToken()->authenticate();
-        $userPemesanan = User::find($user['id'])->userable->pemesanan;
-        // $id = $userDistributor["data"]['toko_id'];
-        // $test = User::find(5)->userable->pemesanan;
-       
-        // $namaToko = toko::find($userDistributor)->nama_toko;
-        return $userPemesanan;
+        $user_type = $user['userable_type'];
+        $userPemesanan = User::find($user['id'])->userable;
+        
+        if ($user_type == 'App\Sales') {
+            # code...
+            return $pemesanan = Pemesanan::with('barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('sales_id',$userPemesanan['id'])->get();
+
+        }
+        elseif ($user_type == 'App\toko') {
+            # code...
+            return $pemesanan = Pemesanan::with('barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('toko_id',$userPemesanan['id'])->get();
+
+        }
+        elseif ($user_type == 'App\Distributor') {
+            # code...
+            return $pemesanan = Pemesanan::with('barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('distributor_id',$userPemesanan['id'])->get();
+
+        }
+        else{
+            return "Failed";
+        }
+      
+        // return $user['userable_type'];
     }
     
     public function store(Request $request) {
-
+        $request['nama_toko'] = toko::find($request['toko_id'])->nama_toko;
         $pemesanan = new Pemesanan($request->except(['barang']));
-        // $idBarang = array($request['barang']['barang_id']);
-        // dd($pemesanan);   
+  
         $pemesanan->save();
         $idBarang = $request['barang']['id'];
         $qtyBarang = $request['barang']['kuantitas_barang'];
@@ -34,7 +50,6 @@ class PemesananController extends Controller
             $pemesanan->barang()->attach([$b => ['kuantitas_barang' => $qtyBarang[$i]]]);
             $i++;
         }   
-        // $pemesanan->barang()->attach(1 => ['kuantitas_barang' => '50'] ,2 =>['kuantitas_barang' => '20']],);
         return response()->json($pemesanan,201);
  
     }
