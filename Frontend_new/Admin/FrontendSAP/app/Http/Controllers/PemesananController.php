@@ -28,7 +28,7 @@ class PemesananController extends Controller
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/showdatapesanan',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/pemesanan',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
