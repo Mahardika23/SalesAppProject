@@ -10,7 +10,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body p-0">
-                                <a href="/distributor" style="color:inherit;">
+                                <a href="/distributor/" style="color:inherit;">
                                     <h2 style="padding-left:20%; margin-bottom:20;" id="namaDistributor"></h2>
                                 </a>
                                 <div class="row">
@@ -79,14 +79,16 @@
         var button = $(event.relatedTarget);
         var id = button[0].id;
         console.log(button[0].id);
+        var idDistributor = $('#' + id + 'isi').find('#distri').html();
         var namaDistributor = $('#' + id + 'isi').find('b').html();
         var dataProduk = $('#' + id + 'isi').find('form').html();
         var hargaProduk = $('#' + id + 'isi').find('form').find('#harga').html();
         var namaProduk = $('#' + id + 'isi').find('form').find('#produk').html();
         var stokProduk = $('#' + id + 'isi').find('form').find('#stok').html();
-        console.log(hargaProduk);
+        console.log(idDistributor);
         console.log(namaProduk);
         // var fotoProduk = $('#' + id + 'isi').find('img').html();
+        document.getElementById('idDistributor').innerHTML = idDistributor;
         document.getElementById('namaDistributor').innerHTML = namaDistributor;
         document.getElementById('nama_distributor').value = namaDistributor;
         document.getElementById('harga_barang').value = hargaProduk;
