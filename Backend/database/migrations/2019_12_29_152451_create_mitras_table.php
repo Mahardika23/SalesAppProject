@@ -18,7 +18,7 @@ class CreateMitrasTable extends Migration
             $table->bigInteger('toko_id');
             $table->bigInteger('distributor_id');
             $table->enum('status',['Menunggu persetujuan','Diterima', 'Ditolak']);
-            
+            $table->bigInteger('sales_id')->nullable();
             $table->timestamps();
         });
     }

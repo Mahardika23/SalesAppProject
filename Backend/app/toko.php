@@ -24,6 +24,6 @@ class toko extends Model
     }
         
     public function distributor(){    
-        return $this->belongsToMany('App\Distributor','mitras','toko_id','distributor_id')->withPivot('status');
+        return $this->belongsToMany('App\Distributor','mitras','toko_id','distributor_id')->withPivot('status','sales_id');
     }
 }
