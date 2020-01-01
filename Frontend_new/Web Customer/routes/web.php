@@ -31,7 +31,7 @@ Route::group(['middleware' => ['logincheck']], function() {
 });
 
 Route::get('/', [ 'as' => 'beranda', 'uses' => 'WebCustomerController@getBarang']);
-Route::get('/distributor/{id}', 'WebCustomerController@distributor');
+Route::get('/distributor/{id}', 'WebCustomerController@getDistributor');
 Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']);
 Route::post('/loginUser', 'UserController@login');
 Route::get('/search/{id}', 'WebCustomerController@getKategoriSearch');
@@ -41,6 +41,7 @@ Route::get('/profil/edit', 'UserController@editprofil');
 Route::any('/updateprofil', 'UserController@updateProfil');
 Route::any('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
 Route::any('/cart', 'WebCustomerController@cart');
+Route::any('/requestmitra', 'WebCustomerController@getMitra');
 Route::any('/daftar/toko', 'UserController@register');
 Route::any('/daftar/alamat', 'UserController@register2');
 Route::any('/daftarakun', 'UserController@register3');

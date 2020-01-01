@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <title>SALLES APPLICATION</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url('/css/navbar.css')}}">
     <link rel="stylesheet" href="{{ url('/css/carousel.css')}}">
@@ -49,7 +50,7 @@
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px; "></a>
                         <div class="dropdown-menu dropdown-menu-right text-left "  aria-labelledby="navbarDropdown" >
-                            <a class="" style="text-align: center" ><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px;margin-right:5">{{Session::get('nama_toko')}}</a>
+                            <a class="" style="text-align: center" ><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px;margin-right:5">{{Session::get('username')}}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/profil" >Profil</a>
                             <a class="dropdown-item" href="/logout">Logout</a>

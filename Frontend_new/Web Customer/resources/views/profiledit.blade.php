@@ -23,7 +23,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="col-lg-8" style="background-color: ">
                                 <div class="m-5" style="text-align:left">

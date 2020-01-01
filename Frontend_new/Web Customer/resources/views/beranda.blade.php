@@ -17,14 +17,13 @@
     <h5 style="text-align:center;">Kategori</h5>
 
     <div class="row justify-content-md-center" style=" margin-bottom:20;margin-top:20">
-        <div class="row ml-3">
-
+        <div class="row  justify-content-md-center ml-3">
             @foreach($kategori as $kategori)
             <div class="row">
                 <div class="col ml-3 mr-2 " >
                     <div class="card  mb-4" style="max-width:100rem; max-height:6rem; border-radius:20px;">
                         <a href="/search/{{$kategori['id']}}" class=" kartu" style="border-radius:20px;">
-                            <div class="row no-gutters " style="padding-right:15;padding-left:15">
+                            <div class="row no-gutters " style="padding-right:5;padding-left:5">
                                 {{$kategori['kategori']}}
                                 <form class="form-inline" method="GET" action="/search/{{$kategori['id']}}">
                                     @CSRF

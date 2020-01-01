@@ -115,19 +115,32 @@ class UserController extends Controller
             $request->session()->put('login', 'true');
             $request->session()->put('token', $data['token']);
             
-        $token = $request->session()->get('token');
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
-            function ($response) {
-                return $response->getBody();
-            },function ($exception) {
-                return $exception->getMessage();
-            }
-        );
+            $token = $request->session()->get('token');
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+                function ($response) {
+                    return $response->getBody();
+                },function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
 
-        $profil = $promise->wait();
-        $profil = json_decode($profil, true);
-        //dd($profil);
-        $request->session()->put('nama_toko', $profil['nama_toko']);
+            $profil = $promise->wait();
+            $profil = json_decode($profil, true);
+
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/user', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+                function ($response) {
+                    return $response->getBody();
+                },function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
+
+            $user = $promise->wait();
+            $user = json_decode($user, true);
+            //dd($profil);
+            $request->session()->put('nama_toko', $profil['nama_toko']);
+            $request->session()->put('username', $user['user']['name']);
+            $request->session()->put('id_toko', $profil['id']);
 
             return redirect()->route('beranda');
         }
