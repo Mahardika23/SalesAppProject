@@ -3,24 +3,51 @@
 @section('konten')
 
 <div class="container">
-    <h1 style="text-align:center;margin-top:50">Nama Distributor</h1>
-    <div class="row justify-content-md-center" style="margin-top:30; margin-bottom:30; height:20%;">
-        <div class="col-2 pt-5" style="background-color:lawngreen;">
-            foto
+    <h1 style="text-align:center;margin-top:50">{{$data['nama_distributor']}}</h1>
+    <div class="row justify-content-md-cente" style="margin-top:30; margin-bottom:30;">
+        <div class="col-2" style="background-color:;">
+            <div class="" style="text-align:;">
+                <div style="overflow: hidden;border-radius: 3px;">
+                    <img src="../img/gambarLogo.jpg" class="" alt="..." width='150px'>
+                </div>
+            </div>
         </div>
-        <div class="col-3" style="background-color:blue;">
-            data distributor
+        <div class="col-4" style="background-color:;">
+            <div class="row">
+                <div class="col-lg-3">
+                    Email
+                </div>
+                <div class="">
+                    :
+                </div>
+                <div class="col">
+                    {{$data['email_distributor']}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    Alamat
+                </div>
+                <div class="">
+                    :
+                </div>
+                <div class="col">
+                    {{$data['alamat_distributor']}}
+                </div>
+            </div>
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <div>
-                <form action="/mitra">
-                    <button type="submit"class="btn-purple" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Ajukan Permintaan Mitra</button>
+                <form action="/requestmitra">
+                    <input type="hidden" value={{$data['id']}} name="distributor_id">
+                    <button type="submit" class="btn-purple" style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Ajukan Permintaan Mitra</button>
                 </form>
             </div>
-            <form class="form-inline" method="GET" action="/search">
-                <input class="form-control mr-2" style="width:88%" type="search" placeholder="Produk" aria-label="Search">
+            <form class="form-inline" method="GET" action="/distributor/{{$data['id']}}">
+                @CSRF
+                <input class="form-control mr-2" style="width:86%" type="search" placeholder="Produk" aria-label="Search" name="search">
                 <button class="searchlink" type="submit">
-                    <img class="btn" src="../img/search.png" >
+                    <img class="btn" src="../img/search.png">
                 </button>
             </form>
         </div>
