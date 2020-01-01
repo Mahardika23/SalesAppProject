@@ -23,7 +23,7 @@ class Pemesanan extends Model
 
     }
     public function barang(){
-        return $this->belongsToMany('App\Barang','barang_pemesanans');
+        return $this->belongsToMany('App\Barang','barang_pemesanans')->withPivot('kuantitas_barang');;
     }
 
 }

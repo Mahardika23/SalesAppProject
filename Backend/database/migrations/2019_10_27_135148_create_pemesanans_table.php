@@ -17,7 +17,7 @@ class CreatePemesanansTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('toko_id');
             $table->bigInteger('distributor_id');
-            $table->bigInteger('sales_id');
+            $table->bigInteger('sales_id')->nullable();
 
             $table->string('nama_toko');
             $table->integer('kuantitas_pesanan')->nullable();

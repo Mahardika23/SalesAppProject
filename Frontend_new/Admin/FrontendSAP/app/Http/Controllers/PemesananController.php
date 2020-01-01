@@ -41,7 +41,7 @@ class PemesananController extends Controller
             $pemesananData = $promise->wait();
             $pemesananData = json_decode($pemesananData,true);
             
-                // $data = $data['data'];
+                $data = $pemesananData;
             $data['pemesanan']=$pemesananData;
             // dd($data);
             return view('pemesanan',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);

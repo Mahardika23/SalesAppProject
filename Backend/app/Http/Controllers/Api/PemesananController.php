@@ -8,6 +8,8 @@ use JWTAuth;
 use App\User;
 use App\toko;
 use App\Pemesanan;
+use Illuminate\Validation\Rule;
+
 class PemesananController extends Controller
 {
     public function index(Request $request){
@@ -39,7 +41,16 @@ class PemesananController extends Controller
     
     public function store(Request $request) {
         $request['nama_toko'] = toko::find($request['toko_id'])->nama_toko;
-        $pemesanan = new Pemesanan($request->except(['barang']));
+        $validatedData = $request->validate([
+            'toko_id' => 'required|numeric',
+            'distributor_id' => 'required|numeric',
+            'sales_id' => 'numeric',
+            'nama_toko' => 'required',
+            'total_harga' => 'numeric|required',
+            'status_pemesanan' => ['required', Rule::in(['menunggu persetujuan','diantar','selesai', 'diterima kurir']),]
+            
+        ]);
+        $pemesanan = new Pemesanan($validatedData);
   
         $pemesanan->save();
         $idBarang = $request['barang']['id'];
@@ -55,10 +66,18 @@ class PemesananController extends Controller
     }
 
     public function update(Request $request,$id) {
+        $validatedData = $request->validate([
+            'toko_id' => 'numeric',
+            'sales_id' => 'numeric',
+            'nama_toko' => 'required',
+            'total_harga' => 'numeric|required',
+            'status_pemesanan' => ['required', Rule::in(['menunggu persetujuan','diantar','selesai', 'diterima kurir']),]
+            
+        ]);
         $pemesanan = Pemesanan::findOrFail($id);
         // return $request->all();
         
-        $pemesanan->update($request->all());
+        $pemesanan->update($validatedData);
         return response()->json($pemesanan, 200);
     }
     
