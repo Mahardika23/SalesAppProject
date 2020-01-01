@@ -38,7 +38,17 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         //
-        $sales = new Sales($request->all());
+        $validatedData = $request->validate([
+            'nama_sales' => 'required|alpha|max:255',
+            'no_hp' => 'required|regex:/(0)[0-9]{9}/',
+            'province_id' =>'required|numeric',
+            'regency_id' =>'required|numeric',
+            'district_id' =>'required|numeric',
+            'village_id' =>'required|numeric',
+            'distributor_id' => 'required|numeric',
+            
+        ]);
+        $sales = new Sales($validatedData);
         $sales->save();
         return response()->json($sales,201);
 
@@ -76,6 +86,15 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'nama_sales' => 'required|alpha|max:255',
+            'no_hp' => 'required|regex:/(0)[0-9]{9}/',
+            'province_id' =>'numeric',
+            'regency_id' =>'numeric',
+            'district_id' =>'numeric',
+            'village_id' =>'numeric',
+            
+        ]);
         $sales = Sales::findOrFail($id);
         // return $request->all();
         $sales->update($request->all());

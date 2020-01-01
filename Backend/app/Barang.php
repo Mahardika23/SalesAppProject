@@ -14,7 +14,7 @@ class Barang extends Model
         return $this->belongsTo('App\KategoriBarang','kategori_id');
     }
     public function pemesanan(){
-        return $this->belongsToMany('App\Pemesanan','barang_pemesanans');
+        return $this->belongsToMany('App\Pemesanan','barang_pemesanans')->withPivot('kuantitas_barang');
     }
 
 

@@ -16,15 +16,34 @@ class BarangController extends Controller
         
     }
     public function store(Request $request){
-        $barang = new Barang($request->all());
+        $validatedData = $request->validate([
+            'nama_barang' => 'required|string|max:255',
+            'kategori_id' => 'required|numeric|min:1|max:9',
+            'harga_barang' => 'required|integer',
+            'stok_barang' => 'required|integer',
+            'item_image' => 'string',
+            'district_id' =>'required|numeric',
+            'distributor_id' => 'required|numeric',
+            
+        ]);
+        $barang = new Barang($validatedData);
         $barang->save();
         return response()->json($barang, 201);
  
     }
     public function update(Request $request,$id) {
+        $validatedData = $request->validate([
+            'nama_barang' => 'required|alphanum|max:255',
+            'kategori_id' => 'required|numeric|min:1|max:9',
+            'harga_barang' => 'required|numeric',
+            'stok_barang' => 'required|numeric',
+            'item_image' => 'string',
+            'district_id' =>'numeric',
+            
+        ]);
         $barang = Barang::findOrFail($id);
         // return $request->all();
-        $barang->update($request->all());
+        $barang->update($validatedData);
         return response()->json($barang, 200);
     }
 

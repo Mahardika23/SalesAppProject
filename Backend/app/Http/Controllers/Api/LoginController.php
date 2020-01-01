@@ -21,6 +21,7 @@ class LoginController extends Controller
             return response()->json([
                 'token' => $token,
                 'expires' => auth('api')->factory()->getTTL() * 60,
+                
             ]);
     }
 }

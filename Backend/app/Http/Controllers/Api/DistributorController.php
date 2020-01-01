@@ -61,6 +61,7 @@ class DistributorController extends Controller
     public function store(Request $request)
     {
         //
+        
         $distributor = new Distributor($request->all());
         $distributor->save();
         return response()->json($distributor,201);
@@ -90,8 +91,11 @@ class DistributorController extends Controller
      */
     public function show($id)
     {
+        $user = JWTAuth::parseToken()->authenticate();
+        $toko = User::find($user['id'])->userable;
+        // return $toko['id'];
         //Distributor::with('barang')->where('id',1)->get();
-        return $distributor=Distributor::with('barang')->where('id',$id)->get();;
+        return $distributor=Distributor::with(['barang','toko:status'])->where('distributors.id',$id)->get();;
 
     }
     public function showBarang($id)
