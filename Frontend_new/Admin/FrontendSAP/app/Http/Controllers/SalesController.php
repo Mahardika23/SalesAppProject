@@ -77,7 +77,7 @@ class SalesController extends Controller
         $token = $request->session()->get('token');
 
         $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/admin/sales',['headers' =>
-            ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
+            ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
             ->then(
                 function ($response) {
                     return $response->getBody();
@@ -88,7 +88,7 @@ class SalesController extends Controller
 
         $success=$promise->wait();
         $success = json_decode($success,true);
-    //    dd($success);
+       dd($success);
         return redirect('/Manajemen-Data-Sales');
     }
 
