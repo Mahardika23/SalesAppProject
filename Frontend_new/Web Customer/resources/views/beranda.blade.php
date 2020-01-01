@@ -124,6 +124,7 @@
                                                                 </p>
                                                                 <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
                                                             </form>
+                                                            <p id='distri' hidden>{{$barang['distributor_id']}}</p>
                                                             <b>{{$benda['distributor']['nama_distributor']}}</b>
                                                         </div>
                                                     </div>

@@ -176,6 +176,7 @@ class UserController extends Controller
 
     public function profil(Request $request)
     {
+
         $token = $request->session()->get('token');
         //dd($token);
         $client =  new Client();
@@ -190,19 +191,10 @@ class UserController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
-            function ($response) {
-                return $response->getBody();
-            },
-            function ($exception) {
-                return $exception->getMessage();
-            }
-        );
-        $alamat = $promise->wait();
-        $alamat = json_decode($alamat, true);
+        
         //dd($alamat);
         //dd($data);
-        return view('profil', compact('data','alamat'));
+        return view('profil', compact('data'));
     }
     
     public function editprofil(Request $request)

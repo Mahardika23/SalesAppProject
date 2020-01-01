@@ -51,7 +51,7 @@
                                         0{{$data['no_telp']}}
                                     </div>
                                 </div>
-                                <div class="row mt-2 mb-5">
+                                <div class="row mt-2">
                                     <div class="col-lg-4">
                                         Email Pemilik
                                     </div>
@@ -59,42 +59,9 @@
                                         {{$data['email_pemilik']}}
                                     </div>
                                 </div>
-                                <b>Alamat Toko</b>
-                                <div class="row mt-3">
+                                <div class="row mt-2 mb-5">
                                     <div class="col-lg-4">
-                                        Provinsi
-                                    </div>
-                                    <div class="col">
-                                        {{$data['alamat_toko']}}
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-4">
-                                        kabupaten
-                                    </div>
-                                    <div class="col">
-                                        {{$data['alamat_toko']}}
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-4">
-                                        Kecamatan
-                                    </div>
-                                    <div class="col">
-                                        {{$data['alamat_toko']}}
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-4">
-                                        Kelurahan
-                                    </div>
-                                    <div class="col">
-                                        {{$data['alamat_toko']}}
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-4">
-                                        Alamat Lengkap
+                                        Alamat Toko
                                     </div>
                                     <div class="col">
                                         {{$data['alamat_toko']}}
@@ -109,7 +76,4 @@
     </div>
 </div>
 </div>
-<script type="text/javascript" src="{{ url('/js/dropdown_wilayah/kabupaten.js')}}"></script>
-<script type="text/javascript" src="{{ url('/js/dropdown_wilayah/provinsi.js')}}"></script>
-<script type="text/javascript" src="{{ url('/js/dropdown_wilayah/Kecamatan&Kelurahan.js')}}"></script>
 @endsection

@@ -78,7 +78,16 @@ class WebCustomerController extends Controller
         $data = $promise->wait();
         $data = json_decode($data, true);
         
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/barang/'.$id)->then(
+        // $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/barang/'.$id)->then(
+        //     function ($response) {
+        //         return $response->getBody();
+        //     },
+        //     function ($exception) {
+        //         return $exception->getMessage();
+        //     }
+        // );
+
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/searchbarang',['query' => $input])->then(
             function ($response) {
                 return $response->getBody();
             },
@@ -92,7 +101,7 @@ class WebCustomerController extends Controller
 
         //$data = $data['data'];
         //dd($data);
-        // dd($barang);
+        //dd($barang);
         return view('distributor', compact('data','barang'));
     }
 
