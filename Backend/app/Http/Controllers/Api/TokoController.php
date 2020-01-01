@@ -23,22 +23,24 @@ class TokoController extends Controller
         $distributorId = $request['distributor_id'];
 
         
-       
-       toko::find($toko['id'])->distributor()
-        ->attach(
-            $distributorId,[
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' =>Carbon::now()->format('Y-m-d H:i:s')
+       $check = toko::find($toko['id'])->distributor()->wherePivot('distributor_id',$distributorId)->get();
+     
+       if(empty($check[0])){
+        toko::find($toko['id'])->distributor()
+            ->attach(
+                $distributorId,[
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' =>Carbon::now()->format('Y-m-d H:i:s')
 
-            ]);
-            $berhasil =   $toko->distributor()->wherePivot('distributor_id',$distributorId)->get();
-    
-            if(empty($berhasil[0])){
-                return ['message' => 'Gagal'];
-            }   
-            else {
-                return $berhasil;
+                ]);
+                $check =   $toko->distributor()->wherePivot('distributor_id',$distributorId)->get();
             }
+        else{
+            // $mitra = toko::find($toko['id'])->distributor;
+            $check = ['message' => 'anda sudah mengajukan mitra sebelumnya','mitra' => ['distributor' => $check[0]['nama_distributor'],'status' => $check[0]['pivot']['status']]];
+
+        }
+        return $check;
     }
 
     public function tokoSales(){
