@@ -49,8 +49,15 @@ class TokoController extends Controller
     public function distributorByToko(Request $request){
         $user = JWTAuth::parseToken()->authenticate();
         $toko = User::find($user['id'])->userable;
-        return $distributor=toko::findOrFail($toko['id'])
+        $distributor=toko::findOrFail($toko['id'])
         ->distributor()->wherePivot('distributor_id','=',$request['distributor_id'])->get();
+
+        if (empty($distributor[0])) {
+            # code...
+            $distributor = Distributor::findOrFail($request['distributor_id']);
+
+        }
+        return $distributor;
     }
 
 

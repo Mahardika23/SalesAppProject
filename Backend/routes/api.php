@@ -74,6 +74,15 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::post('/ajukandistributor','Api\TokoController@ajukanDistributor');
     Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
+
+    // Insert
+    Route::post('/distributor','Api\DistributorController@store');
+    // Update
+    Route::put('/distributor/{id}','Api\DistributorController@update');
+    // Delete
+    Route::delete('/distributor/{id}','Api\DistributorController@delete');
+
+
 });
 Route::post('/login','UserController@authenticate');
 Route::post('/register','UserController@register');
@@ -81,13 +90,6 @@ Route::post('/register','UserController@register');
 Route::get('/distributor','Api\PemesananController@index'); 
 Route::get('/distributor/barang/{id}','Api\DistributorController@show'); 
 Route::get('/distributor/searchbarang','Api\DistributorController@searchBarang'); 
-
-// Insert
-Route::post('/distributor','Api\DistributorController@store');
-// Update
-Route::put('/distributor/{id}','Api\DistributorController@update');
-// Delete
-Route::delete('/distributor/{id}','Api\DistributorController@delete');
 
 
 Route::get('/kategori','Api\CatalogController@showCategory');
