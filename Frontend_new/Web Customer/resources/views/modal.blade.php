@@ -11,6 +11,7 @@
                         <div class="col-8">
                             <div class="card-body p-0">
                                 <a href="/distributor/" style="color:inherit;">
+                                    <div hidden id='idDistributor'></div>
                                     <h2 style="padding-left:20%; margin-bottom:20;" id="namaDistributor"></h2>
                                 </a>
                                 <div class="row">

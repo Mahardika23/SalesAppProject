@@ -36,7 +36,9 @@ Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']
 Route::post('/loginUser', 'UserController@login');
 Route::get('/search/{id}', 'WebCustomerController@getKategoriSearch');
 Route::get('/search', 'WebCustomerController@getBarangSearch');
-Route::get('/profil', 'UserController@profil');
+Route::get('/profil', [ 'as' => 'profil', 'uses' => 'UserController@profil']);
+Route::get('/profil/edit', 'UserController@editprofil');
+Route::any('/updateprofil', 'UserController@updateProfil');
 Route::any('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
 Route::any('/cart', 'WebCustomerController@cart');
 Route::any('/daftar/toko', 'UserController@register');
