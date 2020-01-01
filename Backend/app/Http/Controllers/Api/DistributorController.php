@@ -33,7 +33,7 @@ class DistributorController extends Controller
         //
         $id = $request['id'];
         $search =$request['search'];        
-        return $distributor=Distributor::find($request['id'])->barang->where('nama_barang','LIKE',$search);
+        return $distributor=Distributor::find($request['id'])->barang()->where('nama_barang','LIKE','%'.$search.'%')->get();
 
     }
     public function getProfil(){

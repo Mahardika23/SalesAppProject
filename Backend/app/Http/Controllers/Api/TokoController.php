@@ -24,13 +24,21 @@ class TokoController extends Controller
 
         
        
-        return toko::find($toko['id'])->distributor()
+       toko::find($toko['id'])->distributor()
         ->attach(
             $distributorId,[
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' =>Carbon::now()->format('Y-m-d H:i:s')
 
             ]);
+            $berhasil =   $toko->distributor()->wherePivot('distributor_id',$distributorId)->get();
+    
+            if(empty($berhasil[0])){
+                return ['message' => 'Gagal'];
+            }   
+            else {
+                return $berhasil;
+            }
     }
 
     public function tokoSales(){
