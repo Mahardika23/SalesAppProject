@@ -163,8 +163,75 @@ class UserController extends Controller
 
     public function profil(Request $request)
     {
-        return redirect()->route('beranda');
+        $token = $request->session()->get('token');
+        //dd($token);
+        $client =  new Client();
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
 
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+        $alamat = $promise->wait();
+        $alamat = json_decode($alamat, true);
+        //dd($alamat);
+        //dd($data);
+        return view('profil', compact('data','alamat'));
     }
     
+    public function editprofil(Request $request)
+    {
+        $token = $request->session()->get('token');
+        //dd($token);
+        $client =  new Client();
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        //dd($data);
+        
+        return view('profiledit', compact('data'));
+    }
+
+    public function updateProfil(Request $request){
+        $token = $request->session()->get('token');
+         //dd($request);
+        $input = $request->all();
+        //dd($input);
+        $client =  new Client();
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"],'form_params' =>$input])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        //dd($data);
+
+        return redirect()->route('profil');
+    }
 }

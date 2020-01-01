@@ -47,8 +47,9 @@ class WebCustomerController extends Controller
         $token = $request->session()->get('token');
         $input = $request->all();
         //dd($input);
-        $input['id']=$id;
-        dd($token);
+        $input['distributor_id']=$id;
+        //dd($input);
+          // dd($token);
         //dd($request->session()->get('token'));
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"]],['query' => $input])->then(
@@ -65,7 +66,7 @@ class WebCustomerController extends Controller
 
         // $data = $data['data'];
 
-        dd($data);
+        //dd($data);
         return view('distributor', compact('data'));
     }
 
@@ -125,7 +126,7 @@ class WebCustomerController extends Controller
     
             $data = $promise->wait();
             $data = json_decode($data, true);
-        dd($data);
+        //dd($data);
         // $data = $data['data'];
         return view('search', compact('data'));
     }
@@ -151,28 +152,6 @@ class WebCustomerController extends Controller
         $data = json_decode($data, true);
             return view('daftar',compact('data'));
         }
-    }
-
-    public function getProvince(Request $request)
-    {
-        $input = $request->all();
-        $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
-            function ($response) {
-                return $response->getBody();
-            },
-            function ($exception) {
-                return $exception->getMessage();
-            }
-        );
-        $alamat = $request->all();
-        //dd ($alamat);
-        $data = $promise->wait();
-        $data = json_decode($data, true);
-
-        //  $data = $data['data'];
-        // dd($data);
-        return view('daftar3', compact('data'), compact('input'));
     }
 
     public function getBarang(Request $request)
