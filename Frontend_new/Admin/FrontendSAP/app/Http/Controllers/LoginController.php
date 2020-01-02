@@ -56,13 +56,6 @@ class LoginController extends Controller
         // dd($userData);
         $user = $userData['user'];
         $userable_id = $userData['user']['userable_id'];
-        // dd($userData);
-        // if ($userData['user']['userable_type'] == 'App\Distributor') {
-        //    # code...
-        //    return halaman(aaaaa)
-        // }
-        // $data['userable_type'] = $userData['user']['userable_type'];
-        // dd($userData);
 
             $request->session()->put('email','true');
             $request->session()->put('login',true);
@@ -72,12 +65,9 @@ class LoginController extends Controller
             $request->session()->put('user_type',$user_type);
             $request->session()->put('userable_id',$userable_id);
             return Redirect::route('dashboard')->with(['data' => $data, 'user' => $user] );
-            // echo $request->session()->get('email');
         }
 
 
-        // dd($userData);
-        // return view('/',compact('data','userData'));
     }
 
     public function logout(Request $request){

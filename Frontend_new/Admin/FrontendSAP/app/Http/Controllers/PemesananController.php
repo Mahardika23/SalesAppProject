@@ -16,6 +16,7 @@ class PemesananController extends Controller
      */
     public function index(Request $request)
     {
+        $request->session()->put('page','pemesanan');
         $request->session()->get('login');
         //nama
         $nama=$request->session()->get('nama');

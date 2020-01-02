@@ -11,6 +11,9 @@ class DashboardController extends Controller
     public function index(Request $request){
         $client =  new Client();
         
+
+        $request->session()->put('page','dashboard');
+        
         // var_dump($form);
         $token = $request->session()->get('token');
         //user

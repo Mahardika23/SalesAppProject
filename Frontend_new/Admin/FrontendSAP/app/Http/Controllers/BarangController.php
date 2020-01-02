@@ -17,6 +17,7 @@ class BarangController extends Controller
     {
 
         
+        $request->session()->put('page','barang');
             //nama
             $nama = $request->session()->get('nama');
             //user type
