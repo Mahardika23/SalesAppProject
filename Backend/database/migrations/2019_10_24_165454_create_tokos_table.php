@@ -21,7 +21,7 @@ class CreateTokosTable extends Migration
             $table->string('no_telp','15');
             $table->string('email_pemilik')->unique();
             $table->string('alamat_toko');
-            $table->bigInteger('sales_id')->nullable();
+            // $table->bigInteger('sales_id')->nullable();
             $table->bigInteger('province_id');
             $table->bigInteger('regency_id');
             $table->bigInteger('district_id');
