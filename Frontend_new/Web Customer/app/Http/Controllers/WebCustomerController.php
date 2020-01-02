@@ -53,7 +53,7 @@ class WebCustomerController extends Controller
 
         // $data = $data['data'];
 
-         //dd($data);
+        //dd($data);
         return view('aktivitas', compact('data'));    }
 
     public function getDistributor(Request $request,$id)
@@ -125,7 +125,7 @@ class WebCustomerController extends Controller
         $input = $request->all();
         $token = $request->session()->get('token');
         // $input['id_toko'] = $request->session()->get('id_toko');
-        //dd($input);
+        // dd($input);
         $client =  new Client();
         $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/ajukandistributor', ['headers' => ['Authorization' => "Bearer {$token}"],'query' =>$input])->then(
             function ($response) {
@@ -138,7 +138,7 @@ class WebCustomerController extends Controller
         $data = $promise->wait();
         $data = json_decode($data, true);
         //dd($data);
-        return redirect()->route('beranda');    
+        return redirect()->route('distributor',$input['distributor_id']);    
     }
 
     public function getBarangSearch(Request $request){
@@ -277,7 +277,7 @@ class WebCustomerController extends Controller
         }
 
         // $data = $data['data'];
-        // dd($data);
+        //  dd($data);
         // dd($page2);
         return view('beranda', compact('data','page2','kategori'));
     }

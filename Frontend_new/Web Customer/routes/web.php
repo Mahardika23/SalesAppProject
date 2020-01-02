@@ -27,11 +27,12 @@ Route::get('total', function(){
 
 Route::group(['middleware' => ['logincheck']], function() {
     Route::get('/aktivitas', 'WebCustomerController@aktivitas');
-    Route::get('/pesan', 'WebCustomerController@getBarangPesan');
+    Route::get('/pesan', 'CartController@cart');
 });
 
+Route::any('/cek', 'CartController@cart');
 Route::get('/', [ 'as' => 'beranda', 'uses' => 'WebCustomerController@getBarang']);
-Route::get('/distributor/{id}', 'WebCustomerController@getDistributor');
+Route::get('/distributor/{id}', [ 'as' => 'distributor', 'uses' => 'WebCustomerController@getDistributor']);
 Route::any('/login', [ 'as' => 'login', 'uses' => 'WebCustomerController@login']);
 Route::post('/loginUser', 'UserController@login');
 Route::get('/search/{id}', 'WebCustomerController@getKategoriSearch');
@@ -40,7 +41,8 @@ Route::get('/profil', [ 'as' => 'profil', 'uses' => 'UserController@profil']);
 Route::get('/profil/edit', 'UserController@editprofil');
 Route::any('/updateprofil', 'UserController@updateProfil');
 Route::any('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar']);
-Route::any('/cart', 'WebCustomerController@cart');
+Route::any('/cart', 'CartController@add');
+Route::any('/cart-delete', 'CartController@remove');
 Route::any('/requestmitra', 'WebCustomerController@getMitra');
 Route::any('/daftar/toko', 'UserController@register');
 Route::any('/daftar/alamat', 'UserController@register2');
