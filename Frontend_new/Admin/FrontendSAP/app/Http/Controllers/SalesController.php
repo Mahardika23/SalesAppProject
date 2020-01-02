@@ -11,6 +11,7 @@ class SalesController extends Controller
     public function index(Request $request)
     {
 
+        $request->session()->put('page','sales');
         $request->session()->get('login');
         if ($request->session()->has('login')) {
             //nama
@@ -88,7 +89,7 @@ class SalesController extends Controller
 
         $success=$promise->wait();
         $success = json_decode($success,true);
-       dd($success);
+    //    dd($success);
         return redirect('/Manajemen-Data-Sales');
     }
 

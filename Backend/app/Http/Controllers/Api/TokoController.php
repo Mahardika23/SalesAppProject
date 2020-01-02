@@ -50,19 +50,38 @@ class TokoController extends Controller
         // return $toko=Distributor::find($distributor['id'])->toko;
         return $toko;
     }
-    public function tokoByDistributor(){
+    public function tokoByUser(){
         $user = JWTAuth::parseToken()->authenticate();
-        $distributor = User::find($user['id'])->userable;
+        // $distributor = User::find($user['id'])->userable;
+        $sales = User::find($user['id'])->userable;
+            if($user['userable_type'] == "App\Sales"){
+                $toko = $sales->distributor->toko()->wherePivot('sales_id',$sales['id'])->get();
+
+            }   
+            elseif ($user['userable_type'] == "App\Distributor") {
+                $toko = User::find($user['id'])->userable->toko;
+            } 
+
+            else{
+                $toko = null;
+            }
+
+
+            
         
-        return $toko=Distributor::find($distributor['id'])->toko;
+        
+            return $toko;
     }
     public function distributorByToko(Request $request){
         $user = JWTAuth::parseToken()->authenticate();
         $toko = User::find($user['id'])->userable;
         $distributor=toko::findOrFail($toko['id'])
         ->distributor()->wherePivot('distributor_id','=',$request['distributor_id'])->get();
-
-        if (empty($distributor[0])) {
+       
+        if (empty($user[0])) {
+            $distributor = Distributor::findOrFail($request['distributor_id']);
+        }
+        elseif (empty($distributor[0])) {
             # code...
             $distributor = Distributor::findOrFail($request['distributor_id']);
 

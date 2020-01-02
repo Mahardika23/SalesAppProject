@@ -32,6 +32,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Delete
     Route::delete('/admin/pemesanan/{id}','Api\PemesananController@delete');
 
+    Route::get('/admin','Api\DashboardController@index');
 
     //CRUD Sales
     //get All
@@ -48,7 +49,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Delete
     Route::delete('/admin/sales/{id}','Api\SalesController@delete');
 
-    Route::get('/admin/toko','Api\TokoController@tokoByDistributor');
+    Route::get('/admin/toko','Api\TokoController@tokoByUser');
     Route::put('/admin/toko/{id}','Api\DistributorController@updateStatusMitra');
     Route::get('/sales/toko','Api\TokoController@tokoSales');
 
@@ -90,6 +91,7 @@ Route::post('/register','UserController@register');
 Route::get('/distributor','Api\PemesananController@index'); 
 Route::get('/distributor/barang/{id}','Api\DistributorController@show'); 
 Route::get('/distributor/searchbarang','Api\DistributorController@searchBarang'); 
+Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
 
 
 Route::get('/kategori','Api\CatalogController@showCategory');

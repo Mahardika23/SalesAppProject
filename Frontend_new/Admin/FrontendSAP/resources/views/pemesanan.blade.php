@@ -20,54 +20,52 @@
   </div> -->
 
 <!-- <a href="#" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Toko</a> -->
-@if ($data['pemesanan']===null)
+@if (empty($data['pemesanan']))
 <p>Anda tidak memiliki Pesanan</p>
 @else
-<table class="table table-striped table-bordered">
-  <!-- <a href="#" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Toko</a> -->
-  <table class="table table-striped table-bordered">
-    <thead>
+  <table class="table table-bordered">
+    <thead  class="thead-dark">
       <tr>
-        <th rowspan={{count($data['pemesanan'][0]['barang'])}} scope="col" style="width:25px">No.</th>
-        <th rowspan={{count($data['pemesanan'][0]['barang'])}} scope="col">Toko</th>
+        <th scope="col" style="width:25px">No.</th>
+        <th scope="col">Toko</th>
         {{-- <th scope="col">Kuantitas</th> --}}
-        <th rowspan={{count($data['pemesanan'][0]['barang'])}} scope="col">Kuantitas</th>
+        <th scope="col">Kuantitas</th>
         <th scope="col">Barang</th>
         <th scope="col">jumlah barang</th>
 
-        <th rowspan={{count($data['pemesanan'][0]['barang'])}} scope="col">Total Harga</th>
-        <th rowspan={{count($data['pemesanan'][0]['barang'])}} scope="col">Status</th>
-        <th rowspan={{count($data['pemesanan'][0]['barang'])}} scope="col" colspan="2">Aksi</th>
+        <th scope="col">Total Harga</th>
+        <th scope="col">Status</th>
+        <th scope="col" colspan="2">Aksi</th>
 
 
       </tr>
     </thead>
     <tbody>
       @foreach($data['pemesanan'] as $indexKey => $pesanan)
-      <tr>
-        <td rowspan="2" scope="row">{{$indexKey+1}}</td>
-        <td rowspan="2">{{$pesanan['nama_toko']}}</td>
-        <td rowspan="2">{{count($data['pemesanan'][0]['barang'])}}</td>
+      <tr class="table-secondary">
+        <td rowspan="{{count($pesanan['barang'])}}" scope="row">{{$indexKey+1}}</td>
+        <td rowspan="{{count($pesanan['barang'])}}">{{$pesanan['nama_toko']}}</td>
+        <td rowspan="{{count($pesanan['barang'])}}">{{count($data['pemesanan'][0]['barang'])}}</td>
 
         @foreach ($pesanan['barang'] as $indexKey => $barang)
         @if($loop->first)
         <td>{{$barang['nama_barang']}}</td>
         <td>{{$barang['pivot']['kuantitas_barang']}}</td>
-        <td rowspan="2">{{$pesanan['total_harga']}}</td>
-        <td rowspan="2">{{$pesanan['status_pemesanan']}}</td>
-        <td rowspan="2" style="width:7{{count($data['pemesanan'][0]['barang'])}}px">
+        <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['total_harga']}}</td>
+        <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['status_pemesanan']}}</td>
+        <td rowspan="{{count($pesanan['barang'])}}" style="width:7px">
           <button type="button"
             class="btn btn-primary" data-toggle="modal" data-target="#detailPemesananModal{{$pesanan['id']}}">Detail
           </button>
         </td>
-        <td rowspan="2" style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded"
+        <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded"
             data-toggle="tooltip" title="Edit status"></i></td>
 
       </tr>
       @elseif ($indexKey>0 && !$loop->last)
 
 
-      <tr>
+      <tr class="table-secondary">
         <td>{{$barang['nama_barang']}}
         </td>
         <td>{{$barang['pivot']['kuantitas_barang']}}</td>
@@ -75,7 +73,7 @@
       </tr>
 
       @else
-      <tr>
+      <tr class="table-secondary">
         <td>{{$barang['nama_barang']}}
         </td>
         <td>{{$barang['pivot']['kuantitas_barang']}}</td>

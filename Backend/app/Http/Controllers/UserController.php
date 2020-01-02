@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\toko;
 use App\Distributor;
+use App\Sales;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
@@ -86,6 +87,23 @@ class UserController extends Controller
             $userable=$distributor;
            
         }
+        elseif ($request->has('nama_sales')) {
+            $validatedSalesData = $request->validate([
+                'nama_sales' => 'required|string|max:255',
+                'distributor_id' => 'required|integer',
+                'no_hp' => 'required|regex:/(0)[0-9]{9}/',
+                'province_id' => 'required',
+                'regency_id' => 'required',
+                'district_id' => 'required',
+                'village_id' => 'required',
+
+            ]);
+            $sales = new Sales($validatedSalesData);
+            $sales->save();
+            $userable=$sales;
+           
+        }
+        
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),

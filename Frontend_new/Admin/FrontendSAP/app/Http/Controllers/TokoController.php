@@ -11,6 +11,7 @@ class TokoController extends Controller
     public function index(Request $request)
     {
 
+        $request->session()->put('page','toko');
         $request->session()->get('login');
         if ($request->session()->has('login')) {
             //nama
@@ -55,7 +56,7 @@ class TokoController extends Controller
             
                 $sales = $salesData;
             
-            // dd($data);
+            dd($data);
             return view('toko',['data'=> $data,'sales' => $sales]);
             // return view('barang',['nama' => $nama]);
 

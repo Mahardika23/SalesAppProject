@@ -40,7 +40,11 @@ class PemesananController extends Controller
     }
     
     public function store(Request $request) {
-        $request['nama_toko'] = toko::find($request['toko_id'])->nama_toko;
+        $user = JWTAuth::parseToken()->authenticate();
+        $user_type = $user['userable_type'];
+        $userPemesanan = User::find($user['id'])->userable;
+        $request['toko_id'] = $userPemesanan['id'];
+        $request['nama_toko'] = toko::find($userPemesanan['id'])->nama_toko;
         $validatedData = $request->validate([
             'toko_id' => 'required|numeric',
             'distributor_id' => 'required|numeric',
@@ -56,9 +60,9 @@ class PemesananController extends Controller
         $idBarang = $request['barang']['id'];
         $qtyBarang = $request['barang']['kuantitas_barang'];
         // return $barang;
-        foreach ($idBarang as $b) {
+        foreach ($idBarang as $indexKey => $b) {
             $i = 0;
-            $pemesanan->barang()->attach([$b => ['kuantitas_barang' => $qtyBarang[$i]]]);
+            $pemesanan->barang()->attach([$b => ['kuantitas_barang' => $qtyBarang[$indexKey]]]);
             $i++;
         }   
         return response()->json($pemesanan,201);
