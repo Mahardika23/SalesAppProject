@@ -74,7 +74,7 @@
     background-color: #bdbbc2;
     border-color: #7a36c2;
   }
-  
+
   .btn-purple:not(:disabled):not(.disabled):active, .btn-purple:not(:disabled):not(.disabled).active,
   .show > .btn-purple.dropdown-toggle {
     color: #fff;

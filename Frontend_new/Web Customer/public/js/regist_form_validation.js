@@ -52,7 +52,6 @@ $(document).ready(function () {
             },
             alamat_toko:{
                 required:true,
-                alphanumeric:true
             }
         },
         messages: {

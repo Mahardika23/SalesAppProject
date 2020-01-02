@@ -2,60 +2,49 @@
 
 @section('konten')
 
-<div class="container">
-    @foreach($data['data'] as $barang)
-    <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50;">
-        <div class="col">
-            <div class="card p-0">
-                <div class="card-header form-inline" style="background-color:#B1A0C7">
-                    <h3 class="col-7">{{Session::get('nama_distributor')}}</h3>
-                    <h3 class="col-3" style="text-align:right;"> Total : 30000</h3>
-                    <button class="col-2">Checkout</button>
-                </div>
-                <div class="card-body" >
-                    <div class="row ml-2">
-                        @foreach($data['data'] as $barang)
-                        <div class="row">
-                            <div class="col ml-4 mr-3">
-                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
-                                    <div class="row no-gutters" style="padding-right:15;">
-                                        <div class="col-3">
-                                            <img src="../img/napoy.jpg" class="card-img p-2">
-                                        </div>
-                                        <!-- <form method="get"> -->
-                                        <div class="col-4">
-                                            <div class="card-body p-1">
-                                                <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                                    nama produk : {{Session::get('nama_barang')}}
-                                                    harga : {{Session::get('harga_barang')}}
-                                                    stok : {{Session::get('stok_barang')}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="def-number-input number-input safari_only col-4" style="padding-top:17%;">
-                                                <button onclick=" this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                            <input class="quantity" min="0" name="quantity" value="{{Session::get('quantity')}}" type="number">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                        </div>
-                                        <div class="col-1" style="padding-top:17%;">
-                                            <button class="searchlink" type="submit" data-toggle="modal" data-target="#exampleModal">
-                                                <img src="../img/delete.png" style="width:20;">
-                                            </button>
-                                        </div>
+<link rel="stylesheet" href="{{ url('/css/tab.css')}}">
 
-                                        <!-- </form> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-
-            </div>
-        </div>
+<div class='container mt-5' style="background-color:">
+    <div class="tab">
+        <button class="tablinks col-6" onclick="openTab(event, 'Pesanan')" id="defaultOpen">Pesanan</button>
+        <button class="tablinks col-6" onclick="openTab(event, 'Riwayat')">Riwayat</button>
     </div>
-    @endforeach
-</div>
 
+    <!-- Tab content -->
+    <div id="Pesanan" class="tabcontent">
+        <h3>Pesanan</h3>
+        <p>London is the capital city of England.</p>
+    </div>
+
+    <div id="Riwayat" class="tabcontent">
+        <h3>Riwayat</h3>
+        <p>Paris is the capital of France.</p>
+    </div>
+
+</div>
+<script>
+    function openTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
 @endsection

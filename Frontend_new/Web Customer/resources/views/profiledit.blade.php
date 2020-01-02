@@ -8,7 +8,7 @@
             <div class="card mt-5">
                 <div class="card-body" style="text-align:center">
                     <h4>Edit Profil</h4>
-                    <form method="POST" action="/updateprofil">
+                    <form id="form-regist" method="POST" action="/updateprofil">
                         @CSRF
                         <div class="row no-gutters" style="background-color: ">
                             <div class="col-lg-4" style="background-color: ">
@@ -33,7 +33,8 @@
                                             </label>
                                         </div>
                                         <div class="col-lg-7">
-                                            <input type="text" class="form-control" name='nama_toko' autocomplete='off' required value="{{$data['nama_toko']}}"></input>
+                                            <input type="text" class="form-control" id="nama_toko" name='nama_toko' autocomplete='off' value="{{$data['nama_toko']}}"></input>
+                                            <span class='text-danger' style="color: red">{{ $errors->first('nama_toko') }}</span>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -42,7 +43,9 @@
                                             </label>
                                         </div>
                                         <div class="col-lg-7">
-                                            <input type="text" class="form-control" name='nama_pemilik' autocomplete='off' required value="{{$data['nama_pemilik']}}"></input>
+                                            <input type="text" id="nama_pemilik" class="form-control" name='nama_pemilik' autocomplete='off' required value="{{$data['nama_pemilik']}}"></input>
+                                            <span class='text-danger'>{{ $errors->first('nama_pemilik') }}</span>
+
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -50,25 +53,28 @@
                                             <label for="no_telp" class="col-form-label">No Telp
                                         </div>
                                         <div class="col-lg-7">
-                                            <input type="text" class="form-control" name='no_telp' autocomplete='off' required value="0{{$data['no_telp']}}"></input>
+                                            <input type="text" id="no_telp" class="form-control" name='no_telp' autocomplete='off' required value="0{{$data['no_telp']}}"></input>
+                                            <span class='text-danger'>{{ $errors->first('no_telp') }}</span>
                                         </div>
                                     </div>
-                                    <div class="row mt-2 mb-5">
+                                    <div class="row mt-2">
                                         <div class="col-lg-4">
                                             <label for="nama_pemilik" class="col-form-label">Email Pemilik
-                                            </label> </div>
+                                            </label>
+                                        </div>
                                         <div class="col-lg-7">
-                                            <input type="email" class="form-control" name='email_pemilik' autocomplete='off' required value="{{$data['email_pemilik']}}"></input>
-                                            <span class='text-danger'></span>
+                                            <input type="email" class="form-control" name='email_pemilik' id="email_pemilik" autocomplete='off' required value="{{$data['email_pemilik']}}"></input>
+                                            <span class='text-danger'>{{ $errors->first('email_pemilik') }}</span>
                                         </div>
                                     </div>
-                                    <b>Alamat Toko</b>
-                                    <div class="row mt-3">
+                                    <div class="form-group row mt-2">
                                         <div class="col-lg-4">
                                             <label for="alamat_toko" class="col-form-label">Alamat Lengkap
                                             </label> </div>
                                         <div class="col-lg-7">
-                                            <textarea style="resize: none;" class="form-control" id="alamat_toko" autocomplete='off' rows="4" disable name='alamat_toko' required>{{$data['alamat_toko']}}</textarea> </div>
+                                            <textarea style="resize: none;" class="form-control" id="alamat_toko" autocomplete='off' rows="4" disable name='alamat_toko'>{{$data['alamat_toko']}}</textarea>
+                                            <span class="text-danger">{{ $errors->first('alamat_toko') }}</span>
+                                        </div>
                                     </div>
                                     <div style="text-align: right">
                                         <div class="row mt-3">
@@ -80,6 +86,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -87,4 +94,8 @@
     </div>
 </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+<script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
+
 @endsection

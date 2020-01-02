@@ -109,6 +109,7 @@ class UserController extends Controller
         
         //dd($request);
         if ($data == null) {
+            $request->session()->flash('gagal','Email atau Password salah');
             return redirect()->route('login');
         }else{
             $request->session()->put('email', $request->get('email'));
@@ -116,17 +117,6 @@ class UserController extends Controller
             $request->session()->put('token', $data['token']);
             
             $token = $request->session()->get('token');
-            $promise = $client->getAsync('http://127.0.0.1:9090/api/profiltoko', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
-                function ($response) {
-                    return $response->getBody();
-                },function ($exception) {
-                    return $exception->getMessage();
-                }
-            );
-
-            $profil = $promise->wait();
-            $profil = json_decode($profil, true);
-
             $promise = $client->getAsync('http://127.0.0.1:9090/api/user', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
                 function ($response) {
                     return $response->getBody();
@@ -138,10 +128,7 @@ class UserController extends Controller
             $user = $promise->wait();
             $user = json_decode($user, true);
             //dd($profil);
-            $request->session()->put('nama_toko', $profil['nama_toko']);
             $request->session()->put('username', $user['user']['name']);
-            $request->session()->put('id_toko', $profil['id']);
-
             return redirect()->route('beranda');
         }
         // return view('/',compact('data'));
@@ -176,6 +163,7 @@ class UserController extends Controller
 
     public function profil(Request $request)
     {
+
         $token = $request->session()->get('token');
         //dd($token);
         $client =  new Client();
@@ -190,19 +178,10 @@ class UserController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
-            function ($response) {
-                return $response->getBody();
-            },
-            function ($exception) {
-                return $exception->getMessage();
-            }
-        );
-        $alamat = $promise->wait();
-        $alamat = json_decode($alamat, true);
+        
         //dd($alamat);
         //dd($data);
-        return view('profil', compact('data','alamat'));
+        return view('profil', compact('data'));
     }
     
     public function editprofil(Request $request)
