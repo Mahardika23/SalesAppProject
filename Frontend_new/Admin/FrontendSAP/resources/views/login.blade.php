@@ -72,36 +72,38 @@
         </div>
     </div>
     
-    <!-- <div class="efek">
-        <div class="container">
-            <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto my-auto">
-                <div class="card card-signin my-5">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
-                    <form class="form-signin">
-                    <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                        <label for="inputEmail">Email address</label>
-                    </div>
 
-                    <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                        <label for="inputPassword">Password</label>
-                    </div>
-
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1">Remember password</label>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-                    </form>
-                </div>
-                </div>
-            </div>
-            </div>
+    <!-- email password salah Modal -->
+    <div class="modal fade" id="gagalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Gagal!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    </div> -->
+            <div class="modal-body">
+            <div class="form-group">
+                <label for="inputAddress2" style="color:black">Password lama</label>
+                <input type="password" class="form-control" name="password_lama" placeholder="Password lama" require>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2" style="color:black">Password Baru</label>
+                <input type="password" class="form-control" name="password_baru" placeholder="Password baru">
+            </div>
+            <div class="form-group">
+                Email atau Password Salah!
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+
 
     <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

@@ -31,35 +31,112 @@
                 <li>
                     <h5>. {{ Session::get('nama') }}</h5>
                 </li>
+                @if((Session::get('page'))=="dashboard")
+                    <li class="active">
+                        <a href="{{ url('/') }}">Dashboard</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ url('/') }}">Dashboard</a>
+                    </li>
+                @endif
+
+                @if((Session::get('page'))=="toko" || (Session::get('page'))=="pemesanan" || (Session::get('page'))=="sales" || (Session::get('page'))=="barang")
                 <li class="active">
-                    <a href="{{ url('/') }}">Dashboard</a>
-                </li>
-                <li class="active">
+                @else
+                <li>
+                @endif
 
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manajemen Data</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li class="">
                             
                         </li>
-                        <li>
-                            <a href="{{ url('/Manajemen-Data-Toko') }}"><i class="fas fa-store-alt mr-2"></i>Toko</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><i class="far fa-list-alt mr-2"></i>Pemesanan</a>
-                        </li>
-                        @if((Session::get('user_type'))=="App\Distributor")
-                        <li>
-                            <a href="{{ url('/Manajemen-Data-Sales') }}"><i class="fas fa-users mr-2"></i>Sales</a>
-                        </li>
+                        @if((Session::get('page'))=="toko")
+                            <li class="active">
+                                <a href="{{ url('/Manajemen-Data-Toko') }}"><i class="fas fa-store-alt mr-2"></i>Toko</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ url('/Manajemen-Data-Toko') }}"><i class="fas fa-store-alt mr-2"></i>Toko</a>
+                            </li>
                         @endif
-                        <li>
-                            <a href="{{ url('/Manajemen-Data-Barang') }}"><i class="fas fa-box mr-2"></i>Barang</a>
-                        </li>
+
+                        @if((Session::get('page'))=="pemesanan")
+                            <li class="active">
+                                <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><i class="far fa-list-alt mr-2"></i>Pemesanan</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><i class="far fa-list-alt mr-2"></i>Pemesanan</a>
+                            </li>
+                        @endif
+                        @if((Session::get('user_type'))=="App\Distributor")
+                            @if((Session::get('page'))=="sales")
+                                <li class="active">
+                                    <a href="{{ url('/Manajemen-Data-Sales') }}"><i class="fas fa-users mr-2"></i>Sales</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ url('/Manajemen-Data-Sales') }}"><i class="fas fa-users mr-2"></i>Sales</a>
+                                </li>
+                            @endif
+                        @endif
+                        @if((Session::get('page'))=="barang")
+                            <li class="active">
+                                <a href="{{ url('/Manajemen-Data-Barang') }}"><i class="fas fa-box mr-2"></i>Barang</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ url('/Manajemen-Data-Barang') }}"><i class="fas fa-box mr-2"></i>Barang</a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
+                @if((Session::get('user_type'))=="App\Distributor")
+                    <li>
+                        <a href="#">Profil</a>
+                    </li>
+                @elseif((Session::get('user_type'))=="App\Sales")
+                    <li>
+                        <a href="" data-toggle="modal" data-target="#changePasswordModal">Ubah password</a>
+                    </li>
+                    <!-- Change Password Sales Modal -->
+                    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Ubah password</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="/Manajemen-Data-Sales" method="POST">
+                            @CSRF
+                            <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inputAddress2" style="color:black">Password lama</label>
+                                <input type="password" class="form-control" name="password_lama" placeholder="Password lama" require>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2" style="color:black">Password Baru</label>
+                                <input type="password" class="form-control" name="password_baru" placeholder="Password baru">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2" style="color:black">Konfirmasi password baru</label>
+                                <input type="password" class="form-control" name="password_konfirmasi" placeholder="Konfirmasi password baru">
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Ubah Password</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                @endif
                 <li class="logout">
                     <span>
                         <a href="/logout"> Logout</a>
