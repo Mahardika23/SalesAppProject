@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="col-lg-7">
                                             <input type="text" class="form-control" id="nama_toko" name='nama_toko' autocomplete='off' value="{{$data['nama_toko']}}"></input>
-                                            <span class='text-danger'>{{ $errors->first('nama_toko') }}</span>
+                                            <span class='text-danger' style="color: red">{{ $errors->first('nama_toko') }}</span>
                                         </div>
                                     </div>
                                     <div class="row mt-2">

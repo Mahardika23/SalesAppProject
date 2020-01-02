@@ -22,13 +22,14 @@
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: #CCC1DA;
 }
 
 /* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
+  background-color: #FFFFFF;
   border: 1px solid #ccc;
   border-top: none;
 }

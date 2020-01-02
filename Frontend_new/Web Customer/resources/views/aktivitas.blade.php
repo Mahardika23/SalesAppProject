@@ -6,8 +6,8 @@
 
 <div class='container mt-5' style="background-color:">
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Pesanan')" id="defaultOpen">Pesanan</button>
-        <button class="tablinks" onclick="openTab(event, 'Riwayat')">Riwayat</button>
+        <button class="tablinks col-6" onclick="openTab(event, 'Pesanan')" id="defaultOpen">Pesanan</button>
+        <button class="tablinks col-6" onclick="openTab(event, 'Riwayat')">Riwayat</button>
     </div>
 
     <!-- Tab content -->

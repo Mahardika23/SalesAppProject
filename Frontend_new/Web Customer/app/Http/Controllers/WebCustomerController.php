@@ -37,8 +37,9 @@ class WebCustomerController extends Controller
 
     public function aktivitas(Request $request)
     {
+        $token = $request->session()->get('token');
         $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/showallcatalogweb')->then(
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
             function ($response) {
                 return $response->getBody();
             },
@@ -52,7 +53,7 @@ class WebCustomerController extends Controller
 
         // $data = $data['data'];
 
-        // dd($data);
+         //dd($data);
         return view('aktivitas', compact('data'));    }
 
     public function getDistributor(Request $request,$id)
@@ -77,15 +78,6 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-        
-        // $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/barang/'.$id)->then(
-        //     function ($response) {
-        //         return $response->getBody();
-        //     },
-        //     function ($exception) {
-        //         return $exception->getMessage();
-        //     }
-        // );
 
         $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/searchbarang',['query' => $input])->then(
             function ($response) {
@@ -99,6 +91,9 @@ class WebCustomerController extends Controller
         $barang = $promise->wait();
         $barang = json_decode($barang, true);
 
+        if(!empty($data[0])){
+            $data=$data[0];
+        }
         //$data = $data['data'];
         //dd($data);
         //dd($barang);

@@ -10,7 +10,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body p-0">
-                                <a href="/distributor/" style="color:inherit;">
+                                <a href='#' onclick="geturl()" style="color:inherit;">
                                     <div hidden id='idDistributor'></div>
                                     <h2 style="padding-left:20%; margin-bottom:20;" id="namaDistributor"></h2>
                                 </a>
@@ -67,6 +67,7 @@
 </div>
 @endif
 <script>
+    
     var login = '{{Session::get('login')}}';
     console.log(login);
     $("button[name='shoplink']").on('click', function(params) {
@@ -80,7 +81,7 @@
         var button = $(event.relatedTarget);
         var id = button[0].id;
         console.log(button[0].id);
-        var idDistributor = $('#' + id + 'isi').find('#distri').html();
+        window.idDistributor = $('#' + id + 'isi').find('#distri').html();
         var namaDistributor = $('#' + id + 'isi').find('b').html();
         var dataProduk = $('#' + id + 'isi').find('form').html();
         var hargaProduk = $('#' + id + 'isi').find('form').find('#harga').html();
@@ -97,11 +98,10 @@
         document.getElementById('stok_barang').value = stokProduk;
         document.getElementById('dataProduk').innerHTML = dataProduk;
         // document.getElementById('fotoProduk').innerHTML = fotoProduk;
-
     })
     $('#tambah').click(function() {
         // event.stopPropagation();
-
+        
         console.log($('#quantity').val());
         // $.ajax({
         //     type: "POST",
@@ -117,4 +117,7 @@
         $('#btnSimpan').click();
         console.log("test");
     })
+    function geturl(){
+        window.location.href='/distributor/'+window.idDistributor;
+    }
 </script>

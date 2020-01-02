@@ -40,8 +40,8 @@
             <div>
                 <form action="/requestmitra">
                     <input type="hidden" value={{$data['id']}} name="distributor_id">
-                    @if(isset($barang['pivot']))
-                        @if($barang['pivot']['status']=='Ditolak')
+                    @if(isset($data['pivot']))
+                        @if($data['pivot']['status']=='Ditolak')
                         <button type="submit" class="btn-danger" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Pengajuan Mitra Ditolak</button>
                         @else
                         <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Menunggu Persetujuan Pengajuan Mitra</button>
