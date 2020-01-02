@@ -12,7 +12,14 @@ class BarangController extends Controller
     //
     public function index(Request $request){
         $user = JWTAuth::parseToken()->authenticate();
-        return $userDistributor = User::find($user['id'])->userable->barang;
+        if ($user['userable_type'] == 'App\\Sales') {
+            # code...
+            $barangDistributor = User::find($user['id'])->userable->distributor->barang;
+        }
+        elseif($user['userable_type'] == 'App\\Distributor'){
+            $barangDistributor = User::find($user['id'])->userable->barang;
+        }
+        return $barangDistributor;
         
     }
     public function store(Request $request){
