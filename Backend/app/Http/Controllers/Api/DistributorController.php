@@ -104,6 +104,13 @@ class DistributorController extends Controller
 
     }
 
+    public function konfirmasiDistributor(Request $request, $id){
+        $distributor = Distributor::findOrFail($id);
+        $distributor->update(['status' => 'aktif']);
+        return response()->json($distributor, 200);
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -12,7 +12,7 @@ $factory->define(Barang::class, function (Faker $faker) {
         'kategori_id' => $faker->numberBetween(1,9),
         'harga_barang' => $faker->numberBetween(10000,50000),
         'stok_barang' => $faker->numberBetween(0,30),
-        'district_id' => '1101010' 
+        'regency_id' => '1101' 
         
     
     ];

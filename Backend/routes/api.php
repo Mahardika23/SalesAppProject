@@ -82,9 +82,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::put('/distributor/{id}','Api\DistributorController@update');
     // Delete
     Route::delete('/distributor/{id}','Api\DistributorController@delete');
-
-
+    Route::put('/ubahpassword', 'UserController@changePassword');
+    Route::put('/konfirmasidistributor/{id}','Api\DistributorController@konfirmasiDistributor');
 });
+
+Route::post('/forgotpassword','UserController@forgotPassword');
 Route::post('/login','UserController@authenticate');
 Route::post('/register','UserController@register');
 
