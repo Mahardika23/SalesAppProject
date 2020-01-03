@@ -42,6 +42,7 @@
                                             <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text></p>
                                             <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                         </form>
+                                        <p id='idbarang' hidden>{{$barang['id']}}</p>
                                         <p id='distri' hidden>{{$barang['distributor_id']}}</p>
                                     </div>
                                 </div>

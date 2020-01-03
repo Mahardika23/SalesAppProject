@@ -81,6 +81,7 @@
                                                                     </p>
                                                                     <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                                                 </form>
+                                                                <p id='idbarang' hidden>{{$barang['id']}}</p>
                                                                 <p id='distri' hidden>{{$barang['distributor_id']}}</p>
                                                                 <b>{{$barang['distributor']['nama_distributor']}}</b>
                                                             </div>
@@ -124,6 +125,7 @@
                                                                 </p>
                                                                 <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
                                                             </form>
+                                                            <p id='idbarang' hidden>{{$benda['id']}}</p>
                                                             <p id='distri' hidden>{{$benda['distributor_id']}}</p>
                                                             <b>{{$benda['distributor']['nama_distributor']}}</b>
                                                         </div>

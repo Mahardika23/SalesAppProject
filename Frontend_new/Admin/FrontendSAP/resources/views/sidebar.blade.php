@@ -95,7 +95,7 @@
                 </li>
                 @if((Session::get('user_type'))=="App\Distributor")
                     <li>
-                        <a href="#">Profil</a>
+                        <a href="/Profile">Profil</a>
                     </li>
                 @elseif((Session::get('user_type'))=="App\Sales")
                     <li>
