@@ -11,15 +11,16 @@
                         <div class="col-8">
                             <div class="card-body p-0">
                                 <a href='#' onclick="geturl()" style="color:inherit;">
-                                    <div hidden id='idDistributor'></div>
                                     <h2 style="padding-left:20%; margin-bottom:20;" id="namaDistributor"></h2>
                                 </a>
                                 <div class="row">
                                     <div class="col-6">
-                                        <form id="dataProduk" action='/cart'>
+                                        <form id="dataProduk" action='/cart' action="POST">
                                     </div>
                                     <div class="def-number-input number-input safari_only col-6 pt-5">
+                                        <input type="hidden" name="id" id="id_barang" value=''>
                                         <input type="hidden" name="stok_barang" id="stok_barang" value=''>
+                                        <input type="hidden" name="id_distributor" id="idDistributor" value=''>
                                         <input type="hidden" name="nama_barang" id="nama_barang" value=''>
                                         <input type="hidden" name="harga_barang" id="harga_barang" value=''>
                                         <input type="hidden" name="nama_distributor" id="nama_distributor" value=''>
@@ -82,6 +83,7 @@
         var id = button[0].id;
         console.log(button[0].id);
         window.idDistributor = $('#' + id + 'isi').find('#distri').html();
+        var idProduk = $('#' + id + 'isi').find('#idbarang').html();
         var namaDistributor = $('#' + id + 'isi').find('b').html();
         var dataProduk = $('#' + id + 'isi').find('form').html();
         var hargaProduk = $('#' + id + 'isi').find('form').find('#harga').html();
@@ -90,7 +92,8 @@
         console.log(idDistributor);
         console.log(namaProduk);
         // var fotoProduk = $('#' + id + 'isi').find('img').html();
-        document.getElementById('idDistributor').innerHTML = idDistributor;
+        document.getElementById('idDistributor').value = idDistributor;
+        document.getElementById('id_barang').value = idProduk;
         document.getElementById('namaDistributor').innerHTML = namaDistributor;
         document.getElementById('nama_distributor').value = namaDistributor;
         document.getElementById('harga_barang').value = hargaProduk;

@@ -12,13 +12,120 @@
 
     <!-- Tab content -->
     <div id="Pesanan" class="tabcontent">
-        <h3>Pesanan</h3>
-        <p>London is the capital city of England.</p>
+        @if(($data)==NULL)
+        <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100">
+            Tidak Ada Pesanan
+        </h2>
+        @endif
+        @isset($data)
+        @foreach($data as $pesanan)
+        <div class="card mb-5">
+            <div class="card-header form-inline" style="background-color:#B1A0C7">
+                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">Nama Distributor </a></h3>
+                <div class=" col-3" style="align-content:center;text-align:right">
+                    <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row ml-2">
+
+                    <div class="row no-gutters" style="padding-right:15;">
+                        @foreach($pesanan['barang'] as $barang)
+                        <div class="row ">
+                            <div class="col ml-4 mr-3">
+                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                                    <div class="row no-gutters" style="padding-right:15;">
+                                        <div class="col-4">
+                                            <img src="../img/gambarLogo.jpg" class="card-img p-2">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body p-1">
+                                                <p class="card-text" style="font-size:100%; white-space:pre-line;">
+                                                    Nama Produk : {{$barang['nama_barang']}}
+                                                    Harga : {{$barang['harga_barang']}}
+                                                    Jumlah : {{$barang['pivot']['kuantitas_barang']}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row" style="text-align: ">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-2">
+                        <h3 style="">Total :</h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 style="">{{$pesanan['total_harga']}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endisset
     </div>
 
     <div id="Riwayat" class="tabcontent">
-        <h3>Riwayat</h3>
-        <p>Paris is the capital of France.</p>
+        @if(($data)==NULL)
+        <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100;">
+            Tidak Ada Riwayat Pemesanan
+        </h2>
+        @endif
+        @isset($data)
+        @foreach($data as $pesanan)
+        <div class="card mb-5">
+            <div class="card-header form-inline" style="background-color:#B1A0C7">
+                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">Nama Distributor </a></h3>
+                <div class="col-3" style="text-align:RIGHT">
+                    <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row ml-2">
+                    <div class="row no-gutters" style="padding-right:15;">
+                        @foreach($pesanan['barang'] as $barang)
+                        <div class="row ">
+                            <div class="col ml-4 mr-3">
+                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                                    <div class="row no-gutters" style="padding-right:15;">
+                                        <div class="col-4">
+                                            <img src="../img/gambarLogo.jpg" class="card-img p-2">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body p-1">
+                                                <p class="card-text" style="font-size:100%; white-space:pre-line;">
+                                                    Nama Produk : {{$barang['nama_barang']}}
+                                                    Harga : {{$barang['harga_barang']}}
+                                                    Jumlah : {{$barang['pivot']['kuantitas_barang']}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="text-align: ">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-2">
+                    <h3 style="">Total :</h3>
+                </div>
+                <div class="col-lg-2">
+                    <h3 style="">{{$pesanan['total_harga']}}</h3>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endisset
     </div>
 
 </div>

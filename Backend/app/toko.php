@@ -15,9 +15,9 @@ class toko extends Model
     public function user(){
         return $this->morphMany('App\User','userable');
     }
-    public function sales(){
-        return $this->belongsTo('App\Sales','sales_id');
-    }   
+    // public function sales(){
+    //     return $this->belongsTo('App\Sales','sales_id');
+    // }    
 
     public function pemesanan(){    
         return $this->hasMany('App\Pemesanan','toko_id');

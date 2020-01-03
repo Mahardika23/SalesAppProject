@@ -17,9 +17,9 @@ class Sales extends Model
     public function pemesanan(){
         return $this->hasManyThrough('App\Pemesanan','App\toko','sales_id','toko_id');
     }
-    public function toko(){
-        return $this->hasMany('App\toko');
-    }
+    // public function toko(){
+    //     return $this->hasMany('App\toko');
+    // }
     
     public function distributor(){
         return $this->belongsTo('App\Distributor');
