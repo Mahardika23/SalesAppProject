@@ -10,8 +10,8 @@
                     <h4>Edit Profil</h4>
                     <form id="form-regist" method="POST" action="/updateprofil">
                         @CSRF
-                        <div class="row no-gutters" style="background-color: ">
-                            <div class="col-lg-4" style="background-color: ">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
                                 <div class="card mt-5 mb-3 mr-5 ml-5">
                                     <div class="card-body" style="text-align:center; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                                         <div>
@@ -24,7 +24,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8" style="background-color: ">
+                            <div class="col-lg-8">
                                 <div class="m-5" style="text-align:left">
                                     <b>Informasi Toko</b>
                                     <div class="row mt-3">
@@ -53,7 +53,7 @@
                                             <label for="no_telp" class="col-form-label">No Telp
                                         </div>
                                         <div class="col-lg-7">
-                                            <input type="text" id="no_telp" class="form-control" name='no_telp' autocomplete='off' required value="0{{$data['no_telp']}}"></input>
+                                            <input type="text" id="no_telp" class="form-control" name='no_telp' autocomplete='off' required value="{{$data['no_telp']}}"></input>
                                             <span class='text-danger'>{{ $errors->first('no_telp') }}</span>
                                         </div>
                                     </div>

@@ -48,7 +48,7 @@
                                         Nomor HP
                                     </div>
                                     <div class="col">
-                                        0{{$data['no_telp']}}
+                                        {{$data['no_telp']}}
                                     </div>
                                 </div>
                                 <div class="row mt-2">
