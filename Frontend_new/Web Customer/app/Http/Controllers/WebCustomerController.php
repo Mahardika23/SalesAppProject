@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Cart;
 
 class WebCustomerController extends Controller
 {
@@ -303,19 +304,45 @@ class WebCustomerController extends Controller
 
     public function checkout(Request $request)
     {
+        //  dd($request);
+        $input=$request->all();
+        $token = $request->session()->get('token');
+        $input['distributor_id'] = $request->distributor_id;
+         dd($input);
         $client =  new Client();
-        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/pemesanan')->then(
-        function ($response) {
-            return $response->getBody();
-        },
-        function ($exception) {
-            return $exception->getMessage();
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"],'query' => $input])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+        $status = $promise->wait();
+        $status = json_decode($status, true);
+
+        if(isset($status[0]['pivot']) && $status[0]['pivot']['status']=='Diterima'){
+            // echo "bisa";
+            // dd($status);
+            $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"],'form_params' =>$input])->then(
+                function ($response) {
+                    return $response->getBody();
+                },
+                function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
+            $data = $promise->wait();
+            $data = json_decode($data, true);
+            dd($data);
+            // Destroy
         }
-    );
-        dd ($data);
-        $data = $promise->wait();
-        $data = json_decode($data, true);
-        
+        else{
+            // echo "gabisa";
+            // dd($status);
+            
+        }
+        //dd($token);
         return redirect()->back();
     }
     
