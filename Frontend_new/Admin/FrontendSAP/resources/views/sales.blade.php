@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <h1><i class="fas fa-users mr-2 pt-2"></i>Manajemen Data Sales</h1>
 <hr>
 
@@ -21,16 +22,32 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/Manajemen-Data-Sales" method="POST">
+      <form action="/Manajemen-Data-Sales" method="POST" id="form-addsales">
         @CSRF
         <div class="modal-body">
           <div class="form-group">
             <label for="inputAddress2">Nama</label>
-            <input type="text" class="form-control" name="nama_sales" placeholder="Nama Lengkap" require>
+            <input type="text" class="form-control" name="nama_sales" placeholder="Nama Lengkap" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Username</label>
+            <input type="text" class="form-control" name="name" placeholder="username" required>
           </div>
           <div class="form-group">
             <label for="inputAddress2">No HP</label>
-            <input type="text" class="form-control" name="no_hp" placeholder="08xxxxxxxxx">
+            <input type="number" class="form-control" name="no_hp" placeholder="08xxxxxxxxx" minlength=10 id="no_hp" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="email@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Password sales</label>
+            <input type="password" class="form-control" name="password" placeholder="******" min="8" id="password" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Konfirmasi password sales</label>
+            <input type="password" class="form-control" name="password_confirmation" placeholder="******" id="password_confirmation" required>
           </div>
         </div>
         <div class="modal-footer">
@@ -40,7 +57,7 @@
           <input type="hidden" name="district_id" id="" value=330101>
           <input type="hidden" name="village_id" id="" value=330101>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary">Tambah</button>
+          <button type="submit" id="submit" class="btn btn-primary">Tambah</button>
         </div>
       </form>
     </div>
@@ -176,6 +193,10 @@
 
   </tbody>
 </table>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+<script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
 @endif
+
 
 @endsection

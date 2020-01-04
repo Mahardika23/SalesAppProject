@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\Redirect;
 class LoginController extends Controller
 {
     public function index(Request $request){
-        $request->session()->get('login');
-        if ($request->session()->has('login')) {
-            return Redirect::route('dashboard');
-        }else{
+
+            if($request->session()->has('daftar')){
+                $daftar = $request->session()->get('daftar');
+                if($daftar == "berhasil"){
+                    $request->session()->flash('message','
+                    Pendaftaran berhasil, silahkan menunggu untuk diverifikasi oleh admin.');
+                }else{
+                    $request->session()->flash('message','Pendaftaran gagal, silahkan coba lagi.');
+                }
+            }
             return view('login');
-        }
+        
     }
    
     public function login(Request $request){
@@ -34,7 +40,8 @@ class LoginController extends Controller
         // dd($data);
         
         if ($data == null) {
-            return redirect()->route('login');
+            $request->session()->flash('message','Login gagal! Username atau Password salah');
+            return redirect()->back();
         }else{
         $token = $data['token'];
         $promise2 = $client->requestAsync('GET','http://127.0.0.1:8001/api/user', ['headers' =>
@@ -95,5 +102,38 @@ class LoginController extends Controller
         }
         return redirect('/');
     }
+
+    public function register(Request $request){
+
+        $input = $request->all();
+        $input['email'] = $input['email_distributor'];
+        // dd($input);
+        $client =  new Client();
+        $token = $request->session()->get('token');
+
+        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/register',['headers' =>
+            ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+
+        $distributorData = $promise->wait();
+        $distributorData = json_decode($distributorData,true);
+            $data['distributor'] = $distributorData;
+        // dd($data);
+
+        if(isset($data['distributor']['user'])){
+            $request->session()->flash('daftar','berhasil');
+        }else{
+            $request->session()->flash('daftar','gagal');
+        }
+        return redirect()->route('login');
+            // dd($data);
+    //user type
+}
 
 }

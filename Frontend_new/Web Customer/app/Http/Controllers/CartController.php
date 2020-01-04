@@ -37,13 +37,13 @@ class CartController extends Controller
                 } 
             }
         }
-        // dd($cart);
+        //  dd($cart);
     
        return view('cart',compact('cart'));
     }
 
     public function remove(Request $request){
-        dd($request);
+        //dd($request);
         Cart::remove($request->id);
         return redirect()->back();
     }
