@@ -12,11 +12,11 @@
 
     <!-- Tab content -->
     <div id="Pesanan" class="tabcontent">
-        @if(($pesanan)==NULL)
+        @empty($pesanan)
         <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100">
             Tidak Ada Pesanan
         </h2>
-        @endif
+        @endempty
         @isset($pesanan)
         @foreach($pesanan as $pesanan)
         <div class="card mb-5">
@@ -72,11 +72,11 @@
     </div>
 
     <div id="Riwayat" class="tabcontent">
-        @if(($riwayat)==NULL)
-        <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100;">
-            Tidak Ada Riwayat Pemesanan
+        @empty($pesanan)
+        <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100">
+            Tidak Ada Riwayat Pesanan
         </h2>
-        @endif
+        @endempty
         @isset($riwayat)
         @foreach($riwayat as $pesanan)
         <div class="card mb-5">

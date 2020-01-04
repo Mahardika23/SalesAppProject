@@ -63,6 +63,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="status_pemesanan" value='menunggu konfirmasi'>
         <input type="hidden" name="total_harga" value=1000>
         <input type="hidden" name="kuantitas_pesanan" value={{count($distri)}}>
     </form>

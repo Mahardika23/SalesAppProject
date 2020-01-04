@@ -43,11 +43,11 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-                // /dd($data);
+                //dd($data);
 
         $i=0;
         foreach($data as $barang){
-            if($barang['status_pemesanan']=='selesai'){
+            if($barang['status_pemesanan']=='selesai'||$barang['status_pemesanan']=='ditolak'){
                 $riwayat[$i]=$barang;
             }
             else{
@@ -55,7 +55,7 @@ class WebCustomerController extends Controller
             }
             $i++;
         }
-        //dd($pesanan);
+        dd($pesanan);
     //  dd($riwayat);
         // $data = $data['data'];
 
@@ -305,10 +305,10 @@ class WebCustomerController extends Controller
     public function checkout(Request $request)
     {
         //  dd($request);
-        $input=$request->all();
+        $input = $request->all();
         $token = $request->session()->get('token');
         $input['distributor_id'] = $request->distributor_id;
-         dd($input);
+        //    dd($input['barang']);
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"],'query' => $input])->then(
             function ($response) {
@@ -334,12 +334,14 @@ class WebCustomerController extends Controller
             );
             $data = $promise->wait();
             $data = json_decode($data, true);
-            dd($data);
+            // dd($data);
             // Destroy
+            foreach($input['barang']['id'] as $id){
+                Cart::remove($id);
+            }
         }
         else{
-            // echo "gabisa";
-            // dd($status);
+            
             
         }
         //dd($token);
