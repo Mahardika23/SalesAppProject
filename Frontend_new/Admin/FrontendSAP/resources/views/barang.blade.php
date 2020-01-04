@@ -4,6 +4,7 @@
 
   <h1><i class="fas fa-box mr-2 pt-2"></i>Manajemen Data Barang</h1><hr>
 
+  @if((Session::get('user_type'))=="App\Distributor")
   <!-- Add Barang Button -->
   <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addBarangModal">
     <i class="fas fa-plus-square mr-1"></i>
@@ -65,9 +66,16 @@
       </div>
     </div>
   </div>
+  @endif
+
   @if (empty($data))
-  <p>Anda tidak memiliki Barang</p>
-  <p>Silahkan untuk menambahkan barang</p>
+    @if((Session::get('user_type'))=="App\Distributor")
+    <p>Anda tidak memiliki Barang</p>
+    <p>Silahkan untuk menambahkan barang</p>
+    @else
+    <p>Distributor anda tidak memiliki Barang</p>
+    <p>Silahkan untuk hubungi manajemen distributor menambahkan barang</p>
+    @endif
   @else
   <!-- <a href="#" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Barang</a> -->
   <table class="table table-striped table-bordered">
@@ -78,7 +86,11 @@
       <th scope="col">Kategori</th>
       <th scope="col">Harga</th>
       <th scope="col">Stok</th>
+      @if((Session::get('user_type'))=="App\Distributor")
       <th scope="col" colspan="3">Aksi</th>
+      @else
+      <th scope="col" colspan="1">Aksi</th>
+      @endif
     </tr>
   </thead>
   <tbody>
@@ -96,8 +108,10 @@
       <td >Rp {{$barang['harga_barang']}}</td>
       <td>{{$barang['stok_barang']}}</td>
       <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal{{$barang['id']}}">Detail</button></td>
+      @if((Session::get('user_type'))=="App\Distributor")
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#editBarangModal{{$barang['id']}}"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteBarangModal{{$barang['id']}}"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
+      @endif
     </tr>
 
 <!-- Modal Detail -->
@@ -153,6 +167,8 @@
     </div>
   </div>
 
+
+@if((Session::get('user_type'))=="App\Distributor")
 <!-- Modal Edit -->
 <div class="modal fade" id="editBarangModal{{$barang['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -232,7 +248,7 @@
       </div>
     </div>
   </div>
-
+@endif
 
     
     @endforeach

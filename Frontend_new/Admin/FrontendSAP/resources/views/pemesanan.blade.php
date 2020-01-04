@@ -35,7 +35,10 @@
 
         <th scope="col">Total Harga</th>
         <th scope="col">Status</th>
+
+        @if((Session::get('user_type'))=="App\Sales")
         <th scope="col" colspan="2">Aksi</th>
+        @endif
 
 
       </tr>
@@ -53,6 +56,8 @@
         <td>{{$barang['pivot']['kuantitas_barang']}}</td>
         <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['total_harga']}}</td>
         <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['status_pemesanan']}}</td>
+
+        @if((Session::get('user_type'))=="App\Sales")
         <td rowspan="{{count($pesanan['barang'])}}" style="width:7px">
           <button type="button"
             class="btn btn-primary" data-toggle="modal" data-target="#detailPemesananModal{{$pesanan['id']}}">Detail
@@ -60,6 +65,7 @@
         </td>
         <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded"
             data-toggle="tooltip" title="Edit status"></i></td>
+        @endif
 
       </tr>
       @elseif ($indexKey>0 && !$loop->last)

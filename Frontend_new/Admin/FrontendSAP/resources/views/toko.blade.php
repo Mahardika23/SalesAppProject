@@ -18,9 +18,11 @@
       <th scope="col">No telp</th>
       <th scope="col">Alamat</th>
       <th scope="col">Email</th>
+      @if((Session::get('user_type'))=="App\Distributor")
       <th scope="col">Status</th>
       <th scope="col">Sales</th>
       <th scope="col" colspan="2">Aksi</th>
+      @endif
     </tr>
   </thead>
   <tbody>
@@ -32,6 +34,7 @@
       <td>{{$toko['no_telp']}}</td>
       <td>{{$toko['alamat_toko']}}</td>
       <td>{{$toko['email_pemilik']}}</td>
+      @if((Session::get('user_type'))=="App\Distributor")
       <td>{{$toko['pivot']['status']}}</td>
       @if($toko['pivot']['sales_id']==null)
         <td>Kosong</td>
@@ -51,8 +54,10 @@
         <td style="width:40px"><a href="" data-toggle="modal" data-target="#editSalesModal{{$toko['id']}}"><i class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Ubah Sales"></i></a></td>
         <td style="width:40px"><a href="" data-toggle="modal" data-target="#tolakTokoModal{{$toko['id']}}"><i class="fas fa-trash-alt bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i></a></td>
       @endif
+      @endif
     </tr>
 
+@if((Session::get('user_type'))=="App\Distributor")
 <!-- Modal Terima -->
 <div class="modal fade" id="terimaTokoModal{{$toko['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -149,7 +154,7 @@
       </div>
     </div>
   </div>
-
+@endif
 
 
   @endforeach

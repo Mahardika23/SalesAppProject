@@ -10,11 +10,19 @@ use App\Sales;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+
+use Illuminate\Foundation\Auth\ResetsPasswords;
+
+ 
 use PhpOption\None;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
 {
+    // use ResetsPasswords;
+    use SendsPasswordResetEmails;
+
     //
     // public function __construct(){
     //     $this->middleware('auth:api',['except' => ['login']]);
@@ -22,7 +30,7 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
+    $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
             'password' => 'required'
         ]);
@@ -81,8 +89,10 @@ class UserController extends Controller
                 'regency_id' => 'required',
                 'district_id' => 'required',
                 'village_id' => 'required',
+                
 
             ]);
+            $validatedDistributorData['status'] = 'aktif';
             $distributor = Distributor::create($validatedDistributorData);
             $userable=$distributor;
            
@@ -131,7 +141,34 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Successfully logged out']);
     }
+    public function changePassword(Request $request){
+        $user =JWTAuth::parseToken()->authenticate();
+        $validatedData = $request->validate([
+            
+            'current_password' => 'required|min:8|string',
+            'password' =>'required|min:8|string|unique:users|confirmed'
 
+        ]);
+        $UserPass = Hash::check($request['current_password'],$user['password']);
+        
+        if (!$UserPass) {
+            return ['message' => 'Current password is wrong'];
+            # code...
+        }
+        $check = Hash::check($validatedData['password'],$user['password']);
+
+        if($check){
+            $message = 'Password baru sama dengan password lama';
+
+        }
+        else {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+            $user->update($validatedData);
+
+            $message = 'Berhasil Mengubah Password';
+        }
+        return ['message' => $message];
+    }
     public function getAuthenticatedUser()
     {
         try {
@@ -152,4 +189,18 @@ class UserController extends Controller
 
         return response()->json(compact('user'));
     }
+    public function forgotPassword(Request $request){
+        $this->validateEmail($request);
+
+        return $this->sendResetLinkEmail($request);
+    }
+    protected function sendResetLinkResponse($response){
+        return response(['message' => 'Password Reset Email Has Been Sent']);
+
+    }
+    protected function sendResetLinkFailedResponse(Request $request,$response){
+        return response(['message' => 'Email Could not be sent']);
+        
+    }
+
 }

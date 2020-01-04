@@ -77,8 +77,7 @@ class TokoController extends Controller
         $toko = User::find($user['id'])->userable;
         $distributor=toko::findOrFail($toko['id'])
         ->distributor()->wherePivot('distributor_id','=',$request['distributor_id'])->get();
-       
-        if (empty($user[0])) {
+        if (empty($user)) {
             $distributor = Distributor::findOrFail($request['distributor_id']);
         }
         elseif (empty($distributor[0])) {

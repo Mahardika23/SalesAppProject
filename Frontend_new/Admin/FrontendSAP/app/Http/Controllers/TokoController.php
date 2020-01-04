@@ -56,7 +56,7 @@ class TokoController extends Controller
             
                 $sales = $salesData;
             
-            dd($data);
+            // dd($data);
             return view('toko',['data'=> $data,'sales' => $sales]);
             // return view('barang',['nama' => $nama]);
 
