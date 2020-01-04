@@ -48,9 +48,9 @@
                     @if (Session::has('login'))
                     
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px; "></a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../storage/Avatar/{{Session::get('profile_image')}}" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px; "></a>
                         <div class="dropdown-menu dropdown-menu-right text-left "  aria-labelledby="navbarDropdown" >
-                            <a class="" style="text-align: center" ><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px;margin-right:5">{{Session::get('username')}}</a>
+                            <a class="" style="text-align: center" ><img src="../storage/Avatar/{{Session::get('profile_image')}}" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px;margin-right:5">{{Session::get('username')}}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/profil" >Profil</a>
                             <a class="dropdown-item" href="/logout">Logout</a>

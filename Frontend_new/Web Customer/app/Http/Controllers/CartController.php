@@ -43,7 +43,7 @@ class CartController extends Controller
     }
 
     public function remove(Request $request){
-        dd($request);
+        //dd($request);
         Cart::remove($request->id);
         return redirect()->back();
     }
