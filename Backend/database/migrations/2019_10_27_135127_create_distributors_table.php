@@ -24,6 +24,7 @@ class CreateDistributorsTable extends Migration
             $table->bigInteger('district_id')->nullable();
             $table->bigInteger('village_id')->nullable();
             $table->string('profile_image',50)->nullable();
+            $table->enum('status',['tidak aktif','aktif']);
 
             $table->timestamps();
             

@@ -11,7 +11,6 @@ $factory->define(Distributor::class, function (Faker $faker) {
         'nama_distributor' => $faker->name,
         'alamat_distributor' => $faker->address,
         'email_distributor' => $faker->unique()->safeEmail,
-        // 'timestamps' =>now(),
-        
+        'status' => 'aktif'        
     ];
 });

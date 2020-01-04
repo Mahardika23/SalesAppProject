@@ -38,6 +38,7 @@
         </div>
         <div class="col-6">
             <div>
+                @if(empty($data['barang']))
                 <form action="/requestmitra">
                     <input type="hidden" value={{$data['id']}} name="distributor_id">
                     @if(isset($data['pivot']))
@@ -50,6 +51,7 @@
                     <button type="submit" class="btn-purple"  style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Ajukan Permintaan Mitra</button>
                     @endif
                 </form>
+                @endif
             </div>
             <form class="form-inline" method="GET" action="/distributor/{{$data['id']}}">
                 @CSRF

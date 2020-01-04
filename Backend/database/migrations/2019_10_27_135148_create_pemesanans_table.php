@@ -22,7 +22,7 @@ class CreatePemesanansTable extends Migration
             $table->string('nama_toko');
             $table->integer('kuantitas_pesanan')->nullable();
             $table->bigInteger('total_harga');
-            $table->enum('status_pemesanan',['diterima kurir','menunggu persetujuan','diantar','selesai']);
+            $table->enum('status_pemesanan',['menunggu konfirmasi','pesanan diproses','diantar','diterima toko','ditolak','selesai']);
             $table->timestamps();
             $table->softDeletes();
             
