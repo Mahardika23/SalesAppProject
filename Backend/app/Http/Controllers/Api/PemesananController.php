@@ -51,7 +51,7 @@ class PemesananController extends Controller
             'sales_id' => 'numeric',
             'nama_toko' => 'required',
             'total_harga' => 'numeric|required',
-            'status_pemesanan' => ['required', Rule::in(['menunggu persetujuan','diantar','selesai', 'diterima kurir']),]
+            'status_pemesanan' => ['required', Rule::in(['menunggu konfirmasi','pesanan diproses','diantar','diterima toko','ditolak','selesai']),]
             
         ]);
         $pemesanan = new Pemesanan($validatedData);
