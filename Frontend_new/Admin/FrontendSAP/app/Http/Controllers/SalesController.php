@@ -77,7 +77,7 @@ class SalesController extends Controller
         $client =  new Client();
         $token = $request->session()->get('token');
 
-        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/admin/sales',['headers' =>
+        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/register',['headers' =>
             ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
             ->then(
                 function ($response) {

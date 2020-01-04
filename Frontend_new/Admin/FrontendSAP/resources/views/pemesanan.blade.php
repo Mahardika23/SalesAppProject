@@ -37,7 +37,7 @@
         <th scope="col">Status</th>
 
         @if((Session::get('user_type'))=="App\Sales")
-        <th scope="col" colspan="2">Aksi</th>
+        <th scope="col">Aksi</th>
         @endif
 
 
@@ -48,7 +48,7 @@
       <tr class="table-secondary">
         <td rowspan="{{count($pesanan['barang'])}}" scope="row">{{$indexKey+1}}</td>
         <td rowspan="{{count($pesanan['barang'])}}">{{$pesanan['nama_toko']}}</td>
-        <td rowspan="{{count($pesanan['barang'])}}">{{count($data['pemesanan'][0]['barang'])}}</td>
+        <td rowspan="{{count($pesanan['barang'])}}">{{count($pesanan['barang'])}}</td>
 
         @foreach ($pesanan['barang'] as $indexKey => $barang)
         @if($loop->first)
@@ -58,13 +58,12 @@
         <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['status_pemesanan']}}</td>
 
         @if((Session::get('user_type'))=="App\Sales")
-        <td rowspan="{{count($pesanan['barang'])}}" style="width:7px">
-          <button type="button"
-            class="btn btn-primary" data-toggle="modal" data-target="#detailPemesananModal{{$pesanan['id']}}">Detail
-          </button>
-        </td>
-        <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded"
-            data-toggle="tooltip" title="Edit status"></i></td>
+          @if($pesanan['status_pemesanan']=="Ditolak")
+            <td>x</td>
+          @else
+            <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded"
+                data-toggle="modal" data-target="#editPemesananModal{{$pesanan['id']}}" title="Edit status"></i></td>
+          @endif
         @endif
 
       </tr>
@@ -88,12 +87,12 @@
       @endif
 
       @endforeach
-      <div class="modal fade" id="detailPemesananModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
+      <div class="modal fade" id="editPemesananModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Lihat Detail</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Ubah status</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -101,12 +100,31 @@
             <form action="">
               <div class="modal-body">
                 <div class="form-group">
-                  <label for="inputAddress2">Nama Toko</label>
-                  <input type="text" class="form-control" id="nama" value="{{$pesanan['nama_toko']}}" disabled>
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress2">no HP</label>
-                  <input type="number" class="form-control" id="Stok" value="" disabled>
+                  <label for="inputAddress2">Satus</label>
+                  <div class="input-group mb-3">
+                    <select class="custom-select" id="inputGroupSelect02" name="status_pemesanan">
+                    @if($pesanan['status_pemesanan']=="menunggu persetujuan")
+                      <option selected>Menunggu Persetujuan</option>
+                    @else
+                      <option>Menunggu Persetujuan</option>
+                    @endif
+                    @if($pesanan['status_pemesanan']=="diterima")
+                      <option selected>Diterima</option>
+                    @else
+                      <option>Diterima</option>
+                    @endif
+                    @if($pesanan['status_pemesanan']=="selesai")
+                      <option selected>Selesai</option>
+                    @else
+                      <option>Selesai</option>
+                    @endif
+                    @if($pesanan['status_pemesanan']=="ditolak")
+                      <option selected>Ditolak</option>
+                    @else
+                      <option>Ditolak</option>
+                    @endif
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="modal-footer">

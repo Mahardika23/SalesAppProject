@@ -12,7 +12,7 @@
           <i class="fas fa-store-alt"></i>
         </div>
         <h5 class="card-title">Data Toko</h5>
-        <div class="display-4">200</div>
+        <div class="display-4">{{$data['dashboardData']['total']['toko']}}</div>
         <a href="{{ url('/Manajemen-Data-Toko') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
@@ -23,7 +23,7 @@
           <i class="far fa-list-alt"></i>
         </div>
         <h5 class="card-title">Data Pemesanan</h5>
-        <div class="display-4">130</div>
+        <div class="display-4">{{$data['dashboardData']['total']['pemesanan']}}</div>
         <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
@@ -39,7 +39,7 @@
           <i class="fas fa-users"></i>
         </div>
         <h5 class="card-title">Data Sales</h5>
-        <div class="display-4">20</div>
+        <div class="display-4">{{$data['dashboardData']['total']['sales']}}</div>
         <a href="{{ url('/Manajemen-Data-Sales') }}"><p class="card-text text-white">Lihat Selengkapnya<i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
@@ -50,41 +50,45 @@
           <i class="fas fa-box"></i>
         </div>
         <h5 class="card-title">Data Barang</h5>
-        <div class="display-4">12</div>
+        <div class="display-4">{{$data['dashboardData']['total']['barang']}}</div>
         <a href="{{ url('/Manajemen-Data-Barang') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
 
   </div>
 
+    
+  @if(Session::has('message'))
+    <!-- USERNAME atau PASSWORD SALAH -->
+    <div class="modal fade" id="loginfailed" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Pemberitahuan</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                {{Session::get('message')}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    @endif
+
+
+    @if(Session::has('message'))
+        <script type="text/javascript">
+            $(window).on('load',function(){
+                $('#loginfailed').modal('show');
+            });
+        </script>
+    @endif
 
 @endsection
 
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand|Rajdhani&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/beranda.css') }}">
-  <title></title>
-</head>
-
-<body>
-
-  <div class="wrapper align-self-center">
-   
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
-</html> -->

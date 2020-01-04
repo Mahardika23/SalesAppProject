@@ -41,4 +41,32 @@ class ProfileController extends Controller
         $user_type = $request->session()->get('user_type');
         return view('profile',['data' => $data]);
     }
+
+    public function ubahpassword(Request $request){
+
+            $input = $request->all();
+            // dd($input);
+            $client =  new Client();
+            $token = $request->session()->get('token');
+    
+            $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/ubahpassword',['headers' =>
+                ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
+                ->then(
+                    function ($response) {
+                        return $response->getBody();
+                }, function ($exception){
+                    return $exception->getMessage();
+                }
+            );
+    
+            $distributorData = $promise->wait();
+            $distributorData = json_decode($distributorData,true);
+                $data['distributor'] = $distributorData;
+
+
+            $request->session()->flash('password','berhasil');
+            return redirect()->route('dashboard');
+                // dd($data);
+        //user type
+    }
 }
