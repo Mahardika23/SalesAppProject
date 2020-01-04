@@ -83,7 +83,7 @@ class UserController extends Controller
 
             $profil = $promise->wait();
             $profil = json_decode($profil, true);
-            //dd($profil);
+            $request->session()->put('id_toko', $profil['id']);
             $request->session()->put('nama_toko', $profil['nama_toko']);
             $request->session()->put('username', $user['user']['name']);
             return redirect()->route('beranda');

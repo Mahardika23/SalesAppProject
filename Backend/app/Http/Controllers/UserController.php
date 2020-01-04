@@ -101,7 +101,7 @@ class UserController extends Controller
             $validatedSalesData = $request->validate([
                 'nama_sales' => 'required|string|max:255',
                 'distributor_id' => 'required|integer',
-                'no_hp' => 'required|regex:/(0)[0-9]{9}/',
+                'no_hp' => 'required|regex:/(0)[0-9]{9}/|max:13',
                 'province_id' => 'required',
                 'regency_id' => 'required',
                 'district_id' => 'required',
