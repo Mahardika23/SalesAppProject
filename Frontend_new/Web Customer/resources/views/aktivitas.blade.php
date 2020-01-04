@@ -21,7 +21,7 @@
         @foreach($pesanan as $pesanan)
         <div class="card mb-5">
             <div class="card-header form-inline" style="background-color:#B1A0C7">
-                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">Nama Distributor </a></h3>
+                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">{{$pesanan['distributor']['nama_distributor']}} </a></h3>
                 <div class=" col-3" style="align-content:center;text-align:right">
                     <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
                 </div>
@@ -81,7 +81,7 @@
         @foreach($riwayat as $pesanan)
         <div class="card mb-5">
             <div class="card-header form-inline" style="background-color:#B1A0C7">
-                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">Nama Distributor </a></h3>
+                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;"> {{$pesanan['distributor']['nama_distributor']}} </a></h3>
                 <div class="col-3" style="text-align:RIGHT">
                     <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
                 </div>

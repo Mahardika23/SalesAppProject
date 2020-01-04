@@ -43,7 +43,7 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-                // /dd($data);
+                // dd($data);
 
         $i=0;
         foreach($data as $barang){
@@ -55,7 +55,7 @@ class WebCustomerController extends Controller
             }
             $i++;
         }
-        //dd($pesanan);
+        // dd($pesanan);
     //  dd($riwayat);
         // $data = $data['data'];
 
