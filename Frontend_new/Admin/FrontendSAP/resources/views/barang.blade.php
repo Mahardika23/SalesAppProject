@@ -53,7 +53,7 @@
               <label for="inputAddress2">Stok</label>
               <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813">
               <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
-              <input type="hidden" name="district_id" id="" value=330101>
+              <input type="hidden" name="regency_id" id="" value=330101>
 
               <input type="hidden" name="item_image" id="" value="">
             </div>
