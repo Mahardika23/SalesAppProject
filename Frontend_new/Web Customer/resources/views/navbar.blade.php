@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url('/css/carousel.css')}}">
     <link rel="stylesheet" href="{{ url('/css/icon.css')}}">
     <link rel="stylesheet" href="{{ url('/css/number.css')}}">
+    <link rel="stylesheet" href="{{ asset('css\error.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
@@ -41,7 +42,7 @@
                         <a class="nav-link" href="/aktivitas">Aktivitas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pesan">Pesan</a>
+                        <a class="nav-link" href="/pesan">Keranjang</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">

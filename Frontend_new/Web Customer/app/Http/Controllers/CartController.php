@@ -37,7 +37,7 @@ class CartController extends Controller
                 } 
             }
         }
-        // dd($cart);
+        //  dd($cart);
     
        return view('cart',compact('cart'));
     }
