@@ -12,7 +12,7 @@
           <i class="fas fa-store-alt"></i>
         </div>
         <h5 class="card-title">Data Toko</h5>
-        <div class="display-4">200</div>
+        <div class="display-4">{{$data['dashboardData']['total']['toko']}}</div>
         <a href="{{ url('/Manajemen-Data-Toko') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
@@ -23,7 +23,7 @@
           <i class="far fa-list-alt"></i>
         </div>
         <h5 class="card-title">Data Pemesanan</h5>
-        <div class="display-4">130</div>
+        <div class="display-4">{{$data['dashboardData']['total']['pemesanan']}}</div>
         <a href="{{ url('/Manajemen-Data-Pemesanan') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
@@ -39,7 +39,7 @@
           <i class="fas fa-users"></i>
         </div>
         <h5 class="card-title">Data Sales</h5>
-        <div class="display-4">20</div>
+        <div class="display-4">{{$data['dashboardData']['total']['sales']}}</div>
         <a href="{{ url('/Manajemen-Data-Sales') }}"><p class="card-text text-white">Lihat Selengkapnya<i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>
@@ -50,7 +50,7 @@
           <i class="fas fa-box"></i>
         </div>
         <h5 class="card-title">Data Barang</h5>
-        <div class="display-4">12</div>
+        <div class="display-4">{{$data['dashboardData']['total']['barang']}}</div>
         <a href="{{ url('/Manajemen-Data-Barang') }}"><p class="card-text text-white">Lihat Selengkapnya <i class="fa fa-angle-double-right ml-2"></i></p></a>
       </div>
     </div>

@@ -42,7 +42,7 @@ class DashboardController extends Controller
         $dashboardData = $promise->wait();
         $dashboardData = json_decode($dashboardData,true);
             $data['dashboardData'] = $dashboardData;
-            // dd($data);
+            // dd($dashboardData);
     //user type
 
         if($request->session()->has('password')){
