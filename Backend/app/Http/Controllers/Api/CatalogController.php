@@ -44,13 +44,12 @@ class CatalogController extends Controller
     public function showByUser(Request $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
-        $userToko = User::find($user['id'])->userable->district_id;
-        return $barang = Barang::with('distributor')->where('district_id',$userToko)->paginate(12);
+        $userToko = User::find($user['id'])->userable->regency_id;
+        $usernya = User::find($user['id'])->userable;
+        
+        return $barang = Barang::with('distributor')->where('regency_id',$userToko)->paginate(12);
 
-        // return $barang = Barang::find(1)
-        //     ->join('distributors', 'barangs.distributor_id', '=', 'distributors.id')
-        //     ->select('barangs.*', 'distributors.nama_distributor')->where('distributors.regency_id', $userToko)
-        //     ->get();
+   
     }
 
     public function searchBy(Request $request)

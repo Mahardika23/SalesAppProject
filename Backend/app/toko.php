@@ -10,7 +10,7 @@ class toko extends Model
     use SoftDeletes;
     protected $table = 'tokos';
     protected $primary_key='id';
-    protected $fillable = ['nama_toko','nama_pemilik','alamat_toko','no_telp','alamat_toko','email_pemilik','province_id','regency_id','district_id','village_id'];
+    protected $fillable = ['nama_toko','nama_pemilik','alamat_toko','no_telp','alamat_toko','email_pemilik','province_id','regency_id','district_id','village_id','profile_image'];
     
     public function user(){
         return $this->morphMany('App\User','userable');
