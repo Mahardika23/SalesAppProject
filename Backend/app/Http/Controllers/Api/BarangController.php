@@ -29,7 +29,7 @@ class BarangController extends Controller
             'harga_barang' => 'required|integer',
             'stok_barang' => 'required|integer',
             'item_image' => 'string',
-            'district_id' =>'required|numeric',
+            'regency_id' =>'required|numeric',
             'distributor_id' => 'required|numeric',
             
         ]);
