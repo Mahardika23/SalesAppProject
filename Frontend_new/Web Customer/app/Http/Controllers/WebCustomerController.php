@@ -10,15 +10,6 @@ use Illuminate\Http\Request;
 class WebCustomerController extends Controller
 {
     //
-    public function cart(Request $request)
-    {
-        session()->put('stok_barang', $request->get('stok_barang'));
-        session()->put('quantity', $request->get('quantity'));
-        session()->put('harga_barang', $request->get('harga_barang'));
-        session()->put('nama_barang', $request->get('nama_barang'));
-        session()->put('nama_distributor', $request->get('nama_distributor'));
-        return redirect()->back();
-    }
 
     public function login(Request $request)
     {
@@ -37,6 +28,7 @@ class WebCustomerController extends Controller
 
     public function aktivitas(Request $request)
     {
+
         $token = $request->session()->get('token');
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
@@ -50,35 +42,62 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
+                // /dd($data);
 
+        $i=0;
+        foreach($data as $barang){
+            if($barang['status_pemesanan']=='selesai'){
+                $riwayat[$i]=$barang;
+            }
+            else{
+                $pesanan[$i]=$barang;
+            }
+            $i++;
+        }
+        //dd($pesanan);
+    //  dd($riwayat);
         // $data = $data['data'];
 
-        //dd($data);
-        return view('aktivitas', compact('data'));    }
+        return view('aktivitas', compact('pesanan','riwayat'));    
+    }
 
     public function getDistributor(Request $request,$id)
     {
         $token = $request->session()->get('token');
         $input = $request->all();
-        // dd($input);
         $input['distributor_id']=$id;
         $input['id']=$id;
-        //dd($input);
-          // dd($token);
-        //dd($request->session()->get('token'));
+
         $client =  new Client();
-        $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"],'query' => $input])->then(
-            function ($response) {
-                return $response->getBody();
-            },
-            function ($exception) {
-                return $exception->getMessage();
-            }
-        );
 
-        $data = $promise->wait();
-        $data = json_decode($data, true);
+        if($request->session()->has('token')){
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"],'query' => $input])->then(
+                function ($response) {
+                    return $response->getBody();
+                },
+                function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
 
+            $data = $promise->wait();
+            $data = json_decode($data, true);
+        }
+        else{
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/barang/'.$id)->then(
+                function ($response) {
+                    return $response->getBody();
+                },
+                function ($exception) {
+                    return $exception->getMessage();
+                }
+            );
+
+            $data = $promise->wait();
+            $data = json_decode($data, true);
+        }
+        //  dd($input);
+        
         $promise = $client->getAsync('http://127.0.0.1:9090/api/distributor/searchbarang',['query' => $input])->then(
             function ($response) {
                 return $response->getBody();
@@ -281,4 +300,23 @@ class WebCustomerController extends Controller
         // dd($page2);
         return view('beranda', compact('data','page2','kategori'));
     }
+
+    public function checkout(Request $request)
+    {
+        $client =  new Client();
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/pemesanan')->then(
+        function ($response) {
+            return $response->getBody();
+        },
+        function ($exception) {
+            return $exception->getMessage();
+        }
+    );
+        dd ($data);
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        
+        return redirect()->back();
+    }
+    
 }

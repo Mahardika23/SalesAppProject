@@ -15,16 +15,6 @@
 //     return view('');
 // });
 
-Route::get('test', function(){
-    Cart::add('293ad', 'Product 1', 1, 9.99, 550, ['size' => 'large']);
-});
-// Route::get('cart', function(){
-//     return Cart::content();
-// });
-Route::get('total', function(){
-    return Cart::total();
-});
-
 Route::group(['middleware' => ['logincheck']], function() {
     Route::get('/aktivitas', 'WebCustomerController@aktivitas');
     Route::get('/pesan', 'CartController@cart');
@@ -44,12 +34,7 @@ Route::any('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar
 Route::any('/cart', 'CartController@add');
 Route::any('/cart-delete', 'CartController@remove');
 Route::any('/requestmitra', 'WebCustomerController@getMitra');
-Route::any('/daftar/toko', 'UserController@register');
-Route::any('/daftar/alamat', 'UserController@register2');
 Route::any('/daftarakun', 'UserController@register3');
-Route::post('get_province', [
-    'uses' => 'WebCustomerController@getProvince'
-]);
 // Route::get('/searchApi','WebCustomerController@getBarangSearch')
 Route::post('get_barang', [
     'uses' => 'WebCustomerController@getBarang'

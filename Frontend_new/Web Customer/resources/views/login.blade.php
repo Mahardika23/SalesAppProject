@@ -22,14 +22,13 @@
                             <img src="../img/gambarLogo.jpg" class="" alt="..." width='300px' height='300px'>
                         </div>
                         <h4>Masuk</h4>
-                        <!-- form validasi -->
                         <div class=" justify-content-center" style='margin-left:20%;margin-right:20%'>
-                            <form action="/loginUser" method="POST">
+                            <form id="form-regist" action="/loginUser" method="POST">
                                 @CSRF
                                 <div class="form-group col-md-12">
                                     <label for="email"></label>
-                                    <input class="form-control" type="email" name="email" placeholder="E-mail" autocomplete='off'>
-                                    <span class='text-danger'>{{ $errors->first('email') }}</span>
+                                    <input required class="form-control" type="email" name="email" placeholder="E-mail" autocomplete='off'>
+                                    <span class='text-danger error-message'>{{ $errors->first('email') }}</span></span>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="password"></label>
@@ -57,5 +56,8 @@
         </div>
     </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+<script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
 
 </html>

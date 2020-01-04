@@ -12,13 +12,13 @@
 
     <!-- Tab content -->
     <div id="Pesanan" class="tabcontent">
-        @if(($data)==NULL)
+        @if(($pesanan)==NULL)
         <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100">
             Tidak Ada Pesanan
         </h2>
         @endif
-        @isset($data)
-        @foreach($data as $pesanan)
+        @isset($pesanan)
+        @foreach($pesanan as $pesanan)
         <div class="card mb-5">
             <div class="card-header form-inline" style="background-color:#B1A0C7">
                 <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">Nama Distributor </a></h3>
@@ -72,13 +72,13 @@
     </div>
 
     <div id="Riwayat" class="tabcontent">
-        @if(($data)==NULL)
+        @if(($riwayat)==NULL)
         <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100;">
             Tidak Ada Riwayat Pemesanan
         </h2>
         @endif
-        @isset($data)
-        @foreach($data as $pesanan)
+        @isset($riwayat)
+        @foreach($riwayat as $pesanan)
         <div class="card mb-5">
             <div class="card-header form-inline" style="background-color:#B1A0C7">
                 <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">Nama Distributor </a></h3>
