@@ -179,6 +179,7 @@ class UserController extends Controller
             $profile_name = 'avatar_' . $request->session()->get('nama_toko') . '.' . request()->profile_image->getClientOriginalExtension();
             $request['profile_image']->storeAs('Avatar', $profile_name);
             $input['profile_image'] = $profile_name;
+            $request->session()->put('profile_image', $input['profile_image']);
         }
         // dd($['profile_image']);
 

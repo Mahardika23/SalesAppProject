@@ -37,6 +37,8 @@
                                 <div class="col ml-4 mr-3">
                                     <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
                                         <div class="row no-gutters" style="padding-right:15;">
+                                            <input type="hidden" name="distri_id" value="{{$distri[0]['attributes']['id_distributor']}}">
+
                                             <div class="col-3">
                                                 <img src="../img/gambarLogo.jpg" class="card-img p-2">
                                             </div>
@@ -47,12 +49,19 @@
                                                         harga : {{$barang['price']}}
                                                         stok : {{$barang['attributes']['stok_barang']}}
                                                     </p>
+                                                    <input type="hidden" name="harga" value={{$barang['price']}}>
                                                 </div>
                                             </div>
                                             <div class="def-number-input number-input safari_only col-4" style="padding-top:17%;">
-                                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                                                {{-- <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button> --}}
+                                                
+                                                {{-- <span class="minus">-</span> --}}
+
                                                 <input class="quantity" id="kuantitasbarang-{{$barang['id']}}-{{$distri[0]['attributes']['id_distributor']}}" min="0" name="barang[kuantitas_barang][]" value="{{$barang['quantity']}}" type="number">
-                                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                                
+                                                {{-- <span class="plus">+</span> --}}
+
+                                                {{-- <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button> --}}
                                             </div>
                                             <div class="col-1" style="padding-top:18%;">
                                                 <a href="/cart-delete?id={{$barang['id']}}">
@@ -119,45 +128,97 @@
     @endif
 </div>
 <script>
+$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count <= 0 ? 0 : count;
+                $input.val(count);
+                $input.data('val', $input.val());
+
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+                $input.data('val', $input.val());
+
+                $input.change();
+				return false;
+			});
+		});
+</script>
+<script>
     var harga = []
-    var i = 1 ;
   
      $('form').each(function() {
         var distribId = 'distrib'+$(this).find('input[name=distributor_id]').val();
         var Id = $(this).find('input[name=distributor_id]').val();
 
-        $total = 0
+      
+        //  var qty =[]
+        var a =[];
+        var hasil=0;
       $idBarang =   $(this).find("input[name='barang[id][]'").val();
-      console.log($idBarang)
-        $(this).find("input[name='barang[harga][]']").each(function() {
-           
-        var qty=$('form').find($('#kuantitasbarang-'+$idBarang+'-'+Id));
-        console.log(qty)
+    //   console.log($idBarang)
+    $(this).find("div[class='row no-gutters']").each(function () {
+       var kuantitas = $(this).find("input[name='barang[kuantitas_barang][]']");
+        var valKuantitas = $(this).find("input[name='barang[kuantitas_barang][]']").val();
+        var harga = $(this).find("input[name='harga']").val();
+        // console.log(harga);
+        kuantitas.change(function (e) {
+            valKuantitas = $('#'+e.target.id)
+            
+        })
+         hasil = hasil+valKuantitas *harga;
+     })
+             $('#totalHarga'+Id).html(hasil);
 
-        
-        // console.log(qty);
-        // console.log( $(this).find("input[name='barang[kuantitas_barang][]']").val())
-        // console.log(kuantitas_barang)
-        
-        $total = $total + (parseInt($(this).val()));
-
-        });
-        $('#totalHarga'+Id).html($total);
-// $(this).find($('#')).html($total)
-        console.log($total)
-        harga[distribId] =$(this).find('input[name=distributor_id]').val();
-        
-        console.log($(this).find('input[name=distributor_id]').val());  
-        
+    console.log(hasil);
+    // console.log("\n")
+     
     });
+    $('input').on('focusin', function(){
+    // console.log("Saving value " + $(this).val());
+    $(this).data('val', $(this).val());
+});
+    $('input').on('change',function (e) {
+        var ortu = $('#'+e.target.id).parent().parent();
 
-    console.log(harga);
+        distriId = ortu.find("input[name='distri_id']").val();
+
+        var prev = $(this).data('val');
+        console.log('tadinya ' +prev)
+        var hasil = 0
+        //  console.log("u just inpuuted on " + e.target.id)
+         harga = ortu.find("input[name='harga']").val();
+         var prevHarga = prev * harga ;
+         console.log("harga tadi" + prevHarga)
+         var prevHargaTotal = $('#totalHarga'+distriId).html();
+         
+         console.log('harga total tadi '+prevHargaTotal)
+         kuantitas = $('#'+e.target.id).val();
+         var hasilAkhir ;
+         
+         hasil = hasil + harga*kuantitas
+         console.log(hasil);
+         var hasilAkhir = (prevHargaTotal - prevHarga) + hasil
+         if(hasil == 0 && prevHargaTotal == prevHarga ){
+             hasilAkhir = hasil;
+            //  console.log("goblog")
+         }
+         else if (prevHargaTotal == kuantitas*harga || prevHargaTotal <= 0) {
+             hasilAkhir = hasil;
+            }
+
+        
+        //  console.log(distriId)
+         $('#totalHarga'+distriId).html(hasilAkhir)
+     })
 
 
-//     $("input[name='barang[harga][]']").each(function() {
-//     harga.push($(this).val());
-// });
- console.log(harga);
+
 
 
 

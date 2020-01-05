@@ -15,7 +15,7 @@ class RedirectIfLoggedIn
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->session()->has('login')) {
+        if (!$request->session()->exists('login')) {
             return redirect('/login');
         }
         return $next($request);

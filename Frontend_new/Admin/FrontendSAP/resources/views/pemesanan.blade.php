@@ -37,7 +37,7 @@
         <th scope="col">Status</th>
 
         @if((Session::get('user_type'))=="App\Sales")
-        <th scope="col">Aksi</th>
+        <th colspan="2" scope="col">Aksi</th>
         @endif
 
 
@@ -58,11 +58,25 @@
         <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['status_pemesanan']}}</td>
 
         @if((Session::get('user_type'))=="App\Sales")
-          @if($pesanan['status_pemesanan']=="Ditolak")
-            <td>x</td>
-          @else
-            <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-edit bg-success p-2 text-white rounded"
-                data-toggle="modal" data-target="#editPemesananModal{{$pesanan['id']}}" title="Edit status"></i></td>
+
+          @if($pesanan['status_pemesanan']=="menunggu konfirmasi")
+            <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-check bg-success p-2 text-white rounded"
+              data-toggle="modal" data-target="#pesananDiprosesModal{{$pesanan['id']}}" title="Proses pesanan"></i></td>
+            <td rowspan="{{count($pesanan['barang'])}}" style="width:40px"><i class="fas fa-times bg-danger p-2 text-white rounded"
+              data-toggle="modal" data-target="#tolakModal{{$pesanan['id']}}" title="Tolak Pesanan"></i></td>
+          @elseif($pesanan['status_pemesanan']=="pesanan diproses")
+            <td rowspan="{{count($pesanan['barang'])}}" colspan="2" style="width:40px"><i class="fas fa-shipping-fast bg-success p-2 text-white rounded"
+              data-toggle="modal" data-target="#diantarModal{{$pesanan['id']}}" title="Antar Pesanan"></i></td>
+          @elseif($pesanan['status_pemesanan']=="diantar")
+            <td rowspan="{{count($pesanan['barang'])}}" colspan="2" style="width:40px"><i class="fas fa-receipt bg-success p-2 text-white rounded"
+              data-toggle="modal" data-target="#diterimaTokoModal{{$pesanan['id']}}" title="Diterima Toko"></i></td>
+          @elseif($pesanan['status_pemesanan']=="diterima toko")
+            <td rowspan="{{count($pesanan['barang'])}}" colspan="2" style="width:40px"><i class="fas fa-check bg-success p-2 text-white rounded"
+              data-toggle="modal" data-target="#selesaiModal{{$pesanan['id']}}" title="Selesai"></i></td>
+          @elseif($pesanan['status_pemesanan']=="ditolak")
+            <td rowspan="{{count($pesanan['barang'])}}" colspan="2" style="width:60px"><i class="fas fa-times bg-secondary p-2 text-white rounded" title="Pesanan ditolak"></i></td>
+          @elseif($pesanan['status_pemesanan']=="selesai")
+            <td rowspan="{{count($pesanan['barang'])}}" colspan="2" style="width:40px"><i class="fas fa-check bg-secondary p-2 text-white rounded" title="Pesanan Selesai"></i></td>
           @endif
         @endif
 
@@ -87,53 +101,191 @@
       @endif
 
       @endforeach
-      <div class="modal fade" id="editPemesananModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
+
+
+      @if((Session::get('user_type'))=="App\Sales")
+
+      @if($pesanan['status_pemesanan']=="menunggu konfirmasi")
+
+      <!-- modal Terima -->
+      <div class="modal fade" id="pesananDiprosesModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Ubah status</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Terima Pesanan</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="">
+            <form action="/Manajemen-Data-Pemesanan/update" method="POST">
+            @csrf
               <div class="modal-body">
                 <div class="form-group">
-                  <label for="inputAddress2">Satus</label>
-                  <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect02" name="status_pemesanan">
-                    @if($pesanan['status_pemesanan']=="menunggu persetujuan")
-                      <option selected>Menunggu Persetujuan</option>
-                    @else
-                      <option>Menunggu Persetujuan</option>
-                    @endif
-                    @if($pesanan['status_pemesanan']=="diterima")
-                      <option selected>Diterima</option>
-                    @else
-                      <option>Diterima</option>
-                    @endif
-                    @if($pesanan['status_pemesanan']=="selesai")
-                      <option selected>Selesai</option>
-                    @else
-                      <option>Selesai</option>
-                    @endif
-                    @if($pesanan['status_pemesanan']=="ditolak")
-                      <option selected>Ditolak</option>
-                    @else
-                      <option>Ditolak</option>
-                    @endif
-                    </select>
-                  </div>
+                  <label for="inputAddress2">Terima Pesanan dari {{$pesanan['nama_toko']}}?</label>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <input type="hidden" name="id" value="{{$pesanan['id']}}">
+                <input type="hidden" name="toko_id" value="{{$pesanan['toko_id']}}">
+                <input type="hidden" name="distributor_id" value="{{$pesanan['distributor_id']}}">
+                <input type="hidden" name="kuantitas_pesanan" value="{{$pesanan['kuantitas_pesanan']}}">
+                <input type="hidden" name="sales_id" value="{{$pesanan['sales_id']}}">
+                <input type="hidden" name="nama_toko" value="{{$pesanan['nama_toko']}}">
+                <input type="hidden" name="total_harga" value="{{$pesanan['total_harga']}}">
+                <input type="hidden" name="status_pemesanan" value="pesanan diproses">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Terima</button>
               </div>
             </form>
           </div>
         </div>
       </div>
+
+      <!-- modal Tolak -->
+      <div class="modal fade" id="tolakModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Tolak Pesanan</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/Manajemen-Data-Pemesanan/update" method="POST">
+            @csrf
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inputAddress2">Tolak Pesanan dari {{$pesanan['nama_toko']}}?</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="hidden" name="id" value="{{$pesanan['id']}}">
+                <input type="hidden" name="toko_id" value="{{$pesanan['toko_id']}}">
+                <input type="hidden" name="distributor_id" value="{{$pesanan['distributor_id']}}">
+                <input type="hidden" name="kuantitas_pesanan" value="{{$pesanan['kuantitas_pesanan']}}">
+                <input type="hidden" name="sales_id" value="{{$pesanan['sales_id']}}">
+                <input type="hidden" name="nama_toko" value="{{$pesanan['nama_toko']}}">
+                <input type="hidden" name="total_harga" value="{{$pesanan['total_harga']}}">
+                <input type="hidden" name="status_pemesanan" value="ditolak">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-danger">Tolak</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      @elseif($pesanan['status_pemesanan']=="pesanan diproses")
+      <!-- modal diantar -->
+      <div class="modal fade" id="diantarModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Antar Pesanan</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/Manajemen-Data-Pemesanan/update" method="POST">
+            @csrf
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inputAddress2">Antar Pesanan dari {{$pesanan['nama_toko']}}?</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="hidden" name="id" value="{{$pesanan['id']}}">
+                <input type="hidden" name="toko_id" value="{{$pesanan['toko_id']}}">
+                <input type="hidden" name="distributor_id" value="{{$pesanan['distributor_id']}}">
+                <input type="hidden" name="kuantitas_pesanan" value="{{$pesanan['kuantitas_pesanan']}}">
+                <input type="hidden" name="sales_id" value="{{$pesanan['sales_id']}}">
+                <input type="hidden" name="nama_toko" value="{{$pesanan['nama_toko']}}">
+                <input type="hidden" name="total_harga" value="{{$pesanan['total_harga']}}">
+                <input type="hidden" name="status_pemesanan" value="diantar">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Antar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      @elseif($pesanan['status_pemesanan']=="diantar")
+      <!-- modal diterima toko -->
+      <div class="modal fade" id="diterimaTokoModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Pesanan diterima</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/Manajemen-Data-Pemesanan/update" method="POST">
+            @csrf
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inputAddress2">Pesanan telah diterima oleh {{$pesanan['nama_toko']}}?</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="hidden" name="id" value="{{$pesanan['id']}}">
+                <input type="hidden" name="toko_id" value="{{$pesanan['toko_id']}}">
+                <input type="hidden" name="distributor_id" value="{{$pesanan['distributor_id']}}">
+                <input type="hidden" name="kuantitas_pesanan" value="{{$pesanan['kuantitas_pesanan']}}">
+                <input type="hidden" name="sales_id" value="{{$pesanan['sales_id']}}">
+                <input type="hidden" name="nama_toko" value="{{$pesanan['nama_toko']}}">
+                <input type="hidden" name="total_harga" value="{{$pesanan['total_harga']}}">
+                <input type="hidden" name="status_pemesanan" value="diterima toko">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Pesanan diterima</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      @elseif($pesanan['status_pemesanan']=="diterima toko")
+      <!-- modal selesai -->
+      <div class="modal fade" id="selesaiModal{{$pesanan['id']}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Pesanan selesai</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/Manajemen-Data-Pemesanan/update" method="POST">
+            @csrf
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inputAddress2">Pesanan dari {{$pesanan['nama_toko']}} telah selesai?</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="hidden" name="id" value="{{$pesanan['id']}}">
+                <input type="hidden" name="toko_id" value="{{$pesanan['toko_id']}}">
+                <input type="hidden" name="distributor_id" value="{{$pesanan['distributor_id']}}">
+                <input type="hidden" name="kuantitas_pesanan" value="{{$pesanan['kuantitas_pesanan']}}">
+                <input type="hidden" name="sales_id" value="{{$pesanan['sales_id']}}">
+                <input type="hidden" name="nama_toko" value="{{$pesanan['nama_toko']}}">
+                <input type="hidden" name="total_harga" value="{{$pesanan['total_harga']}}">
+                <input type="hidden" name="status_pemesanan" value="selesai">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Selesai</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      @endif
+      @endif
 
       @endforeach
     </tbody>
