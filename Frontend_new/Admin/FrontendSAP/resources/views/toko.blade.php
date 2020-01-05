@@ -127,7 +127,7 @@
             <div class="form-group">
               <label for="inputAddress2">Silahkan pilih sales yang bertanggungjawab terhadap {{$toko['nama_toko']}} ?</label>
               <div class="input-group mb-3">
-                <select class="custom-select" id="inputGroupSelect02" name="sales_id">
+                <select class="custom-select" id="inputGroupSelect02" name="sales_id" required>
                 @if($toko['pivot']['sales_id']==null)
                   <option selected>Pilih...</option>
                 @else

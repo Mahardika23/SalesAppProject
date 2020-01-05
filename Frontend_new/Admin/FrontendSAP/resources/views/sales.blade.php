@@ -76,7 +76,7 @@
       <th scope="col" style="width:25px">No.</th>
       <th scope="col">Nama</th>
       <th scope="col">No Hp</th>
-      <th scope="col" colspan="3">Aksi</th>
+      <th scope="col" colspan="2">Aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -85,8 +85,6 @@
       <td scope="row">{{ $indexKey+1 }}</td>
       <td>{{$sales['nama_sales']}}</td>
       <td>{{$sales['no_hp']}}</td>
-      <td style="width:70px"> <button type="button" class="btn btn-primary" data-toggle="modal"
-          data-target="#detailSalesModal{{$sales['id']}}">Detail</button></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#editSalesModal{{$sales['id']}}"><i
             class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteSalesModal{{$sales['id']}}"><i
@@ -139,11 +137,11 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="inputAddress2">Nama</label>
-                <input type="text" class="form-control" name="nama_sales" value="{{$sales['nama_sales']}}">
+                <input type="text" class="form-control" name="nama_sales" value="{{$sales['nama_sales']}}" required>
               </div>
               <div class="form-group">
                 <label for="inputAddress2">no HP</label>
-                <input type="number" class="form-control" name="no_hp" value="{{$sales['no_hp']}}">
+                <input type="number" class="form-control" name="no_hp" value="{{$sales['no_hp']}}" required>
               </div>
             </div>
             <div class="modal-footer">

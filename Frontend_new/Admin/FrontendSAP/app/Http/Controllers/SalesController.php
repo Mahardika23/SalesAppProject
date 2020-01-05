@@ -13,7 +13,6 @@ class SalesController extends Controller
 
         $request->session()->put('page','sales');
         $request->session()->get('login_distrib');
-        if ($request->session()->has('login')) {
             //nama
             $nama=$request->session()->get('nama');
             //user type
@@ -45,9 +44,6 @@ class SalesController extends Controller
             return view('sales',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
             // return view('sales',['nama' => $nama]);
 
-        }else{
-            return Redirect::route('login');
-        }
 
     } 
 
