@@ -27,7 +27,7 @@ class LoginController extends Controller
         $form=$request->all();
         $client =  new Client();
         // var_dump($form);
-        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/login', ['form_params' =>$form])->then(
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/login', ['form_params' =>$form])->then(
             function ($response) {
                 return $response->getBody();
         }, function ($exception){
@@ -42,9 +42,15 @@ class LoginController extends Controller
         if ($data == null) {
             $request->session()->flash('message','Login gagal! Username atau Password salah');
             return redirect()->back();
-        }else{
+        }elseif(isset($data['message'])){
+        
+            $request->session()->flash('message','Login gagal! akun belum diaktifkan');
+            return redirect()->back();
+
+        }
+        else{
         $token = $data['token'];
-        $promise2 = $client->requestAsync('GET','http://127.0.0.1:8001/api/user', ['headers' =>
+        $promise2 = $client->requestAsync('GET','http://127.0.0.1:9090/api/user', ['headers' =>
         ['Authorization' => "Bearer {$token}"]])->then(
             function ($response) {
                 return $response->getBody();
@@ -65,8 +71,8 @@ class LoginController extends Controller
         $userable_id = $userData['user']['userable_id'];
 
             $request->session()->put('email','true');
-            $request->session()->put('login',true);
-            $request->session()->put('token',$token);
+            $request->session()->put('login_distrib',true);
+            $request->session()->put('token_distrib',$token);
             $request->session()->put('user',$user);
             $request->session()->put('nama',$nama);
             $request->session()->put('user_type',$user_type);
@@ -80,8 +86,8 @@ class LoginController extends Controller
     public function logout(Request $request){
         $client =  new Client();
         // var_dump($form);
-        $token = $request->session()->get('token');
-        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
+        $token = $request->session()->get('token_distrib');
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
             function ($response) {
                 return $response->getBody();
         }, function ($exception){
@@ -109,9 +115,9 @@ class LoginController extends Controller
         $input['email'] = $input['email_distributor'];
         // dd($input);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/register',['headers' =>
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/register',['headers' =>
             ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
             ->then(
                 function ($response) {

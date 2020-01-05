@@ -35,21 +35,30 @@ class UserController extends Controller
             'password' => 'required'
         ]);
         if ($validator->fails()) {
+
             return response()->json($validator->errors());
         }
         $credentials = $request->only('email', 'password');
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
+               
                 return response()->json(['error' => 'invalid_credentials'], 400);
             }
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
+        $user = JWTAuth::user();
+       
+        if($user['userable_type'] == 'App\\Distributor'){
+            $userdistrib = $user->userable;
+            if($userdistrib['status'] == 'tidak aktif'){
+                return ['message' => 'Akun Anda Belum Diaktifkan'];
+            }
+        }
         return response()->json(compact('token'));
     }
-
+    
     public function register(Request $request)
     {
         $userable = 0;
@@ -72,6 +81,7 @@ class UserController extends Controller
                 'province_id' => 'required',
                 'regency_id' => 'required',
                 'district_id' => 'required',
+                'profile_image' =>'string',
                 'village_id' => 'required',
 
             ]);
@@ -92,7 +102,6 @@ class UserController extends Controller
                 
 
             ]);
-            $validatedDistributorData['status'] = 'aktif';
             $distributor = Distributor::create($validatedDistributorData);
             $userable=$distributor;
            

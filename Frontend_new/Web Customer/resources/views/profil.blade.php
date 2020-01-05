@@ -13,7 +13,7 @@
                             <div class="card mt-5 mb-3 mr-5 ml-5">
                                 <div class="card-body" style="text-align:center; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                                     <div>
-                                        <img src="../img/gambarLogo.jpg" class="" alt="..." width='200px'>
+                                        <img src="../storage/Avatar/{{Session::get('profile_image')}}" class="" alt="..." width='200px'>
                                     </div>
                                 </div>
 

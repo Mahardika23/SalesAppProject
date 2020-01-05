@@ -5,7 +5,7 @@ $.validator.addMethod( "alphanumeric", function( value, element ) {
 
 $.validator.addMethod( "number", function( value, element ) {
     return this.optional(element) || /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/i.test(value);
-}, "Numbers only please" );
+}, "Please input digits only" );
 
 
 $(document).ready(function () {

@@ -12,21 +12,21 @@ class TokoController extends Controller
     {
 
         $request->session()->put('page','toko');
-        $request->session()->get('login');
-        if ($request->session()->has('login')) {
+        $request->session()->get('login_distrib');
+        if ($request->session()->has('login_distrib')) {
             //nama
             $nama=$request->session()->get('nama');
             //user type
             $user_type = $request->session()->get('user_type');
             //isi tokennya
-            $token = $request->session()->get('token');
+            $token = $request->session()->get('token_distrib');
 
             $headers = [
                 'Authorization' => 'Bearer'.$token,
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/toko',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/admin/toko',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -41,7 +41,7 @@ class TokoController extends Controller
             
                 $data = $itemData;
 
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/sales',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/admin/sales',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -74,9 +74,9 @@ class TokoController extends Controller
         $id = $request->input('id');
         // dd($id);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/toko/'.$id,['headers' =>
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/admin/toko/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
             ->then(
                 function ($response) {

@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $request->session()->put('page','dashboard');
         
         // var_dump($form);
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
         //user
         $user = $request->session()->get('user');
         //nama
@@ -22,14 +22,14 @@ class DashboardController extends Controller
         $user_type = $request->session()->get('user_type');
 
 
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
         $headers = [
             'Authorization' => 'Bearer'.$token,
             'Accept'        => 'application/json'
         ];
         $client =  new Client();
-        $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin',['headers' =>
+        $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/admin',['headers' =>
         ['Authorization' => "Bearer {$token}"]])
         ->then(
             function ($response) {

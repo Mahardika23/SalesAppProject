@@ -43,11 +43,13 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-                // /dd($data);
+                // dd($data);
 
         $i=0;
+        $pesanan=null;
+        $riwayat=null;
         foreach($data as $barang){
-            if($barang['status_pemesanan']=='selesai'){
+            if($barang['status_pemesanan']=='selesai'||$barang['status_pemesanan']=='ditolak'){
                 $riwayat[$i]=$barang;
             }
             else{
@@ -55,7 +57,7 @@ class WebCustomerController extends Controller
             }
             $i++;
         }
-        //dd($pesanan);
+        // dd($pesanan);
     //  dd($riwayat);
         // $data = $data['data'];
 
@@ -305,10 +307,10 @@ class WebCustomerController extends Controller
     public function checkout(Request $request)
     {
         //  dd($request);
-        $input=$request->all();
+        $input = $request->all();
+        // dd($input);
         $token = $request->session()->get('token');
-        $input['distributor_id'] = $request->distributor_id;
-         dd($input);
+        //    dd($input['barang']);
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/getstatusdistributor',['headers' => ['Authorization' => "Bearer {$token}"],'query' => $input])->then(
             function ($response) {
@@ -320,10 +322,18 @@ class WebCustomerController extends Controller
         );
         $status = $promise->wait();
         $status = json_decode($status, true);
+        // dd($status);
 
         if(isset($status[0]['pivot']) && $status[0]['pivot']['status']=='Diterima'){
-            // echo "bisa";
-            // dd($status);
+            $grandtotal = 0;
+            for($i=0;$i<$input['kuantitas_pesanan'];$i++){
+                $total = $input['barang']['harga'][$i] * $input['barang']['kuantitas_barang'][$i];
+                $grandtotal = $grandtotal+$total;
+            }
+            // dd($grandtotal);
+            $input['kuantitas_pesanan'] = intval($input['kuantitas_pesanan']);
+            // dd($input['kuantitas_pesanan']);
+            $input['total_harga']=$grandtotal;
             $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"],'form_params' =>$input])->then(
                 function ($response) {
                     return $response->getBody();
@@ -334,15 +344,18 @@ class WebCustomerController extends Controller
             );
             $data = $promise->wait();
             $data = json_decode($data, true);
-            dd($data);
+            //  dd($data);
             // Destroy
+            foreach($input['barang']['id'] as $id){
+                Cart::remove($id);
+            }
         }
         else{
-            // echo "gabisa";
-            // dd($status);
-            
+            $request->session()->flash('gagal', $input['distributor_id']);
+            return redirect()->back();
         }
         //dd($token);
+        $request->session()->flash('notif', 'Pesanan Telah Berhasil Dibuat');
         return redirect()->back();
     }
     

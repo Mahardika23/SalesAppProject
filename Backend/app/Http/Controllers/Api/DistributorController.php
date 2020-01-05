@@ -73,13 +73,20 @@ class DistributorController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
         $distributor = User::find($user['id'])->userable ;
         // return $request['status'];
+        // return $pesanan;
+        // $pesanan->update($request['sales_id']);
+        if($request->has('sales_id')){
+         
+            $pesanan = $distributor->pemesanan;
+        
+        }
         return $distributor->toko()->updateExistingPivot($tokoId,
         [
             'status' => $request['status'],
             'sales_id' => $request['sales_id']
         
         ]);
-        // $user->roles()->updateExistingPivot($roleId, $attributes);
+        $user->roles()->updateExistingPivot($roleId, $attributes);
 
 
     }

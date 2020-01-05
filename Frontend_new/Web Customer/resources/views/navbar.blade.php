@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url('/css/carousel.css')}}">
     <link rel="stylesheet" href="{{ url('/css/icon.css')}}">
     <link rel="stylesheet" href="{{ url('/css/number.css')}}">
+    <link rel="stylesheet" href="{{ asset('css\error.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
@@ -41,16 +42,16 @@
                         <a class="nav-link" href="/aktivitas">Aktivitas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pesan">Pesan</a>
+                        <a class="nav-link" href="/pesan">Keranjang</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @if (Session::has('login'))
                     
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px; "></a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../storage/Avatar/{{Session::get('profile_image')}}" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px; "></a>
                         <div class="dropdown-menu dropdown-menu-right text-left "  aria-labelledby="navbarDropdown" >
-                            <a class="" style="text-align: center" ><img src="../img/gambarLogo.jpg" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px;margin-right:5">{{Session::get('username')}}</a>
+                            <a class="" style="text-align: center" ><img src="../storage/Avatar/{{Session::get('profile_image')}}" style="border-radius: 50%; display: inline-block;  width: 32px;  height: 32px;margin-right:5">{{Session::get('username')}}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/profil" >Profil</a>
                             <a class="dropdown-item" href="/logout">Logout</a>

@@ -12,21 +12,21 @@ class SalesController extends Controller
     {
 
         $request->session()->put('page','sales');
-        $request->session()->get('login');
+        $request->session()->get('login_distrib');
         if ($request->session()->has('login')) {
             //nama
             $nama=$request->session()->get('nama');
             //user type
             $user_type=$request->session()->get('user_type');
             //isi tokennya
-            $token = $request->session()->get('token');
+            $token = $request->session()->get('token_distrib');
 
             $headers = [
                 'Authorization' => 'Bearer'.$token,
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/sales',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/admin/sales',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -75,9 +75,9 @@ class SalesController extends Controller
         $input = $request->all();
         // dd($input);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/register',['headers' =>
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/register',['headers' =>
             ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
             ->then(
                 function ($response) {
@@ -130,9 +130,9 @@ class SalesController extends Controller
         $id = $request->input('id');
         // dd($id);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/sales/'.$id,['headers' =>
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/admin/sales/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
             ->then(
                 function ($response) {
@@ -159,9 +159,9 @@ class SalesController extends Controller
         $id = $request->input('id');
         // dd($input);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('DELETE','http://127.0.0.1:8001/api/admin/sales/'.$id,['headers' =>
+        $promise = $client->requestAsync('DELETE','http://127.0.0.1:9090/api/admin/sales/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
