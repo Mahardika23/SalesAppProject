@@ -112,7 +112,7 @@
                                                     Pemilik</label>
                                                 <div class="col-sm-9">
                                                     <input type="email" name="email_pemilik" class="form-control"
-                                                        id="email_pemilik" placeholder="" autocomplete='off'>
+                                                        id="email_pemilik" placeholder="" autocomplete='off' required>
                                                     <span
                                                         class='text-danger'>{{ $errors->first('email_pemilik') }}</span>
                                                 </div>
@@ -121,7 +121,7 @@
                                                 <label for="no_telp" class="col-sm-3 col-form-label">No Telp</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" name="no_telp" class="form-control" id="no_telp"
-                                                        placeholder="" autocomplete='off'>
+                                                        placeholder="" autocomplete='off'required>
                                                     <span class='text-danger'>{{ $errors->first('no_telp') }}</span>
                                                 </div>
                                             </div>

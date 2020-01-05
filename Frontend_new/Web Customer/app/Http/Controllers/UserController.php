@@ -92,6 +92,7 @@ class UserController extends Controller
             $profil = $promise->wait();
             $profil = json_decode($profil, true);
 
+        
             $request->session()->put('profile_image', $profil['profile_image']);
             $request->session()->put('id_toko', $profil['id']);
             $request->session()->put('nama_toko', $profil['nama_toko']);

@@ -29,7 +29,7 @@ class WebCustomerController extends Controller
 
     public function aktivitas(Request $request)
     {
-
+        
         $token = $request->session()->get('token');
         $client =  new Client();
         $promise = $client->getAsync('http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(
@@ -306,6 +306,7 @@ class WebCustomerController extends Controller
 
     public function checkout(Request $request)
     {
+
         //  dd($request);
         $input = $request->all();
         // dd($input);
