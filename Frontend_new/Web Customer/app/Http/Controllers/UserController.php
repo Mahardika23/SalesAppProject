@@ -13,6 +13,7 @@ class UserController extends Controller
     {
 
         $input = $request->all();
+        //dd($input);
         $client =  new Client();
         $promise = $client->requestAsync('POST', 'http://127.0.0.1:9090/api/register', ['form_params' => $input])->then(
             function ($response) {
@@ -28,10 +29,12 @@ class UserController extends Controller
         //  $data = $data['data'];
         //dd($input);
 
-        //dd($data);
+        // dd($data);
         if ($data == null) {
+            $request->session()->flash('gagal', 'Pendaftaran Gagal');
             return redirect()->route('daftar');
         } else {
+            $request->session()->flash('berhasil', 'Pendaftaran Berhasil, Silahkan Login');
             return redirect()->route('login');
         }
     }
