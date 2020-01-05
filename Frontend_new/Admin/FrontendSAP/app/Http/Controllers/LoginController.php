@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 class LoginController extends Controller
 {
     public function index(Request $request){
-
+        
             if($request->session()->has('daftar')){
                 $daftar = $request->session()->get('daftar');
                 if($daftar == "berhasil"){
@@ -19,9 +19,20 @@ class LoginController extends Controller
                     $request->session()->flash('message','Pendaftaran gagal, silahkan coba lagi.');
                 }
             }
-            return view('login');
+            if($request->session()->has('token_distrib')){
+                return redirect('/');
+            }
+            return redirect('/loginpage');
         
     }
+    public function show(Request $request){
+        
+        if($request->session()->has('token_distrib')){
+            return redirect('/');
+        }
+        return view('login');
+    
+}
    
     public function login(Request $request){
         $form=$request->all();
