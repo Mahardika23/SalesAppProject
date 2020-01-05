@@ -56,8 +56,30 @@
             </div>
         </div>
     </div>
+    @if ($message = Session::get('berhasil'))
+    <div class="modal fade bd-example-modal-sm" id="registersuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+            {{$message}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    @endif
 </body>
-
+<script>
+    var berhasil = '{{Session::get('berhasil')}}';
+    console.log(berhasil);
+    if(berhasil){
+        $(window).on('load',function(){
+        $('#registersuccess').modal('show');
+    });
+    }
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 <script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
 

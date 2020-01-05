@@ -72,7 +72,7 @@
     </div>
 
     <div id="Riwayat" class="tabcontent">
-        @empty($pesanan)
+        @empty($riwayat)
         <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;padding-top:100;padding-bottom:100">
             Tidak Ada Riwayat Pesanan
         </h2>

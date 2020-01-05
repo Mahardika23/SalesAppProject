@@ -180,7 +180,7 @@
                                                     <span class='text-danger'>{{ $errors->first('alamat_toko') }}</span>
                                                 </div>
                                             </div>
-
+                                            <input type="hidden" name="profile_image" value="default.jpg">
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +205,30 @@
         </div>
     </div>
 
+    @if ($message = Session::get('gagal'))
+    <div class="modal fade bd-example-modal-sm" id="registerfailed" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+            {{$message}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    @endif
 
+    <script>
+    var gagal = '{{Session::get('gagal')}}';
+    console.log(gagal);
+    if(gagal){
+        $(window).on('load',function(){
+        $('#registerfailed').modal('show');
+    });
+    }
+    </script>
     <script type="text/javascript" src="{{asset("dist/js/jquery.smartWizard.js")}}">
     </script>
 
