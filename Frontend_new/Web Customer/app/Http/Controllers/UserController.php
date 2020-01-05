@@ -88,8 +88,10 @@ class UserController extends Controller
 
             $profil = $promise->wait();
             $profil = json_decode($profil, true);
-
-            $request->session()->put('profile_image', $profil['profile_image']);
+            if(isset($profil['profile_image'])){
+                $request->session()->put('profile_image', $profil['profile_image']);
+            
+            }
             $request->session()->put('id_toko', $profil['id']);
             $request->session()->put('nama_toko', $profil['nama_toko']);
             $request->session()->put('username', $user['user']['name']);
@@ -196,5 +198,34 @@ class UserController extends Controller
         //dd($data);
 
         return redirect()->route('profil');
+    }
+    public function checkEmail(Request $request){
+        $client =  new Client();
+        // return $request['email'];
+        $input['email'] = $request['email'];
+        // return $input;
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/checkemail',['query' => $input])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        // dd($data);
+        // if($data[0])
+        if($data[0] == true){
+            
+            $a=array(true);
+            return $a;
+        }
+        elseif($data[0] == false){
+            $a=array([]);
+            return null;
+        }
+        
     }
 }

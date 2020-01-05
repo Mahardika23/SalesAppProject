@@ -18,7 +18,9 @@ class DashboardController extends Controller
         if ($user['userable_type'] == 'App\Sales') {
             # code...
             // return ['message' => 'hello'];
-            $totalPemesanan = $usernya->distributor->pemesanan->count();
+            // return $distri->pemesanan()->with('barang')->where('sales_id',$userPemesanan['id'])->get();
+
+            $totalPemesanan = $usernya->distributor->pemesanan()->where('sales_id',$usernya['id'])->get()->count();
 
             $totalToko = $usernya->distributor->toko()->wherePivot('sales_id',$usernya['id'])->count();
 

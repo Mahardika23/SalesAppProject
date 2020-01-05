@@ -99,7 +99,7 @@ Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
 Route::get('/kategori','Api\CatalogController@showCategory');
 Route::get('/barangbykategori','Api\CatalogController@showByCategory');
 
-
+Route::get('/checkemail','UserController@checkEmail');
 
 //Showing Catalog Before login
 Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');

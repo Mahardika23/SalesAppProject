@@ -19,6 +19,7 @@ Route::group(['middleware' => ['logincheck']], function() {
     Route::get('/aktivitas', 'WebCustomerController@aktivitas');
     Route::get('/pesan', 'CartController@cart');
 });
+Route::get('/checkemailvalidity','UserController@checkEmail');
 Route::any('/lupapas', 'WebCustomerController@checkout');
 Route::any('/checkout', 'WebCustomerController@checkout');
 Route::any('/cek', 'CartController@cart');

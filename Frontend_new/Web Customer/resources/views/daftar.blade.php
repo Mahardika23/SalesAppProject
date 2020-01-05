@@ -60,7 +60,7 @@
                                                 <div class="col-sm-9">
                                                     <input type="email" name="email" class="form-control" id="email"
                                                         placeholder="" autocomplete='off' required>
-                                                    <span class='text-danger error-message'>{{ $errors->first('email') }}</span>
+                                                    <span class='text-danger error-email '>{{ $errors->first('email') }}</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -114,13 +114,13 @@
                                                     <input type="email" name="email_pemilik" class="form-control"
                                                         id="email_pemilik" placeholder="" autocomplete='off'>
                                                     <span
-                                                        class='text-danger'>{{ $errors->first('email_pemilik') }}</span>
+                                                        class='text-danger '>{{ $errors->first('email_pemilik') }}</span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="no_telp" class="col-sm-3 col-form-label">No Telp</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="no_telp" class="form-control" id="no_telp"
+                                                    <input type="number" name="no_telp" class="form-control" id="no_telp"
                                                         placeholder="" autocomplete='off'>
                                                     <span class='text-danger'>{{ $errors->first('no_telp') }}</span>
                                                 </div>
