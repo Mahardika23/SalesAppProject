@@ -15,7 +15,7 @@ class RedirectIfLogin
      */
     public function handle($request, Closure $next)
     {   
-        if(!$request->session()->exists('token')){
+        if(!$request->session()->exists('token_distrib')){
                 return redirect()->route('login');
                 
 

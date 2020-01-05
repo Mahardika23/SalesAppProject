@@ -19,7 +19,10 @@ class PemesananController extends Controller
         
         if ($user_type == 'App\Sales') {
             # code...
-            return $pemesanan = Pemesanan::with('barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('sales_id',$userPemesanan['id'])->get();
+
+            $distri =  $userPemesanan->distributor;
+            return $distri->pemesanan()->with('barang')->where('sales_id',$userPemesanan['id'])->get();
+            // return $pemesanan = Pemesanan::with('barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('sales_id',$userPemesanan['id'])->get();
 
         }
         elseif ($user_type == 'App\toko') {
@@ -45,9 +48,12 @@ class PemesananController extends Controller
         $userPemesanan = User::find($user['id'])->userable;
         $request['toko_id'] = $userPemesanan['id'];
         $request['nama_toko'] = toko::find($userPemesanan['id'])->nama_toko;
+        $check = $userPemesanan->distributor()->wherePivot('sales_id','!=',null)->get();
+
         $validatedData = $request->validate([
             'toko_id' => 'required|numeric',
             'distributor_id' => 'required|numeric',
+            'kuantitas_pesanan' => 'required',
             'sales_id' => 'numeric',
             'nama_toko' => 'required',
             'total_harga' => 'numeric|required',
@@ -55,8 +61,19 @@ class PemesananController extends Controller
             
         ]);
         $pemesanan = new Pemesanan($validatedData);
-  
+            
         $pemesanan->save();
+       
+        // return $check[0]['pivot'];
+        if(isset($check)){
+            $input['sales_id'] = $check[0]['pivot']['sales_id'];
+            
+            $pesan = Pemesanan::findOrFail($pemesanan['id']);
+            
+            $pesan->update($input);
+            // return $pemesanan;
+        }
+
         $idBarang = $request['barang']['id'];
         $qtyBarang = $request['barang']['kuantitas_barang'];
         // return $barang;
@@ -71,11 +88,12 @@ class PemesananController extends Controller
 
     public function update(Request $request,$id) {
         $validatedData = $request->validate([
-            'toko_id' => 'numeric',
+            'toko_id' => 'required|numeric',
+            'distributor_id' => 'required|numeric',
+            'kuantitas_pesanan' => 'integer',
             'sales_id' => 'numeric',
-            'nama_toko' => 'required',
             'total_harga' => 'numeric|required',
-            'status_pemesanan' => ['required', Rule::in(['menunggu persetujuan','diantar','selesai', 'diterima kurir']),]
+            'status_pemesanan' => ['required', Rule::in(['menunggu konfirmasi','pesanan diproses','diantar','diterima toko','ditolak','selesai']),]
             
         ]);
         $pemesanan = Pemesanan::findOrFail($id);

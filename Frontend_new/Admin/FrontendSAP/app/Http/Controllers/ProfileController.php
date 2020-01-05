@@ -16,14 +16,14 @@ class ProfileController extends Controller
         $request->session()->put('page','profile');
         
             //isi tokennya
-            $token = $request->session()->get('token');
+            $token = $request->session()->get('token_distrib');
 
             $headers = [
                 'Authorization' => 'Bearer'.$token,
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/profildistributor',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/profildistributor',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -47,9 +47,9 @@ class ProfileController extends Controller
             $input = $request->all();
             // dd($input);
             $client =  new Client();
-            $token = $request->session()->get('token');
+            $token = $request->session()->get('token_distrib');
     
-            $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/ubahpassword',['headers' =>
+            $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/ubahpassword',['headers' =>
                 ['Authorization' => "Bearer {$token}",'Accept' => 'application/json'],'form_params' =>$input])
                 ->then(
                     function ($response) {

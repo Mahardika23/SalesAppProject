@@ -81,6 +81,7 @@ class UserController extends Controller
                 'province_id' => 'required',
                 'regency_id' => 'required',
                 'district_id' => 'required',
+                'profile_image' =>'string',
                 'village_id' => 'required',
 
             ]);

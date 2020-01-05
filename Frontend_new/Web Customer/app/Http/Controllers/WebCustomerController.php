@@ -43,9 +43,11 @@ class WebCustomerController extends Controller
 
         $data = $promise->wait();
         $data = json_decode($data, true);
-                //dd($data);
+                // dd($data);
 
         $i=0;
+        $pesanan=null;
+        $riwayat=null;
         foreach($data as $barang){
             if($barang['status_pemesanan']=='selesai'||$barang['status_pemesanan']=='ditolak'){
                 $riwayat[$i]=$barang;
@@ -329,6 +331,8 @@ class WebCustomerController extends Controller
                 $grandtotal = $grandtotal+$total;
             }
             // dd($grandtotal);
+            $input['kuantitas_pesanan'] = intval($input['kuantitas_pesanan']);
+            // dd($input['kuantitas_pesanan']);
             $input['total_harga']=$grandtotal;
             $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"],'form_params' =>$input])->then(
                 function ($response) {

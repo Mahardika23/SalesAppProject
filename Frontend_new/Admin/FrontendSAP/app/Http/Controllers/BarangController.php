@@ -26,14 +26,14 @@ class BarangController extends Controller
             $user = $request->session()->get('user');
             
             //isi tokennya
-            $token = $request->session()->get('token');
+            $token = $request->session()->get('token_distrib');
 
             $headers = [
                 'Authorization' => 'Bearer'.$token,
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/barang',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/admin/barang',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -48,7 +48,7 @@ class BarangController extends Controller
             
                 $data = $itemData;
             
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/kategori')->then(
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/kategori')->then(
                 function ($response) {
                     return $response->getBody();
             }, function ($exception){
@@ -90,9 +90,9 @@ class BarangController extends Controller
         $input = $request->all();
         // dd($input);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('POST','http://127.0.0.1:8001/api/admin/barang',['headers' =>
+        $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/barang',['headers' =>
             ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
             ->then(
                 function ($response) {
@@ -145,9 +145,9 @@ class BarangController extends Controller
         $id = $request->input('id');
         // dd($id);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/admin/barang/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
             ->then(
                 function ($response) {
@@ -174,9 +174,9 @@ class BarangController extends Controller
         $id = $request->input('id');
         // dd($input);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('DELETE','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+        $promise = $client->requestAsync('DELETE','http://127.0.0.1:9090/api/admin/barang/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {

@@ -13,17 +13,25 @@ class DashboardController extends Controller
 
         $user = JWTAuth::parseToken()->authenticate();
         $usernya = User::find($user['id'])->userable;
-
-        $totalPemesanan = $usernya->pemesanan->count();
-        $totalToko = $usernya->toko->count();
-        if ($user['userable_type'] == 'App\\Sales') {
+        // return $user;
+        // return $totalPemesanan;
+        if ($user['userable_type'] == 'App\Sales') {
             # code...
+            // return ['message' => 'hello'];
+            $totalPemesanan = $usernya->distributor->pemesanan->count();
+
+            $totalToko = $usernya->distributor->toko()->wherePivot('sales_id',$usernya['id'])->count();
+
             $totalBarang = $usernya->distributor->barang->count();
             return ['total'=>['pemesanan' => $totalPemesanan, 'toko' => $totalToko, 'barang' => $totalBarang ]];
 
         }
         else {
             # code...
+            $totalPemesanan = $usernya->pemesanan->count();
+
+            $totalToko = $usernya->toko->count();
+
             $totalBarang = $usernya->barang->count();
              $totalSales= $usernya->sales->count();
              return ['total'=>['pemesanan' => $totalPemesanan, 'toko' => $totalToko, 'barang' => $totalBarang , 'sales' => $totalSales]];

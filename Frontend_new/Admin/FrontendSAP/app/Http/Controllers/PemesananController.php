@@ -17,19 +17,19 @@ class PemesananController extends Controller
     public function index(Request $request)
     {
         $request->session()->put('page','pemesanan');
-        $request->session()->get('login');
+        $request->session()->get('login_distrib');
         //nama
         $nama=$request->session()->get('nama');
         //user type
         $user_type=$request->session()->get('user_type');
             //isi tokennya
-            $token = $request->session()->get('token');
+            $token = $request->session()->get('token_distrib');
             $headers = [
                 'Authorization' => 'Bearer'.$token,
                 'Accept'        => 'application/json'
             ];
             $client =  new Client();
-            $promise = $client->requestAsync('GET','http://127.0.0.1:8001/api/admin/pemesanan',['headers' =>
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/admin/pemesanan',['headers' =>
             ['Authorization' => "Bearer {$token}"]])
             ->then(
                 function ($response) {
@@ -106,9 +106,9 @@ class PemesananController extends Controller
         $id = $request->input('id');
         // dd($id);
         $client =  new Client();
-        $token = $request->session()->get('token');
+        $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('PUT','http://127.0.0.1:8001/api/admin/barang/'.$id,['headers' =>
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/admin/barang/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
             ->then(
                 function ($response) {
