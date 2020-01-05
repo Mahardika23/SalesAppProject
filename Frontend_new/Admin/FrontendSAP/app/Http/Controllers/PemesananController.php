@@ -99,7 +99,7 @@ class PemesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
         $input = $request->all();
@@ -108,7 +108,7 @@ class PemesananController extends Controller
         $client =  new Client();
         $token = $request->session()->get('token_distrib');
 
-        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/admin/barang/'.$id,['headers' =>
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/admin/pemesanan/'.$id,['headers' =>
             ['Authorization' => "Bearer {$token}"],'form_params' =>$input])
             ->then(
                 function ($response) {
@@ -120,7 +120,7 @@ class PemesananController extends Controller
         $success=$promise->wait();
         $success = json_decode($success,true);
         // dd($success);
-        return redirect()->route('Manajemen-Data-Barang');
+        return redirect()->route('Manajemen-Data-Pemesanan');
     }
 
     /**

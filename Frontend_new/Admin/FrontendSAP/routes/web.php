@@ -58,6 +58,7 @@ Route::group(['middleware' => ['logincheck']], function() {
 
     //test
     Route::get('/Manajemen-Data-Pemesanan', [ 'as' => 'Manajemen-Data-Pemesanan', 'uses' => 'PemesananController@index']);
+    Route::post('/Manajemen-Data-Pemesanan/update', [ 'uses' => 'PemesananController@update']);
 
     // profile
 

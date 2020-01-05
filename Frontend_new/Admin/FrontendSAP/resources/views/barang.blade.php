@@ -27,12 +27,12 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Nama Barang">
+              <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Nama Barang" required>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Kategori</label>
               <div class="input-group mb-3">
-                <select class="custom-select" id="inputGroupSelect02" name="kategori_id">
+                <select class="custom-select" id="inputGroupSelect02" name="kategori_id" required>
                   <option selected>Pilih...</option>
                   @foreach($kategori as $list)
                   <option value="{{ $list['id'] }}">{{ $list['kategori'] }}</option>
@@ -46,12 +46,12 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" name="harga_barang" placeholder="8999">
+                <input type="text" class="form-control" id="inlineFormInputGroup" name="harga_barang" placeholder="8999" required>
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813">
+              <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813" required>
               <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
               <input type="hidden" name="regency_id" id="" value=330101>
 
@@ -185,7 +185,7 @@
           <input type="hidden" name="id" value="{{$barang['id']}}">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
-              <input type="text" class="form-control" name="nama_barang" id="nama" value="{{$barang['nama_barang']}}">
+              <input type="text" class="form-control" name="nama_barang" id="nama" value="{{$barang['nama_barang']}}" required>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Kategori</label>
@@ -207,12 +207,12 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" >
+                <input type="text" class="form-control" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" required>
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Stok</label>
-              <input type="number" class="form-control" name="stok_barang" id="Stok" value="{{$barang['stok_barang']}}" >
+              <input type="number" class="form-control" name="stok_barang" id="Stok" value="{{$barang['stok_barang']}}" required>
             </div>
           </div>
           <div class="modal-footer">
