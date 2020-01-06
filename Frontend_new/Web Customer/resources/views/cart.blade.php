@@ -3,18 +3,13 @@
 @section('konten')
 
 <div class="container">
-    @if(!is_array($cart))
+    @if(empty($isi))
     <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;margin-top:200;">
         Tidak Ada Barang di Keranjang
     </h2>
     @endif
     @isset($cart)
     @foreach($cart as $distri)
-        @if(empty($distri))
-        <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;margin-top:200;">
-            Tidak Ada Barang di Keranjang
-        </h2>
-        @endif
     <form action="/checkout" method="POST">
         @CSRF
         <input type="hidden" name="toko_id" value="{{Session::get('id_toko')}}">

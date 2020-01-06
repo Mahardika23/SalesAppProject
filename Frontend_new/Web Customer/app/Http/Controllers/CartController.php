@@ -16,6 +16,12 @@ class CartController extends Controller
             return $item->attributes->id_distributor;
         });
         
+        $isi=NULL;
+        foreach ($data as $barang){
+            if($isi == NULL){
+                $isi=$barang;
+            }
+        }
         // $groupedCartItems = [];
         // foreach ($data as $item) {
         //     // echo($item)->attributes->id_distributor;
@@ -48,10 +54,8 @@ class CartController extends Controller
         //         } 
         //     }
         // }
-        // dd($cart);
-      
-    
-       return view('cart',compact('cart'));
+        // dd($cart);    
+       return view('cart',compact('cart','isi'));
     }
 
     public function remove(Request $request){
