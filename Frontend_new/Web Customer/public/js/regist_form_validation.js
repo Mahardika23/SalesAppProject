@@ -1,4 +1,10 @@
-
+$("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+    if ($('#form-regist').valid()) {
+        return true;
+    } else {
+        return false; 
+    }
+ });
 $.validator.addMethod( "alphanumeric", function( value, element ) {
 	return this.optional( element ) || /^\w+$/i.test( value );
 }, "Letters, numbers, and underscores only please" );
@@ -15,6 +21,11 @@ $(document).ready(function () {
                 required:true,
                 minlength:8,
                 alphanumeric:true
+            },
+            email:{
+                required:true,
+                email:true,
+                // remote:"/checkemailvalidity",
             },
             password:{
                 required:true,
@@ -34,7 +45,9 @@ $(document).ready(function () {
             },
             email_pemilik:{
                 required:true,
-                email:true
+                email:true,
+                
+
             },
             no_telp:{
                 required:true,
@@ -61,9 +74,13 @@ $(document).ready(function () {
         },
         messages: {
             name:{
-                required: "Kolom Username belum terisi",
+                // required: "Kolom Username belum terisi",
                 minlength: "Username harus terdiri dari minimal 8 karakter"
                 }
+                ,
+            email:{
+                remote:"email sudah terdaftar",
+            }
             },
         
     

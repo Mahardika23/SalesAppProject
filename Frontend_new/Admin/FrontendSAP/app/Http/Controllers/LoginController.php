@@ -95,7 +95,10 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request){
-        $client =  new Client();
+        if(!$request->session()->has('token_distrib')){
+          return redirect('/login');  
+        }
+            $client =  new Client();
         // var_dump($form);
         $token = $request->session()->get('token_distrib');
         $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/logout', ['headers' => ['Authorization' => "Bearer {$token}"]])->then(

@@ -211,5 +211,21 @@ class UserController extends Controller
         return response(['message' => 'Email Could not be sent']);
         
     }
+    protected function checkEmail(Request $request){
+        // return $request;
+        $user = User::all()->where('email',$request['email'])->first();
+        // return $user;
+        if(isset($user)){
+            // echo 'true';
+            $a =array(true) ;
+            return $a;
+        }
+        else{
+            // echo 'false';
+            $a =array(false) ;
+            return $a;
+        }
+                
+    }
 
 }
