@@ -79,9 +79,12 @@ Route::group(['middleware' => ['logincheck']], function() {
     Route::post('/register', [ 'uses' => 'LoginController@register']);
 
     Route::post('/Ubah-Password', [ 'uses' => 'ProfileController@ubahpassword']);
-    Route::get('/loginpage', [ 'as' => 'login', 'uses' => 'LoginController@show']);
+
+    Route::get('/distributor', [ 'as' => 'distributor', 'uses' => 'DistributorController@index']);
+    Route::post('/distributor/update', [ 'uses' => 'DistributorController@update']);
 
     Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@index']);
+    Route::get('/loginpage', [ 'as' => 'login', 'uses' => 'LoginController@show']);
     Route::get('/logout', [ 'as' => 'logout', 'uses' => 'LoginController@logout']);
 
 // Route::get('/sidebar', function () {
