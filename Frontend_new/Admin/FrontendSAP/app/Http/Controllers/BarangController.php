@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
@@ -59,7 +60,8 @@ class BarangController extends Controller
             $daftarKategori = json_decode($daftarKategori,true);
 
             $kategori = $daftarKategori;
-
+            $userable_id = $request->session()->get('userable_id');
+// dd($userable_id);
             // dd($data);
             return view('barang',['data'=> $data,'kategori' => $kategori]);
             // return view('barang',['nama' => $nama]);
@@ -86,8 +88,14 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+
         
+        $userable_id = $request->session()->get('userable_id');
+
         $input = $request->all();
+        $item_image = 'item_' . $input['nama_barang'] . '.' . request()->item_image->getClientOriginalExtension();
+        $request['item_image']->storeAs($userable_id, $item_image);
+        $input['item_image'] = $item_image;
         // dd($input);
         $client =  new Client();
         $token = $request->session()->get('token_distrib');

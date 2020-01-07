@@ -22,12 +22,19 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/Manajemen-Data-Barang" method="POST">
+        <form enctype="multipart/form-data"  action="/Manajemen-Data-Barang" method="POST">
           @CSRF
           <div class="modal-body">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
               <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Nama Barang" required>
+            </div>
+            <label for="inputAddress2">Unggah gambar</label>
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02" name="item_image">
+                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Pilih file</label>
+              </div>
             </div>
             <div class="form-group">
               <label for="inputAddress2">Kategori</label>
@@ -46,7 +53,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" name="harga_barang" placeholder="8999" required>
+                <input type="number" class="form-control" id="inlineFormInputGroup" name="harga_barang" placeholder="8999" required>
               </div>
             </div>
             <div class="form-group">
@@ -54,8 +61,6 @@
               <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813" required>
               <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
               <input type="hidden" name="regency_id" id="" value=330101>
-
-              <input type="hidden" name="item_image" id="" value="">
             </div>
           </div>
           <div class="modal-footer">
@@ -126,12 +131,13 @@
         </div>
         <form action="">
           <div class="modal-body">
+              <img src="../storage/{{Session::get('userable_id')}}/{{$barang['item_image']}}" class="" alt="..." width='100%' height="100%">
+
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
               <input type="hidden" name="id" value="{{$barang['id']}}">
               <input type="text" class="form-control" id="nama" value="{{$barang['nama_barang']}}" disabled>
-            </div>
-            <div class="form-group">
+            </div>            <div class="form-group">
               <label for="inputAddress2">Kategori</label>
               <div class="input-group mb-3">
                 <select class="custom-select" id="inputGroupSelect02" name="kategori_id" disabled>
@@ -179,7 +185,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/Manajemen-Data-Barang/update" method="POST">
+fil        <form action="/Manajemen-Data-Barang/update" method="POST">
          @csrf
           <div class="modal-body">
           <input type="hidden" name="id" value="{{$barang['id']}}">
@@ -207,7 +213,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" required>
+                <input type="number" class="form-control" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" required>
               </div>
             </div>
             <div class="form-group">
