@@ -22,6 +22,12 @@ $(document).ready(function () {
                 minlength:8,
                 alphanumeric:true
             },
+            email:{
+                required:true,
+                email:true,
+                remote:"/checkemailvalidity",
+
+            },
             password:{
                 required:true,
                 minlength:8 
@@ -42,7 +48,10 @@ $(document).ready(function () {
             name:{
                 required: "Kolom belum terisi",
                 minlength: "Kolom harus terdiri dari minimal 8 karakter"
-                }
+                },
+            email:{
+                    remote:"email sudah terdaftar",
+            }
             },
         
     

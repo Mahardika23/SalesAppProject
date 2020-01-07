@@ -23,6 +23,8 @@ Route::group(['middleware' => ['logincheck']], function() {
         return view('sidebar');
     });
   //test
+  Route::get('/checkemailvalidity','SalesController@checkEmail');
+
     Route::get('/Manajemen-Data-Barang', [ 'as' => 'Manajemen-Data-Barang', 'uses' => 'BarangController@index']);
     Route::post('/Manajemen-Data-Barang', [ 'uses' => 'BarangController@store']);
     Route::post('/Manajemen-Data-Barang/delete', [ 'uses' => 'BarangController@destroy']);

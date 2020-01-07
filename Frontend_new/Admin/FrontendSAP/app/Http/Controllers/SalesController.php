@@ -170,4 +170,33 @@ class SalesController extends Controller
         $nama=$request->session()->get('nama');
         return redirect()->route('Manajemen-Data-Sales');
     }
+    public function checkEmail(Request $request){
+        $client =  new Client();
+        // return $request['email'];
+        $input['email'] = $request['email'];
+        // return $input;
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/checkemail',['query' => $input])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        // dd($data);
+        // if($data[0])
+        if($data == true){
+            
+            $a=array(true);
+            echo "true";
+        }
+        elseif($data[0] == false){
+            // $a=array([]);
+
+            echo "false";die;
+    }
+}
 }
