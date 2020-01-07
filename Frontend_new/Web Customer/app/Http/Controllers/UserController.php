@@ -220,15 +220,15 @@ class UserController extends Controller
         $data = json_decode($data, true);
         // dd($data);
         // if($data[0])
-        if($data[0] == true){
+        if($data == true){
             
             $a=array(true);
-            return $a;
+            echo "true";
         }
         elseif($data[0] == false){
-            $a=array([]);
-            return null;
-        }
-        
+            // $a=array([]);
+
+            echo "false";die;
     }
+}
 }

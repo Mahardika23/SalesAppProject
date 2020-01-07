@@ -217,13 +217,12 @@ class UserController extends Controller
         // return $user;
         if(isset($user)){
             // echo 'true';
-            $a =array(true) ;
-            return $a;
+            return "false";
         }
         else{
             // echo 'false';
             $a =array(false) ;
-            return $a;
+            return "true";
         }
                 
     }

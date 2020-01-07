@@ -25,7 +25,7 @@ $(document).ready(function () {
             email:{
                 required:true,
                 email:true,
-                // remote:"/checkemailvalidity",
+                remote:"/checkemailvalidity",
             },
             password:{
                 required:true,
