@@ -31,8 +31,9 @@ class DistributorController extends Controller
 
         $distributorData = $promise->wait();
         $distributorData = json_decode($distributorData,true);
-            $data['distributorData'] = $distributorData;
-            dd($data);
+            $data['distributor'] = $distributorData;
+            // dd($data);
+        return view('distributor',['data' => $data]);
     }
 
     /**
@@ -85,9 +86,26 @@ class DistributorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $input = $request->all();
+        $id = $request->input('id');
+        // dd($id);
+        $client =  new Client();
+
+        $promise = $client->requestAsync('PUT','http://127.0.0.1:9090/api/konfirmasidistributor/'.$id)
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+        );
+        $success=$promise->wait();
+        $success = json_decode($success,true);
+        // dd($success);
+        return redirect()->route('distributor');
     }
 
     /**

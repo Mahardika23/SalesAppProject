@@ -57,7 +57,7 @@
           <input type="hidden" name="district_id" id="" value=330101>
           <input type="hidden" name="village_id" id="" value=330101>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <button type="submit" id="submit" class="btn btn-primary">Tambah</button>
+          <button type="submit" id="submit" name="submit" class="btn btn-primary">Tambah</button>
         </div>
       </form>
     </div>

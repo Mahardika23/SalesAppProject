@@ -32,7 +32,7 @@
             <label for="inputAddress2">Unggah gambar</label>
             <div class="input-group mb-3">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile02" name="item_image">
+                <input type="file" class="custom-file-input" id="inputGroupFile02" name="item_image" required>
                 <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Pilih file</label>
               </div>
             </div>
@@ -40,7 +40,6 @@
               <label for="inputAddress2">Kategori</label>
               <div class="input-group mb-3">
                 <select class="custom-select" id="inputGroupSelect02" name="kategori_id" required>
-                  <option selected>Pilih...</option>
                   @foreach($kategori as $list)
                   <option value="{{ $list['id'] }}">{{ $list['kategori'] }}</option>
                   @endforeach
@@ -185,7 +184,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-fil        <form action="/Manajemen-Data-Barang/update" method="POST">
+        <form action="/Manajemen-Data-Barang/update" method="POST">
          @csrf
           <div class="modal-body">
           <input type="hidden" name="id" value="{{$barang['id']}}">

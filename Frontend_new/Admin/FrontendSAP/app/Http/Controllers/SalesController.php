@@ -42,7 +42,6 @@ class SalesController extends Controller
             
             // dd($data);
             return view('sales',['data'=> $data,'user_type' => $user_type, 'nama' => $nama]);
-            // return view('sales',['nama' => $nama]);
 
 
     } 
