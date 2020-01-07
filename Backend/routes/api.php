@@ -75,7 +75,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::post('/ajukandistributor','Api\TokoController@ajukanDistributor');
     Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
-    Route::post('/distributorall','Api\DistributorController@index');
 
     // Insert
     Route::post('/distributor','Api\DistributorController@store');
@@ -84,12 +83,13 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Delete
     Route::delete('/distributor/{id}','Api\DistributorController@delete');
     Route::put('/ubahpassword', 'UserController@changePassword');
-    Route::put('/konfirmasidistributor/{id}','Api\DistributorController@konfirmasiDistributor');
 });
+Route::put('/konfirmasidistributor/{id}','Api\DistributorController@konfirmasiDistributor');
 
 Route::post('/forgotpassword','UserController@forgotPassword');
 Route::post('/login','UserController@authenticate');
 Route::post('/register','UserController@register');
+Route::get('/distributorall','Api\DistributorController@index');
 
 Route::get('/distributor','Api\PemesananController@index'); 
 Route::get('/distributor/barang/{id}','Api\DistributorController@show'); 
