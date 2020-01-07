@@ -75,6 +75,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::post('/ajukandistributor','Api\TokoController@ajukanDistributor');
     Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
+    Route::post('/distributorall','Api\DistributorController@index');
 
     // Insert
     Route::post('/distributor','Api\DistributorController@store');
