@@ -166,7 +166,7 @@ class WebCustomerController extends Controller
     public function getBarangSearch(Request $request){
         $input = $request->all();
         
-            $client =  new Client();
+        $client =  new Client();
             $promise = $client->getAsync('http://127.0.0.1:9090/api/search', ['query' => $input])->then(
                 function ($response) {
                     return $response->getBody();

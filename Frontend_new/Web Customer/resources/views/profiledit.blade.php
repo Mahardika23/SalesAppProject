@@ -16,9 +16,11 @@
                                     <div class="card-body" style="text-align:center; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                                         <div>
                                             <img src="../storage/Avatar/{{$data['profile_image']}}" class="" alt="..." width='200px' height="200px">
-                                            <div class="form-group mt-3">
-                                                <label for="exampleFormControlFile1">Pilih Foto</label>
-                                                <input type="file" name='profile_image' class="form-control-file" id="exampleFormControlFile1">
+                                            <div class="custom-file">
+                                                <!-- <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Pilih file</label>
+                                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="profile_image"> -->
+                                                <label class="custom-file-label" for="customFile" style="padding-right: 30%">Pilih file</label>
+                                                <input type="file" name='profile_image' class="custom-file-input" id="customFile">
                                             </div>
                                         </div>
                                     </div>
@@ -97,5 +99,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 <script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
-
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
 @endsection

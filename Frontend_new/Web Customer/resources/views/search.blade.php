@@ -30,7 +30,8 @@
                         <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
                             <div class="row no-gutters" style="padding-right:15;">
                                 <div class="col-3">
-                                    <img src="../../../Admin/FrontendSAP/public/storage/{{$barang['distributor_id']}}/{{$baran['item_image']}}" class="card-img p-2" style="height:11rem;">
+                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:11rem;">
+                                    <!-- <img src="../../../Admin/FrontendSAP/public/storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:11rem;"> -->
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">

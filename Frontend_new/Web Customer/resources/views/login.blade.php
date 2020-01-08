@@ -24,16 +24,16 @@
                         </div>
                         <h4>Masuk</h4>
                         <div class=" justify-content-center" style='margin-left:20%;margin-right:20%'>
-                            <form id="form-regist" action="/loginUser" method="POST">
+                            <form id="form-login" action="/loginUser" method="POST">
                                 @CSRF
                                 <div class="form-group col-md-12">
                                     <label for="email"></label>
-                                    <input required class="form-control" type="email" name="email" placeholder="E-mail" autocomplete='off'>
+                                    <input required class="form-control" id="email" type="email" name="email" placeholder="E-mail" autocomplete='off'>
                                     <span class='text-danger error-message'>{{ $errors->first('email') }}</span></span>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="password"></label>
-                                    <input class="form-control" type="password" name="password" placeholder="Password">
+                                    <input class="form-control" type="password" require id="password" name="password" placeholder="Password">
                                     <span class='text-danger'>{{ $errors->first('password') }}</span>
                                 </div>
                                 @if ($message = Session::get('gagal'))
@@ -81,6 +81,6 @@
     }
     </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
-<script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
+<script type="text/javascript" src="{{ asset('js/login_form_validation.js')}}"></script>
 
 </html>
