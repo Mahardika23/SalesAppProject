@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Rajdhani&display=swap');
+
+
+.card-body-icon{
+    position: absolute;
+    z-index: 0;
+    top: 25px;
+    right: 4px;
+    opacity: 0.4;
+    font-size: 90px;
+}

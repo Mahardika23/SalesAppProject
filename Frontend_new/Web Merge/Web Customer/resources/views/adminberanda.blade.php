@@ -2,7 +2,7 @@
 
 @section('content')
  
-  <link rel="stylesheet" type="text/css" href="{{ url('/css/beranda.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url('/css/admin-beranda.css') }}" />
   <h1><i class="fas fa-tachometer-alt mr-2 pt-2"></i>Dashboard</h1><hr>
   <div class="row text-white">
 
