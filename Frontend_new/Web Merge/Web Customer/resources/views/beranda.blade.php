@@ -69,13 +69,13 @@
                                                 @endif
                                                 <div class="row no-gutters " style="padding-right:15;">
                                                     <div class="col">
-                                                        <img src="../img/minyak.jpg" class="card-img p-2" style="height:6rem; width:4.5rem;">
+                                                        <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:6rem; width:4.5rem;">
                                                     </div>
                                                     <div class="col">
                                                         <div class="card-body p-1" id="{{$barang['id']}}isi">
                                                             <div class="card-text" style="font-size:65%;">
                                                                 <form>
-                                                                    <p class="m-0"> <text id='produk'>{{$barang['nama_barang']}}</text>
+                                                                    <p class="m-0"> <text id='produk' >{{$barang['nama_barang']}}</text>
                                                                     </p>
                                                                     <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text>
                                                                     </p>
@@ -113,7 +113,7 @@
                                         @endif
                                             <div class="row no-gutters " style="padding-right:15;">
                                                 <div class="col">
-                                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:6rem; width:4.5rem;">
+                                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:6rem; width:4.5rem;">
                                                 </div>
                                                 <div class="col">
                                                     <div class="card-body p-1" id="{{$benda['id']}}isi">
@@ -156,8 +156,8 @@
     </div>
     @endisset
 
-
-    <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50; ">
+    <!-- Peta -->
+    <!-- <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50; ">
         <div class="col">
             <div class="row">
                 <div class="col">
@@ -172,11 +172,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <!-- Modal -->
-<script>
+@include('modal')
+<!-- Peta -->
+<!-- <script>
     var map = L.map('mapid').setView([-7.4568928, 109.3003901], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -186,6 +188,5 @@
     L.marker([-7.4568928, 109.3003901]).addTo(map)
         .bindPopup('Reksa Karya')
         .openPopup();
-</script>
-@include('modal')
+</script> -->
 @endsection

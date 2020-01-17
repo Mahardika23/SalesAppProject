@@ -105,7 +105,7 @@ class adminDistributorController extends Controller
         $success=$promise->wait();
         $success = json_decode($success,true);
         // dd($success);
-        return redirect()->route('distributor');
+        return redirect()->route('admindistributor');
     }
 
     /**

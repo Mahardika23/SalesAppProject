@@ -39,20 +39,24 @@
         <div class="col-6">
             <div>
                 @if(empty($data['barang']))
+                @if(isset($data['pivot']))
+                @if($data['pivot']['status']=='Ditolak')
+                <button type="submit" class="btn-danger" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Pengajuan Mitra Ditolak</button>
+                @elseif($data['pivot']['status']=='Menunggu persetujuan')
+                <form action="/batalmitra">
+                    <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Menunggu Persetujuan Pengajuan Mitra</button>
+                    <input type="hidden" value={{$data['id']}} name="distributor_id">
+                    <button type="submit" class="btn-danger" style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Batalkan Pengajuan Mitra</button>
+                </form>
+                @else
+                <button type="submit" class="btn-success" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Bermitra</button>
+                @endif
+                @else
                 <form action="/requestmitra">
                     <input type="hidden" value={{$data['id']}} name="distributor_id">
-                    @if(isset($data['pivot']))
-                        @if($data['pivot']['status']=='Ditolak')
-                        <button type="submit" class="btn-danger" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Pengajuan Mitra Ditolak</button>
-                        @elseif($data['pivot']['status']=='Menunggu persetujuan')
-                        <button type="submit" class="btn-purple" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Menunggu Persetujuan Pengajuan Mitra</button>
-                        @else
-                        <button type="submit" class="btn-success" disabled style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Bermitra</button>
-                        @endif
-                    @else
-                    <button type="submit" class="btn-purple"  style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Ajukan Permintaan Mitra</button>
-                    @endif
+                    <button type="submit" class="btn-purple" style="display: inline-block;font-weight: 400;text-align: center;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Ajukan Permintaan Mitra</button>
                 </form>
+                @endif
                 @endif
             </div>
             <form class="form-inline" method="GET" action="/distributor/{{$data['id']}}">
@@ -80,12 +84,12 @@
                     <div class="col ml mr-4">
                         <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 22rem; max-height:11rem;">
                             <div class="row no-gutters" style="padding-right:15;">
-                                <div class="col-4">
-                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:11rem;">
+                                <div class="col-4" style="height:11rem">
+                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:90%;">
                                 </div>
                                 <div class="col-7">
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">
-                                    <b hidden style="padding-left:20%; margin-bottom:3; font-size:150%;">{{$data['nama_distributor']}}</b>
+                                        <b hidden style="padding-left:20%; margin-bottom:3; font-size:150%;">{{$data['nama_distributor']}}</b>
                                         <form class="card-text">
                                             <p class="m-0"> nama produk : <text id='produk'>{{$barang['nama_barang']}}</text></p>
                                             <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text></p>

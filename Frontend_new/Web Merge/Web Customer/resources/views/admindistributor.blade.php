@@ -50,7 +50,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                    <form action="/distributor/update" method="POST">
+                    <form action="/admindistributor/update" method="POST">
                     @csrf
                     <div class="modal-body" style="color: black">
                         Yakin mengaktifkan distributor {{$distrib['nama_distributor']}}?
@@ -74,7 +74,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                    <form action="/distributor/delete" method="POST">
+                    <form action="/admindistributor/delete" method="POST">
                     @csrf
                     <div class="modal-body" style="color: black">
                         Yakin menolak distributor {{$distrib['nama_distributor']}}?

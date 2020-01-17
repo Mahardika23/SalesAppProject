@@ -29,8 +29,8 @@
                     <div class="col ml-5 mr-4">
                         <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
                             <div class="row no-gutters" style="padding-right:15;">
-                                <div class="col-3">
-                                    <img src="../img/minyak.jpg" class="card-img p-2" style="height:11rem;">
+                                <div class="col-3" style="height:11rem">
+                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:90%;">
                                     <!-- <img src="../../../Admin/FrontendSAP/public/storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:11rem;"> -->
                                 </div>
                                 <div class="col-8">

@@ -75,9 +75,9 @@ Route::any('/navbar', ['as' => 'navbar', 'uses' => 'UserController@cobaSession']
 
     Route::post('/Ubah-Password', [ 'uses' => 'adminProfileController@ubahpassword']);
 
-    Route::get('/admindistributor', [ 'as' => 'distributor', 'uses' => 'adminDistributorController@index']);
+    Route::get('/admindistributor', [ 'as' => 'admindistributor', 'uses' => 'adminDistributorController@index']);
     Route::post('/admindistributor/update', [ 'uses' => 'adminDistributorController@update']);
 
     Route::get('/login-distributor', [ 'as' => 'login', 'uses' => 'adminLoginController@index']);
     Route::get('/loginpage', [ 'as' => 'login', 'uses' => 'adminLoginController@show']);
-    Route::get('/logout', [ 'as' => 'logout', 'uses' => 'adminLoginController@logout']);
+    Route::get('/logout-distributor', [ 'as' => 'logout-distributor', 'uses' => 'adminLoginController@logout']);
