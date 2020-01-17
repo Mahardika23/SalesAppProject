@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         $userable = 0;
         $validator = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             // 'userable_id' =>'required',
@@ -75,7 +75,7 @@ class UserController extends Controller
             $validatedTokoData = $request->validate([
                 'nama_toko' => 'required|string|max:100',
                 'nama_pemilik' => 'required|string|max:100',
-                'no_telp' => 'required',
+                'no_telp' => 'required|unique:tokos',
                 'alamat_toko' => 'required|string|max:255',
                 'email_pemilik' => 'required|email',
                 'province_id' => 'required',

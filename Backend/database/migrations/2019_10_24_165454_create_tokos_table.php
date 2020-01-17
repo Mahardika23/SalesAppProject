@@ -18,7 +18,7 @@ class CreateTokosTable extends Migration
             // $table->integer('userable_id');
             $table->string('nama_toko');
             $table->string('nama_pemilik');
-            $table->string('no_telp','15');
+            $table->string('no_telp','15')->unique();
             $table->string('email_pemilik')->unique();
             $table->string('alamat_toko');
             // $table->bigInteger('sales_id')->nullable();

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use App\Http\Resources\Pemesanan as PemesananCollection;
+use App\Http\Resources\PemesananResource as PemesananResource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +10,7 @@ use JWTAuth;
 use App\User;
 use App\toko;
 use App\Pemesanan;
+use App\Barang;
 use Illuminate\Validation\Rule;
 
 class PemesananController extends Controller
@@ -27,8 +30,9 @@ class PemesananController extends Controller
         }
         elseif ($user_type == 'App\toko') {
             # code...
-            return $pemesanan = Pemesanan::with('distributor','barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('toko_id',$userPemesanan['id'])->get();
-
+            // >>> Pemesanan::with(['distributor:id,nama_distributor','barang'])->where('toko_id',1)->get()
+              $pemesanan = Pemesanan::with(['distributor' ,'barang'])->where('toko_id',$userPemesanan['id'])->get();
+            return  new PemesananCollection($pemesanan);
         }
         elseif ($user_type == 'App\Distributor') {
             # code...
@@ -65,7 +69,7 @@ class PemesananController extends Controller
         $pemesanan->save();
        
         // return $check[0]['pivot'];
-        if(isset($check)){
+        if(isset($check[0])){
             $input['sales_id'] = $check[0]['pivot']['sales_id'];
             
             $pesan = Pemesanan::findOrFail($pemesanan['id']);
@@ -75,11 +79,18 @@ class PemesananController extends Controller
         }
 
         $idBarang = $request['barang']['id'];
+        
         $qtyBarang = $request['barang']['kuantitas_barang'];
         // return $barang;
         foreach ($idBarang as $indexKey => $b) {
             $i = 0;
-            $pemesanan->barang()->attach([$b => ['kuantitas_barang' => $qtyBarang[$indexKey]]]);
+            $harga = Barang::find($b)->harga_barang;
+            
+            $pemesanan->barang()->attach([$b => 
+            ['kuantitas_barang' => $qtyBarang[$indexKey]
+              ,'harga_barang' => $harga]
+            
+            ]);
             $i++;
         }   
         return response()->json($pemesanan,201);
