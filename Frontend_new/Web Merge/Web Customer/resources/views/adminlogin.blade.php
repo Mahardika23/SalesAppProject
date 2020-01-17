@@ -17,7 +17,7 @@
     <div class="container-login100">
         <div class="wrap-login100">
             
-            <form class="  needs-validation login100-form needs-validation" method="POST" action="/logincheck" novalidate>
+            <form class="  needs-validation login100-form needs-validation" method="POST" action="/logincheck-distributor" novalidate>
             @CSRF
                 <span class="login100-form-logo">
                     <i class="fas fa-user"></i>

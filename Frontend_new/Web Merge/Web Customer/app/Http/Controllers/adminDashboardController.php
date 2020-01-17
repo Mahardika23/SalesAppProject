@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class DashboardController extends Controller
+class adminDashboardController extends Controller
 {
     public function index(Request $request){
 

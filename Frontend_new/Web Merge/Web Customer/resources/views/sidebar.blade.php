@@ -41,7 +41,7 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{ url('/') }}">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
                     </li>
                 @endif
 

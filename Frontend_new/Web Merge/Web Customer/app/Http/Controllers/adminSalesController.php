@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Redirect;
 
-class SalesController extends Controller
+class adminSalesController extends Controller
 {
     public function index(Request $request)
     {

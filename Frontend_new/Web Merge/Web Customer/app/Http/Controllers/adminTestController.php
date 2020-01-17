@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
-class TestController extends Controller
+class adminTestController extends Controller
 {
     public function getProvince(){
         $client =  new Client();

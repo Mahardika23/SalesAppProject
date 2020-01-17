@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
-class BarangController extends Controller
+class adminBarangController extends Controller
 {
     /**
      * Display a listing of the resource.

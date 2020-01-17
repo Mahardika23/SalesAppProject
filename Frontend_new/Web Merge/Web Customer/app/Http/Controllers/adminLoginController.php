@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class LoginController extends Controller
+class adminLoginController extends Controller
 {
     public function index(Request $request){
         
@@ -20,7 +20,7 @@ class LoginController extends Controller
                 }
             }
             if($request->session()->has('token_distrib')){
-                return redirect('/');
+                return redirect('/dashboard');
             }
             return redirect('/loginpage');
         

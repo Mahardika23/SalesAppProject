@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class adminProfileController extends Controller
 {
     //
     public function index(Request $request){

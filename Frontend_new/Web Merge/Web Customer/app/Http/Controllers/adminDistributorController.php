@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class DistributorController extends Controller
+class adminDistributorController extends Controller
 {
     /**
      * Display a listing of the resource.

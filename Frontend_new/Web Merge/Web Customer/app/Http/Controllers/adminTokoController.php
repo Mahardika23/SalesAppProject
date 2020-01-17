@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Redirect;
 
-class TokoController extends Controller
+class adminTokoController extends Controller
 {
     public function index(Request $request)
     {

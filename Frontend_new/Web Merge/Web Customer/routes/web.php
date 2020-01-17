@@ -47,8 +47,7 @@ Route::any('/navbar', ['as' => 'navbar', 'uses' => 'UserController@cobaSession']
 
 
 // Distrib
-Route::group(['middleware' => ['logincheck']], function() {
-    Route::get('/', [ 'as' => 'dashboard', 'uses' => 'adminDashboardController@index']);
+    Route::get('/dashboard', [ 'as' => 'dashboard', 'uses' => 'adminDashboardController@index']);
     Route::get('/sidebar', function () {
         return view('adminsidebar');
     });
@@ -70,15 +69,14 @@ Route::group(['middleware' => ['logincheck']], function() {
     Route::get('/Profile', [ 'as' => 'Profile', 'uses' => 'adminProfileController@index']);
     Route::get('/guzzle', 'adminTestController@getProvince');
 
-    });
 
     Route::post('/logincheck-distributor','adminLoginController@login');
     Route::post('/register', [ 'uses' => 'adminLoginController@register']);
 
     Route::post('/Ubah-Password', [ 'uses' => 'adminProfileController@ubahpassword']);
 
-    Route::get('/distributor', [ 'as' => 'distributor', 'uses' => 'adminDistributorController@index']);
-    Route::post('/distributor/update', [ 'uses' => 'adminDistributorController@update']);
+    Route::get('/admindistributor', [ 'as' => 'distributor', 'uses' => 'adminDistributorController@index']);
+    Route::post('/admindistributor/update', [ 'uses' => 'adminDistributorController@update']);
 
     Route::get('/login-distributor', [ 'as' => 'login', 'uses' => 'adminLoginController@index']);
     Route::get('/loginpage', [ 'as' => 'login', 'uses' => 'adminLoginController@show']);

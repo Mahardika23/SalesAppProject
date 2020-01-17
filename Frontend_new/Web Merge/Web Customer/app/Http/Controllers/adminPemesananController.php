@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 
-class PemesananController extends Controller
+class adminPemesananController extends Controller
 {
     /**
      * Display a listing of the resource.
