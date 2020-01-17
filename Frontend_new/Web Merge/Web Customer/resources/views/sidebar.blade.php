@@ -143,7 +143,7 @@
                 @endif
                 <li class="logout">
                     <span>
-                        <a href="/logout"> Logout</a>
+                        <a href="/logout-distributor"> Logout</a>
                     </span>
                     <span>
                         <img src="{{ asset('/img/logout.svg') }}" alt="">

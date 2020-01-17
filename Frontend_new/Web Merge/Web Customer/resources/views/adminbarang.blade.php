@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="number" class="form-control" id="inlineFormInputGroup" name="harga_barang" placeholder="8999" required>
+                <input type="number" class="form-control harga_barang" id="harga_barang" name="harga_barang" placeholder="8.999" required>
               </div>
             </div>
             <div class="form-group">
@@ -109,7 +109,7 @@
             {{ $list['kategori'] }}
           @endif
         @endforeach</td>
-      <td >Rp {{$barang['harga_barang']}}</td>
+      <td>Rp <div class="harga_barang">{{$barang['harga_barang']}}</div></td>
       <td>{{$barang['stok_barang']}}</td>
       <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal{{$barang['id']}}">Detail</button></td>
       @if((Session::get('user_type'))=="App\Distributor")
@@ -212,7 +212,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="number" class="form-control" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" required>
+                <input type="text" class="form-control harga_barang" name="harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" required>
               </div>
             </div>
             <div class="form-group">
@@ -264,6 +264,15 @@
 </table>
 @endif
 
+<!-- Include jquery.js and jquery.mask.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
 
+<script>
+  $(document).ready(function(){
+  // Format mata uang.
+    $( '.harga_barang' ).mask('0,000,000,000', {reverse: true});
+  })
+</script>
 
 @endsection

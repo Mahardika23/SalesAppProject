@@ -151,6 +151,8 @@ class adminBarangController extends Controller
         //
         $input = $request->all();
         $id = $request->input('id');
+
+        if(preg_match("/^[0-9,]+$/", $input['harga_barang'])) $input['harga_barang'] = str_replace(',', '', $input['harga_barang']);
         // dd($id);
         $client =  new Client();
         $token = $request->session()->get('token_distrib');
