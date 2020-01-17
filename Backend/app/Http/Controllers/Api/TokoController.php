@@ -42,6 +42,26 @@ class TokoController extends Controller
         }
         return $check;
     }
+    public function batalkanDistributor(Request $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        $toko = User::find($user['id'])->userable;
+        $distributorId = $request['distributor_id'];
+
+        
+       $check = toko::find($toko['id'])->distributor;
+     
+       if(!empty($check[0])){
+        toko::find($toko['id'])->distributor()
+            ->detach($distributorId);
+            $check = ['message' => 'anda berhasil membatalkan permintaan mitra'];
+            }
+        else{
+            // $mitra = toko::find($toko['id'])->distributor;
+            $check = ['message' => 'anda belum pernah mengajukan mitra'];
+
+        }
+        return $check;
+    }
 
     public function tokoSales(){
         $user = JWTAuth::parseToken()->authenticate();

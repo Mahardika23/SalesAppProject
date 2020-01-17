@@ -33,6 +33,30 @@ class BarangController extends Controller
             'distributor_id' => 'required|numeric',
             
         ]);
+
+        $validWilayahProdukData = $request->validate([
+            'global' => 'boolean',
+            'provinces_id' => 'numeric',
+            'regency_id'     => 'numeric',
+            
+
+
+
+
+        ]);
+        /*
+        foreach ($idBarang as $indexKey => $b) {
+            $i = 0;
+            $harga = Barang::find($b)->harga_barang;
+            
+            $pemesanan->barang()->attach([$b => 
+            ['kuantitas_barang' => $qtyBarang[$indexKey]
+              ,'harga_barang' => $harga]
+            
+            ]);
+            $i++;
+        }   
+        */
         $barang = new Barang($validatedData);
         $barang->save();
         return response()->json($barang, 201);

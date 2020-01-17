@@ -88,7 +88,10 @@ class PemesananController extends Controller
             
             $pemesanan->barang()->attach([$b => 
             ['kuantitas_barang' => $qtyBarang[$indexKey]
-              ,'harga_barang' => $harga]
+              ,'harga_barang' => $harga,
+              'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+              'updated_at' =>Carbon::now()->format('Y-m-d H:i:s')
+              ]
             
             ]);
             $i++;

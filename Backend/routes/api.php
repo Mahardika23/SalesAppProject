@@ -73,7 +73,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
     Route::post('logout','UserController@logout');  
 
-    Route::post('/ajukandistributor','Api\TokoController@ajukanDistributor');
+    Route::post('/ajukanmitra','Api\TokoController@ajukanDistributor');
+    Route::post('/cancelmitra','Api\TokoController@batalkanDistributor');
+
     Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
 
     // Insert
