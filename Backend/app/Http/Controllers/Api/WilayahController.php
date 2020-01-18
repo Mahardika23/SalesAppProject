@@ -7,17 +7,18 @@ use Illuminate\Http\Request;
 use App\Provinces;
 use App\Regency;
 use App\District;
+use App\Wilayah;
 
 class WilayahController extends Controller
 {
     //
     public function province(Request $request){
-        $province = Provinces::all();
+        $province = Wilayah::where('id','LIKE','__')->get();
         return response($province);
     }
     public function regency(Request $request){
-
-        $regencies = Provinces::find($request['province_id'])->regencies()->select('id','name')->get();
+        $q = $request['province_id'].'__';
+        $regencies = Wilayah::where('id','LIKE',$q)->get();
         
        
         return response($regencies);
@@ -27,8 +28,9 @@ class WilayahController extends Controller
     }
     
     public function district(Request $request){
+        $q = $request['regency_id'].'___';
 
-        $districts  = Regency::find($request['regency_id'])->districts()->select('id','name')->get();
+       $districts =  Wilayah::where('id','LIKE',$q)->get();
 
         return response($districts);
 
@@ -37,8 +39,8 @@ class WilayahController extends Controller
     }
 
     public function village(Request $request){
-
-        $villages = District::find($request['district_id'])->villages()->select('id','name')->get();
+        $q = $request['district_id'].'___';
+        $villages = Wilayah::where('id','LIKE',$q)->get();
         return response($villages);
 
         

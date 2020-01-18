@@ -19,14 +19,14 @@ class CatalogController extends Controller
     public function showalltoWeb()
     {
         // $distributor = 
-        return $barang = Barang::with('distributor')->paginate(12);
+        return $barang = Barang::with(['distributor','wilayah'])->paginate(12);
     }
     public function showCategory(){
         return $kategori=KategoriBarang::all();
     }
     public function showByCategory(Request $request){
         // return $request['id'];
-        return $kategori = Barang::with('distributor')->where('kategori_id',$request['id'])->paginate(10);
+        return $kategori = Barang::with(['distributor','wilayah'])->where('kategori_id',$request['id'])->paginate(12);
         
     }
     public function showByFilter(Request $request)
@@ -47,15 +47,18 @@ class CatalogController extends Controller
         $userToko = User::find($user['id'])->userable->regency_id;
         $usernya = User::find($user['id'])->userable;
         
-        return $barang = Barang::with('distributor')->where('regency_id',$userToko)->paginate(12);
-
-   
+       
+        return $barang = Barang::with(['distributor','wilayah'])->whereHas('wilayah',function($q){
+            global $userToko;
+            return $q->where('wilayah_id',$userToko)->orWhere('global',1);
+        
+        })->paginate(12);
     }
 
     public function searchBy(Request $request)
     {
 
-        $barang = Barang::with('distributor')->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
+        $barang = Barang::with(['distributor','wilayah'])->where('nama_barang', 'LIKE', '%' . $request['search'] . '%')
             ->orWhereHas('distributor', function ($query) {
                 global $request;
                 $query->where('nama_distributor', 'LIKE', '%' . $request['search'] . '%');

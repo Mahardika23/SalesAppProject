@@ -103,6 +103,8 @@ Route::get('/kategori','Api\CatalogController@showCategory');
 Route::get('/barangbykategori','Api\CatalogController@showByCategory');
 
 Route::get('/checkemail','UserController@checkEmail');
+Route::get('/checkphone','UserController@checkPhone');
+Route::get('/checkusername','UserController@checkUsername');
 
 //Showing Catalog Before login
 Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');

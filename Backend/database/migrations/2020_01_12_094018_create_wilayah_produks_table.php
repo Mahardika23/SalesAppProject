@@ -16,9 +16,8 @@ class CreateWilayahProduksTable extends Migration
         Schema::create('wilayah_produks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('barang_id');
-            $table->boolean('global');
-            $table->bigInteger("provinces_id")->nullable();
-            $table->bigInteger("regency_id")->nullable();
+            // $table->boolean('global');
+            $table->bigInteger("wilayah_id")->nullable();
             
         
         

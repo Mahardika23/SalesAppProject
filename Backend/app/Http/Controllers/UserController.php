@@ -226,5 +226,37 @@ class UserController extends Controller
         }
                 
     }
+    protected function checkPhone(Request $request){
+        // return $request;
+        $user = toko::all()->where('no_telp',$request['no_telp'])->first();
+        // return $user;
+        if(isset($user)){
+            // echo 'true';
+            return "false";
+        }
+        else{
+            // echo 'false';
+            $a =array(false) ;
+            return "true";
+        }
+                
+
+    }
+    protected function checkUsername(Request $request){
+        // return $request;
+        $user = User::all()->where('name',$request['name'])->first();
+        // return $user;
+        if(isset($user)){
+            // echo 'true';
+            return "false";
+        }
+        else{
+            // echo 'false';
+            $a =array(false) ;
+            return "true";
+        }
+                
+
+    }
 
 }

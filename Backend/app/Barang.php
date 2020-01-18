@@ -16,8 +16,8 @@ class Barang extends Model
     public function pemesanan(){
         return $this->belongsToMany('App\Pemesanan','barang_pemesanans')->withPivot('kuantitas_barang');
     }
-    public function provinsi(){
-        return $this->belongsToMany('App\Provinces','wilayah_produks')->withPivot('global');
+    public function wilayah(){
+        return $this->belongsToMany('App\Wilayah','wilayah_produks');
     }
 
 
