@@ -185,6 +185,10 @@ class UserController extends Controller
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
+
+            if($user['userable_type'] == 'App\Sales'){
+                $user['distributor_id'] = $user->userable->distributor_id;
+            }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
             return response()->json(['token_expired'], $e->getStatusCode());
