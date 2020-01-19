@@ -22,6 +22,7 @@ class CreateBarangsTable extends Migration
             $table->bigInteger('stok_barang');
             $table->string('item_image',50)->nullable();
             $table->boolean('global')->nullable();
+            $table->text('deskripsi_produk')->nullable();
             
             // $table->bigInteger('regency_id')->nullable();
             // $table->bigInteger('village_id');
