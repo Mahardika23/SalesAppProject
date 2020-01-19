@@ -20,7 +20,7 @@
         <div class="row  justify-content-md-center ml-3">
             @foreach($kategori as $kategori)
             <div class="row">
-                <div class="col ml-3 mr-2 " >
+                <div class="col ml-3 mr-2 ">
                     <div class="card  mb-4" style="max-width:100rem; max-height:6rem; border-radius:20px;">
                         <a href="/search/{{$kategori['id']}}" class=" kartu" style="border-radius:20px;">
                             <div class="row no-gutters " style="padding-right:5;padding-left:5">
@@ -35,7 +35,6 @@
                     </div>
                 </div>
             </div>
-
             @endforeach
         </div>
     </div>
@@ -43,7 +42,7 @@
     <h5 style="text-align:center;">Katalog Produk</h5>
     @if(($data['data'])==NULL)
     <h5 class="row justify-content-md-center" style=" color: rgba(0, 0, 0, 0.5);margin-top:65;">
-    Tidak Ada Barang Di Sekitar Anda
+        Tidak Ada Barang Di Sekitar Anda
     </h5>
     @endif
 
@@ -74,16 +73,27 @@
                                                     <div class="col">
                                                         <div class="card-body p-1" id="{{$barang['id']}}isi">
                                                             <div class="card-text" style="font-size:65%;">
+                                                            <div style="text-align: center">
+                                                                        <b class="m-0"><text id='produk'>{{$barang['nama_barang']}}</text></b></div>
+                                                                    
                                                                 <form>
-                                                                    <p class="m-0"> <text id='produk' >{{$barang['nama_barang']}}</text>
-                                                                    </p>
-                                                                    <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text>
+                                                                    <p class="m-0 mt-1"> Rp. <text class='harga'>{{$barang['harga_barang']}}</text>
                                                                     </p>
                                                                     <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                                                 </form>
+                                                                <p id='harga' hidden>{{$barang['harga_barang']}}</p>
+                                                                <p id='fotoProduk' hidden>{{$barang['item_image']}}</p>
                                                                 <p id='idbarang' hidden>{{$barang['id']}}</p>
+                                                                <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
                                                                 <p id='distri' hidden>{{$barang['distributor_id']}}</p>
-                                                                <b>{{$barang['distributor']['nama_distributor']}}</b>
+                                                                <p id='distributor'>{{$barang['distributor']['nama_distributor']}}</p>
+                                                                <!-- @foreach($barang['wilayah'] as $wilayah)
+                                                                <p hidden>
+                                                                        {{$wilayah['name']}}
+                                                                </p>
+                                                                <input  hidden id="wilayah" value="{{$wilayah['name']}}">
+                                                                @endforeach -->
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -92,7 +102,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            {{count($barang['wilayah'])}}
+                            
+                                                                
                             @endforeach
 
                         </div>
@@ -108,31 +120,34 @@
                                     <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
                                         @if (Session::has('login'))
                                         <a href="#modalPesan" data-toggle="modal" data-target="#modalPesan" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
-                                        @else
-                                        <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
-                                        @endif
-                                            <div class="row no-gutters " style="padding-right:15;">
-                                                <div class="col">
-                                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:6rem; width:4.5rem;">
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card-body p-1" id="{{$benda['id']}}isi">
-                                                        <div class="card-text" style="font-size:65%;">
-                                                            <form>
-                                                                <p class="m-0"> <text id='produk'>{{$benda['nama_barang']}}</text>
-                                                                </p>
-                                                                <p class="m-0"> harga : <text id='harga'>{{$benda['harga_barang']}}</text>
-                                                                </p>
-                                                                <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
-                                                            </form>
-                                                            <p id='idbarang' hidden>{{$benda['id']}}</p>
-                                                            <p id='distri' hidden>{{$benda['distributor_id']}}</p>
-                                                            <b>{{$benda['distributor']['nama_distributor']}}</b>
+                                            @else
+                                            <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
+                                                @endif
+                                                <div class="row no-gutters " style="padding-right:15;">
+                                                    <div class="col">
+                                                        <img src="../storage/{{$benda['distributor_id']}}/{{$benda['item_image']}}" class="card-img p-2" style="height:6rem; width:4.5rem;">
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card-body p-1" id="{{$benda['id']}}isi">
+                                                            <div class="card-text" style="font-size:65%;">
+                                                                <div style="text-align: center">
+                                                                    <b class="m-0"><text id='produk'>{{$benda['nama_barang']}}</text></b></div>
+                                                                <form>
+                                                                    <p class="m-0 mt-1"> Rp. <text class='harga'>{{$benda['harga_barang']}}</text>
+                                                                    </p>
+                                                                    <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
+                                                                </form>
+                                                                <p id='wilayah' hidden>{{$benda['wilayah'][0]['name']}}</p>
+                                                                <p id='harga' hidden>{{$benda['harga_barang']}}</p>
+                                                                <p id='fotoProduk' hidden>{{$benda['item_image']}}</p>
+                                                                <p id='idbarang' hidden>{{$benda['id']}}</p>
+                                                                <p id='distri' hidden>{{$benda['distributor_id']}}</p>
+                                                                <p id="distributor">{{$benda['distributor']['nama_distributor']}}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
@@ -189,4 +204,6 @@
         .bindPopup('Reksa Karya')
         .openPopup();
 </script> -->
+
+
 @endsection

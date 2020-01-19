@@ -202,6 +202,7 @@ class UserController extends Controller
 
         return redirect()->route('profil');
     }
+
     public function checkEmail(Request $request){
         $client =  new Client();
         // return $request['email'];
@@ -237,6 +238,81 @@ class UserController extends Controller
             // $a=array([]);
 
             echo "false";die;
+        }
     }
-}
+
+    public function checkPhone(Request $request){
+        $client =  new Client();
+        // return $request['email'];
+        if($request->has('email_distributor')){
+            $input['no_telp'] = $request['no_telp'];
+
+        }
+        else{
+            $input['no_telp'] = $request['no_telp'];
+
+        }
+
+        // return $input;
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/checkphone',['query' => $input])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        // dd($data);
+        // if($data[0])
+        if($data == true){
+            
+            $a=array(true);
+            echo "true";
+        }
+        elseif($data[0] == false){
+            // $a=array([]);
+
+            echo "false";die;
+        }
+    }
+
+    public function checkUsername(Request $request){
+        $client =  new Client();
+        // return $request['email'];
+        if($request->has('email_distributor')){
+            $input['name'] = $request['name'];
+
+        }
+        else{
+            $input['name'] = $request['name'];
+
+        }
+
+        // return $input;
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/checkusername',['query' => $input])->then(
+            function ($response) {
+                return $response->getBody();
+            },
+            function ($exception) {
+                return $exception->getMessage();
+            }
+        );
+
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        // if($data[0])
+        if($data == true){
+            
+            $a=array(true);
+            echo "true";
+        }
+        elseif($data[0] == false){
+            // $a=array([]);
+
+            echo "false";die;
+        }
+    }
 }
