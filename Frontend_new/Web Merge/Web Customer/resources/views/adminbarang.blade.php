@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="number" class="form-control harga_barang" id="harga_barang" name="harga_barang" placeholder="8.999" required>
+                <input type="text" class="form-control harga_barang" id="harga_barang" name="harga_barang" placeholder="8.999" required>
               </div>
             </div>
             <div class="form-group">

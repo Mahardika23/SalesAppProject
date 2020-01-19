@@ -117,12 +117,43 @@
                         <label for="inputAddress2">Konfirmasi password sales</label>
                         <input type="password" class="form-control" name="password_confirmation" placeholder="******" id="password_confirmation" required>
                     </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Provinsi</label>
+                        <div class="input-group mb-3">
+                            <select id="provinsi" class="form-control" name="province_id">
+                                @foreach($data as $provinsi)
+                                <option value="{{$provinsi['id']}}">{{$provinsi['name']}}</option>
+                                @endforeach
+                            </select>
+                            <span class='text-danger'>{{ $errors->first('province_id') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Kabupaten</label>
+                        <div class="input-group mb-3">
+                            <select id="kabupaten" class="form-control" name="regency_id" data-source="http://127.0.0.1:9090/api/regency?province_id=">
+                            </select>
+                            <span class='text-danger'>{{ $errors->first('regency_id') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Kecamatan</label>
+                        <div class="input-group mb-3">
+                            <select name="district_id"  id="kecamatan" class="form-control" data-source="http://127.0.0.1:9090/api/district?regency_id=">
+                            </select>
+                            <span class='text-danger'>{{ $errors->first('district_id') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Kelurahan</label>
+                        <div class="input-group mb-3">
+                            <select name="village_id" id="kelurahan" class="form-control" data-source="http://127.0.0.1:9090/api/village?district_id=">
+                            </select>
+                            <span class='text-danger'>{{ $errors->first('village_id') }}</span>
+                        </div>
+                    </div>
                     </div>
                     <div class="modal-footer">
-                    <input type="hidden" name="province_id" id="" value=330101>
-                    <input type="hidden" name="regency_id" id="" value=330101>
-                    <input type="hidden" name="district_id" id="" value=330101>
-                    <input type="hidden" name="village_id" id="" value=330101>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" id="submit" class="btn btn-primary">Ajukan</button>
                     </div>
