@@ -51,7 +51,7 @@ Route::any('/navbar', ['as' => 'navbar', 'uses' => 'UserController@cobaSession']
     Route::get('/sidebar', function () {
         return view('adminsidebar');
     });
-    Route::get('/checkemailvalidity','adminSalesController@checkEmail');
+    // Route::get('/checkemailvalidity','adminSalesController@checkEmail');
     Route::get('/Manajemen-Data-Barang', [ 'as' => 'Manajemen-Data-Barang', 'uses' => 'adminBarangController@index']);
     Route::post('/Manajemen-Data-Barang', [ 'uses' => 'adminBarangController@store']);
     Route::post('/Manajemen-Data-Barang/delete', [ 'uses' => 'adminBarangController@destroy']);

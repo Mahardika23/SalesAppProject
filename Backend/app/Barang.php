@@ -16,6 +16,9 @@ class Barang extends Model
     public function pemesanan(){
         return $this->belongsToMany('App\Pemesanan','barang_pemesanans')->withPivot('kuantitas_barang');
     }
+    public function wilayah(){
+        return $this->belongsToMany('App\Wilayah','wilayah_produks');
+    }
 
 
     public function scopeAllowFilter($query){

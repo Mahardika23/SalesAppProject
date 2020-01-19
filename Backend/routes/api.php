@@ -73,7 +73,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/showcatalogbyuser','Api\CatalogController@showByUser');
     Route::post('logout','UserController@logout');  
 
-    Route::post('/ajukandistributor','Api\TokoController@ajukanDistributor');
+    Route::post('/ajukanmitra','Api\TokoController@ajukanDistributor');
+    Route::post('/cancelmitra','Api\TokoController@batalkanDistributor');
+
     Route::get('/getstatusdistributor','Api\TokoController@distributorByToko');
 
     // Insert
@@ -101,6 +103,8 @@ Route::get('/kategori','Api\CatalogController@showCategory');
 Route::get('/barangbykategori','Api\CatalogController@showByCategory');
 
 Route::get('/checkemail','UserController@checkEmail');
+Route::get('/checkphone','UserController@checkPhone');
+Route::get('/checkusername','UserController@checkUsername');
 
 //Showing Catalog Before login
 Route::get('/showcatalogbyfilter','Api\CatalogController@showByFilter');

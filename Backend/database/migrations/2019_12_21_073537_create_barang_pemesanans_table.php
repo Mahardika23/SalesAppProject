@@ -18,6 +18,8 @@ class CreateBarangPemesanansTable extends Migration
             $table->bigInteger('pemesanan_id');
             $table->bigInteger('barang_id');
             $table->mediumInteger('kuantitas_barang');
+            $table->bigInteger('harga_barang');
+            
             
             $table->timestamps();
         });

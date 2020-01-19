@@ -205,7 +205,15 @@ class UserController extends Controller
     public function checkEmail(Request $request){
         $client =  new Client();
         // return $request['email'];
-        $input['email'] = $request['email'];
+        if($request->has('email_distributor')){
+            $input['email'] = $request['email_distributor'];
+
+        }
+        else{
+            $input['email'] = $request['email'];
+
+        }
+
         // return $input;
         $promise = $client->getAsync('http://127.0.0.1:9090/api/checkemail',['query' => $input])->then(
             function ($response) {

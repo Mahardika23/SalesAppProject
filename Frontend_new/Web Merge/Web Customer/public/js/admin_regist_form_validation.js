@@ -22,7 +22,7 @@ $(document).ready(function () {
                 minlength:8,
                 alphanumeric:true
             },
-            email:{
+            email_distributor:{
                 required:true,
                 email:true,
                 remote:"/checkemailvalidity",
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 required: "Kolom belum terisi",
                 minlength: "Kolom harus terdiri dari minimal 8 karakter"
                 },
-            email:{
+            email_distributor:{
                     remote:"email sudah terdaftar",
             }
             },

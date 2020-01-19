@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         $userable = 0;
         $validator = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             // 'userable_id' =>'required',
@@ -75,7 +75,7 @@ class UserController extends Controller
             $validatedTokoData = $request->validate([
                 'nama_toko' => 'required|string|max:100',
                 'nama_pemilik' => 'required|string|max:100',
-                'no_telp' => 'required',
+                'no_telp' => 'required|unique:tokos',
                 'alamat_toko' => 'required|string|max:255',
                 'email_pemilik' => 'required|email',
                 'province_id' => 'required',
@@ -225,6 +225,38 @@ class UserController extends Controller
             return "true";
         }
                 
+    }
+    protected function checkPhone(Request $request){
+        // return $request;
+        $user = toko::all()->where('no_telp',$request['no_telp'])->first();
+        // return $user;
+        if(isset($user)){
+            // echo 'true';
+            return "false";
+        }
+        else{
+            // echo 'false';
+            $a =array(false) ;
+            return "true";
+        }
+                
+
+    }
+    protected function checkUsername(Request $request){
+        // return $request;
+        $user = User::all()->where('name',$request['name'])->first();
+        // return $user;
+        if(isset($user)){
+            // echo 'true';
+            return "false";
+        }
+        else{
+            // echo 'false';
+            $a =array(false) ;
+            return "true";
+        }
+                
+
     }
 
 }
