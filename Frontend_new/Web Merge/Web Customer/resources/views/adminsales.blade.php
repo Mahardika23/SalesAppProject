@@ -36,7 +36,7 @@
           </div>
           <div class="form-group">
             <label for="inputAddress2">No HP</label>
-            <input type="number" class="form-control" name="no_hp" placeholder="08xxxxxxxxx" minlength=10 id="no_hp" required>
+            <input type="text" class="form-control no_hp" name="no_hp" placeholder="08xxxxxxxxx" minlength=10 id="no_hp" required>
           </div>
           <div class="form-group">
             <label for="inputAddress2">Email</label>
@@ -85,7 +85,7 @@
     <tr>
       <td scope="row">{{ $indexKey+1 }}</td>
       <td>{{$sales['nama_sales']}}</td>
-      <td>{{$sales['no_hp']}}</td>
+      <td class="no_hp">{{$sales['no_hp']}}</td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#editSalesModal{{$sales['id']}}"><i
             class="fas fa-edit bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit"></i></a></td>
       <td style="width:40px"><a href="" data-toggle="modal" data-target="#deleteSalesModal{{$sales['id']}}"><i
@@ -111,7 +111,7 @@
               </div>
               <div class="form-group">
                 <label for="inputAddress2">no HP</label>
-                <input type="number" class="form-control" id="Stok" value="{{$sales['no_hp']}}" disabled>
+                <input type="text" class="form-control no_hp" id="Stok" value="{{$sales['no_hp']}}" disabled>
               </div>
             </div>
             <div class="modal-footer">
@@ -142,7 +142,7 @@
               </div>
               <div class="form-group">
                 <label for="inputAddress2">no HP</label>
-                <input type="number" class="form-control" name="no_hp" value="{{$sales['no_hp']}}" required>
+                <input type="text" class="form-control no_hp" name="no_hp" value="{{$sales['no_hp']}}" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -194,6 +194,13 @@
 </table>
 @endif
 {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
-<script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
+<script type="text/javascript" src="{{ asset('js/admin_regist_form_validation.js')}}"></script>
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+<script>
+  $(document).ready(function(){
+  // Format mata uang.
+    $( '.no_hp' ).mask('0000-0000-00000');
+  })
+</script>
 
 @endsection

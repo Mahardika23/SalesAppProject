@@ -31,7 +31,7 @@
       <td scope="row">{{ $indexKey+1 }}</td>
       <td>{{$toko['nama_toko']}}</td>
       <td>{{$toko['nama_pemilik']}}</td>
-      <td>{{$toko['no_telp']}}</td>
+      <td class="no_hp">{{$toko['no_telp']}}</td>
       <td>{{$toko['alamat_toko']}}</td>
       <td>{{$toko['email_pemilik']}}</td>
       @if((Session::get('user_type'))=="App\Distributor")
@@ -163,6 +163,13 @@
 
 @endif
 
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+<script>
+  $(document).ready(function(){
+  // Format mata uang.
+    $( '.no_hp' ).mask('0000-0000-00000');
+  })
+</script>
 
 
 
