@@ -197,6 +197,12 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+
+        <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/kabupaten.js')}}"></script>
+        <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/provinsi.js')}}"></script>
+        <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/Kecamatan&Kelurahan.js')}}"></script>
+        <script type="text/javascript" src="{{ url('/js/mdb.min.js')}}"></script>
+
         @if(Session::has('message'))
         <script type="text/javascript">
             $(window).on('load',function(){

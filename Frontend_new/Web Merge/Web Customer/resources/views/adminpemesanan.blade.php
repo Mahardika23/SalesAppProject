@@ -54,7 +54,7 @@
         @if($loop->first)
         <td>{{$barang['nama_barang']}}</td>
         <td>{{$barang['pivot']['kuantitas_barang']}}</td>
-        <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['total_harga']}}</td>
+        <td rowspan="{{count($pesanan['barang'])}}" >Rp <span class="harga">{{$pesanan['total_harga']}}</span></td>
         <td rowspan="{{count($pesanan['barang'])}}" >{{$pesanan['status_pemesanan']}}</td>
 
         @if((Session::get('user_type'))=="App\Sales")
@@ -295,5 +295,13 @@
   @endif
 
 
+  <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+  // Format mata uang.
+    $( '.harga' ).mask('0,000,000,000', {reverse: true});
+  })
+</script>
 
   @endsection

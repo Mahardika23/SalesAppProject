@@ -68,6 +68,7 @@ class adminSalesController extends Controller
         //
         
         $input = $request->all();
+        $input['no_hp'] = str_replace('-', '', $input['no_hp']);
         // dd($input);
         $client =  new Client();
         $token = $request->session()->get('token_distrib');
@@ -123,6 +124,7 @@ class adminSalesController extends Controller
         //
         $input = $request->all();
         $id = $request->input('id');
+        $input['no_hp'] = str_replace('-', '', $input['no_hp']);
         // dd($id);
         $client =  new Client();
         $token = $request->session()->get('token_distrib');
