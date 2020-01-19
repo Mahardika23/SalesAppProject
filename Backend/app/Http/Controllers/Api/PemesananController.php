@@ -36,7 +36,8 @@ class PemesananController extends Controller
         }
         elseif ($user_type == 'App\Distributor') {
             # code...
-            return $pemesanan = Pemesanan::with('barang:nama_barang,kategori_id,harga_barang,stok_barang,item_image')->where('distributor_id',$userPemesanan['id'])->get();
+            
+            return $pemesanan = Pemesanan::with('barang:barangs.id,nama_barang,kategori_id,barangs.harga_barang,stok_barang,item_image')->where('distributor_id',$userPemesanan['id'])->get();
 
         }
         else{

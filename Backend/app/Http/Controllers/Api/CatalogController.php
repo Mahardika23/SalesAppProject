@@ -47,12 +47,11 @@ class CatalogController extends Controller
         $userToko = User::find($user['id'])->userable->regency_id;
         $usernya = User::find($user['id'])->userable;
         
-       
         return $barang = Barang::with(['distributor','wilayah'])->whereHas('wilayah',function($q){
             global $userToko;
-            return $q->where('wilayah_id',$userToko)->orWhere('global',1);
+            return $q->where('wilayahs.id','LIKE',$userToko);
         
-        })->paginate(12);
+        })->orWhere('global','1')->paginate(12);
     }
 
     public function searchBy(Request $request)
@@ -62,7 +61,7 @@ class CatalogController extends Controller
             ->orWhereHas('distributor', function ($query) {
                 global $request;
                 $query->where('nama_distributor', 'LIKE', '%' . $request['search'] . '%');
-            })->paginate(10);
+            })->get();
         return $barang;
 
 
