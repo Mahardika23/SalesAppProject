@@ -85,62 +85,88 @@
 
     <!-- pendaftaran Modal -->
     <div class="modal fade" id="daftarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Ajukan pendaftaran akun
-                        distributor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="/register" method="POST" id="form-addsales">
-                        @CSRF
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="inputAddress2">Nama distributor</label>
-                                <input type="text" class="form-control" name="nama_distributor"
-                                    placeholder="Nama Distributor" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Username</label>
-                                <input type="text" class="form-control" name="name" placeholder="username" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Alamat Distributor</label>
-                                <input type="text" class="form-control" name="alamat_distributor"
-                                    placeholder="Jl. Sokaraja" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Email</label>
-                                <input type="email" class="form-control" name="email_distributor"
-                                    placeholder="admin@distributor.id" id="email_distributor" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Password sales</label>
-                                <input type="password" class="form-control" name="password" placeholder="******" min="8"
-                                    id="password" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Konfirmasi password sales</label>
-                                <input type="password" class="form-control" name="password_confirmation"
-                                    placeholder="******" id="password_confirmation" required>
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle" style="color:black">Ajukan pendaftaran akun distributor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/register" method="POST" id="form-addsales">
+                    @CSRF
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="inputAddress2">Nama distributor</label>
+                            <input type="text" class="form-control" name="nama_distributor" placeholder="Nama Distributor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Username</label>
+                            <input type="text" class="form-control" name="name" placeholder="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Alamat Distributor</label>
+                            <input type="text" class="form-control" name="alamat_distributor" placeholder="Jl. Sokaraja" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Email</label>
+                            <input type="email" class="form-control" name="email_distributor" placeholder="admin@distributor.id"id="email_distributor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Password sales</label>
+                            <input type="password" class="form-control" name="password" placeholder="******" min="8" id="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Konfirmasi password sales</label>
+                            <input type="password" class="form-control" name="password_confirmation" placeholder="******" id="password_confirmation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Provinsi</label>
+                            <div class="input-group mb-3">
+                                <select id="provinsi" class="form-control" name="province_id">
+                                    @foreach($data as $provinsi)
+                                    <option value="{{$provinsi['id']}}">{{$provinsi['name']}}</option>
+                                    @endforeach
+                                </select>
+                                <span class='text-danger'>{{ $errors->first('province_id') }}</span>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="province_id" id="" value=330101>
-                            <input type="hidden" name="regency_id" id="" value=330101>
-                            <input type="hidden" name="district_id" id="" value=330101>
-                            <input type="hidden" name="village_id" id="" value=330101>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="submit" id="submit" class="btn btn-primary">Ajukan</button>
+                        <div class="form-group">
+                            <label for="inputAddress2">Kabupaten</label>
+                            <div class="input-group mb-3">
+                                <select id="kabupaten" class="form-control" name="regency_id" data-source="http://127.0.0.1:9090/api/regency?province_id=">
+                                </select>
+                                <span class='text-danger'>{{ $errors->first('regency_id') }}</span>
+                            </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Kecamatan</label>
+                            <div class="input-group mb-3">
+                                <select name="district_id"  id="kecamatan" class="form-control" data-source="http://127.0.0.1:9090/api/district?regency_id=">
+                                </select>
+                                <span class='text-danger'>{{ $errors->first('district_id') }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Kelurahan</label>
+                            <div class="input-group mb-3">
+                                <select name="village_id" id="kelurahan" class="form-control" data-source="http://127.0.0.1:9090/api/village?district_id=">
+                                </select>
+                                <span class='text-danger'>{{ $errors->first('village_id') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit" class="btn btn-primary">Ajukan</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
 
         <script>

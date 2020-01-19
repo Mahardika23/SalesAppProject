@@ -62,7 +62,8 @@ class adminBarangController extends Controller
             $kategori = $daftarKategori;
             $userable_id = $request->session()->get('userable_id');
 // dd($userable_id);
-            // dd($data);
+            // dd($data['data']);
+            // dd($kategori);
             return view('adminbarang',['data'=> $data,'kategori' => $kategori]);
             // return view('barang',['nama' => $nama]);
 
@@ -93,6 +94,8 @@ class adminBarangController extends Controller
         $userable_id = $request->session()->get('userable_id');
 
         $input = $request->all();
+        if(preg_match("/^[0-9,]+$/", $input['harga_barang'])) $input['harga_barang'] = str_replace(',', '', $input['harga_barang']);
+        // dd($input);
         $item_image = 'item_' . $input['nama_barang'] . '.' . request()->item_image->getClientOriginalExtension();
         $request['item_image']->storeAs($userable_id, $item_image);
         $input['item_image'] = $item_image;
