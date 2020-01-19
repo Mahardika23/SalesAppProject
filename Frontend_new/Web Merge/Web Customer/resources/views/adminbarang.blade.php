@@ -122,7 +122,7 @@
             {{ $list['kategori'] }}
           @endif
         @endforeach</td>
-      <td>Rp <div class="harga_barang">{{$barang['harga_barang']}}</div></td>
+      <td>Rp <span class="harga_barang">{{$barang['harga_barang']}}</span></td>
       <td>{{$barang['stok_barang']}}</td>
       <td style="width:70px">  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailBarangModal{{$barang['id']}}">Detail</button></td>
       @if((Session::get('user_type'))=="App\Distributor")
@@ -169,7 +169,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" disabled>
+                <input type="text" class="form-control harga_barang" id="inlineFormInputGroup" value="{{$barang['harga_barang']}}" disabled>
               </div>
             </div>
             <div class="form-group">
