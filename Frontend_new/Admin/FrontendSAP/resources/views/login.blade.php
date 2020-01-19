@@ -208,4 +208,4 @@
 <script type="text/javascript" src="{{ asset('js/regist_form_validation.js')}}"></script>
 </body>
 
-</html>
+</html>+**+

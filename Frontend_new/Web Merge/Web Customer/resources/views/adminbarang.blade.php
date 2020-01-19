@@ -22,9 +22,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form enctype="multipart/form-data"  action="/Manajemen-Data-Barang" method="POST">
+        <div class="modal-body">
+          <form enctype="multipart/form-data"  action="/Manajemen-Data-Barang" method="POST">
           @CSRF
-          <div class="modal-body">
             <div class="form-group">
               <label for="inputAddress2">Nama</label>
               <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Nama Barang" required>
@@ -47,12 +47,25 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="inputAddress2">Wilayah</label>
+              <div class="input-group mb-3">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="global" name="global" value="1">
+                  <label class="form-check-label" for="inlineCheckbox1">Global</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="global" name="global" value="0">
+                  <label class="form-check-label" for="inlineCheckbox2">Lokal</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
               <label class="inputAddress2">Harga</label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text">Rp</div>
                 </div>
-                <input type="number" class="form-control harga_barang" id="harga_barang" name="harga_barang" placeholder="8.999" required>
+                <input type="text" class="form-control harga_barang" id="harga_barang" name="harga_barang" placeholder="8.999" required>
               </div>
             </div>
             <div class="form-group">
@@ -66,13 +79,13 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Tambah</button>
           </div>
-        </form>
+          </form>
       </div>
     </div>
   </div>
   @endif
 
-  @if (empty($data))
+  @if (empty($data['data']))
     @if((Session::get('user_type'))=="App\Distributor")
     <p>Anda tidak memiliki Barang</p>
     <p>Silahkan untuk menambahkan barang</p>
@@ -98,7 +111,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($data as $indexKey => $barang)
+    @foreach($data['data'] as $indexKey => $barang)
     
     <tr>
     <td scope="row">{{$indexKey+1}}</td>

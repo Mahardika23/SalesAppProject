@@ -30,7 +30,21 @@ class adminLoginController extends Controller
         if($request->session()->has('token_distrib')){
             return redirect('/');
         }
-        return view('adminlogin');
+
+        $client =  new Client();
+        $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
+        function ($response) {
+            return $response->getBody();
+        },
+        function ($exception) {
+            return $exception->getMessage();
+        }
+        );
+        $alamat = $request->all();
+        //dd ($alamat);
+        $data = $promise->wait();
+        $data = json_decode($data, true);
+        return view('adminlogin',['data' => $data]);
     
 }
    
