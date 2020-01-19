@@ -72,7 +72,7 @@
               <label for="inputAddress2">Stok</label>
               <input type="number" class="form-control" name="stok_barang" id="Stok" placeholder="9813" required>
               <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
-              <input type="hidden" name="regency_id" id="" value=330101>
+              <input type="hidden" name="regency_id" id="" value="{{ Session::get('regency_id') }}">
             </div>
           </div>
           <div class="modal-footer">
@@ -143,7 +143,7 @@
         </div>
         <form action="">
           <div class="modal-body">
-              <img src="../storage/{{Session::get('userable_id')}}/{{$barang['item_image']}}" class="" alt="..." width='100%' height="100%">
+              <img src="../storage/{{Session::get('distributor_id')}}/{{$barang['item_image']}}" class="" alt="..." width='100%' height="100%">
 
             <div class="form-group">
               <label for="inputAddress2">Nama</label>

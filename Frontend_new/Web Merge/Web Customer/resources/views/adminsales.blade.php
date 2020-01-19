@@ -53,10 +53,10 @@
         </div>
         <div class="modal-footer">
           <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
-          <input type="hidden" name="province_id" id="" value=330101>
-          <input type="hidden" name="regency_id" id="" value=330101>
-          <input type="hidden" name="district_id" id="" value=330101>
-          <input type="hidden" name="village_id" id="" value=330101>
+          <input type="hidden" name="province_id" id="" value="{{ Session::get('province_id') }}">
+          <input type="hidden" name="regency_id" id="" value="{{ Session::get('regency_id') }}">
+          <input type="hidden" name="district_id" id="" value="{{ Session::get('district_id') }}">
+          <input type="hidden" name="village_id" id="" value="{{ Session::get('village_id') }}">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
           <button type="submit" id="submit" name="submit" class="btn btn-primary">Tambah</button>
         </div>
@@ -148,10 +148,10 @@
             <div class="modal-footer">
               <input type="hidden" name="distributor_id" id="" value="{{ Session::get('userable_id') }}">
               <input type="hidden" name="id" id="" value="{{ $sales['id'] }}">
-              <input type="hidden" name="province_id" id="" value=330101>
-              <input type="hidden" name="regency_id" id="" value=330101>
-              <input type="hidden" name="district_id" id="" value=330101>
-              <input type="hidden" name="village_id" id="" value=330101>
+              <input type="hidden" name="province_id" id="" value="{{ Session::get('province_id') }}">
+              <input type="hidden" name="regency_id" id="" value="{{ Session::get('regency_id') }}">
+              <input type="hidden" name="district_id" id="" value="{{ Session::get('district_id') }}">
+              <input type="hidden" name="village_id" id="" value="{{ Session::get('village_id') }}">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
               <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
