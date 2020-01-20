@@ -82,6 +82,12 @@
                                                                     <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                                                 </form>
                                                                 <p id='idbarang' hidden>{{$barang['id']}}</p>
+                                                                @if($barang['global']==1)
+                                                                <p id='wilayah' hidden>Global</p>
+                                                                {{-- <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p> --}}
+                                                                @else
+                                                                <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
+                                                                @endif
                                                                 <p id='distri' hidden>{{$barang['distributor_id']}}</p>
                                                                 <b>{{$barang['distributor']['nama_distributor']}}</b>
                                                             </div>
@@ -108,26 +114,35 @@
                                     <div class="card  mb-4" style="max-width:10rem; max-height:6rem; border-radius:20px;">
                                         @if (Session::has('login'))
                                         <a href="#modalPesan" data-toggle="modal" data-target="#modalPesan" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
-                                        @else
-                                        <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
-                                        @endif
-                                            <div class="row no-gutters " style="padding-right:15;">
-                                                <div class="col">
-                                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:6rem; width:4.5rem;">
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card-body p-1" id="{{$benda['id']}}isi">
-                                                        <div class="card-text" style="font-size:65%;">
-                                                            <form>
-                                                                <p class="m-0"> <text id='produk'>{{$benda['nama_barang']}}</text>
-                                                                </p>
-                                                                <p class="m-0"> harga : <text id='harga'>{{$benda['harga_barang']}}</text>
-                                                                </p>
-                                                                <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
-                                                            </form>
-                                                            <p id='idbarang' hidden>{{$benda['id']}}</p>
-                                                            <p id='distri' hidden>{{$benda['distributor_id']}}</p>
-                                                            <b>{{$benda['distributor']['nama_distributor']}}</b>
+                                            @else
+                                            <a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" id="{{$benda['id']}}" class=" kartu" style="border-radius:20px;">
+                                                @endif
+                                                <div class="row no-gutters " style="padding-right:15;">
+                                                    <div class="col">
+                                                        <img src="../storage/{{$benda['distributor_id']}}/{{$benda['item_image']}}" class="card-img p-2" style="height:6rem; width:4.5rem;">
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card-body p-1" id="{{$benda['id']}}isi">
+                                                            <div class="card-text" style="font-size:65%;">
+                                                                <div style="text-align: center">
+                                                                    <b class="m-0"><text id='produk'>{{$benda['nama_barang']}}</text></b></div>
+                                                                <form>
+                                                                    <p class="m-0 mt-1"> Rp. <text class='harga'>{{$benda['harga_barang']}}</text>
+                                                                    </p>
+                                                                    <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
+                                                                </form>
+                                                                <p id='deskripsi_produk' hidden>{{$benda['deskripsi_produk']}}</p>
+                                                                @if($barang['global']==1)
+                                                                <p id='wilayah' hidden>Global</p>
+                                                                {{-- <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p> --}}
+                                                                @else
+                                                                <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
+                                                                @endif                                                                <p id='harga' hidden>{{$benda['harga_barang']}}</p>
+                                                                <p id='fotoProduk' hidden>{{$benda['item_image']}}</p>
+                                                                <p id='idbarang' hidden>{{$benda['id']}}</p>
+                                                                <p id='distri' hidden>{{$benda['distributor_id']}}</p>
+                                                                <p id="distributor">{{$benda['distributor']['nama_distributor']}}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

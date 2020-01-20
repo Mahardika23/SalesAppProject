@@ -72,10 +72,11 @@
     var login = '{{Session::get('login')}}';
     console.log(login);
     $("button[name='shoplink']").on('click', function(params) {
-        if(login){
-        $('#modalPesan').modal('toggle', $(this));
-        }else{
-        $('#modalLogin').modal('show');
+        if (login) {
+            $('#modalPesan').modal('toggle', $(this));
+        } else {
+            console.log('test');
+            $('#modalLogin').modal('show');
         }
     });
     $('#modalPesan').on('show.bs.modal', function(event) {

@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="col-1" style="padding-top:17%;">
-                                    <button class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}">
+                                    <button name="shoplink" class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}">
                                         <img src="../img/shopping-cart.png" style="width:20;">
                                     </button>
                                 </div>

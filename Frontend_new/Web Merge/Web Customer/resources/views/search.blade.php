@@ -43,9 +43,20 @@
                                             <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text></p>
                                             <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                         </form>
+                                        <!-- <p id='fotoProduk' hidden>{{$barang['item_image']}}</p> -->
+                                        <a href="/distributor/{{$barang['distributor_id']}}" style="color:inherit;">
+                                            <p  id="distributor" style=>{{$barang['distributor']['nama_distributor']}}</p>
+                                        </a>
+                                        <p id='deskripsi_produk' hidden>{{$barang['deskripsi_produk']}}</p>
+                                        <p id='harga' hidden>{{$barang['harga_barang']}}</p>
                                         <p id='idbarang' hidden>{{$barang['id']}}</p>
                                         <p id='distri' hidden>{{$barang['distributor_id']}}</p>
                                     </div>
+                                    @if($barang['global']==1)
+                                                                <p style="text-align:right" id='wilayah' >Global</p>
+                                                                @else
+                                                                <p style="text-align:right" id='wilayah' >{{$barang['wilayah'][0]['name']}}</p>
+                                                                @endif
                                 </div>
                                 <div class="col-1" style="padding-top:17%;">
                                     <button name="shoplink" class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}">

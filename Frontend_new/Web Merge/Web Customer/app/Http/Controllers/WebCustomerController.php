@@ -334,8 +334,10 @@ class WebCustomerController extends Controller
             // dd($grandtotal);
             $input['kuantitas_pesanan'] = intval($input['kuantitas_pesanan']);
             // dd($input['kuantitas_pesanan']);
-            $input['total_harga']=$grandtotal;
-            $promise = $client->requestAsync('POST','http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"],'form_params' =>$input])->then(
+            $input['total_harga'] = $grandtotal;
+            $input['barang']['id'] = $input['barang']['barang_id'];
+            // dd($input); 
+            $promise = $client->requestAsync('POST', 'http://127.0.0.1:9090/api/admin/pemesanan', ['headers' => ['Authorization' => "Bearer {$token}"], 'form_params' => $input])->then(
                 function ($response) {
                     return $response->getBody();
                 },
