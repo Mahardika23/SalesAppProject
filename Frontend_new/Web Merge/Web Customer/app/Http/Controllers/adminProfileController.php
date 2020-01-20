@@ -36,7 +36,7 @@ class adminProfileController extends Controller
             $distributorData = $promise->wait();
             $distributorData = json_decode($distributorData,true);
                 $data['distributor'] = $distributorData;
-                // dd($data);
+                dd($data);
         //user type
         $user_type = $request->session()->get('user_type');
         return view('adminprofile',['data' => $data]);

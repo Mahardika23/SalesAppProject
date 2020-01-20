@@ -91,9 +91,45 @@ class adminLoginController extends Controller
         // dd($data);
         $data['nama'] = $userData['user']['name'];
         $nama = $data['nama'];
-        // dd($userData);
         $user = $userData['user'];
         $userable_id = $userData['user']['userable_id'];
+
+        // dd($userData);
+
+        // cek userable
+        if($user['userable_type']==="App\Sales"){
+            $request->session()->put('distributor_id',$user['distributor_id']);
+        }else if($user['userable_type']==="App\Distributor"){
+
+            $headers = [
+                'Authorization' => 'Bearer'.$token,
+                'Accept'        => 'application/json'
+            ];
+            $client =  new Client();
+            $promise = $client->requestAsync('GET','http://127.0.0.1:9090/api/profildistributor',['headers' =>
+            ['Authorization' => "Bearer {$token}"]])
+            ->then(
+                function ($response) {
+                    return $response->getBody();
+            }, function ($exception){
+                return $exception->getMessage();
+            }
+            );
+    
+            $distributorData = $promise->wait();
+            $distributorData = json_decode($distributorData,true);
+            // dd($distributorData);
+
+            $request->session()->put('province_id',$distributorData['province_id']);
+            $request->session()->put('regency_id',$distributorData['regency_id']);
+            $request->session()->put('district_id',$distributorData['district_id']);
+            $request->session()->put('village_id',$distributorData['village_id']);
+            $request->session()->put('distributor_id',$userable_id);
+        }else if($user['userable_type']==="App\toko"){
+            return redirect('/');
+        }
+
+
 
             $request->session()->put('email','true');
             $request->session()->put('login_distrib',true);

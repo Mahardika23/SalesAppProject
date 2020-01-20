@@ -20,7 +20,7 @@
         <div class="row  justify-content-md-center ml-3">
             @foreach($kategori as $kategori)
             <div class="row">
-                <div class="col ml-3 mr-2 " >
+                <div class="col ml-3 mr-2 ">
                     <div class="card  mb-4" style="max-width:100rem; max-height:6rem; border-radius:20px;">
                         <a href="/search/{{$kategori['id']}}" class=" kartu" style="border-radius:20px;">
                             <div class="row no-gutters " style="padding-right:5;padding-left:5">
@@ -35,7 +35,6 @@
                     </div>
                 </div>
             </div>
-
             @endforeach
         </div>
     </div>
@@ -43,7 +42,7 @@
     <h5 style="text-align:center;">Katalog Produk</h5>
     @if(($data['data'])==NULL)
     <h5 class="row justify-content-md-center" style=" color: rgba(0, 0, 0, 0.5);margin-top:65;">
-    Tidak Ada Barang Di Sekitar Anda
+        Tidak Ada Barang Di Sekitar Anda
     </h5>
     @endif
 
@@ -74,13 +73,18 @@
                                                     <div class="col">
                                                         <div class="card-body p-1" id="{{$barang['id']}}isi">
                                                             <div class="card-text" style="font-size:65%;">
+                                                            <div style="text-align: center">
+                                                                        <b class="m-0"><text id='produk'>{{$barang['nama_barang']}}</text></b></div>
+                                                                    
                                                                 <form>
-                                                                    <p class="m-0"> <text id='produk' >{{$barang['nama_barang']}}</text>
-                                                                    </p>
-                                                                    <p class="m-0"> harga : <text id='harga'>{{$barang['harga_barang']}}</text>
+                                                                    <p class="m-0 mt-1"> Rp. <text class='harga'>{{$barang['harga_barang']}}</text>
                                                                     </p>
                                                                     <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                                                 </form>
+                                                                <p id='deskripsi_produk' hidden>{{$barang['deskripsi_produk']}}</p>
+
+                                                                <p id='harga' hidden>{{$barang['harga_barang']}}</p>
+                                                                <p id='fotoProduk' hidden>{{$barang['item_image']}}</p>
                                                                 <p id='idbarang' hidden>{{$barang['id']}}</p>
                                                                 @if($barang['global']==1)
                                                                 <p id='wilayah' hidden>Global</p>
@@ -89,7 +93,14 @@
                                                                 <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
                                                                 @endif
                                                                 <p id='distri' hidden>{{$barang['distributor_id']}}</p>
-                                                                <b>{{$barang['distributor']['nama_distributor']}}</b>
+                                                                <p id='distributor'>{{$barang['distributor']['nama_distributor']}}</p>
+                                                                <!-- @foreach($barang['wilayah'] as $wilayah)
+                                                                <p hidden>
+                                                                        {{$wilayah['name']}}
+                                                                </p>
+                                                                <input  hidden id="wilayah" value="{{$wilayah['name']}}">
+                                                                @endforeach -->
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -98,7 +109,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- {{count($barang['wilayah'])}} -->
+                            
+                                                                
                             @endforeach
 
                         </div>
@@ -146,8 +159,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
@@ -204,4 +216,6 @@
         .bindPopup('Reksa Karya')
         .openPopup();
 </script> -->
+
+
 @endsection

@@ -16,7 +16,7 @@
                                     <div class="card-body" style="text-align:center; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                                         <div>
                                             <img src="../storage/Avatar/{{$data['profile_image']}}" class="" alt="..." width='200px' height="200px">
-                                            <div class="custom-file">
+                                            <div class="custom-file mt-4">
                                                 <!-- <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Pilih file</label>
                                                 <input type="file" class="custom-file-input" id="inputGroupFile02" name="profile_image"> -->
                                                 <label class="custom-file-label" for="customFile" style="padding-right: 30%">Pilih file</label>
@@ -55,7 +55,7 @@
                                             <label for="no_telp" class="col-form-label">No Telp
                                         </div>
                                         <div class="col-lg-7">
-                                            <input type="text" id="no_telp" class="form-control" name='no_telp' autocomplete='off' required value="{{$data['no_telp']}}"></input>
+                                            <input type="text" disabled id="no_telp" class="form-control" name='no_telpon' autocomplete='off' required value="{{$data['no_telp']}}"></input>
                                             <span class='text-danger'>{{ $errors->first('no_telp') }}</span>
                                         </div>
                                     </div>

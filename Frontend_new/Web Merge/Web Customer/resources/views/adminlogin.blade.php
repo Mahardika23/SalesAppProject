@@ -115,11 +115,11 @@
                             <input type="email" class="form-control" name="email_distributor" placeholder="admin@distributor.id"id="email_distributor" required>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Password sales</label>
+                            <label for="inputAddress2">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="******" min="8" id="password" required>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Konfirmasi password sales</label>
+                            <label for="inputAddress2">Konfirmasi password</label>
                             <input type="password" class="form-control" name="password_confirmation" placeholder="******" id="password_confirmation" required>
                         </div>
                         <div class="form-group">
@@ -197,6 +197,12 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+
+        <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/kabupaten.js')}}"></script>
+        <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/provinsi.js')}}"></script>
+        <script type="text/javascript" src="{{ url('/js/dropdown_wilayah/Kecamatan&Kelurahan.js')}}"></script>
+        <script type="text/javascript" src="{{ url('/js/mdb.min.js')}}"></script>
+
         @if(Session::has('message'))
         <script type="text/javascript">
             $(window).on('load',function(){
