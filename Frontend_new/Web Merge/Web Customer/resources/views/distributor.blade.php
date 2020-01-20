@@ -82,12 +82,12 @@
                 @foreach($barang as $barang)
                 <div class="row">
                     <div class="col ml mr-4">
-                        <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 22rem; max-height:11rem;">
+                        <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 22rem; max-height:12rem;">
                             <div class="row no-gutters" style="padding-right:15;">
                                 <div class="col-4" style="height:11rem">
-                                    <img src="../img/chitato.jpg" class="card-img p-2" style="height:90%;">
+                                    <!-- <img src="../img/chitato.jpg" class="card-img p-2" style="height:90%;"> -->
 
-                                    <!-- <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:90%;"> -->
+                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:10rem;margin-top:1rem">
                                 </div>
                                 <div class="col-7">
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">
@@ -103,13 +103,12 @@
                                                 </div>
                                             </p>
                                         </form>
-                                        <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
+                                        <p id='deskripsi_produk' hidden>{{$barang['deskripsi_produk']}}</p>
                                         <p id='harga' hidden>{{$barang['harga_barang']}}</p>
                                         <p id='idbarang' hidden>{{$barang['id']}}</p>
                                         <p id='distri' hidden>{{$data['id']}}</p>
                                         <p id='fotoProduk' hidden>{{$barang['item_image']}}</p>
                                     </div>
-                                    <p style="text-align:right">{{$barang['wilayah'][0]['name']}}</p>
                                 </div>
                                 <div class="col-1" style="padding-top:17%;">
                                     <button class="searchlink" type="submit" data-toggle="modal" data-target="#modalPesan" id="{{$barang['id']}}">

@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="form-inline">
-                    <p class="ml-4 mr-4" id="deskripsi_barang" style="text-indent: 5%;text-align: justify; text-justify: inter-word;">Deskripsi Produk sndjasdjhkjsa hdkkkkkkkds dkhajsdk ajsdhjkashd asjdashgd aghwdah jsdgj asgh djgashdjha sgj</p>
+                    <p class="ml-4 mr-4" id="deskripsiProduk" style="text-indent: 5%;text-align: justify; text-justify: inter-word;"></p>
                     <div class="col-12"style="text-align:right">
                         <p class="ml-2 mr-2 mt-1" style="margin-bottom: -10" id="wilayahProduk">Kota Produk</p>
                     </div>
@@ -110,10 +110,11 @@
         var dataProduk = $('#' + id + 'isi').find('form').html();
         var hargaProduk = $('#' + id + 'isi').find('#harga').html();
         var namaProduk = $('#' + id + 'isi').find('#produk').html();
+        var deskripsiProduk = $('#' + id + 'isi').find('#deskripsi_produk').html();
         var wilayahProduk = $('#' + id + 'isi').find('#wilayah').html();
         var stokProduk = $('#' + id + 'isi').find('form').find('#stok').html();
         var img = '../storage/' + window.idDistributor +'/'+ fotoProduk;
-        console.log(wilayahProduk);
+        console.log(deskripsiProduk);
         // var fotoProduk = $('#' + id + 'isi').find('img').html();
         document.getElementById('foto_barang').value = fotoProduk;
         document.getElementById('idDistributor').value = idDistributor;
@@ -125,6 +126,7 @@
         document.getElementById('stok_barang').value = stokProduk;
         document.getElementById('namaDistributor').innerHTML = namaDistributor;
         document.getElementById('dataProduk').innerHTML = dataProduk;
+        document.getElementById('deskripsiProduk').innerHTML = deskripsiProduk;
         document.getElementById('wilayahProduk').innerHTML = wilayahProduk;
         
     $('#image').attr("src",img)

@@ -131,7 +131,7 @@ class UserController extends Controller
 
     public function profil(Request $request)
     {
-        
+
         $token = $request->session()->get('token');
         //dd($token);
         $client =  new Client();

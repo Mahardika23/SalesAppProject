@@ -116,7 +116,7 @@ class WebCustomerController extends Controller
             $data = $data[0];
         }
         //$data = $data['data'];
-        //dd($data);
+        // dd($data);
         // dd($barang);
         return view('distributor', compact('data', 'barang'));
     }
@@ -237,8 +237,9 @@ class WebCustomerController extends Controller
         $nama=$kategori[$id-1]['kategori'];
    
 
-        // dd($data);
-        // $data = $data['data'];
+        $data = $data['data'];
+                // dd($data);
+
         return view('search', compact('data','nama'));
     }
 
@@ -319,7 +320,7 @@ class WebCustomerController extends Controller
             );
             $data = $promise->wait();
             $data = json_decode($data, true);
-            //dd($data);
+            // dd($data);
             // $data = $data['data'];
             $promise = $client->getAsync($data['next_page_url'])->then(
                 function ($response) {

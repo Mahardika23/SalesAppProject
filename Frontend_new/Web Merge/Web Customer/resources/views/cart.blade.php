@@ -21,7 +21,7 @@
                     <div class="card-header form-inline" style="background-color:#B1A0C7">
                         <h3 class="col-6"><a href="/distributor/{{$distri[0]['attributes']['id_distributor']}}" style="color:inherit;">{{$distri[0]['attributes']['nama_distributor']}}</a></h3>
                         <h3 class="col-1 " style="text-align:right;">Rp.</h3>
-                        <h3 class="col-3 harga" id="totalHarga{{$distri[0]['attributes']['id_distributor']}}" style="text-align:right;"></h3>
+                        <h3 class="col-3 " id="totalHarga{{$distri[0]['attributes']['id_distributor']}}" style="text-align:right;"></h3>
                         <button type="submit" class="col-2">Checkout</button>
                     </div>
                     <div class="card-body">
@@ -31,15 +31,15 @@
                             <input type="hidden" name="barang[barang_id][]" value="{{$barang['id']}}">
                             <div class="row">
                                 <div class="col ml-4 mr-3">
-                                    <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                                    <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:12rem;">
                                         <div class="row-1 no-gutters mt-2" style="padding-right:15;text-align:center">
                                             <h5>{{$barang['name']}}</h5>
                                         </div>
                                         <div class="row no-gutters" style="padding-right:15;">
                                             <input type="hidden" name="distri_id" value="{{$distri[0]['attributes']['id_distributor']}}">
 
-                                            <div class="col-3">
-                                                <img src="../storage/{{$barang['attributes']['id_distributor']}}/{{$barang['attributes']['foto_barang']}}" class="card-img p-2">
+                                            <div class="col-3" >
+                                                <img style="height:10rem;margin-top:-1rem" src="../storage/{{$barang['attributes']['id_distributor']}}/{{$barang['attributes']['foto_barang']}}" class="card-img p-2">
                                             </div>
 
                                             <div class="col-5">
@@ -139,6 +139,23 @@
     </div>
     @endif
 </div>
+@if(Session::has('gagal'))
+        <script type="text/javascript">
+        console.log("test");
+            $(window).on('load',function(){
+                $('#checkoutfailed').modal('show');
+            });
+        </script>
+@endif
+@if(Session::has('notif'))
+        <script type="text/javascript">
+        console.log("test");
+            $(window).on('load',function(){
+                $('#checkoutberhasil').modal('show');
+            });
+        </script>
+@endif
+
 <script>
     $(document).ready(function() {
         $('.minus').click(function() {
@@ -228,20 +245,5 @@
         $('#totalHarga' + distriId).html(hasilAkhir)
     })
 </script>
-<script>
-    var gagal = '{{Session::get('
-    gagal ')}}';
-    var notif = '{{Session::get('
-    notif ')}}';
 
-    if (gagal) {
-        $(window).on('load', function() {
-            $('#checkoutfailed').modal('show');
-        });
-    } else if (notif) {
-        $(window).on('load', function() {
-            $('#checkoutberhasil').modal('show');
-        });
-    }
-</script>
 @endsection

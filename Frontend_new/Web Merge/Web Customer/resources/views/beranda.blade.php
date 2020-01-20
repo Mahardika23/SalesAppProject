@@ -81,6 +81,8 @@
                                                                     </p>
                                                                     <p class="m-0"> stok : <text id='stok'>{{$barang['stok_barang']}}</text></p>
                                                                 </form>
+                                                                <p id='deskripsi_produk' hidden>{{$barang['deskripsi_produk']}}</p>
+
                                                                 <p id='harga' hidden>{{$barang['harga_barang']}}</p>
                                                                 <p id='fotoProduk' hidden>{{$barang['item_image']}}</p>
                                                                 <p id='idbarang' hidden>{{$barang['id']}}</p>
@@ -102,7 +104,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{count($barang['wilayah'])}}
+                            <!-- {{count($barang['wilayah'])}} -->
                             
                                                                 
                             @endforeach
@@ -137,6 +139,7 @@
                                                                     </p>
                                                                     <p class="m-0"> stok : <text id='stok'>{{$benda['stok_barang']}}</text></p>
                                                                 </form>
+                                                                <p id='deskripsi_produk' hidden>{{$benda['deskripsi_produk']}}</p>
                                                                 <p id='wilayah' hidden>{{$benda['wilayah'][0]['name']}}</p>
                                                                 <p id='harga' hidden>{{$benda['harga_barang']}}</p>
                                                                 <p id='fotoProduk' hidden>{{$benda['item_image']}}</p>

@@ -15,7 +15,7 @@
         </div>
     </div>
     <div>
-        @if(($data['data'])==NULL)
+        @if(($data)==NULL)
         <h2 class="col" style=" color: rgba(0, 0, 0, 0.5);text-align:center;margin-top:100;">
             Barang Tidak Ditemukan
         </h2>
@@ -23,20 +23,22 @@
     </div>
     <div class="col ml-3 mb-3">
         @isset($nama)
+        @if($data!=NULL)
         Menampilkan produk untuk "{{$nama}}"
+        @endif
         @endisset
     </div>
     <div class="row justify-content-md-center" style=" margin-bottom:50;">
         <div class="col">
             <div class="row ">
-                @foreach($data['data'] as $barang)
+                @foreach($data as $barang)
                 <div class="row">
                     <div class="col ml-5 mr-4">
                         <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:12rem;">
                             <div class="row no-gutters" style="padding-right:15;">
                                 <div class="col-3" style="height:11rem">
-                                    <img src="../img/chitato.jpg" class="card-img p-2" style="height:90%;">
-                                    <!-- <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:90%;"> -->
+                                    <!-- <img src="../img/chitato.jpg" class="card-img p-2" style="height:90%;"> -->
+                                    <img src="../storage/{{$barang['distributor_id']}}/{{$barang['item_image']}}" class="card-img p-2" style="height:10rem;margin-top:1rem">
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body p-2" id="{{$barang['id']}}isi">
@@ -50,6 +52,8 @@
                                         <a href="/distributor/{{$barang['distributor_id']}}" style="color:inherit;">
                                             <p  id="distributor" style=>{{$barang['distributor']['nama_distributor']}}</p>
                                         </a>
+                                        <p id='deskripsi_produk' hidden>{{$barang['deskripsi_produk']}}</p>
+
                                         <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
                                         <p id='harga' hidden>{{$barang['harga_barang']}}</p>
                                         <p id='idbarang' hidden>{{$barang['id']}}</p>

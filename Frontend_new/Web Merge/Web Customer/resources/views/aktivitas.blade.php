@@ -33,10 +33,10 @@
                         @foreach($pesanan['barang'] as $barang)
                         <div class="row ">
                             <div class="col ml-4 mr-3">
-                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:12rem;">
                                     <div class="row no-gutters" style="padding-right:15;">
                                         <div class="col-4">
-                                            <img src="../img/gambarLogo.jpg" class="card-img p-2">
+                                            <img style="height: 12rem" src="../storage/{{$pesanan['distributor']['id']}}/{{$barang['item_image']}}" class="card-img p-2">
                                         </div>
                                         <div class="col-8">
                                             <div class="card-body p-1">
@@ -114,10 +114,10 @@
                         @foreach($pesanan['barang'] as $barang)
                         <div class="row ">
                             <div class="col ml-4 mr-3">
-                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                            <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:12rem;">
                                     <div class="row no-gutters" style="padding-right:15;">
                                         <div class="col-4">
-                                            <img src="../img/gambarLogo.jpg" class="card-img p-2">
+                                            <img style="height: 12rem" src="../storage/{{$pesanan['distributor']['id']}}/{{$barang['item_image']}}" class="card-img p-2">
                                         </div>
                                         <div class="col-8">
                                             <div class="card-body p-1">
