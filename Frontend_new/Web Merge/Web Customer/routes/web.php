@@ -20,6 +20,8 @@ Route::group(['middleware' => ['logincheck']], function() {
     Route::get('/pesan', 'CartController@cart');
 });
 Route::get('/checkemailvalidity','UserController@checkEmail');
+Route::get('/checkphonevalidity','UserController@checkPhone');
+Route::get('/checkusernamevalidity','UserController@checkUsername');
 Route::any('/lupapas', 'WebCustomerController@checkout');
 Route::any('/checkout', 'WebCustomerController@checkout');
 Route::any('/cek', 'CartController@cart');
@@ -36,6 +38,7 @@ Route::any('/daftar', [ 'as' => 'daftar', 'uses' =>'WebCustomerController@daftar
 Route::any('/cart', 'CartController@add');
 Route::any('/cart-delete', 'CartController@remove');
 Route::any('/requestmitra', 'WebCustomerController@getMitra');
+Route::any('/batalmitra', 'WebCustomerController@batalMitra');
 Route::any('/daftarakun', 'UserController@register3');
 // Route::get('/searchApi','WebCustomerController@getBarangSearch')
 Route::post('get_barang', [
@@ -78,6 +81,6 @@ Route::any('/navbar', ['as' => 'navbar', 'uses' => 'UserController@cobaSession']
     Route::get('/admindistributor', [ 'as' => 'admindistributor', 'uses' => 'adminDistributorController@index']);
     Route::post('/admindistributor/update', [ 'uses' => 'adminDistributorController@update']);
 
-    Route::get('/login-distributor', [ 'as' => 'login', 'uses' => 'adminLoginController@index']);
-    Route::get('/loginpage', [ 'as' => 'login', 'uses' => 'adminLoginController@show']);
+    Route::get('/login-distributor', [ 'as' => 'login-distributor', 'uses' => 'adminLoginController@index']);
+    Route::get('/loginpage', [ 'as' => 'loginpage', 'uses' => 'adminLoginController@show']);
     Route::get('/logout-distributor', [ 'as' => 'logout-distributor', 'uses' => 'adminLoginController@logout']);

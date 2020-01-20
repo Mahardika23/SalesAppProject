@@ -10,6 +10,7 @@ use JWTAuth;
 use App\User;
 use App\toko;
 use App\Pemesanan;
+use Carbon\Carbon;
 use App\Barang;
 use Illuminate\Validation\Rule;
 
@@ -53,7 +54,7 @@ class PemesananController extends Controller
         $userPemesanan = User::find($user['id'])->userable;
         $request['toko_id'] = $userPemesanan['id'];
         $request['nama_toko'] = toko::find($userPemesanan['id'])->nama_toko;
-        $check = $userPemesanan->distributor()->wherePivot('sales_id','!=',null)->get();
+        // $check = $userPemesanan->distributor()->wherePivot('sales_id','!=',null)->get();
 
         $validatedData = $request->validate([
             'toko_id' => 'required|numeric',
@@ -65,31 +66,36 @@ class PemesananController extends Controller
             'status_pemesanan' => ['required', Rule::in(['menunggu konfirmasi','pesanan diproses','diantar','diterima toko','ditolak','selesai']),]
             
         ]);
+
         $pemesanan = new Pemesanan($validatedData);
             
         $pemesanan->save();
-       
-        // return $check[0]['pivot'];
+
+        // return $check;
         if(isset($check[0])){
             $input['sales_id'] = $check[0]['pivot']['sales_id'];
             
             $pesan = Pemesanan::findOrFail($pemesanan['id']);
             
             $pesan->update($input);
+
+        // return ['message' => "test"];
+
             // return $pemesanan;
         }
 
         $idBarang = $request['barang']['id'];
         
         $qtyBarang = $request['barang']['kuantitas_barang'];
-        // return $barang;
+        $hargaBarang = $request['barang']['harga_barang'];
+            
         foreach ($idBarang as $indexKey => $b) {
             $i = 0;
-            $harga = Barang::find($b)->harga_barang;
+            // $harga = Barang::find($b)->harga_barang;
             
             $pemesanan->barang()->attach([$b => 
             ['kuantitas_barang' => $qtyBarang[$indexKey]
-              ,'harga_barang' => $harga,
+              ,'harga_barang' => $hargaBarang[$indexKey],
               'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
               'updated_at' =>Carbon::now()->format('Y-m-d H:i:s')
               ]
@@ -97,8 +103,8 @@ class PemesananController extends Controller
             ]);
             $i++;
         }   
-        return response()->json($pemesanan,201);
- 
+         return response()->json($pemesanan,201);
+
     }
 
     public function update(Request $request,$id) {

@@ -65,6 +65,7 @@ class CartController extends Controller
     }
 
     public function add(Request $request){
+        // dd($request);
         $add = Cart::add([
             'id' => $request->id,
             'name' => $request->nama_barang,
@@ -74,6 +75,7 @@ class CartController extends Controller
             'attributes' => [
                 'id_distributor' => $request->id_distributor,
                 'nama_distributor' => $request->nama_distributor,
+                'foto_barang' => $request->foto_barang,
                 'stok_barang' => $request->stok_barang
             ]
         ]);

@@ -115,11 +115,11 @@
                             <input type="email" class="form-control" name="email_distributor" placeholder="admin@distributor.id"id="email_distributor" required>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Password sales</label>
+                            <label for="inputAddress2">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="******" min="8" id="password" required>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Konfirmasi password sales</label>
+                            <label for="inputAddress2">Konfirmasi password</label>
                             <input type="password" class="form-control" name="password_confirmation" placeholder="******" id="password_confirmation" required>
                         </div>
                         <div class="form-group">

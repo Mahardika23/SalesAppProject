@@ -21,7 +21,7 @@
         @foreach($pesanan as $pesanan)
         <div class="card mb-5">
             <div class="card-header form-inline" style="background-color:#B1A0C7">
-                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;">{{$pesanan['distributor']['nama_distributor']}} </a></h3>
+                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor']['id']}}" style="color:inherit;">{{$pesanan['distributor']['nama_distributor']}} </a></h3>
                 <div class=" col-3" style="align-content:center;text-align:right">
                     <button type="submit" class="btn-purple " disabled style="width:100%;display: block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
                 </div>
@@ -33,17 +33,35 @@
                         @foreach($pesanan['barang'] as $barang)
                         <div class="row ">
                             <div class="col ml-4 mr-3">
-                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:12rem;">
                                     <div class="row no-gutters" style="padding-right:15;">
                                         <div class="col-4">
-                                            <img src="../img/gambarLogo.jpg" class="card-img p-2">
+                                            <img style="height: 12rem" src="../storage/{{$pesanan['distributor']['id']}}/{{$barang['item_image']}}" class="card-img p-2">
                                         </div>
                                         <div class="col-8">
                                             <div class="card-body p-1">
                                                 <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                                    Nama Produk : {{$barang['nama_barang']}}
-                                                    Harga : {{$barang['harga_barang']}}
-                                                    Jumlah : {{$barang['pivot']['kuantitas_barang']}}
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            Nama Produk
+                                                        </div>
+                                                        <div class="col">
+                                                            : {{$barang['nama_barang']}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            Harga </div>
+                                                        <div class="col">
+                                                            : Rp. <text class="harga"> {{$barang['harga_barang']}} </text> </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            Jumlah </div>
+                                                        <div class="col">
+                                                            : {{$barang['kuantitas_barang']}}
+                                                        </div>
+                                                    </div>
                                                 </p>
                                             </div>
                                         </div>
@@ -58,11 +76,11 @@
             <div>
                 <div class="row" style="text-align: ">
                     <div class="col-lg-8"></div>
-                    <div class="col-lg-2">
-                        <h3 style="">Total :</h3>
+                    <div class="col-lg-1">
+                        <h3 style="">Total</h3>
                     </div>
-                    <div class="col-lg-2">
-                        <h3 style="">{{$pesanan['total_harga']}}</h3>
+                    <div class="col-lg-3">
+                        <h3 style="">: Rp. <text class="harga">{{$pesanan['total_harga']}}</text></h3>
                     </div>
                 </div>
             </div>
@@ -81,13 +99,13 @@
         @foreach($riwayat as $pesanan)
         <div class="card mb-5">
             <div class="card-header form-inline" style="background-color:#B1A0C7">
-                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor_id']}}" style="color:inherit;"> {{$pesanan['distributor']['nama_distributor']}} </a></h3>
+                <h3 class="col-9"> <a href="/distributor/{{$pesanan['distributor']['id']}}" style="color:inherit;"> {{$pesanan['distributor']['nama_distributor']}} </a></h3>
                 <div class="col-3" style="text-align:RIGHT">
-                @if($pesanan['status_pemesanan']=='ditolak')
-                    <button type="submit" class="btn-danger disabled" disabled style="width:100%;display:block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
-                @else
-                    <button type="submit" class="btn-success disabled" disabled style="width:100%;display: block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">{{$pesanan['status_pemesanan']}}</button>
-                @endif
+                    @if($pesanan['status_pemesanan']=='ditolak')
+                    <button type="submit" class="btn-danger disabled" disabled style="width:100%;display:block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Pesanan Ditolak</button>
+                    @else
+                    <button type="submit" class="btn-success disabled" disabled style="width:100%;display: block;font-weight: 400;border: 1px solid transparent;line-height: 1.5;border-radius: 0.25rem;padding: 0.375rem 0.75rem;">Pesanan Selesai</button>
+                    @endif
                 </div>
             </div>
             <div class="card-body">
@@ -96,17 +114,35 @@
                         @foreach($pesanan['barang'] as $barang)
                         <div class="row ">
                             <div class="col ml-4 mr-3">
-                                <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:11rem;">
+                            <div class="card mb-4" style=" background-color: rgb(239, 233, 252); max-width: 30rem; max-height:12rem;">
                                     <div class="row no-gutters" style="padding-right:15;">
                                         <div class="col-4">
-                                            <img src="../img/gambarLogo.jpg" class="card-img p-2">
+                                            <img style="height: 12rem" src="../storage/{{$pesanan['distributor']['id']}}/{{$barang['item_image']}}" class="card-img p-2">
                                         </div>
                                         <div class="col-8">
                                             <div class="card-body p-1">
                                                 <p class="card-text" style="font-size:100%; white-space:pre-line;">
-                                                    Nama Produk : {{$barang['nama_barang']}}
-                                                    Harga : {{$barang['harga_barang']}}
-                                                    Jumlah : {{$barang['pivot']['kuantitas_barang']}}
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            Nama Produk
+                                                        </div>
+                                                        <div class="col">
+                                                            : {{$barang['nama_barang']}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            Harga </div>
+                                                        <div class="col">
+                                                            : Rp. <text class="harga"> {{$barang['harga_barang']}} </text> </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-5">
+                                                            Jumlah </div>
+                                                        <div class="col">
+                                                            : {{$barang['kuantitas_barang']}}
+                                                        </div>
+                                                    </div>
                                                 </p>
                                             </div>
                                         </div>
@@ -120,11 +156,11 @@
             </div>
             <div class="row" style="text-align: ">
                 <div class="col-lg-8"></div>
-                <div class="col-lg-2">
-                    <h3 style="">Total :</h3>
+                <div class="col-lg-1">
+                    <h3 style="">Total</h3>
                 </div>
-                <div class="col-lg-2">
-                    <h3 style="">{{$pesanan['total_harga']}}</h3>
+                <div class="col-lg-3">
+                    <h3 style="">: Rp. <text class="harga">{{$pesanan['total_harga']}}</text></h3>
                 </div>
             </div>
         </div>

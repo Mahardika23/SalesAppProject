@@ -20,7 +20,8 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 8,
-                alphanumeric: true
+                alphanumeric: true,
+                remote: "/checkusernamevalidity",
             },
             email: {
                 required: true,
@@ -52,6 +53,7 @@ $(document).ready(function () {
             no_telp: {
                 required: true,
                 number: true,
+            remote: "/checkphonevalidity",
                 minlength: 11,
                 maxlength: 14
 
@@ -75,7 +77,9 @@ $(document).ready(function () {
         messages: {
             name: {
                 required: "Kolom belum terisi",
-                minlength: "Username harus terdiri dari minimal 8 karakter"
+                minlength: "Username harus terdiri dari minimal 8 karakter",
+                remote: "Username sudah terdaftar",
+
             }
             ,
             email: {
@@ -105,6 +109,7 @@ $(document).ready(function () {
             },
             no_telp: {
                 required: "Kolom belum terisi",
+                remote: "Nomor telepon sudah terdaftar",
                 minlength: "Silahkan masukkan setidaknya 11 karakter",
                 maxlength: "Maksimal 14 karakter",
 

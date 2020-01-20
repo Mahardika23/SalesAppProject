@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Distributor;
 use App\Barang;
+use App\Wilayah;
+
 use JWTAuth;
 use App\User;
 use App\KategoriBarang;
@@ -45,11 +47,32 @@ class CatalogController extends Controller
     {
         $user = JWTAuth::parseToken()->authenticate();
         $userToko = User::find($user['id'])->userable->regency_id;
-        $usernya = User::find($user['id'])->userable;
+        $provinsiuserToko = User::find($user['id'])->userable->province_id;
         
+        global $regencyToko;
+        global $provinsiToko;
+
+        $regencyToko = Wilayah::find($userToko)->name;
+
+        $provinsiToko = Wilayah::find($provinsiuserToko)->name;
+        
+        $usernya = User::find($user['id'])->userable;
+        // $userToko = intval($userToko);
+
+        // return $barang = Barang::with(['distributor','wilayah'])->where('wilayahs.id',$userToko)->orWhere('global','1')->paginate(12);
+        
+
+        // return $barang = Barang::with(['distributor'])->with(['wilayah' => function($q){
+
+        //     global $regencyToko;
+        //     $q->where('name','LIKE',$regencyToko);
+        // }])->orWhere('global','1')->paginate(12);
+        // return ($regencyToko);
         return $barang = Barang::with(['distributor','wilayah'])->whereHas('wilayah',function($q){
-            global $userToko;
-            return $q->where('wilayahs.id','LIKE',$userToko);
+           global  $regencyToko;
+            global $provinsiToko;
+            // $reg =  ;
+            return $q->where('name','LIKE',$regencyToko)->orWhere('name','LIKE',$provinsiToko);
         
         })->orWhere('global','1')->paginate(12);
     }

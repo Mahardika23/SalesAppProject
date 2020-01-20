@@ -6,20 +6,35 @@
                 <div class="mb-4" style=" max-width: 30rem; max-height:11rem;">
                     <div class="row no-gutters" style="padding-right:15;">
                         <div class="col-3" id="fotoProduk">
-                            <img src="../img/minyak.jpg" class="card-img p-2">
+                            <h2 style="padding-left:20%; margin-bottom:20;" id="fotoProduk"></h2>
+                            <img id="image" src="" class="card-img p-1 mt-3" style="height: 10rem">
                         </div>
                         <div class="col-8">
                             <div class="card-body p-0">
-                                <a href='#' onclick="geturl()" style="color:inherit;">
+                                <!-- <a href='#' onclick="geturl()" style="color:inherit;">
                                     <h2 style="padding-left:20%; margin-bottom:20;" id="namaDistributor"></h2>
-                                </a>
+                                </a> -->
+                                <h2 style="padding-left:20%; margin-bottom:20;" id="namaBarang"></h2>
                                 <div class="row">
                                     <div class="col-6">
-                                        <form id="dataProduk" action='/cart' action="POST">
+                                        <div>
+                                            <form id="dataProduk" action='/cart' action="POST">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">Distributor </div>
+                                            <div class="col-6">:
+                                            </div>
+                                        </div>
+                                        <a href='#' onclick="geturl()" style="color:inherit;">
+                                            <p id="namaDistributor"></p>
+                                        </a>
+                                    </div>
+                                    <div>
                                     </div>
                                     <div class="def-number-input number-input safari_only col-6 pt-5">
                                         <input type="hidden" name="id" id="id_barang" value=''>
                                         <input type="hidden" name="stok_barang" id="stok_barang" value=''>
+                                        <input type="hidden" name="foto_barang" id="foto_barang" value=''>
                                         <input type="hidden" name="id_distributor" id="idDistributor" value=''>
                                         <input type="hidden" name="nama_barang" id="nama_barang" value=''>
                                         <input type="hidden" name="harga_barang" id="harga_barang" value=''>
@@ -28,10 +43,16 @@
                                         <input class="quantity" id="quantity" min="0" name="quantity" value="1" type="number">
                                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                     </div>
-                                    
                                 </div>
+                                <!-- <p style="text-align:right;margin-top:-10">Kota Produk</p> -->
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <p class="ml-4 mr-4" id="deskripsiProduk" style="text-indent: 5%;text-align: justify; text-justify: inter-word;"></p>
+                    <div class="col-12"style="text-align:right">
+                        <p class="ml-2 mr-2 mt-1" style="margin-bottom: -10" id="wilayahProduk">Kota Produk</p>
                     </div>
                 </div>
                 <hr>
@@ -56,7 +77,7 @@
     </div>
 </div>
 @else
-<div class="modal fade bd-example-modal-sm " id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+<div class="modal fade bd-example-modal-sm " id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm ">
         <div class="modal-content">
             <div class="modal-body" style="text-align:center">
@@ -68,14 +89,15 @@
 </div>
 @endif
 <script>
-    
-    var login = '{{Session::get('login')}}';
+    var login = '{{Session::get('
+    login ')}}';
     console.log(login);
     $("button[name='shoplink']").on('click', function(params) {
-        if(login){
-        $('#modalPesan').modal('toggle', $(this));
-        }else{
-        $('#modalLogin').modal('show');
+        if (login) {
+            $('#modalPesan').modal('toggle', $(this));
+        } else {
+            console.log('test');
+            $('#modalLogin').modal('show');
         }
     });
     $('#modalPesan').on('show.bs.modal', function(event) {
@@ -84,27 +106,36 @@
         console.log(button[0].id);
         window.idDistributor = $('#' + id + 'isi').find('#distri').html();
         var idProduk = $('#' + id + 'isi').find('#idbarang').html();
-        var namaDistributor = $('#' + id + 'isi').find('b').html();
+        var namaDistributor = $('#' + id + 'isi').find('#distributor').html();
+        var fotoProduk = $('#' + id + 'isi').find('#fotoProduk').html();
         var dataProduk = $('#' + id + 'isi').find('form').html();
-        var hargaProduk = $('#' + id + 'isi').find('form').find('#harga').html();
-        var namaProduk = $('#' + id + 'isi').find('form').find('#produk').html();
+        var hargaProduk = $('#' + id + 'isi').find('#harga').html();
+        var namaProduk = $('#' + id + 'isi').find('#produk').html();
+        var deskripsiProduk = $('#' + id + 'isi').find('#deskripsi_produk').html();
+        var wilayahProduk = $('#' + id + 'isi').find('#wilayah').html();
         var stokProduk = $('#' + id + 'isi').find('form').find('#stok').html();
-        console.log(idDistributor);
-        console.log(namaProduk);
+        var img = '../storage/' + window.idDistributor +'/'+ fotoProduk;
+        console.log(deskripsiProduk);
         // var fotoProduk = $('#' + id + 'isi').find('img').html();
+        document.getElementById('foto_barang').value = fotoProduk;
         document.getElementById('idDistributor').value = idDistributor;
         document.getElementById('id_barang').value = idProduk;
-        document.getElementById('namaDistributor').innerHTML = namaDistributor;
+        document.getElementById('namaBarang').innerHTML = namaProduk;
         document.getElementById('nama_distributor').value = namaDistributor;
         document.getElementById('harga_barang').value = hargaProduk;
         document.getElementById('nama_barang').value = namaProduk;
         document.getElementById('stok_barang').value = stokProduk;
+        document.getElementById('namaDistributor').innerHTML = namaDistributor;
         document.getElementById('dataProduk').innerHTML = dataProduk;
-        // document.getElementById('fotoProduk').innerHTML = fotoProduk;
+        document.getElementById('deskripsiProduk').innerHTML = deskripsiProduk;
+        document.getElementById('wilayahProduk').innerHTML = wilayahProduk;
+        
+    $('#image').attr("src",img)
+    console.log(img);
     })
     $('#tambah').click(function() {
         // event.stopPropagation();
-        
+
         console.log($('#quantity').val());
         // $.ajax({
         //     type: "POST",
@@ -120,7 +151,10 @@
         $('#btnSimpan').click();
         console.log("test");
     })
-    function geturl(){
-        window.location.href='/distributor/'+window.idDistributor;
+
+
+
+    function geturl() {
+        window.location.href = '/distributor/' + window.idDistributor;
     }
 </script>
