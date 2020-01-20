@@ -54,9 +54,24 @@
                   <label class="form-check-label" for="inlineCheckbox1">Global</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="global" name="global" value="0">
+                  <input class="form-check-input" type="radio" id="global" name="global" value="0" checked="checked">
                   <label class="form-check-label" for="inlineCheckbox2">Lokal</label>
                 </div>
+              </div>
+              <div id="wilayah">
+                <select id="provinsi" class="form-control" name="province_id">
+                    @foreach($wilayah as $provinsi)
+                      @if(Session::get('province_id')==$provinsi['id'])
+                        <option value="{{$provinsi['id']}}" selected>{{$provinsi['name']}}</option>
+                      @else
+                        <option value="{{$provinsi['id']}}">{{$provinsi['name']}}</option>
+                      @endif
+                    @endforeach
+                </select>
+                <div id="more_wilayah">
+
+                </div>
+                <button type="button" name="add_wilayah" id="add_wilayah" class="btn" style="color: blue">+ Tambah area</button>
               </div>
             </div>
             <div class="form-group">
@@ -287,5 +302,40 @@
     $( '.harga_barang' ).mask('0,000,000,000', {reverse: true});
   })
 </script>
-
+<script>
+  $(":input[type='radio']").on("change", function () {
+    if ($(this).prop("checked") && $(this).val() != 0)
+        $("#wilayah").hide();
+    else
+        $("#wilayah").show();
+  });
+</script>
+<script>
+$(document).ready(function(){
+	var i=1;
+	$('#add_wilayah').click(function(){
+		i++;
+		$('#more_wilayah').append('<input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" />');
+	});
+	
+	$(document).on('click', '.btn_remove', function(){
+		var button_id = $(this).attr("id"); 
+		$('#row'+button_id+'').remove();
+	});
+	
+	$('#submit').click(function(){		
+		$.ajax({
+			url:"name.php",
+			method:"POST",
+			data:$('#add_name').serialize(),
+			success:function(data)
+			{
+				alert(data);
+				$('#add_name')[0].reset();
+			}
+		});
+	});
+	
+});
+</script>
 @endsection

@@ -64,7 +64,24 @@ class adminBarangController extends Controller
 // dd($userable_id);
             // dd($data['data']);
             // dd($kategori);
-            return view('adminbarang',['data'=> $data,'kategori' => $kategori]);
+
+
+            $promise = $client->getAsync('http://127.0.0.1:9090/api/province')->then(
+                function ($response) {
+                    return $response->getBody();
+                },
+                function ($exception) {
+                    return $exception->getMessage();
+                }
+                );
+                $alamat = $request->all();
+                //dd ($alamat);
+                $dataWilayah = $promise->wait();
+                $dataWilayah = json_decode($dataWilayah, true);
+                $wilayah = $dataWilayah;
+                // dd($wilayah);
+
+            return view('adminbarang',['data'=> $data,'kategori' => $kategori,'wilayah' => $wilayah]);
             // return view('barang',['nama' => $nama]);
 
       

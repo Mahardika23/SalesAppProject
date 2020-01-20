@@ -167,10 +167,10 @@ class adminLoginController extends Controller
         if ($data['message'] == "Successfully logged out") {
             
             $request->session()->flush();
-            return redirect()->route('login');
+            return redirect()->route('loginpage');
 
         }
-        return redirect('/');
+        return redirect('/loginpage');
     }
 
     public function register(Request $request){
