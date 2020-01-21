@@ -33,7 +33,8 @@ class DistributorController extends Controller
         //
         $id = $request['id'];
         $search =$request['search'];        
-        return $distributor=Distributor::find($request['id'])->barang()->where('nama_barang','LIKE','%'.$search.'%')->get();
+        return $distributor=Distributor::find($request['id'])->barang()
+        ->where('nama_barang','LIKE','%'.$search.'%')->with('wilayah')->get();
 
     }
     public function getProfil(){
@@ -107,7 +108,7 @@ class DistributorController extends Controller
     public function showBarang($id)
     {
         //
-        return $distributor=Distributor::find($id)->barang;
+        return $distributor=Distributor::find($id)->with('barang','wilayah');
 
     }
 

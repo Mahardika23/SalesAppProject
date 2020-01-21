@@ -34,7 +34,8 @@ class BarangController extends Controller
             'stok_barang'       => 'required|integer',
             'item_image'        => 'string',
             'distributor_id'    => 'required|numeric',
-            'global'            => 'required|boolean'
+            'global'            => 'required|boolean',
+            'deskripsi_produk'  => 'string',
         ]);
         // return $validatedData;
         $barang = new Barang($validatedData);

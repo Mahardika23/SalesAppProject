@@ -115,7 +115,7 @@
         var wilayahProduk = $('#' + id + 'isi').find('#wilayah').html();
         var stokProduk = $('#' + id + 'isi').find('form').find('#stok').html();
         var img = '../storage/' + window.idDistributor +'/'+ fotoProduk;
-        console.log(deskripsiProduk);
+        console.log(wilayahProduk);
         // var fotoProduk = $('#' + id + 'isi').find('img').html();
         document.getElementById('foto_barang').value = fotoProduk;
         document.getElementById('idDistributor').value = idDistributor;

@@ -146,8 +146,7 @@
                                                                 </form>
                                                                 <p id='deskripsi_produk' hidden>{{$benda['deskripsi_produk']}}</p>
                                                                 @if($barang['global']==1)
-                                                                <p id='wilayah' hidden>Global</p>
-                                                                {{-- <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p> --}}
+                                                                <p id='wilayah' hidden>GLOBAL</p>
                                                                 @else
                                                                 <p id='wilayah' hidden>{{$barang['wilayah'][0]['name']}}</p>
                                                                 @endif                                                                <p id='harga' hidden>{{$benda['harga_barang']}}</p>

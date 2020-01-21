@@ -13,17 +13,18 @@
     <form action="/checkout" method="POST">
         @CSRF
         <input type="hidden" name="toko_id" value="{{Session::get('id_toko')}}">
+        <input type="hidden" name="distri_id" value="{{$distri[0]['attributes']['id_distributor']}}">
         <input type="hidden" name="distributor_id" value="{{$distri[0]['attributes']['id_distributor']}}">
         <input type="hidden" name="nama_toko" value="{{Session::get('nama_toko')}}">
         <div class="row justify-content-md-center" style="margin-top:50; margin-bottom:50;">
             <div class="col">
                 <div class="card p-0">
                     <div class="card-header form-inline" style="background-color:#B1A0C7">
-                        <h3 class="col-7"><a href="/distributor/{{$distri[0]['attributes']['id_distributor']}}" style="color:inherit;">{{$distri[0]['attributes']['nama_distributor']}}</a></h3>
-                        <h3 class="col-3" id="totalHarga{{$distri[0]['attributes']['id_distributor']}}" style="text-align:right;"> Total : 30000</h3>
-                        {{-- <h3 class="col-6"><a href="/distributor/{{$distri[0]['attributes']['id_distributor']}}" style="color:inherit;">{{$distri[0]['attributes']['nama_distributor']}}</a></h3>
-                        <h3 class="col-1 " style="text-align:right;">Rp.</h3>
-                        <h3 class="col-3 harga" id="totalHarga{{$distri[0]['attributes']['id_distributor']}}" style="text-align:right;"></h3> --}}
+                        {{-- <h3 class="col-7"><a href="/distributor/{{$distri[0]['attributes']['id_distributor']}}" style="color:inherit;">{{$distri[0]['attributes']['nama_distributor']}}</a></h3>
+                        <h3 class="col-3" id="totalHarga{{$distri[0]['attributes']['id_distributor']}}" style="text-align:right;"> Total : 30000</h3> --}}
+                        <h3 class="col-6"><a href="/distributor/{{$distri[0]['attributes']['id_distributor']}}" style="color:inherit;">{{$distri[0]['attributes']['nama_distributor']}}</a></h3>
+                        <h3 class="col-1" style="text-align:right;">Rp.</h3>
+                        <h3 class="col-3 " id="totalHarga{{$distri[0]['attributes']['id_distributor']}}" style="text-align:right;"></h3>
                         <button type="submit" class="col-2">Checkout</button>
                     </div>
                     <div class="card-body">
@@ -39,6 +40,7 @@
                                         </div>
                                         <div class="row no-gutters" style="padding-right:15;">
                                             <input type="hidden" name="distributor_id" value="{{$distri[0]['attributes']['id_distributor']}}">
+                                            <input type="hidden" name="distri_id" value="{{$distri[0]['attributes']['id_distributor']}}">
 
                                             <div class="col-3" >
                                                 <img style="height:10rem;margin-top:-1rem" src="../storage/{{$barang['attributes']['id_distributor']}}/{{$barang['attributes']['foto_barang']}}" class="card-img p-2">
@@ -223,25 +225,6 @@
         console.log('tadinya ' + prev)
         var hasil = 0
         //  console.log("u just inpuuted on " + e.target.id)
-        harga = ortu.find("input[name='harga']").val();
-        var prevHarga = prev * harga;
-        console.log("harga tadi" + prevHarga)
-        var prevHargaTotal = $('#totalHarga' + distriId).html();
-
-        console.log('harga total tadi ' + prevHargaTotal)
-        kuantitas = $('#' + e.target.id).val();
-        var hasilAkhir;
-
-        hasil = hasil + harga * kuantitas
-        console.log(hasil);
-        var hasilAkhir = (prevHargaTotal - prevHarga) + hasil
-        if (hasil == 0 && prevHargaTotal == prevHarga) {
-            hasilAkhir = hasil;
-            //  console.log("goblog")
-         }
-         else if (prevHargaTotal == kuantitas*harga || prevHargaTotal <= 0) {
-             hasilAkhir = hasil;
-            }
         // harga = ortu.find("input[name='harga']").val();
         // var prevHarga = prev * harga;
         // console.log("harga tadi" + prevHarga)
@@ -256,13 +239,32 @@
         // var hasilAkhir = (prevHargaTotal - prevHarga) + hasil
         // if (hasil == 0 && prevHargaTotal == prevHarga) {
         //     hasilAkhir = hasil;
-        // } else if (prevHargaTotal == kuantitas * harga || prevHargaTotal <= 0) {
-        //     hasilAkhir = hasil;
-        // }
+        //     //  console.log("goblog")
+        //  }
+        //  else if (prevHargaTotal == kuantitas*harga || prevHargaTotal <= 0) {
+        //      hasilAkhir = hasil;
+        //     }
+        harga = ortu.find("input[name='harga']").val();
+        var prevHarga = prev * harga;
+        console.log("harga tadi" + prevHarga)
+        var prevHargaTotal = $('#totalHarga' + distriId).html();
+
+        console.log('harga total tadi ' + prevHargaTotal)
+        kuantitas = $('#' + e.target.id).val();
+        var hasilAkhir;
+
+        hasil = hasil + harga * kuantitas
+        console.log(hasil);
+        var hasilAkhir = (prevHargaTotal - prevHarga) + hasil
+        if (hasil == 0 && prevHargaTotal == prevHarga) {
+            hasilAkhir = hasil;
+        } else if (prevHargaTotal == kuantitas * harga || prevHargaTotal <= 0) {
+            hasilAkhir = hasil;
+        }
 
 
         
-        //  console.log(distriId)
+         console.log(distriId);
          $('#totalHarga'+distriId).html(hasilAkhir)
      })
 
@@ -274,8 +276,8 @@
 
 
         //  console.log(distriId)
-        $('#totalHarga' + distriId).html(hasilAkhir)
-    })
+        // $('#totalHarga' + distriId).html(hasilAkhir)
+    
 </script>
 
 @endsection
